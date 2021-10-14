@@ -39,7 +39,7 @@ We will mock the API gateway to provide the data to call the lambda function and
 The lambda function will:
 
 - take as input Name, Phone, Email, Message and Captcha Response Token.
-- retrieve the captcha service secret from the parameter store (Systems Manageer)
+- retrieve the captcha service secret from the parameter store (Systems Manager)
 - validate the Captcha Response Token
 - send a notification to the website owner using SES
 - send an acknowledgement to the visitor using SES
