@@ -55,7 +55,46 @@ We will use Terraform Infrastructure as Code to build the supporting services. I
 
 ### Terraform Setup
 
+Terraform uses APIs to apply the changes specified in your code and stores a representation of the current state of the infrastructure. The stored state allows Terraform to determine what has changed and apply only those changes required to align the state with the code. This technique also serves to "correct" any changes that might have been made outside of terraform and align them with your code as the specification of record for the infrastructure.
+
+As we may want to automate the application of changes as lambda code is updated it is best to store the state information remotely. For remote storage we will use an Amazon S3 bucket.
+
+So, to follow along, you will need the following:
+
+- The [Terraform CLI][url-terraform-cli] (v1.0+) installed.
+- The [AWS CLI][url-aws-cli] installed.
+- [An AWS account][url-aws-account].
+- Your AWS credentials. You can [create a new Access Key on this page][url-access-key].
+
+[url-terraform-cli]: https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started
+[url-aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+[url-aws-account]: https://aws.amazon.com/free/
+[url-access-key]: https://console.aws.amazon.com/iam/home?#/security_credentials
+
 ### S3
+
+We need to create an S3 bucket to store the remote state for our infrastructure. We also want to control the configuration of this bucket using Terraform. Sounds like a bit of a chicken and egg conundrum.
+
+Let's start by creating the bucket.
+
+Create a Terraform file by convention the file is called main.tf but the name can be anything.
+
+Specify the versions for Terraform and the the AWS provider and the name of the AWS provider.
+
+``` terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.61"
+    }
+  }
+  required_version = ">= 1.0"
+}
+
+```
+
+Version 3.61 of the AWS provider is required to support the configuration of architecture on a lambda function.
 
 ### Systems Manager
 

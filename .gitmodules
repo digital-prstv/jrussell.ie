@@ -4,3 +4,6 @@
 [submodule "themes/even"]
 	path = themes/even
 	url = https://github.com/getzola/even.git
+[submodule "syntaxes/sublime-terraform"]
+	path = syntaxes/sublime-terraform
+	url = https://github.com/tmichel/sublime-terraform
