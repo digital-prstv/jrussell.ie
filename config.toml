@@ -23,6 +23,7 @@ highlight_code = true
 extra_syntaxes = ["syntaxes"]
 
 highlight_theme = "gruvbox-dark"
+render_emoji = true
 
 [extra]
 # This is the default menu
