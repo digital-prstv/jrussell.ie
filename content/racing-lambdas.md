@@ -1253,4 +1253,187 @@ racing/iac/further❯ aws s3 ls racing-iac-state
 > ***Note***
 > The AWS Account ID is output by terraform. I have replaced it in the text above as this is sensitive (at lease not for publication in a blogs!).
 
-We have created a where we will publish the data collected by the contact form for the Racing Lambdas site. Lets think about the data collected on the form, we collect names, contact details and messages. The names and contact details at least would be considered sensitive. In transit it will be encrypted with TLS as all AWS API calls are over https. However, we need to configure encryption at the server side.
+We have created a topic where we will publish the data collected by the contact form for the Racing Lambdas site.
+
+Consider the data collected on the for: names, contact details and messages. The names and contact details at least are sensitive. In transit it will be encrypted with TLS as all AWS API calls are over https. However, we need to configure encryption at the server side.
+
+``` terraform
+resource "aws_kms_key" "sns_topic" {
+  description             = "Key to encrypt sns topic on server side"
+  deletion_window_in_days = 10
+}
+
+resource "aws_sns_topic" "further_processing" {
+  name              = "racing-lambda-further-processing"
+  kms_master_key_id = aws_kms_key.sns_topic.arn
+}
+```
+
+We create a customer management key for to encrypt the topic server side and set the key's arn in the resource configuration.
+
+``` zsh
+racing/iac/further❯ terraform apply
+aws_sns_topic.further_processing: Refreshing state... 
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply":
+
+  # aws_sns_topic.further_processing has been changed
+  ~ resource "aws_sns_topic" "further_processing" {
+        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}
+                                      :racing-lambda-further-processing"
+        name                        = "racing-lambda-further-processing"
+      + tags                        = {}
+        # (6 unchanged attributes hidden)
+    }
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes,
+the following plan may include actions to undo or respond to these changes.
+
+───────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the
+following symbols:
+  + create
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_kms_key.sns_topic will be created
+  + resource "aws_kms_key" "sns_topic" {
+      + arn                                = (known after apply)
+      + bypass_policy_lockout_safety_check = false
+      + customer_master_key_spec           = "SYMMETRIC_DEFAULT"
+      + deletion_window_in_days            = 10
+      + description                        = "Key to encrypt sns topic on
+                                              server side"
+      + enable_key_rotation                = false
+      + id                                 = (known after apply)
+      + is_enabled                         = true
+      + key_id                             = (known after apply)
+      + key_usage                          = "ENCRYPT_DECRYPT"
+      + policy                             = (known after apply)
+      + tags_all                           = (known after apply)
+    }
+
+  # aws_sns_topic.further_processing will be updated in-place
+  ~ resource "aws_sns_topic" "further_processing" {
+        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}
+                                      :racing-lambda-further-processing"
+      + kms_master_key_id           = (known after apply)
+        name                        = "racing-lambda-further-processing"
+        tags                        = {}
+        # (6 unchanged attributes hidden)
+    }
+
+Plan: 1 to add, 1 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_kms_key.sns_topic: Creating...
+aws_kms_key.sns_topic: Creation complete after 1s
+    [id=6d63188a-0ee3-49d4-82aa-528eb4f9fcaa]
+aws_sns_topic.further_processing: Modifying...
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+aws_sns_topic.further_processing: Modifications complete after 1s
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+
+Apply complete! Resources: 1 added, 1 changed, 0 destroyed.
+```
+
+An SNS topic creates a pub-sub message delivery system. The lambda that we will build will be the publisher and as we discussed earlier we may have one or more subscribers. These subscribers may also be applications within our environment (e.g. a lambda to store the contact form data in DynamoDb) or external to our environment (a SaaS based CRM tool tracking our sales leads). The question we need to consider is who can publish and who can subscribe? The terraform output tells us that one of the attributes of the resource is policy which "known after apply". We should take a look and see if the default configuration meets our needs.
+
+``` json
+{
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "SNS:GetTopicAttributes",
+        "SNS:SetTopicAttributes",
+        "SNS:AddPermission",
+        "SNS:RemovePermission",
+        "SNS:DeleteTopic",
+        "SNS:Subscribe",
+        "SNS:ListSubscriptionsByTopic",
+        "SNS:Publish",
+        "SNS:Receive"
+      ],
+      "Resource": "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceOwner": "{AWS_ACCOUNT}"
+        }
+      }
+    }
+  ]
+}
+```
+
+This policy allows anyone on AWS to perform the specified SNS actions on our topic provided that they are owned by the account that owns the topic. This will certainly the case for the publisher and likely the case for the DynamoDb store subscriber as its internal. It would not support an external subscriber.
+
+We can use AWS IAM to configure a role that allows subscription to our SNS topic. The IAM role can enable users from other accounts, federated users or applications to gain access to the topic and permission to subscribe.
+
+``` terraform
+resource "aws_iam_role" "subscribe" {
+  name = "subscribe-racing-lambda"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principle = {
+          service = "sqs.amazon.com"
+        }
+      }
+    ]
+  })
+
+  managed_policy_arns = [aws_iam_policy.racing_lambda_subscriber.arn]
+}
+```
+
+The `assume_role_policy` sets out the conditions that must be met by entity assuming the role. In this case restrict it to the AWS SQS service. By requiring the AWS SQS as the consumer of our notifications we protect against notifications getting lost because the consuming application cannot match the rate of the notifications.
+
+When an entity assumes a role the managed policies determine what resources they are allowed to access.
+
+``` terraform
+resource "aws_iam_policy" "racing_lambda_subscriber" {
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "SNS:Subscribe",
+        ]
+        Effect   = "Allow"
+        Resource = aws_sns_topic.further_processing.arn
+        Condition = {
+          StringEquals = {
+            "sns:Protocol" = "https"
+          }
+        }
+      },
+    ]
+  })
+}
+```
+
+The policy for the racing_lambda_subscribe permits access to the `Subscribe` action to our topic provided that access is encrypted as we wish to ensure that the names and contact information are encrypted in transit.
