@@ -1114,9 +1114,9 @@ aws_ses_template.notification: Creation complete after 1s
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-### Push and pull with SNS and SQS
+### Further Processing
 
-The third action that we want to take with the contact information is to save the contact. Saving the contact information is not critical to returning a successful form submission as we already have the details captured in the notification email. We have a range of options for saving the data including:
+The third action that we want to take is to save the contact. Saving the contact information is not critical to returning a successful form submission as we already have the details captured in the notification email. We have a range of options for saving the data including:
 
 - create a file in a bucket
 - creating an item in a DynamoDb table
@@ -1124,18 +1124,25 @@ The third action that we want to take with the contact information is to save th
 - integrating the data with an existing application
 - adding the contact to a CRM application
 
-We may want to do one or more of these things. Over time we change how we we do some of them. To separate the form processing and storage we will dispatch the contact data to an AWS SNS topic. One (or more) subscribers to the topic can then process the contact information.
+We may want to do one or more of these things. Over time we might change how we do some of them. It may help to simplify our actions into two categories:
+
+1. validation that may require the visitor to submit data again
+2. further processing
+
+A failure in the first category will be report to the visitor so that they can try again. Failures in the second category we will handle internally.
+
+To provide a flexible solution for further processing we will publish the data to an SNS topic. One or more further processing services can then subscribe to the notification to consume and process the information.
 
 > SNS seems a great idea, perhaps we should just dispatch the validated contact information to SNS and let two email subscribers take care of dispatching the notification and acknowledgement?
-> Perhaps, but we want to confirm that the emails have been successfully dispatched before confirming to the visitor that the form has been received and processed. Storing the contact information is not material to the success of form submission. In fact asking the visitor to retry submission of the contact form because we failed to store it will annoy the visitor as:
+> Perhaps, but we want to confirm that the emails have been successfully dispatched before confirming to the visitor that the form has been received and processed. Storing the contact information is not material to the success of form submission. In fact, asking the visitor to retry submission of the contact form because we failed to store it will annoy the visitor as:
 >
 > - they have an acknowledgement
 > - the storage issue is not likely to be resolved by retrying
-> - the failure is not likely to be in the data submitted
+> - the failure is not likely to be caused by the data submitted
 >
 > Our lambda controls the actions that are critical to confirming that we have all we need from the visitor and any further processing can be done by subscribers to the notification topic.
 
-The Simple Notification Service will push the messages to all subscribers to a topic. The message is not stored by SNS. If a subscriber is unable to process a message when it is pushed it will be lost. SNS is not guaranteed delivery. To protect our storage processor we place an AWS SQS queue in front of it. Collect and store the messages until they are pulled by the code processing the data.
+The Simple Notification Service will push the messages to all subscribers to a topic. The message is not stored by SNS. If a subscriber is unable to process a message when it is pushed it will be lost. SNS is not guaranteed delivery. To protect our storage processor we will place an AWS SQS queue in front of it. Collect and store the messages until they are pulled by the code processing the data.
 
 To store the contact form information then we need:
 
@@ -1240,7 +1247,7 @@ Do you want to perform these actions?
 
 aws_sns_topic.further_processing: Creating...
 aws_sns_topic.further_processing: Creation complete after 1s
-  [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+  [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 racing/iac/further❯ aws s3 ls racing-iac-state
@@ -1273,8 +1280,8 @@ We create a customer management key for to encrypt the topic server side and set
 
 ``` zsh
 racing/iac/further❯ terraform apply
-aws_sns_topic.further_processing: Refreshing state... 
-    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+aws_sns_topic.further_processing: Refreshing state...
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
 
 Note: Objects have changed outside of Terraform
 
@@ -1283,7 +1290,7 @@ last "terraform apply":
 
   # aws_sns_topic.further_processing has been changed
   ~ resource "aws_sns_topic" "further_processing" {
-        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}
+        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCNT}
                                       :racing-lambda-further-processing"
         name                        = "racing-lambda-further-processing"
       + tags                        = {}
@@ -1323,7 +1330,7 @@ Terraform will perform the following actions:
 
   # aws_sns_topic.further_processing will be updated in-place
   ~ resource "aws_sns_topic" "further_processing" {
-        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}
+        id                          = "arn:aws:sns:eu-west-1:{AWS_ACCNT}
                                       :racing-lambda-further-processing"
       + kms_master_key_id           = (known after apply)
         name                        = "racing-lambda-further-processing"
@@ -1343,9 +1350,9 @@ aws_kms_key.sns_topic: Creating...
 aws_kms_key.sns_topic: Creation complete after 1s
     [id=6d63188a-0ee3-49d4-82aa-528eb4f9fcaa]
 aws_sns_topic.further_processing: Modifying...
-    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
 aws_sns_topic.further_processing: Modifications complete after 1s
-    [id=arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing]
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
 
 Apply complete! Resources: 1 added, 1 changed, 0 destroyed.
 ```
@@ -1374,10 +1381,10 @@ An SNS topic creates a pub-sub message delivery system. The lambda that we will 
         "SNS:Publish",
         "SNS:Receive"
       ],
-      "Resource": "arn:aws:sns:eu-west-1:{AWS_ACCOUNT}:racing-lambda-further-processing",
+      "Resource": "arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing",
       "Condition": {
         "StringEquals": {
-          "AWS:SourceOwner": "{AWS_ACCOUNT}"
+          "AWS:SourceOwner": "{AWS_ACCNT}"
         }
       }
     }
@@ -1385,55 +1392,501 @@ An SNS topic creates a pub-sub message delivery system. The lambda that we will 
 }
 ```
 
-This policy allows anyone on AWS to perform the specified SNS actions on our topic provided that they are owned by the account that owns the topic. This will certainly the case for the publisher and likely the case for the DynamoDb store subscriber as its internal. It would not support an external subscriber.
+This policy allows anyone on AWS to perform the specified SNS actions on our topic provided that they are owned by the account that owns the topic.
 
-We can use AWS IAM to configure a role that allows subscription to our SNS topic. The IAM role can enable users from other accounts, federated users or applications to gain access to the topic and permission to subscribe.
+We would like to add an additional condition to ensure that the contact information is encrypted in transit.
 
 ``` terraform
-resource "aws_iam_role" "subscribe" {
-  name = "subscribe-racing-lambda"
+data "aws_iam_policy_document" "racing_lambda_topic_policy" {
+  policy_id = "racing-lambda-sns-topic-policy"
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principle = {
-          service = "sqs.amazon.com"
+  statement {
+    actions = [
+      "SNS:GetTopicAttributes",
+      "SNS:SetTopicAttributes",
+      "SNS:AddPermission",
+      "SNS:RemovePermission",
+      "SNS:DeleteTopic",
+      "SNS:Subscribe",
+      "SNS:ListSubscriptionsByTopic",
+      "SNS:Publish",
+      "SNS:Receive",
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceOwner"
+
+      values = [
+        module.shared.account_id,
+      ]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "sns:Protocol"
+
+      values = [
+        "https",
+      ]
+    }
+
+    effect = "Allow"
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    resources = [
+      aws_sns_topic.further_processing.arn,
+    ]
+
+    sid = "racing-lambda-sns-topic-account"
+  }
+}
+```
+
+We attach our policy document to the topic.
+
+``` terraform
+resource "aws_sns_topic_policy" "racing_lambda_sns_policy" {
+  arn = aws_sns_topic.further_processing.arn
+
+  policy = data.aws_iam_policy_document.racing_lambda_topic_policy.json
+}
+```
+
+Lets apply this update.
+
+``` zsh
+racing/iac/further❯ terraform apply
+aws_kms_key.sns_topic: Refreshing state...
+    [id=6d63188a-0ee3-49d4-82aa-528eb4f9fcaa]
+aws_sns_topic.further_processing: Refreshing state...
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_sns_topic_policy.racing_lambda_sns_policy will be created
+  + resource "aws_sns_topic_policy" "racing_lambda_sns_policy" {
+      + arn    = 
+        "arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing"
+      + id     = (known after apply)
+      + owner  = (known after apply)
+      + policy = jsonencode(
+            {
+              + Id        = "racing-lambda-sns-topic-policy"
+              + Statement = [
+                  + {
+                      + Action    = [
+                          + "SNS:Subscribe",
+                          + "SNS:SetTopicAttributes",
+                          + "SNS:RemovePermission",
+                          + "SNS:Receive",
+                          + "SNS:Publish",
+                          + "SNS:ListSubscriptionsByTopic",
+                          + "SNS:GetTopicAttributes",
+                          + "SNS:DeleteTopic",
+                          + "SNS:AddPermission",
+                        ]
+                      + Condition = {
+                          + StringEquals = {
+                              + AWS:SourceOwner = [
+                                  + "{AWS_ACCNT}",
+                                ]
+                              + sns:Protocol    = [
+                                  + "https",
+                                ]
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + AWS = "*"
+                        }
+                      + Resource  =
+          "arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing"
+                      + Sid       = "racing-lambda-sns-topic-account"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_sns_topic_policy.racing_lambda_sns_policy: Creating...
+aws_sns_topic_policy.racing_lambda_sns_policy: Creation complete after 0s
+    [id=arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+We can now check that the attached policy is set as we expected.
+
+``` zsh
+racing/iac/further❯ aws sns \
+  --output=json \
+  get-topic-attributes \
+  --topic-arn arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing \
+  | jq -r '.Attributes.Policy' \
+  | jq
+{
+  "Version": "2012-10-17",
+  "Id": "racing-lambda-sns-topic-policy",
+  "Statement": [
+    {
+      "Sid": "racing-lambda-sns-topic-account",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "SNS:Subscribe",
+        "SNS:SetTopicAttributes",
+        "SNS:RemovePermission",
+        "SNS:Receive",
+        "SNS:Publish",
+        "SNS:ListSubscriptionsByTopic",
+        "SNS:GetTopicAttributes",
+        "SNS:DeleteTopic",
+        "SNS:AddPermission"
+      ],
+      "Resource":
+        "arn:aws:sns:eu-west-1:{AWS_ACCNT}:racing-lambda-further-processing",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceOwner": "{AWS_ACCNT}",
+          "sns:Protocol": "https"
         }
       }
-    ]
-  })
-
-  managed_policy_arns = [aws_iam_policy.racing_lambda_subscriber.arn]
+    }
+  ]
 }
 ```
 
-The `assume_role_policy` sets out the conditions that must be met by entity assuming the role. In this case restrict it to the AWS SQS service. By requiring the AWS SQS as the consumer of our notifications we protect against notifications getting lost because the consuming application cannot match the rate of the notifications.
+We have two conditions before an entity can take one of the allowed actions:
 
-When an entity assumes a role the managed policies determine what resources they are allowed to access.
+- Our account must own the entity
+- Connection to the SNS topic must be over https
+
+#### Storage Queue
+
+Lets setup the storage queue in a new terraform build. This queue setup can provide a template for any additional subscribers for any other types of further processing that we might wish to do.
+
+``` zsh
+racing/iac/further❯ cd ..
+racing/iac❯ mkdir store_q
+racing/iac❯ cd store_q
+racing/iac/store_q❯ cp ../remote_bucket/main.tf .
+racing/iac/store_q❯ sed -i "s/remote-bucket/store_q/" main.tf
+racing/iac/store_q❯ cat main.tf
+module "shared" {
+  source = "../_shared"
+}
+
+provider "aws" {
+  region = module.shared.region
+}
+
+terraform {
+  backend "s3" {
+    key = "store_q"
+  }
+}
+racing/iac/store_q❯ terraform init --backend-config=../remote.config
+Initializing modules...
+
+Initializing the backend...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching ">= 3.61.0"...
+- Finding hashicorp/external versions matching ">= 2.1.0"...
+- Installing hashicorp/aws v3.63.0...
+- Installed hashicorp/aws v3.63.0 (signed by HashiCorp)
+- Installing hashicorp/external v2.1.0...
+- Installed hashicorp/external v2.1.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
+Setup a queue that encrypts the queued data at rest.
 
 ``` terraform
-resource "aws_iam_policy" "racing_lambda_subscriber" {
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "SNS:Subscribe",
-        ]
-        Effect   = "Allow"
-        Resource = aws_sns_topic.further_processing.arn
-        Condition = {
-          StringEquals = {
-            "sns:Protocol" = "https"
-          }
-        }
-      },
-    ]
-  })
+resource "aws_kms_key" "store" {
+  description             = "KMS Key for contact store queue at rest"
+  deletion_window_in_days = 10
+}
+
+resource "aws_sqs_queue" "store" {
+  name                      = "contact-store-queue"
+  message_retention_seconds = 172800 # 2 days
+  kms_master_key_id         = aws_kms_key.store.arn
 }
 ```
 
-The policy for the racing_lambda_subscribe permits access to the `Subscribe` action to our topic provided that access is encrypted as we wish to ensure that the names and contact information are encrypted in transit.
+Create the queue.
+
+``` zsh
+racing/iac/store_q❯ terraform apply
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_kms_key.store will be created
+  + resource "aws_kms_key" "store" {
+      + arn                                = (known after apply)
+      + bypass_policy_lockout_safety_check = false
+      + customer_master_key_spec           = "SYMMETRIC_DEFAULT"
+      + deletion_window_in_days            = 10
+      + description                        = "KMS Key for contact store queue
+                                              at rest"
+      + enable_key_rotation                = false
+      + id                                 = (known after apply)
+      + is_enabled                         = true
+      + key_id                             = (known after apply)
+      + key_usage                          = "ENCRYPT_DECRYPT"
+      + policy                             = (known after apply)
+      + tags_all                           = (known after apply)
+    }
+
+  # aws_sqs_queue.store will be created
+  + resource "aws_sqs_queue" "store" {
+      + arn                               = (known after apply)
+      + content_based_deduplication       = false
+      + deduplication_scope               = (known after apply)
+      + delay_seconds                     = 0
+      + fifo_queue                        = false
+      + fifo_throughput_limit             = (known after apply)
+      + id                                = (known after apply)
+      + kms_data_key_reuse_period_seconds = (known after apply)
+      + kms_master_key_id                 = (known after apply)
+      + max_message_size                  = 262144
+      + message_retention_seconds         = 172800
+      + name                              = "contact-store-queue"
+      + name_prefix                       = (known after apply)
+      + policy                            = (known after apply)
+      + receive_wait_time_seconds         = 0
+      + tags_all                          = (known after apply)
+      + url                               = (known after apply)
+      + visibility_timeout_seconds        = 30
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_kms_key.store: Creating...
+aws_kms_key.store: Creation complete after 1s 
+    [id=7161a936-f581-4462-8c54-a3a809c03725]
+aws_sqs_queue.store: Creating...
+aws_sqs_queue.store: Creation complete after 1s 
+    [id=https://sqs.eu-west-1.amazonaws.com/{AWS_ACCT}/contact-store-queue]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+```
+
+We have a notification topic and queue. Time to connect the two.
+
+``` terraform
+data "aws_sns_topic" "contact_topic" {
+  name = "racing-lambda-further-processing"
+}
+
+
+resource "aws_sns_topic_subscription" "contact_store" {
+  topic_arn = data.aws_sns_topic.contact_topic.arn
+  protocol  = "sqs"
+  endpoint  = aws_sqs_queue.store.arn
+}
+```
+
+Apply the changes to connect the two resources.
+
+``` zsh
+racing/iac/store_q❯ terraform apply
+aws_kms_key.store: Refreshing state... 
+  [id=7161a936-f581-4462-8c54-a3a809c03725]
+aws_sqs_queue.store: Refreshing state... 
+  [id=https://sqs.eu-west-1.amazonaws.com/{AWS_ACCT}/contact-store-queue]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply":
+
+  # aws_sqs_queue.store has been changed
+  ~ resource "aws_sqs_queue" "store" {
+        id                                =
+          "https://sqs.eu-west-1.amazonaws.com/{AWS_ACCT}/contact-store-queue"
+        name                              = "contact-store-queue"
+      + tags                              = {}
+        # (12 unchanged attributes hidden)
+    }
+  # aws_kms_key.store has been changed
+  ~ resource "aws_kms_key" "store" {
+        id                                 = "7161a936-f581-4462-8c54-
+                                              a3a809c03725"
+      + tags                               = {}
+        # (11 unchanged attributes hidden)
+    }
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include actions
+to undo or respond to these changes.
+
+───────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_sns_topic_subscription.contact_store will be created
+  + resource "aws_sns_topic_subscription" "contact_store" {
+      + arn                             = (known after apply)
+      + confirmation_timeout_in_minutes = 1
+      + confirmation_was_authenticated  = (known after apply)
+      + endpoint                        = "arn:aws:sqs:eu-west-1:{AWS_ACCT}
+                                          :contact-store-queue"
+      + endpoint_auto_confirms          = false
+      + id                              = (known after apply)
+      + owner_id                        = (known after apply)
+      + pending_confirmation            = (known after apply)
+      + protocol                        = "sqs"
+      + raw_message_delivery            = false
+      + topic_arn                       = "arn:aws:sns:eu-west-1:{AWS_ACCT}
+                                          :racing-lambda-further-processing"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_sns_topic_subscription.contact_store: Creating...
+aws_sns_topic_subscription.contact_store: Creation complete after 0s
+  [id=arn:aws:sns:eu-west-1:{AWS_ACCT}
+  :racing-lambda-further-processing:4ebdc253-3757-4b3f-b5ff-690db9f9553e]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+```
+
+#### Use configuration state to pass configuration details
+
+This configuration would require a all scripts containing the name of the topic to be updated should we change the topic name. We can eliminate this constraint by using data from the state file saved for the "further" module.
+
+``` terraform
+data "terraform_remote_state" "further" {
+  backend = "s3"
+  config = {
+    bucket = "racing-iac-state"
+    key    = "further"
+    region = "eu-west-1"
+  }
+}
+
+resource "aws_sns_topic_subscription" "contact_store" {
+  topic_arn = data.terraform_remote_state.further.outputs.topic_arn
+  protocol  = "sqs"
+  endpoint  = aws_sqs_queue.store.arn
+}
+```
+
+We need to create the output in the further module to publish this data.
+
+``` terraform
+output "topic_arn" {
+  value = aws_sns_topic.further_processing.arn
+}
+```
+
+And apply the change so that the output is saved on the file in the bucket.
+
+``` zsh
+racing/iac/further❯ terraform apply
+
+ ...
+
+Changes to Outputs:
+  + topic_arn = "arn:aws:sns:eu-west-1:{AWS_ACCT}
+                :racing-lambda-further-processing"
+
+You can apply this plan to save these new output values to the Terraform state,
+without changing any real infrastructure.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+topic_arn = "arn:aws:sns:eu-west-1:{AWS_ACCT}
+            :racing-lambda-further-processing"
+```
+
+Now we can use that output from the state file to connect our queue with the topic.
+
+``` zsh
+racing/iac/store_q❯ terraform apply
+aws_kms_key.store: Refreshing state...
+  [id=7161a936-f581-4462-8c54-a3a809c03725]
+aws_sqs_queue.store: Refreshing state...
+  [id=https://sqs.eu-west-1.amazonaws.com/{AWS_ACCT}/contact-store-queue]
+aws_sns_topic_subscription.contact_store: Refreshing state...
+  [id=arn:aws:sns:eu-west-1:{AWS_ACCT}
+  :racing-lambda-further-processing:4ebdc253-3757-4b3f-b5ff-690db9f9553e]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration and
+found no differences, so no changes are needed.
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+```
