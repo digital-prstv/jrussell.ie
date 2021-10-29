@@ -1,2 +1,4 @@
 public/
 racing_lambdas/
+**/.terraform/
+**/*.tfstate*
