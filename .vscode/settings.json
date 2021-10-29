@@ -7,5 +7,8 @@
         "noncurrent",
         "textcolor",
         "tfvars"
+    ],
+    "conventionalCommits.scopes": [
+        "iac"
     ]
 }
