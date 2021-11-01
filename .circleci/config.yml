@@ -10,8 +10,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
-      - terraform/init:
-          path: ./iac/01-remote
+      # - terraform/init: init included in the plan job
+          # path: ./iac/01-remote
       - terraform/plan:
           path: ./iac/01-remote
       
