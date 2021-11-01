@@ -1,5 +1,5 @@
 module "shared" {
-  source = "../_shared"
+  source = "../00-shared"
 }
 
 provider "aws" {
