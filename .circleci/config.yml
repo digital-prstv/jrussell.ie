@@ -21,3 +21,5 @@ workflows:
   setup-backend-store:
     jobs:
       - setup-backend-store
+        context:
+          - aws_dev
