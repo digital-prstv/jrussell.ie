@@ -3,6 +3,7 @@
 version: 2.1
 orbs:
   terraform: circleci/terraform@3.0.0
+  jq: circleci/jq@2.2.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -10,6 +11,7 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - jq/install
       # - terraform/init: init included in the plan job
           # path: ./iac/01-remote
       - terraform/plan:
