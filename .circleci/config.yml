@@ -7,11 +7,12 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   init-backend-store:
+    working-directory: ./iac
     executor: terraform/default
     steps:
       - checkout
       - terraform/init:
-          path: ./iac/01-remote
+          path: ./01-remote
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
