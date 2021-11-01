@@ -6,8 +6,8 @@ provider "aws" {
   region = module.shared.region
 }
 
-terraform {
-  backend "s3" {
-    key = "remote-bucket"
-  }
-}
+# terraform {
+#   backend "s3" {
+#     key = "remote-bucket"
+#   }
+# }
