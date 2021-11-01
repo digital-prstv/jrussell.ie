@@ -10,7 +10,6 @@ jobs:
   plan-backend-store:
       docker:
         - image: cimg/base:2021.10
-      executor: terraform/default
       steps:
         - checkout
         - terraform/install
@@ -24,7 +23,6 @@ jobs:
   apply-backend-store:
       docker:
         - image: cimg/base:2021.10
-      executor: terraform/default
       steps:
         - checkout
         - terraform/install
@@ -45,8 +43,10 @@ workflows:
             - AWS_DEV
       - approve:
           type: approval
-          requires: plan-backend-store
+          requires:
+            - plan-backend-store
       - apply-backend-store:
           context:
             - AWS_DEV
-          requires: approve
+          requires:
+            - approve
