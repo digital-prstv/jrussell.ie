@@ -4,12 +4,12 @@ resource "aws_kms_key" "bucket" {
 }
 
 resource "aws_s3_bucket" "tf_remote_state" {
-  bucket = "racing-iac-state"
+  bucket = "jrussell-iac-state"
   acl    = "private"
 
   tags = {
-    Name    = "Racing Lambdas Terraform Remote State"
-    Project = "racing-lambdas"
+    Name    = "www.jrussell.ie"
+    Project = "about-me"
   }
 
   server_side_encryption_configuration {
