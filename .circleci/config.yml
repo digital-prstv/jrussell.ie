@@ -22,4 +22,4 @@ workflows:
     jobs:
       - setup-backend-store:
           context:
-            - aws_dev
+            - AWS_DEV
