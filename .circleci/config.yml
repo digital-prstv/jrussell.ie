@@ -13,7 +13,7 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
-      # - jq/install
+      - terraform/install
       # - terraform/init: init included in the plan job
           # path: ./iac/01-remote
       - terraform/plan:
