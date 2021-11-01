@@ -14,10 +14,9 @@ jobs:
       steps:
         - checkout
         - terraform/install
-        # - terraform/init: init included in the plan job
-            # path: ./iac/01-remote
         - terraform/plan:
             path: ./iac/01-remote
+            backend_config_file: ./iac/remote.config
 
   apply-backend-store:
       docker:
@@ -26,10 +25,9 @@ jobs:
       steps:
         - checkout
         - terraform/install
-        # - terraform/init: init included in the plan job
-            # path: ./iac/01-remote
         - terraform/apply:
             path: ./iac/01-remote
+            backend_config_file: ./iac/remote.config
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
