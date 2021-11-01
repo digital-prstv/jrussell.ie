@@ -17,7 +17,6 @@ jobs:
             # path: ./iac/01-remote
         - terraform/plan:
             path: ./iac/01-remote
-            persist-workspace: true
 
   apply-backend-store:
       docker:
