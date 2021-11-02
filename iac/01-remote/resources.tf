@@ -10,7 +10,7 @@ resource "aws_kms_key" "bucket" {
 }
 
 resource "aws_kms_alias" "remote-bucket" {
-  name          = "alias/jrussell-ie"
+  name          = "alias/iac/jrussell-ie"
   target_key_id = aws_kms_key.bucket.key_id
 }
 
