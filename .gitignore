@@ -1,5 +1,5 @@
 public/
-racing_lambdas/
+racing-lambdas/
 **/.terraform/
 **/*.tfstate*
 iac-website/
