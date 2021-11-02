@@ -3,9 +3,19 @@ locals {
   expiration_days = 90
 }
 
-resource "aws_kms_key" "bucket" {
+resource "aws_kms_key" "website" {
   description             = "Encrypt www.jrussell.ie static site"
   deletion_window_in_days = 10
+  enable_key_rotation     = true
+  tags = {
+    project  = "about-me"
+    resource = "static-website"
+  }
+}
+
+resource "aws_kms_alias" "website" {
+  name          = "alias/website/www-jrussell-ie"
+  target_key_id = aws_kms_key.website.key_id
 }
 
 resource "aws_s3_bucket" "logs" {
@@ -52,20 +62,29 @@ resource "aws_s3_bucket" "logs" {
 
 resource "aws_s3_bucket" "www_site" {
   bucket = local.site_name
-
-  logging {
-    target_bucket = aws_s3_bucket.logs
-    target_prefix = "log/${local.site_name}/"
-  }
+  acl    = "public-read"
 
   website {
     index_document = "index.html"
   }
 
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["PUT", "POST"]
+    allowed_origins = ["https://www.jrussell.ie"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+  }
+
+  logging {
+    target_bucket = aws_s3_bucket.logs.id
+    target_prefix = "log/${local.site_name}/"
+  }
+
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.bucket.arn
+        kms_master_key_id = aws_kms_key.website.arn
         sse_algorithm     = "aws:kms"
       }
     }
