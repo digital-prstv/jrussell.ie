@@ -49,7 +49,6 @@ jobs:
         - terraform/apply:
             path: ./iac/10-static
             backend_config_file: ../remote.config
-            backend_config_file: ../remote.config
 
   plan-20-network:
       docker:
@@ -76,16 +75,16 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  setup-backend-store:
+  iac-01-remote:
     jobs:
-      # - plan-backend-store:
+      # - plan-01-remote:
       #     context:
       #       - AWS_DEV
       # - approve:
       #     type: approval
       #     requires:
       #       - plan-backend-store
-      - apply-backend-store:
+      - apply-01-remote:
           context:
             - AWS_DEV
           requires:
