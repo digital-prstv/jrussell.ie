@@ -1,6 +1,17 @@
 resource "aws_kms_key" "bucket" {
   description             = "Key to encrypt terraform remote state store"
   deletion_window_in_days = 10
+  enable_key_rotation     = true
+  tags = {
+    project  = "about-me"
+    resource = "iac-store"
+  }
+
+}
+
+resource "aws_kms_alias" "remote-bucket" {
+  name          = "alias/jrussell-ie"
+  target_key_id = aws_kms_key.bucket.key_id
 }
 
 resource "aws_s3_bucket" "tf_remote_state" {
