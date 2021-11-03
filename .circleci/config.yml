@@ -72,6 +72,28 @@ jobs:
             path: ./iac/20-network
             backend_config_file: ../remote.config
 
+  plan-30-edge:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/plan:
+            path: ./iac/30-edge
+            backend_config_file: ../remote.config
+
+  apply-30-edge:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/apply:
+            path: ./iac/30-edge
+            backend_config_file: ../remote.config
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -115,6 +137,21 @@ workflows:
       #     requires:
       #       - plan-20-network
       - apply-20-network:
+          context:
+            - AWS_DEV
+          # requires:
+          #   - approve
+
+  iac-30-edge:
+    jobs:
+      # - plan-30-edge:
+      #     context:
+      #       - AWS_DEV
+      # - approve:
+      #     type: approval
+      #     requires:
+      #       - plan-30-edge
+      - apply-30-edge:
           context:
             - AWS_DEV
           # requires:
