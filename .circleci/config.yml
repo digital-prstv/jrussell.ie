@@ -71,7 +71,6 @@ jobs:
         - terraform/apply:
             path: ./iac/20-network
             backend_config_file: ../remote.config
-            backend_config_file: ../remote.config
 
   plan-21-site-cert:
       docker:
@@ -168,7 +167,7 @@ workflows:
           requires:
           #   - approve
           - apply-01-remote
-          - 20-network
+          - apply-20-network
       - apply-30-edge:
           context:
             - AWS_DEV
