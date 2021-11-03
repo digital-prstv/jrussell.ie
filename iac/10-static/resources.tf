@@ -3,21 +3,6 @@ locals {
   expiration_days = 90
 }
 
-resource "aws_kms_key" "website" {
-  description             = "Encrypt www.jrussell.ie static site"
-  deletion_window_in_days = 10
-  enable_key_rotation     = true
-  tags = {
-    project  = "about-me"
-    resource = "static-website"
-  }
-}
-
-resource "aws_kms_alias" "website" {
-  name          = "alias/website/www-jrussell-ie"
-  target_key_id = aws_kms_key.website.key_id
-}
-
 resource "aws_s3_bucket" "logs" {
   bucket = "${local.site_name}-weblogs"
   acl    = "log-delivery-write"
@@ -83,8 +68,7 @@ resource "aws_s3_bucket" "www_site" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.website.arn
-        sse_algorithm     = "aws:kms"
+        sse_algorithm = "AES256"
       }
     }
   }
