@@ -93,7 +93,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
 # Find a certificate issued by (not imported into) ACM
 data "aws_acm_certificate" "amazon_issued" {
-  provider    = aws.eu
+  provider    = aws.us
   domain      = local.site_name
   types       = ["AMAZON_ISSUED"]
   most_recent = true

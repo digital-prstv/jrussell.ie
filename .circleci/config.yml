@@ -71,6 +71,29 @@ jobs:
         - terraform/apply:
             path: ./iac/20-network
             backend_config_file: ../remote.config
+            backend_config_file: ../remote.config
+
+  plan-21-site-cert:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/plan:
+            path: ./iac/21-site-cert
+            backend_config_file: ../remote.config
+
+  apply-21-site-cert:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/apply:
+            path: ./iac/21-site-cert
+            backend_config_file: ../remote.config
 
   plan-30-edge:
       docker:
@@ -102,57 +125,50 @@ workflows:
       # - plan-01-remote:
       #     context:
       #       - AWS_DEV
-      # - approve:
-      #     type: approval
-      #     requires:
-      #       - plan-backend-store
-      - apply-01-remote:
-          context:
-            - AWS_DEV
-          # requires:
-            # - approve
-
-  # iac-10-static:
-    # jobs:
       # - plan-10-static:
       #     context:
       #       - AWS_DEV
-      # - approve:
-      #     type: approval
-      #     requires:
-      #       - plan-10-static
-      - apply-10-static:
-          context:
-            - AWS_DEV
-          requires:
-          #   - approve
-            - apply-01-remote
-
-  # iac-20-network:
-    # jobs:
       # - plan-20-network:
       #     context:
       #       - AWS_DEV
-      # - approve:
-      #     type: approval
-      #     requires:
-      #       - plan-20-network
-      - apply-20-network:
-          context:
-            - AWS_DEV
-          requires:
-          #   - approve
-          - apply-01-remote
-
-  # iac-30-edge:
-    # jobs:
+      # - plan-21-site-cert:
+      #     context:
+      #       - AWS_DEV
       # - plan-30-edge:
       #     context:
       #       - AWS_DEV
       # - approve:
       #     type: approval
       #     requires:
+      #       - plan-01-remote
+      #       - plan-10-static
+      #       - plan-20-network
+      #       - plan-21-site-cert
       #       - plan-30-edge
+      - apply-01-remote:
+          context:
+            - AWS_DEV
+          # requires:
+            # - approve
+      - apply-10-static:
+          context:
+            - AWS_DEV
+          requires:
+          #   - approve
+            - apply-01-remote
+      - apply-20-network:
+          context:
+            - AWS_DEV
+          requires:
+          #   - approve
+          - apply-01-remote
+      - apply-21-site-cert:
+          context:
+            - AWS_DEV
+          requires:
+          #   - approve
+          - apply-01-remote
+          - 20-network
       - apply-30-edge:
           context:
             - AWS_DEV
