@@ -3,7 +3,7 @@ module "shared" {
 }
 
 provider "aws" {
-  region = module.shared.region
+  region = "us-east-1"
 }
 
 terraform {
