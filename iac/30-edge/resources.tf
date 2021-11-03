@@ -4,6 +4,8 @@ locals {
   rewriter         = "website-rewriter"
   security_headers = "response-security-headers"
   project          = "about-me"
+  rewriter_version = "1"
+  security_version = "32"
 }
 data "aws_s3_bucket" "static_site" {
   provider = aws.eu
@@ -60,12 +62,12 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
     lambda_function_association {
       event_type = "origin-request"
-      lambda_arn = data.aws_lambda_function.website_rewriter.qualified_arn
+      lambda_arn = "${data.aws_lambda_function.website_rewriter.arn}:${local.rewriter_version}"
     }
 
     lambda_function_association {
       event_type = "origin-response"
-      lambda_arn = data.aws_lambda_function.response_security_headers.qualified_arn
+      lambda_arn = "${data.aws_lambda_function.response_security_headers.arn}:${local.security_version}"
     }
   }
   restrictions {
