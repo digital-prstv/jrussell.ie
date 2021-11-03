@@ -6,7 +6,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  01-remote-plan:
+  plan-01-remote:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -17,7 +17,7 @@ jobs:
             path: ./iac/01-remote
             backend_config_file: ../remote.config
 
-  01-remote-apply:
+  apply-01-remote:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -28,7 +28,7 @@ jobs:
             path: ./iac/01-remote
             backend_config_file: ../remote.config
 
-  10-static-plan:
+  plan-10-static:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -39,7 +39,7 @@ jobs:
             path: ./iac/10-static
             backend_config_file: ../remote.config
 
-  10-static-apply:
+  apply-10-static:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -50,7 +50,7 @@ jobs:
             path: ./iac/10-static
             backend_config_file: ../remote.config
 
-  20-network-plan:
+  plan-20-network:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -61,7 +61,7 @@ jobs:
             path: ./iac/20-network
             backend_config_file: ../remote.config
 
-  20-network-apply:
+  apply-20-network:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -72,7 +72,7 @@ jobs:
             path: ./iac/20-network
             backend_config_file: ../remote.config
 
-  21-site-cert-plan:
+  plan-21-site-cert:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -83,7 +83,7 @@ jobs:
             path: ./iac/21-site-cert
             backend_config_file: ../remote.config
 
-  21-site-cert-apply:
+  apply-21-site-cert:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -94,7 +94,7 @@ jobs:
             path: ./iac/21-site-cert
             backend_config_file: ../remote.config
 
-  30-edge-plan:
+  plan-30-edge:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -105,7 +105,7 @@ jobs:
             path: ./iac/30-edge
             backend_config_file: ../remote.config
 
-  30-edge-apply:
+  apply-30-edge:
       docker:
         - image: cimg/base:2021.10
       executor: terraform/default
@@ -121,58 +121,58 @@ jobs:
 workflows:
   iac-deployment:
     jobs:
-      - 01-remote-plan:
+      - plan-01-remote:
           context:
             - AWS_DEV
-      - 10-static-plan:
+      - plan-10-static:
           context:
             - AWS_DEV
-      - 20-network-plan:
+      - plan-20-network:
           context:
             - AWS_DEV
-      - 21-site-cert-plan:
+      - plan-21-site-cert:
           context:
             - AWS_DEV
-      - 30-edge-plan:
+      - plan-30-edge:
           context:
             - AWS_DEV
       - approve:
           type: approval
           requires:
-            - 01-remote-plan
-            - 10-static-plan
-            - 20-network-plan
-            - 21-site-cert-plan
-            - 30-edge-plan
-      - 01-remote-apply:
+            - plan-01-remote
+            - plan-10-static
+            - plan-20-network
+            - plan-21-site-cert
+            - plan-30-edge
+      - apply-01-remote:
           context:
             - AWS_DEV
           # requires:
             # - approve
-      - 10-static-apply:
+      - apply-10-static:
           context:
             - AWS_DEV
           requires:
           #   - approve
-            - 01-remote-apply
-      - 20-network-apply:
+            - apply-01-remote
+      - apply-20-network:
           context:
             - AWS_DEV
           requires:
           #   - approve
-            - 01-remote-apply
-      - 21-site-cert-apply:
+          - apply-01-remote
+      - apply-21-site-cert:
           context:
             - AWS_DEV
           requires:
           #   - approve
-            - 01-remote-apply
-            - 20-network-apply
-      - 30-edge-apply:
+          - apply-01-remote
+          - apply-20-network
+      - apply-30-edge:
           context:
             - AWS_DEV
           requires:
           #   - approve
-            - 10-static-apply
-            - 20-network-apply
-            - 21-network-apply
+            - apply-10-static
+            - apply-20-network
+            - apply-21-network
