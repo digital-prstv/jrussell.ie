@@ -97,7 +97,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  iac-01-remote:
+  iac-deployment:
     jobs:
       # - plan-01-remote:
       #     context:
@@ -112,8 +112,8 @@ workflows:
           # requires:
             # - approve
 
-  iac-10-static:
-    jobs:
+  # iac-10-static:
+    # jobs:
       # - plan-10-static:
       #     context:
       #       - AWS_DEV
@@ -124,11 +124,12 @@ workflows:
       - apply-10-static:
           context:
             - AWS_DEV
-          # # requires:
+          # requires:
           #   - approve
+          - apply-01-remote
 
-  iac-20-network:
-    jobs:
+  # iac-20-network:
+    # jobs:
       # - plan-20-network:
       #     context:
       #       - AWS_DEV
@@ -139,10 +140,11 @@ workflows:
       - apply-20-network:
           context:
             - AWS_DEV
-          # requires:
+          requires:
           #   - approve
+          - apply-01-remote
 
-  iac-30-edge:
+  # iac-30-edge:
     jobs:
       # - plan-30-edge:
       #     context:
@@ -154,5 +156,7 @@ workflows:
       - apply-30-edge:
           context:
             - AWS_DEV
-          # requires:
+          requires:
           #   - approve
+            - apply-10-static
+            - apply-20-network
