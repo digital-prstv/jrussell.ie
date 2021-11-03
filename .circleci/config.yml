@@ -175,4 +175,4 @@ workflows:
           #   - approve
             - apply-10-static
             - apply-20-network
-            - apply-21-network
+            - apply-21-site-cert
