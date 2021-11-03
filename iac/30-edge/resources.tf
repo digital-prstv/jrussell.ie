@@ -116,3 +116,17 @@ resource "aws_route53_record" "www_site" {
     evaluate_target_health = false
   }
 }
+
+data "template_file" "bucket_policy" {
+  template = file("bucket_policy.json")
+  vars = {
+    origin_access_identity_arn = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
+    bucket                     = data.aws_s3_bucket.static_site.id
+  }
+}
+
+resource "aws_s3_bucket_policy" "www_site" {
+  provider = aws.eu
+  bucket   = data.aws_s3_bucket.static_site.id
+  policy   = data.template_file.bucket_policy.rendered
+}
