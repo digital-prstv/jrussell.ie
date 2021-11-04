@@ -122,7 +122,6 @@ jobs:
       steps:
         - checkout
         - run: |
-            cargo install zola
             cargo install just
             just build-site
             just publish-site
