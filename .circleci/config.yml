@@ -124,9 +124,10 @@ jobs:
         - run: |
             cargo install just
         - setup_remote_docker:
+            version: 20.10.9
             docker_layer_caching: true
         - run: |
-            just build-site
+            just build-ci
             just publish-site
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
