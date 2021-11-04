@@ -121,11 +121,11 @@ jobs:
         - image: cimg/rust:1.56
       steps:
         - checkout
-        - run |
-          cargo install zola
-          cargo install just
-          just build-site
-          just publish-site
+        - run: |
+            cargo install zola
+            cargo install just
+            just build-site
+            just publish-site
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -190,5 +190,5 @@ workflows:
   publish-site:
     jobs:
       - update-site:
-        context:
-          - AWS_DEV
+          context:
+            - AWS_DEV
