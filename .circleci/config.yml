@@ -126,6 +126,7 @@ jobs:
         - run: git submodule update --init
         - run: zola build
         - aws-s3/sync:
+            arguments: --delete
             from: public
             to: 's3://www.jrussell.ie'
 # Invoke jobs via workflows
