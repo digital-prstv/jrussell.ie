@@ -121,9 +121,10 @@ jobs:
         - image: jerusdp/site:0.0.2
       steps:
         - checkout
-        - run: |
-            just build-site
-            just publish-site
+        - run: git submodule sync
+        - run: git submodule update --init
+        - run: just build-site
+        - run: just publish-site
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
