@@ -1,7 +1,7 @@
 +++
 title = "Racing Lambdas"
 date = 2019-11-27
-draft = false
+draft = true
 
 [taxonomies]
 categories = ["Rust", "Terraform", "AWS", "Lambda", "IAC", "Terraform", "Graviton2"]
