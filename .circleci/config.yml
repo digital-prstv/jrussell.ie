@@ -192,3 +192,5 @@ workflows:
       - update-site:
           context:
             - AWS_DEV
+          requires:
+            - apply-30-edge
