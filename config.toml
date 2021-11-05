@@ -33,4 +33,4 @@ even_menu = [
     {url = "$BASE_URL/tags", name = "Tags"},
     {url = "$BASE_URL/about", name = "About"},
 ]
-even_title = "Ruminations"
+even_title = "ruminations"
