@@ -118,16 +118,11 @@ jobs:
 
   update-site:
       docker:
-        - image: cimg/rust:1.56
+        - image: jerusdp/round:1.56.1
       steps:
         - checkout
         - run: |
-            cargo install just
-        - setup_remote_docker:
-            version: 19.03.13
-            docker_layer_caching: true
-        - run: |
-            just build-ci
+            just build-site
             just publish-site
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
