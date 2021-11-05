@@ -3,6 +3,7 @@
 version: 2.1
 orbs:
   terraform: circleci/terraform@3.0.0
+  aws-s3: circleci/aws-s3@3.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -123,8 +124,11 @@ jobs:
         - checkout
         - run: git submodule sync
         - run: git submodule update --init
-        - run: just build-site
-        - run: just publish-site
+        - run: zola build
+        - aws-s3/copy:
+            arguments: '--recursive'
+            from: public
+            to: 's3://www.jrussell.ie'
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
