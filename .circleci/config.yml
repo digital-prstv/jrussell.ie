@@ -118,7 +118,7 @@ jobs:
 
   update-site:
       docker:
-        - image: jerusdp/round:1.56.1
+        - image: jerusdp/site:0.0.2
       steps:
         - checkout
         - run: |
