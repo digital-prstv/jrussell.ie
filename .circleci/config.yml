@@ -125,8 +125,7 @@ jobs:
         - run: git submodule sync
         - run: git submodule update --init
         - run: zola build
-        - aws-s3/copy:
-            arguments: '--recursive'
+        - aws-s3/sync:
             from: public
             to: 's3://www.jrussell.ie'
 # Invoke jobs via workflows
