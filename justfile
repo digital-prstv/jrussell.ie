@@ -8,3 +8,6 @@ build-site:
 
 publish-site:
     aws s3 cp public s3://www.jrussell.ie --recursive
+
+serve:
+    zola serve --drafts
