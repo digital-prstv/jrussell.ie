@@ -4,18 +4,188 @@ path = "about"
 template = "about.html"
 +++
 
-This site provides a demo for the Even theme for the 
-[Gutenberg](https://www.getgutenberg.io/) static site generator.  Even was
-designed by [Vincent Prouillet](https://vincent.is/) and was based on the
-Even Hugo theme by olOwOlo.  This demo site was built by
-[Daniel Sockwell](https://www.codesections.com).  Both the theme and this
-site are licensed under the
-[MIT license](https://opensource.org/licenses/MIT), so you may freely use and
-redistribute either for commercial or non-commercial work.
+Jeremiah (Jerry) Russell is a Data Protection Specialist and Senior Programme Manager with extensive experience in IT. In more than twenty-five years in IT he has filled roles in development, security and operations. He has worked with private and public clients global in Ireland and Europe, leading teams resourced from across the world.
 
-You can find the source code for this site [in its GitHub
-repository](https://github.com/codesections/gutenberg-theme-demo/tree/even)
-and can find the source code for the theme in the
-[Even](https://www.github.com/Keats/even) repository.  For a
-description of this theme and links to other Gutenberg themes, please
-go to <https://www.getgutenberg.io/themes/>.
+Connect with Jerry on [LinkedIn][ln_url] or [GitHub][gh_url].
+
+[ln_url]: https://www.linkedin.com/in/russellj/
+[gh_url]: https://github.com/jerusdp
+
+## Influences
+
+If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help. My tastes in film, TV and books and run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy. There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its that fact that everything is strange and anything is possible to ensures that your brain doesn't assume away some important detail by applying one of its many heuristics.
+
+### Podcasts
+
+- 50 Things That Made the Modern Economy
+- 99% Invisible
+- A Slight Change of Plans with Maya Shankar
+- Against the Rules with Michael Lewis
+- The Architects Of Business
+- Assume Nothing
+- The Audio Long Read
+- AWS Morning Brief
+- Babbage from The Economist
+- Bad Women: The Ripper Retold
+- BeerSecOps
+- Benjamen Walker's Theory of Everything
+- Between 2 Weirwoods
+- The Big Tech Show
+- Brexit Republic
+- Bundyville: The Remnant
+- Cautionary Tales with Tim Harford
+- Chats with Dad
+- Chips with Everything
+- The Cipher
+- The CloudBytes Podcast
+- Codifyre
+- Common Sense with Dan Carlin
+- CONFLICTED
+- Confronting Coronavirus
+- Conversations with Tyler
+- Conviction
+- Culture Wars – with Andrew Doyle
+- CYBER
+- Cyber Humanity
+- The Daily Swig
+- Dan Carlin's Hardcore History
+- Dan Carlin's Hardcore History: Addendum
+- Darknet Diaries
+- Data Privacy Detective
+- Data Privacy Podcast
+- The David McWilliams Podcast
+- Dear HBR:
+- Defensive Security Podcast - Malware, Hacking, Cyber Security & Infosec
+- Discussions in Digital
+- Down the Security Rabbithole Podcast
+- The Economist Asks
+- The Economist Intelligence Unit: Digital Economy
+- The End of Privacy
+- Engineering Culture by InfoQ
+- Flash Forward
+- Freakonomics Radio
+- The Freakonomics Radio Book Club
+- Freakonomics, M.D.
+- FT Alphachat
+- FT Big Read
+- FT Brexit Unspun
+- FT Hard Currency
+- FT News Briefing
+- FT News in Focus
+- FT Start-Up Stories
+- FT Tech Tonic
+- FT Work & Careers
+- FT World Tech Founders
+- FT World Weekly
+- Full Steam with Jess Kelly
+- The Future According to Now
+- Future of Work
+- Future Stories
+- Futureproof with Jonathan McCrea
+- The Gallup Podcast
+- Go and See
+- The Guardian’s Brexit Means ...
+- GunPlot
+- Hackable?
+- Hacked
+- The HBR Channel
+- HBR IdeaCast
+- The History of Ireland
+- How to Invent a Country
+- How to Save a Planet
+- How We Survive
+- Imaginary Worlds
+- In Our Time
+- The Indicator from Planet Money
+- The Infinite Monkey Cage
+- The InfoQ Podcast
+- Inside Politics
+- The Intelligence from The Economist
+- Intelligence Squared
+- Intelligence Squared Business
+- Into the Zone
+- Ireland 2029: Shaping Our Future
+- Irish Mythology Podcast
+- The Irish Times World View Podcast
+- IRL - Online Life Is Real Life
+- The Jordan Harbinger Show
+- Living With The Gods
+- Make Me Smart with Kai and Molly
+- Malicious Life
+- Marketplace
+- Marketplace Tech
+- Masters of Scale with Reid Hoffman
+- the memory palace
+- MobileTechRoundup
+- Money Talks from The Economist
+- More or Less: Behind the Stats
+- Motherfocloir
+- Motherhacker
+- The New Stack @ Scale
+- The New Stack Analysts
+- The New Stack Context
+- The New Stack Podcast
+- Newsie
+- No Stupid Questions
+- Not A Podcast ASOIAF Re-Read Podcast
+- On The Metal
+- Our Sexual History
+- Paddy Wants To Know Brexit
+- Pandemic
+- Pandemic: Coronavirus Edition
+- Payne's Politics
+- People I (Mostly) Admire
+- Pitchfork Economics with Nick Hanauer
+- Planet Money
+- POLITICO Europe
+- POLITICO's EU Confidential
+- The Post Podcast
+- The Privacy Advisor Podcast
+- The Rachman Review
+- Radiotopia Plus
+- The ReadME Podcast
+- Real Humans
+- The Reboot Podcast
+- Reply All
+- Revisionist History
+- Revolutions
+- Rough Translation
+- RTÉ - Saturday with Claire Byrne
+- Rustacean Station
+- Rusty Spike Podcast – News on all things Rust
+- Sandra
+- Science Vs
+- Science Weekly
+- Should This Exist?
+- Slo Mo: A Podcast with Mo Gawdat
+- Smashing Security
+- The Social-Engineer Podcast
+- Songonauts
+- Sources and Sinks
+- States of Mind
+- Sudhir Breaks the Internet
+- Taking Note: Conversations with Evernote
+- Talking History Highlights
+- Tech Radio Podcast
+- Tech Talk with Jess Kelly
+- TechIreland
+- Technology on Pat Kenny
+- Tell Me Something I Don't Know
+- Thinking Allowed
+- This Day in Esoteric Political History
+- Today in Focus
+- The Truth
+- UNDISCOVERED
+- Untold Killing
+- What Am Politics?
+- What Trump Can Teach Us About Con Law
+- WIKN Podcast | WIKN
+- Wind of Change
+- Windows Insider Podcast
+- Without Fail
+- Words To That Effect
+- WorkLife with Adam Grant
+- The World Ahead from The Economist
+- WSJ’s The Future of Everything
+- Your Politics
+- ZigZag
