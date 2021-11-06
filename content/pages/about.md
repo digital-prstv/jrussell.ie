@@ -13,7 +13,8 @@ Connect with Jerry on [LinkedIn][ln_url] or [GitHub][gh_url].
 
 ## Influences
 
-If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help. My tastes in film, TV and books and run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy. There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its that fact that everything is strange and anything is possible to ensures that your brain doesn't assume away some important detail by applying one of its many heuristics.
+If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help.
+My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't assume away some important detail with one of its many heuristics.
 
 ### Podcasts
 
