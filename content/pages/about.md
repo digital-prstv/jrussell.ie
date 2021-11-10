@@ -30,7 +30,6 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - Bad Women: The Ripper Retold
 - BeerSecOps
 - Benjamen Walker's Theory of Everything
-- Between 2 Weirwoods
 - The Big Tech Show
 - Brexit Republic
 - Bundyville: The Remnant
