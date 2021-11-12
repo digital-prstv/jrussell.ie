@@ -199,7 +199,6 @@ workflows:
           context:
             - AWS_DEV
           requires:
-            - apply-01-remote
             - apply-20-network
       - apply-22-sec-headers:
           context:
@@ -211,8 +210,8 @@ workflows:
             - AWS_DEV
           requires:
             - apply-10-static
-            - apply-20-network
             - apply-21-site-cert
+            - apply-22-sec-headers
       - update-site:
           context:
             - AWS_DEV
