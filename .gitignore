@@ -1,6 +1,5 @@
 public/
-racing-lambdas/
 **/.terraform/
 **/*.tfstate*
 iac-website/
-lambda
+**/*.zip
