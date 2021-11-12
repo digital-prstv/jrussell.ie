@@ -1,17 +1,47 @@
 {
     "cSpell.words": [
         "ACCNT",
+        "Alphachat",
+        "ASOIAF",
+        "Benjamen",
         "bgcolor",
+        "Bundyville",
+        "cdnjs",
+        "Codifyre",
+        "Evernote",
         "fontsize",
+        "Freakonomics",
+        "Futureproof",
+        "Gawdat",
+        "Hanauer",
         "hidemeplease",
+        "Infosec",
+        "Motherfocloir",
+        "Motherhacker",
+        "Newsie",
         "noncurrent",
+        "nosniff",
+        "osano",
+        "Rabbithole",
+        "Rachman",
+        "Radiotopia",
+        "Roundup",
+        "Rustacean",
+        "Shankar",
+        "Sudhir",
         "textcolor",
-        "tfvars"
+        "tfvars",
+        "Unspun",
+        "Weirwoods",
+        "WIKN",
+        "WSJ’s"
     ],
     "conventionalCommits.scopes": [
         "iac",
         "CI",
         "Content",
-        "taskrunner"
+        "taskrunner",
+        "Regulations",
+        "Security"
     ]
 }

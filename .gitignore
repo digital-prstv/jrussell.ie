@@ -3,3 +3,4 @@ racing-lambdas/
 **/.terraform/
 **/*.tfstate*
 iac-website/
+lambda
