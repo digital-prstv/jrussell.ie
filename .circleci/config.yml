@@ -113,7 +113,7 @@ jobs:
       steps:
         - checkout
         - terraform/install
-        - run zip ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
+        - run: zip ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
         - terraform/apply:
             path: ./iac/22-sec-headers
             backend_config_file: ../remote.config
