@@ -9,7 +9,7 @@ resource "aws_lambda_function" "lambda" {
   role          = aws_iam_role.role.arn
   handler       = "index.handler"
   runtime       = "nodejs12.x"
-  filename      = "index.js"
+  filename      = "javascript.zip"
   publish       = true
 
   source_code_hash = filebase64sha256("index.js")
