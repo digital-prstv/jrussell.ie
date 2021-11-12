@@ -95,6 +95,28 @@ jobs:
             path: ./iac/21-site-cert
             backend_config_file: ../remote.config
 
+  plan-22-sec-headers:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/plan:
+            path: ./iac/22-sec-headers
+            backend_config_file: ../remote.config
+
+  apply-22-sec-headers:
+      docker:
+        - image: cimg/base:2021.10
+      executor: terraform/default
+      steps:
+        - checkout
+        - terraform/install
+        - terraform/apply:
+            path: ./iac/22-sec-headers
+            backend_config_file: ../remote.config
+
   plan-30-edge:
       docker:
         - image: cimg/base:2021.10
@@ -146,6 +168,9 @@ workflows:
       - plan-21-site-cert:
           context:
             - AWS_DEV
+      - plan-22-sec-headers:
+          context:
+            - AWS_DEV
       - plan-30-edge:
           context:
             - AWS_DEV
@@ -156,6 +181,7 @@ workflows:
             - plan-10-static
             - plan-20-network
             - plan-21-site-cert
+            - plan-22-sec-headers
             - plan-30-edge
       - apply-01-remote:
           context:
@@ -181,6 +207,12 @@ workflows:
             - approve
             - apply-01-remote
             - apply-20-network
+      - apply-22-sec-headers:
+          context:
+            - AWS_DEV
+          requires:
+            - approve
+            - apply-01-remote
       - apply-30-edge:
           context:
             - AWS_DEV
