@@ -175,10 +175,9 @@ workflows:
       - plan-30-edge:
           context:
             - AWS_DEV
-          requires:
-            - plan-22-sec-headers
-      - approve:
-          type: approval
+      - apply-01-remote:
+          context:
+            - AWS_DEV
           requires:
             - plan-01-remote
             - plan-10-static
@@ -186,11 +185,6 @@ workflows:
             - plan-21-site-cert
             - plan-22-sec-headers
             - plan-30-edge
-      - apply-01-remote:
-          context:
-            - AWS_DEV
-          requires:
-            - approve
       - apply-10-static:
           context:
             - AWS_DEV
