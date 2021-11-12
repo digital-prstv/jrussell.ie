@@ -22,6 +22,14 @@ data "aws_lambda_function" "website_rewriter" {
   function_name = local.rewriter
 }
 
+data "terraform_remote_state" "sec-headers" {
+  backend = "s3"
+  config = {
+    bucket = "jrussell-iac-state"
+    key    = "sec-headers"
+    region = "eu-west-1"
+  }
+}
 data "aws_lambda_function" "response_security_headers" {
   provider      = aws.us
   function_name = local.security_headers
@@ -67,7 +75,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
     lambda_function_association {
       event_type = "origin-response"
-      lambda_arn = "${data.aws_lambda_function.response_security_headers.arn}:${local.security_version}"
+      lambda_arn = "${data.terraform_remote_state.sec-headers.lambda_arn}:${data.terraform_remote_state.sec-headers.lambda_version}"
     }
   }
   restrictions {
