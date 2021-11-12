@@ -2,10 +2,8 @@ locals {
   site_name        = "www.jrussell.ie"
   route_53_domain  = "jrussell.ie"
   rewriter         = "website-rewriter"
-  security_headers = "response-security-headers"
   project          = "about-me"
   rewriter_version = "1"
-  security_version = "32"
 }
 data "aws_s3_bucket" "static_site" {
   provider = aws.eu
@@ -22,17 +20,13 @@ data "aws_lambda_function" "website_rewriter" {
   function_name = local.rewriter
 }
 
-data "terraform_remote_state" "sec-headers" {
+data "terraform_remote_state" "sec_headers" {
   backend = "s3"
   config = {
     bucket = "jrussell-iac-state"
     key    = "sec-headers"
     region = "eu-west-1"
   }
-}
-data "aws_lambda_function" "response_security_headers" {
-  provider      = aws.us
-  function_name = local.security_headers
 }
 
 resource "aws_cloudfront_distribution" "website_cdn" {
@@ -75,7 +69,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
     lambda_function_association {
       event_type = "origin-response"
-      lambda_arn = "${data.terraform_remote_state.sec-headers.lambda_arn}:${data.terraform_remote_state.sec-headers.lambda_version}"
+      lambda_arn = "${data.terraform_remote_state.sec_headers.outputs.lambda_arn}:${data.terraform_remote_state.sec_headers.outputs.lambda_version}"
     }
   }
   restrictions {
