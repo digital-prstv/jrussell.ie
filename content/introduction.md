@@ -11,7 +11,7 @@ tags = ["first post"]
 ## Introduction
 
 The name, ruminations, is intended to set an expectation for an eclectic set of topics. I have a broad set of influences and interests (perhaps not unlike many) and tend more towards the generalist than the specialist. Expect nothing, everything and anything and then I hope not to disappoint!
-
+<!-- more -->
 ## What
 
 With broad experience across technology and human experience over the coming years I hope to fill this site with all sorts of ruminations. So may be very practical, demonstrating the use of tools and technologies. Other's may tend towards the philosophical, sociological, political or whatever-al your having. There may even be some poetry.
