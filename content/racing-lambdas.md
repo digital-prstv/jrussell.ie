@@ -1891,4 +1891,20 @@ found no differences, so no changes are needed.
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ```
 
-### Next chapter
+### Rust code for the lambda
+
+We will use the lambda_runtime crate to provide the integration between the lambda environment and the code that we write to provide our required processing. Placing our code in a seperate module the initial main.rs for the lambda function is:
+
+``` rust
+use lambda_runtime::Error;
+
+mod handler;
+
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    lambda_runtime::run(lambda_runtime::handler_fn(handler::my_handler)).await?;
+
+    Ok(())
+}
+```
+
