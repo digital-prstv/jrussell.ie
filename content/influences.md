@@ -8,12 +8,10 @@ categories = ["Influences"]
 tags = ["podcasts", "insights"]
 +++
 
-## Influences
-
 If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help.
 My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't assume away some important detail with one of its many heuristics.
 <!-- more -->
-### People and Society
+## People and Society
 
 - [A Slight Change of Plans with Maya Shankar][url_ps_ascpms]
 - [Against the Rules with Michael Lewis][url_ps_arml]
@@ -43,7 +41,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [Thinking Allowed][url_ps_ta]
 - [Future of Work][url_ps_fw]
 
-### History
+## History
 
 - [Bad Women: The Ripper Retold][url_h_bwtrr]
 - [Cautionary Tales with Tim Harford][url_h_ctth]
@@ -58,7 +56,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [This Day in Esoteric Political History][url_h_tdeph]
 - [Wind of Change][url_h_wc]
 
-### Thought Leaders
+## Thought Leaders
 
 - [Conversations with Tyler][url_tl_ct]
 - [The Economist Asks][url_tl_tea]
@@ -76,7 +74,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [Slo Mo: A Podcast with Mo Gawdat][url_tl_smapmg]
 - [Sudhir Breaks the Internet][url_tl_sbi]
 
-### Software Engineering
+## Software Engineering
 
 - [Engineering Culture by InfoQ][url_se_eciq]
 - [The InfoQ Podcast][url_se_tiqp]
@@ -86,7 +84,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [Rustacean Station][url_se_rs]
 - [Windows Insider Podcast][url_se_wip]
 
-### Business and Economy
+## Business and Economy
 
 - [The Architects Of Business][url_be_taob]
 - [Dear HBR:][url_be_dhbr]
@@ -98,7 +96,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [Pitchfork Economics with Nick Hanauer][url_be_penh]
 - [Planet Money][url_be_pm]
 
-### Journalism and Politics
+## Journalism and Politics
 
 - [FT News Briefing][url_jp_ftnb]
 - [The Indicator from Planet Money][url_jp_tipm]
@@ -124,7 +122,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 - [Your Politics][url_jp_yp]
 - [Brexit Republic][url_n_br]
 
-### Science and Technology
+## Science and Technology
 
 - [The CloudBytes Podcast][url_st_tcbp]
 - [CYBER][url_st_cyber]
