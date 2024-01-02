@@ -1,5 +1,6 @@
 public/
 **/.terraform/
+**/.terraform.lock.hcl
 **/*.tfstate*
 iac-website/
 **/*.zip
