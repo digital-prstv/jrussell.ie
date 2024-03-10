@@ -3,155 +3,160 @@
 version: 2.1
 orbs:
   terraform: circleci/terraform@3.2.1
+  aws-cli: circleci/aws-cli@4.1.3
   aws-s3: circleci/aws-s3@4.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   plan-01-remote:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/01-remote
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
 
   apply-01-remote:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/apply:
-            path: ./iac/01-remote
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
 
   plan-10-static:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/10-static
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
 
   apply-10-static:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/apply:
-            path: ./iac/10-static
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
 
   plan-20-network:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/20-network
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
 
   apply-20-network:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/apply:
-            path: ./iac/20-network
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
 
   plan-21-site-cert:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/21-site-cert
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
 
   apply-21-site-cert:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/apply:
-            path: ./iac/21-site-cert
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
 
   plan-22-sec-headers:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/22-sec-headers
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
 
   apply-22-sec-headers:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
-        - terraform/apply:
-            path: ./iac/22-sec-headers
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
+      - terraform/apply:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
 
   plan-30-edge:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/plan:
-            path: ./iac/30-edge
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
 
   apply-30-edge:
-      docker:
-        - image: cimg/base:2024.02
-      executor: terraform/default
-      steps:
-        - checkout
-        - terraform/install
-        - terraform/apply:
-            path: ./iac/30-edge
-            backend_config_file: ../remote.config
+    docker:
+      - image: cimg/base:2024.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
 
   update-site:
-      docker:
-        - image: jerusdp/site:0.0.2
-      steps:
-        - checkout
-        - run: git submodule sync
-        - run: git submodule update --init
-        - run: zola build
-        - aws-s3/sync:
-            arguments: --delete
-            from: public
-            to: 's3://www.jrussell.ie'
+    docker:
+      - image: jerusdp/site:0.0.2
+    steps:
+      - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
+      - run: zola build
+      - aws-cli/setup:
+          aws_access_key_id: AWS_ACCESS_KEY
+          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION
+      - aws-s3/sync:
+          arguments: "--delete"
+          from: public
+          to: "s3://www.jrussell.ie"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
