@@ -149,15 +149,21 @@ jobs:
       - run: git submodule sync
       - run: git submodule update --init
       - run: zola build
-      - aws-cli/setup:
-          aws_access_key_id: AWS_ACCESS_KEY
-          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
-          region: AWS_REGION
-      - aws-s3/sync:
-          # auth:
-          arguments: "--delete"
-          from: public
-          to: "s3://www.jrussell.ie"
+      # - aws-cli/setup:
+      #     aws_access_key_id: AWS_ACCESS_KEY
+      #     aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+      #     region: AWS_REGION
+      # - aws-s3/sync:
+      #     # auth:
+      #     arguments: "--delete"
+      #     from: public
+      #     to: "s3://www.jrussell.ie"
+      - run: # Install the AWS CLI if it is not already included in the docker image
+          name: Install awscli
+          command: sudo pip install awscli
+      - run: # Deploy to S3 using the sync command
+          name: Deploy to S3
+          command: aws s3 sync --delete public s3://www.jrussell.ie
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
