@@ -149,11 +149,12 @@ jobs:
       - run: git submodule sync
       - run: git submodule update --init
       - run: zola build
-      - aws-cli/setup:
-          aws_access_key_id: AWS_ACCESS_KEY
-          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
-          region: AWS_REGION
       - aws-s3/sync:
+          auth:
+              - aws-cli/setup:
+                  aws_access_key_id: AWS_ACCESS_KEY
+                  aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+                  region: AWS_REGION
           arguments: "--delete"
           from: public
           to: "s3://www.jrussell.ie"
@@ -222,3 +223,7 @@ workflows:
             - AWS_DEV
           requires:
             - apply-30-edge
+          filters:
+            branches:
+              only: main
+
