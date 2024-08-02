@@ -9,7 +9,7 @@ orbs:
 jobs:
   plan-01-remote:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -20,7 +20,7 @@ jobs:
 
   apply-01-remote:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -31,7 +31,7 @@ jobs:
 
   plan-10-static:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -42,7 +42,7 @@ jobs:
 
   apply-10-static:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -53,7 +53,7 @@ jobs:
 
   plan-20-network:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -64,7 +64,7 @@ jobs:
 
   apply-20-network:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -75,7 +75,7 @@ jobs:
 
   plan-21-site-cert:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -86,7 +86,7 @@ jobs:
 
   apply-21-site-cert:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -97,7 +97,7 @@ jobs:
 
   plan-22-sec-headers:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -108,7 +108,7 @@ jobs:
 
   apply-22-sec-headers:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -120,7 +120,7 @@ jobs:
 
   plan-30-edge:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
@@ -131,7 +131,7 @@ jobs:
 
   apply-30-edge:
     docker:
-      - image: cimg/base:2024.07
+      - image: cimg/base:2024.08
     executor: terraform/default
     steps:
       - checkout
