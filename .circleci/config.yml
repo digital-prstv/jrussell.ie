@@ -179,15 +179,21 @@ jobs:
 
   build-site:
     docker:
-      - image: cimg/base:current
-
+      - image: jerusdp/site:0.0.2
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - run: git submodule sync
+      - run: git submodule update --init
+      - run: zola --version
+      - run: zola build
       - run:
-          name: Zola build
+          name: List directory contents
           command: |
-            set -exo pipefail
-            docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v0.19.2 build
+            pwd
+            ls -lh
+            ls -lh /home/circleci
 
   update-site:
     docker:
@@ -196,12 +202,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: /home/circleci/
-      - run: git submodule sync
-      - run: git submodule update --init
-      - run: zola build
-      - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
-          region: eu-west-1
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete public s3://www.jrussell.ie
