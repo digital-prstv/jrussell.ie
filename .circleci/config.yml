@@ -7,15 +7,41 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+  authorise_aws:
+    docker:
+      - image: cimg/base:2025.01
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
+          region: eu-west-1
+      - run:
+          name: Save next version to workspace
+          command: |
+            set -exo pipefail
+            mkdir -p /tmp/workspace
+            echo "Version in environment: $NEXT_VERSION"
+            echo "$NEXT_VERSION" > /tmp/workspace/next-version
+            cat /tmp/workspace/next-version
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - .aws
+      - run:
+          name: Check directory
+          command: |
+            pwd
+            ls -la
+            ls -la ~/.aws
   plan-01-remote:
     docker:
       - image: cimg/base:2025.01
     executor: terraform/default
     steps:
       - checkout
-      - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
-          region: eu-west-1
+      - attach_workspace:
+          at: /home/circleci/
       - run:
           name: Check directory
           command: |
@@ -168,24 +194,37 @@ jobs:
 workflows:
   iac-deployment:
     jobs:
+      - authorise_aws
       - plan-01-remote:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - plan-10-static:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - plan-20-network:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - plan-21-site-cert:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - plan-22-sec-headers:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - plan-30-edge:
           context:
             - AWS-DEV
+          requires:
+            - authorise_aws
       - apply-01-remote:
           context:
             - AWS-DEV
