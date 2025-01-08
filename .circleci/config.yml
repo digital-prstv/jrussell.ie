@@ -177,6 +177,18 @@ jobs:
           path: ./iac/30-edge
           backend_config_file: ../remote.config
 
+  build-site:
+    docker:
+      - image: cimg/base:current
+
+    steps:
+      - checkout
+      - run:
+          name: Zola build
+          command: |
+            set -exo pipefail
+            docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v0.19.2 build
+
   update-site:
     docker:
       - image: jerusdp/site:0.0.2
@@ -266,11 +278,15 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
+      - build-site:
+          requires:
+            - apply-30-edge
+
       - update-site:
           context:
             - AWS-DEV
           requires:
-            - apply-30-edge
+            - build-site
           filters:
             branches:
               only: main
