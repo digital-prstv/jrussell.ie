@@ -149,9 +149,8 @@ jobs:
       - run: git submodule update --init
       - run: zola build
       - aws-cli/setup:
-          aws_access_key_id: AWS_ACCESS_KEY
-          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
-          region: AWS_REGION
+          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
+          region: eu-west-1
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete public s3://www.jrussell.ie
@@ -162,25 +161,25 @@ workflows:
     jobs:
       - plan-01-remote:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - plan-10-static:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - plan-20-network:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - plan-21-site-cert:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - plan-22-sec-headers:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - plan-30-edge:
           context:
-            - AWS_DEV
+            - AWS-DEV
       - apply-01-remote:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - plan-01-remote
             - plan-10-static
@@ -190,37 +189,36 @@ workflows:
             - plan-30-edge
       - apply-10-static:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-01-remote
       - apply-20-network:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-01-remote
       - apply-21-site-cert:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-20-network
       - apply-22-sec-headers:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-01-remote
       - apply-30-edge:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
       - update-site:
           context:
-            - AWS_DEV
+            - AWS-DEV
           requires:
             - apply-30-edge
           filters:
             branches:
               only: main
-
