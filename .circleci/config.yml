@@ -16,6 +16,11 @@ jobs:
       - aws-cli/setup:
           role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
+      - run:
+          name: Check directory
+          command: |
+            ls -la
+            ls -la ~/.aws
       - terraform/install
       - terraform/plan:
           path: ./iac/01-remote
