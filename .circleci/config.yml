@@ -16,24 +16,10 @@ jobs:
       - aws-cli/setup:
           role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
-      - run:
-          name: Save next version to workspace
-          command: |
-            set -exo pipefail
-            mkdir -p /tmp/workspace
-            echo "Version in environment: $NEXT_VERSION"
-            echo "$NEXT_VERSION" > /tmp/workspace/next-version
-            cat /tmp/workspace/next-version
       - persist_to_workspace:
           root: /home/circleci/
           paths:
             - .aws
-      - run:
-          name: Check directory
-          command: |
-            pwd
-            ls -la
-            ls -la ~/.aws
   plan-01-remote:
     docker:
       - image: cimg/base:2025.01
@@ -42,12 +28,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: /home/circleci/
-      - run:
-          name: Check directory
-          command: |
-            pwd
-            ls -la
-            ls -la ~/.aws
       - terraform/install
       - terraform/plan:
           path: ./iac/01-remote
@@ -59,6 +39,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/apply:
           path: ./iac/01-remote
@@ -70,6 +52,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/plan:
           path: ./iac/10-static
@@ -81,6 +65,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/apply:
           path: ./iac/10-static
@@ -92,6 +78,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/plan:
           path: ./iac/20-network
@@ -103,6 +91,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/apply:
           path: ./iac/20-network
@@ -114,6 +104,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/plan:
           path: ./iac/21-site-cert
@@ -125,6 +117,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/apply:
           path: ./iac/21-site-cert
@@ -136,6 +130,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/plan:
           path: ./iac/22-sec-headers
@@ -147,6 +143,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
       - terraform/apply:
@@ -159,6 +157,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/plan:
           path: ./iac/30-edge
@@ -170,6 +170,8 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - terraform/install
       - terraform/apply:
           path: ./iac/30-edge
@@ -180,6 +182,8 @@ jobs:
       - image: jerusdp/site:0.0.2
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - run: git submodule sync
       - run: git submodule update --init
       - run: zola build
