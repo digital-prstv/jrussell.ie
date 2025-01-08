@@ -1,6 +1,6 @@
 #!/bin/sh -eux
 
-# Provide as the quesry string the name of the key to extract
+# Provide as the query string the name of the key to extract
 # Possible keys:
 #   UserId
 #   Account
