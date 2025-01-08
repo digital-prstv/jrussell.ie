@@ -13,6 +13,9 @@ jobs:
     executor: terraform/default
     steps:
       - checkout
+      - aws-cli/setup:
+          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
+          region: eu-west-1
       - terraform/install
       - terraform/plan:
           path: ./iac/01-remote
