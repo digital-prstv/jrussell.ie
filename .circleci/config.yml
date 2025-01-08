@@ -192,8 +192,12 @@ jobs:
           name: List directory contents
           command: |
             pwd
-            ls -lh
-            ls -lh /home/circleci
+            ls -la
+            ls -la /home/circleci
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - project/public
 
   update-site:
     docker:
