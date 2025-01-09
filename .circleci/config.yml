@@ -198,6 +198,7 @@ jobs:
           root: /home/circleci/
           paths:
             - project/public
+            - .aws
 
   update-site:
     docker:
