@@ -285,6 +285,7 @@ workflows:
             - apply-21-site-cert
             - apply-22-sec-headers
       - zola/build:
+          zola_version: 0.19.2
           requires:
             - apply-30-edge
           pre-steps:
