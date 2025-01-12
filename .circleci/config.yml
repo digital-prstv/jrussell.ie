@@ -4,6 +4,7 @@ version: 2.1
 orbs:
   terraform: circleci/terraform@3.5.0
   aws-cli: circleci/aws-cli@5.1.2
+  zola: jerus-org/zola@1.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -177,28 +178,28 @@ jobs:
           path: ./iac/30-edge
           backend_config_file: ../remote.config
 
-  build-site:
-    docker:
-      - image: jerusdp/site:0.0.2
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - run: git submodule sync
-      - run: git submodule update --init
-      - run: zola --version
-      - run: zola build
-      - run:
-          name: List directory contents
-          command: |
-            pwd
-            ls -la
-            ls -la /home/circleci
-      - persist_to_workspace:
-          root: /home/circleci/
-          paths:
-            - project/public
-            - .aws
+  # build-site:
+  #   docker:
+  #     - image: jerusdp/site:0.0.2
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: /home/circleci/
+  #     - run: git submodule sync
+  #     - run: git submodule update --init
+  #     - run: zola --version
+  #     - run: zola build
+  #     - run:
+  #         name: List directory contents
+  #         command: |
+  #           pwd
+  #           ls -la
+  #           ls -la /home/circleci
+  #     - persist_to_workspace:
+  #         root: /home/circleci/
+  #         paths:
+  #           - project/public
+  #           - .aws
 
   update-site:
     docker:
@@ -283,15 +284,24 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
-      - build-site:
+      - zola/build:
           requires:
             - apply-30-edge
+          pre-steps:
+            - attach_workspace:
+                at: /home/circleci/
+          post-steps:
+            - persist_to_workspace:
+                root: /home/circleci/
+                paths:
+                  - project/public
+                  - .aws
 
       - update-site:
           context:
             - AWS-DEV
           requires:
-            - build-site
+            - zola/build
           filters:
             branches:
               only: main
