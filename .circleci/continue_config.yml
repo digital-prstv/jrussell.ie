@@ -204,7 +204,10 @@ jobs:
           backend_config_file: ../remote.config
 
   update-site:
-    executor: zola/zola
+    executor:
+      name: zola/zola
+      zola_version: 0.19.2
+
     steps:
       - checkout
       - attach_workspace:
