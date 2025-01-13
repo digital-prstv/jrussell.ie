@@ -5,6 +5,8 @@ orbs:
   terraform: circleci/terraform@3.5.0
   aws-cli: circleci/aws-cli@5.1.2
   zola: jerus-org/zola@1.0.0
+  toolkit: digital-prstv/circleci-toolkit@2.0.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 parameters:
@@ -18,6 +20,12 @@ parameters:
     description: |
       Build the website using zola. 
       Copy to the internet when run on the main branch.
+  min-rust-version:
+    type: string
+    default: "1.81"
+  fingerprint:
+    type: string
+    default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
 
 jobs:
   authorise_aws:
@@ -273,8 +281,9 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
-
       - toolkit/update_changelog:
+          branches:
+            ignore: main
           requires:
             - apply-30-edge
           context:
@@ -298,8 +307,9 @@ workflows:
                 paths:
                   - project/public
                   - .aws
-
       - toolkit/update_changelog:
+          branches:
+            ignore: main
           requires:
             - zola/build
           context:
@@ -308,6 +318,7 @@ workflows:
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+
       - authorise_aws:
           requires:
             - zola/build
@@ -322,3 +333,22 @@ workflows:
           filters:
             branches:
               only: main
+      - toolkit/save_next_version:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          version: 1.0.0
+
+      - toolkit/make_release:
+          name: website github release
+          context:
+            - release
+            - bot-check
+          requires:
+            - save_next_version
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          when_cargo_release: false
+      - toolkit/no_release:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          requires:
+            - toolkit/save_next_version:
+                - failed

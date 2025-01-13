@@ -1,19 +1,49 @@
 version: 2.1
-
 setup: true
-
 orbs:
-  path-filtering: circleci/path-filtering@1.1.0
-
+  path-filtering: circleci/path-filtering@1.0.0
 workflows:
-  setup-workflow:
+  check_last_commit:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.generate-config-flag >>
+
+    jobs:
+      - toolkit/choose_pipeline:
+          name: choose pipeline based on committer
+          context: bot-check
+
+  generate-config:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not: << pipeline.parameters.success-flag >>
+        - << pipeline.parameters.generate-config-flag >>
+
     jobs:
       - path-filtering/filter:
+          base-revision: main
+          config-path: .circleci/continue_config.yml
           mapping: |
-            content/.* update_website true
-            iac/.* update_infrastructure true
-            sass/.* update_website true
-            static/.* update_website true
-            syntaxes/.* update_website true
-            templates/.* update_website true
-            themes/.* update_website true
+            iac/.* update-infrastructure true
+            content/.* update-website true
+            sass/.* update-website true
+            static/.* update-website true
+            templates/.* update-website true
+            syntaxes/.* update-website true
+            themes/.* update-website true
+
+  on_success:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.generate-config-flag >>
+
+    jobs:
+      - toolkit/end_success
