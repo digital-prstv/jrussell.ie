@@ -1,13 +1,23 @@
 version: 2.1
 setup: true
 orbs:
-  path-filtering: circleci/path-filtering@1.0.0
+  path-filtering: circleci/path-filtering@1.1.0
+  toolkit: digital-prstv/circleci-toolkit@2.0.0
+parameters:
+  success-flag:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the success workflow will be triggered.
+  generate-config-flag:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the generate-config workflow will be triggered.
 workflows:
   check_last_commit:
     when:
       and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.generate-config-flag >>
 
@@ -19,8 +29,6 @@ workflows:
   generate-config:
     when:
       and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.generate-config-flag >>
 
@@ -40,8 +48,6 @@ workflows:
   on_success:
     when:
       and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
         - << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.generate-config-flag >>
 

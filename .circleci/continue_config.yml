@@ -343,7 +343,7 @@ workflows:
             - release
             - bot-check
           requires:
-            - save_next_version
+            - toolkit/save_next_version
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
