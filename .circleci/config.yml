@@ -105,9 +105,6 @@ release_website:
     - authorise_aws:
         requires:
           - zola/build
-        filters:
-          branches:
-            only: main
         pre-steps:
           - attach_workspace:
               at: /home/circleci/
@@ -125,23 +122,14 @@ release_website:
         pre-steps:
           - attach_workspace:
               at: /home/circleci/
-        filters:
-          branches:
-            only: main
 
     - toolkit/save_next_version:
-        filters:
-          branches:
-            ignore: main
         requires:
           - toolkit/update_changelog
         min_rust_version: << pipeline.parameters.min-rust-version >>
         version: 1.0.0
 
     - toolkit/make_release:
-        filters:
-          branches:
-            ignore: main
         name: website github release
         context:
           - release
@@ -153,9 +141,6 @@ release_website:
         when_cargo_release: false
         pcu_update_changelog: true
     - toolkit/no_release:
-        filters:
-          branches:
-            ignore: main
         min_rust_version: << pipeline.parameters.min-rust-version >>
         requires:
           - toolkit/save_next_version:
