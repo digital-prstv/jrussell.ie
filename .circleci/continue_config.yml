@@ -210,8 +210,6 @@ jobs:
 
     steps:
       - checkout
-      - attach_workspace:
-          at: /home/circleci/
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete public s3://www.jrussell.ie
@@ -314,7 +312,6 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
-                  - .aws
       - toolkit/update_changelog:
           filters:
             branches:
@@ -334,19 +331,40 @@ workflows:
           filters:
             branches:
               only: main
+          pre-steps:
+            - attach_workspace:
+                at: /home/circleci/
+          post-steps:
+            - persist_to_workspace:
+                root: /home/circleci/
+                paths:
+                  - project/public
+                  - .aws
       - update-site:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+          pre-steps:
+            - attach_workspace:
+                at: /home/circleci/
           filters:
             branches:
               only: main
+
       - toolkit/save_next_version:
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - toolkit/update_changelog
           min_rust_version: << pipeline.parameters.min-rust-version >>
           version: 1.0.0
 
       - toolkit/make_release:
+          filters:
+            branches:
+              ignore: main
           name: website github release
           context:
             - release
@@ -356,7 +374,11 @@ workflows:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
+          pcu_update_changelog: true
       - toolkit/no_release:
+          filters:
+            branches:
+              ignore: main
           min_rust_version: << pipeline.parameters.min-rust-version >>
           requires:
             - toolkit/save_next_version:
