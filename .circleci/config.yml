@@ -39,6 +39,7 @@ jobs:
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete public s3://www.jrussell.ie
+
   authorise_aws:
     docker:
       - image: cimg/base:2025.01
@@ -48,10 +49,6 @@ jobs:
       - aws-cli/setup:
           role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
-      - persist_to_workspace:
-          root: /home/circleci/
-          paths:
-            - .aws
 
 workflows:
   check_last_commit:
@@ -105,6 +102,17 @@ workflows:
         - << pipeline.parameters.release-website >>
 
     jobs:
+      - authorise_aws:
+          requires:
+            - zola/build
+          pre-steps:
+            - attach_workspace:
+                at: /home/circleci/
+          post-steps:
+            - persist_to_workspace:
+                root: /home/circleci/
+                paths:
+                  - .aws
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
@@ -116,19 +124,8 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
-
-      - authorise_aws:
-          requires:
-            - zola/build
-          pre-steps:
-            - attach_workspace:
-                at: /home/circleci/
-          post-steps:
-            - persist_to_workspace:
-                root: /home/circleci/
-                paths:
-                  - project/public
                   - .aws
+
       - update_site:
           context:
             - AWS-DEV
