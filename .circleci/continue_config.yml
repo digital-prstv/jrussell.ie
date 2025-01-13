@@ -1,0 +1,304 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+orbs:
+  terraform: circleci/terraform@3.5.0
+  aws-cli: circleci/aws-cli@5.1.2
+  zola: jerus-org/zola@1.0.0
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+parameters:
+  update_infrastructure:
+    type: boolean
+    default: false
+    description: Update the site infrastructure
+  update_website:
+    type: boolean
+    default: false
+    description: |
+      Build the website using zola. 
+      Copy to the internet when run on the main branch.
+
+jobs:
+  authorise_aws:
+    docker:
+      - image: cimg/base:2025.01
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
+          region: eu-west-1
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - .aws
+  plan-01-remote:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
+
+  apply-01-remote:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
+
+  plan-10-static:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
+
+  apply-10-static:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
+
+  plan-20-network:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
+
+  apply-20-network:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
+
+  plan-21-site-cert:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
+
+  apply-21-site-cert:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
+
+  plan-22-sec-headers:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
+
+  apply-22-sec-headers:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
+      - terraform/apply:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
+
+  plan-30-edge:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
+
+  apply-30-edge:
+    docker:
+      - image: cimg/base:2025.01
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
+
+  update-site:
+    executor: zola/zola
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - run: # Deploy to S3 using the sync command
+          name: Deploy to S3
+          command: aws s3 sync --delete public s3://www.jrussell.ie
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  iac-deployment:
+    when: << pipeline.parameters.update_infrastructure >>
+    jobs:
+      - authorise_aws
+      - plan-01-remote:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-10-static:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-20-network:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-21-site-cert:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-22-sec-headers:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-30-edge:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - apply-01-remote:
+          context:
+            - AWS-DEV
+          requires:
+            - plan-01-remote
+            - plan-10-static
+            - plan-20-network
+            - plan-21-site-cert
+            - plan-22-sec-headers
+            - plan-30-edge
+      - apply-10-static:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-20-network:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-21-site-cert:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-20-network
+      - apply-22-sec-headers:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-30-edge:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-10-static
+            - apply-21-site-cert
+            - apply-22-sec-headers
+
+  update_website:
+    when: << pipeline.parameters.update_website >>
+    jobs:
+      - zola/build:
+          zola_version: 0.19.2
+          pre-steps:
+            - attach_workspace:
+                at: /home/circleci/
+          post-steps:
+            - persist_to_workspace:
+                root: /home/circleci/
+                paths:
+                  - project/public
+                  - .aws
+      - authorise_aws:
+          requires:
+            - zola/build
+          filters:
+            branches:
+              only: main
+      - update-site:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+          filters:
+            branches:
+              only: main
