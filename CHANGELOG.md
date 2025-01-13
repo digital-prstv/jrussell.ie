@@ -10,5 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ci-add AWS configuration path to cache paths in CircleCI config(pr [#44])
+- ci-remove branch filters from CircleCI config(pr [#46])
 
 [#44]: https://github.com/digital-prstv/jrussell.ie/pull/44
+[#46]: https://github.com/digital-prstv/jrussell.ie/pull/46
