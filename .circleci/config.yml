@@ -9,7 +9,7 @@ parameters:
     default: false
     description: |
       If set to true, the success workflow will be triggered.
-  generate-config-flag:
+  validation-flag:
     type: boolean
     default: false
     description: |
@@ -19,7 +19,7 @@ workflows:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.generate-config-flag >>
+        - not: << pipeline.parameters.validation-flag >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -30,7 +30,7 @@ workflows:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
-        - << pipeline.parameters.generate-config-flag >>
+        - << pipeline.parameters.validation-flag >>
 
     jobs:
       - path-filtering/filter:
@@ -49,7 +49,7 @@ workflows:
     when:
       and:
         - << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.generate-config-flag >>
+        - not: << pipeline.parameters.validation-flag >>
 
     jobs:
       - toolkit/end_success
