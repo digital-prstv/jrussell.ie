@@ -313,8 +313,9 @@ workflows:
                   - project/public
                   - .aws
       - toolkit/update_changelog:
-          branches:
-            ignore: main
+          filters:
+            branches:
+              ignore: main
           requires:
             - zola/build
           context:
