@@ -25,6 +25,11 @@ parameters:
     default: false
     description: |
       If set to true, the generate-config workflow will be triggered.
+  update-changelog:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the update-changelog workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -309,6 +314,20 @@ workflows:
               ignore: main
           requires:
             - zola/build
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+
+  update_changelog:
+    when: << pipeline.parameters.update-changelog >>
+    jobs:
+      - toolkit/update_changelog:
+          filters:
+            branches:
+              ignore: main
           context:
             - release
             - bot-check

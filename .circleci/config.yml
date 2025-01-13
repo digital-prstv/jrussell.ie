@@ -71,6 +71,7 @@ workflows:
             templates/.* update-website true
             syntaxes/.* update-website true
             themes/.* update-website true
+            .circleci/.* update-changelog true
 
   on_success:
     when:
