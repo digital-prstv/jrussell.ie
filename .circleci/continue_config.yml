@@ -10,16 +10,21 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 parameters:
-  update_infrastructure:
+  update-infrastructure:
     type: boolean
     default: false
     description: Update the site infrastructure
-  update_website:
+  update-website:
     type: boolean
     default: false
     description: |
       Build the website using zola. 
       Copy to the internet when run on the main branch.
+  validation-flag:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the generate-config workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -211,7 +216,7 @@ jobs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   iac-deployment:
-    when: << pipeline.parameters.update_infrastructure >>
+    when: << pipeline.parameters.update-infrastructure >>
     jobs:
       - authorise_aws
       - plan-01-remote:
@@ -294,7 +299,7 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
 
   update_website:
-    when: << pipeline.parameters.update_website >>
+    when: << pipeline.parameters.update-website >>
     jobs:
       - zola/build:
           zola_version: 0.19.2
