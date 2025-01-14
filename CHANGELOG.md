@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ci-remove branch filters from CircleCI config(pr [#46])
 - ci(circleci)-reorder jobs and remove unnecessary workspace persistence(pr [#47])
 - ci-update CircleCI config to add end_success step for main branch only(pr [#48])
+- ci(circleci)-update workflow dependencies from authorise_aws to zola/build(pr [#50])
 
 ### Fixed
 
@@ -23,3 +24,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#47]: https://github.com/digital-prstv/jrussell.ie/pull/47
 [#48]: https://github.com/digital-prstv/jrussell.ie/pull/48
 [#49]: https://github.com/digital-prstv/jrussell.ie/pull/49
+[#50]: https://github.com/digital-prstv/jrussell.ie/pull/50
