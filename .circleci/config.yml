@@ -201,7 +201,6 @@ workflows:
           requires:
             - update_site
           min_rust_version: << pipeline.parameters.min-rust-version >>
-          version: 1.0.0
 
       - toolkit/make_release:
           name: website github release

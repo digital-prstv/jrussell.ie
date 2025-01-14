@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- ci(circleci)-remove fixed version from workflow configuration(pr [#55])
+
 ## [1.0.0] - 2025-01-14
 
 ### Added
@@ -36,4 +42,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#52]: https://github.com/digital-prstv/jrussell.ie/pull/52
 [#53]: https://github.com/digital-prstv/jrussell.ie/pull/53
 [#54]: https://github.com/digital-prstv/jrussell.ie/pull/54
+[#55]: https://github.com/digital-prstv/jrussell.ie/pull/55
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
