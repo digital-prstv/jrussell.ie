@@ -103,8 +103,6 @@ workflows:
 
     jobs:
       - authorise_aws:
-          requires:
-            - zola/build
           pre-steps:
             - attach_workspace:
                 at: /home/circleci/
@@ -114,6 +112,8 @@ workflows:
                 paths:
                   - .aws
       - zola/build:
+          requires:
+            - authorise_aws
           zola_version: 0.19.2
           list_directory: true
           pre-steps:
