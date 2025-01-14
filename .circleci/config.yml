@@ -177,6 +177,7 @@ workflows:
           #   - authorise_aws
           zola_version: 0.19.2
           list_directory: true
+          output_directory: /tmp/workspace/public
           pre-steps:
             - attach_workspace:
                 at: /tmp/workspace
@@ -194,7 +195,7 @@ workflows:
             - build
           pre-steps:
             - attach_workspace:
-                at: /home/circleci/
+                at: /tmp/workspace
 
       - toolkit/save_next_version:
           requires:
