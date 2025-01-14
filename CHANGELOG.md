@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- add output_directory parameter for custom build directory(pr [#54])
+
 ### Changed
 
 - ci-add AWS configuration path to cache paths in CircleCI config(pr [#44])
@@ -31,3 +35,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#51]: https://github.com/digital-prstv/jrussell.ie/pull/51
 [#52]: https://github.com/digital-prstv/jrussell.ie/pull/52
 [#53]: https://github.com/digital-prstv/jrussell.ie/pull/53
+[#54]: https://github.com/digital-prstv/jrussell.ie/pull/54
