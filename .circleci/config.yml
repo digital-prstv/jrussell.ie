@@ -130,7 +130,7 @@ workflows:
           context:
             - AWS-DEV
           requires:
-            - authorise_aws
+            - zola/build
           pre-steps:
             - attach_workspace:
                 at: /home/circleci/
