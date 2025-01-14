@@ -35,7 +35,6 @@ jobs:
       zola_version: 0.19.2
 
     steps:
-      - checkout
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete public s3://www.jrussell.ie
