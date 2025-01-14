@@ -30,9 +30,7 @@ parameters:
 
 jobs:
   update_site:
-    executor:
-      name: zola/zola
-      zola_version: 0.19.2
+    executor: aws-cli/default
 
     steps:
       - run: # Deploy to S3 using the sync command
@@ -40,8 +38,6 @@ jobs:
           command: aws s3 sync --delete public s3://www.jrussell.ie
 
   authorise_aws:
-    docker:
-      - image: cimg/base:2025.01
     executor: aws-cli/default
     steps:
       - checkout
