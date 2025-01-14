@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ci(circleci)-remove fixed version from workflow configuration(pr [#55])
+- chore-update zola orb version and remove build job from CircleCI config(pr [#56])
 
 ## [1.0.0] - 2025-01-14
 
@@ -43,5 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#53]: https://github.com/digital-prstv/jrussell.ie/pull/53
 [#54]: https://github.com/digital-prstv/jrussell.ie/pull/54
 [#55]: https://github.com/digital-prstv/jrussell.ie/pull/55
+[#56]: https://github.com/digital-prstv/jrussell.ie/pull/56
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
