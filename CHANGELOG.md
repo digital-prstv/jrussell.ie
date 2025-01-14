@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ci(circleci)-update workflow dependencies from authorise_aws to zola/build(pr [#50])
 - ci(circleci)-remove unnecessary checkout step in deploy job(pr [#51])
 - chore(ci)-update CircleCI config to use aws-cli executor(pr [#52])
+- ci(circleci)-refactor build and deployment jobs, deprecate zola orb usage(pr [#53])
 
 ### Fixed
 
@@ -29,3 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#50]: https://github.com/digital-prstv/jrussell.ie/pull/50
 [#51]: https://github.com/digital-prstv/jrussell.ie/pull/51
 [#52]: https://github.com/digital-prstv/jrussell.ie/pull/52
+[#53]: https://github.com/digital-prstv/jrussell.ie/pull/53
