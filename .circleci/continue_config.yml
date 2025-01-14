@@ -334,3 +334,8 @@ workflows:
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+      - toolkit/end_success:
+          message: "Changelog update already completed in PR."
+          filters:
+            branches:
+              only: main
