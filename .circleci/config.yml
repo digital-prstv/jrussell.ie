@@ -48,6 +48,10 @@ jobs:
         type: boolean
         default: false
         description: "If true, list the directory after the update."
+      output_directory:
+        type: string
+        default: ""
+        description: "If true, list the directory after the update."
 
     steps:
       - checkout
@@ -73,7 +77,11 @@ jobs:
       - run:
           name: Build site
           command: |
-            zola build
+            if [[ "" != << parameters.output_directory >> ]]; then
+              zola build --output-dir /tmp/workspace/public
+            else 
+              zola build
+            fi
 
       - when:
           condition: << parameters.list_directory >>
