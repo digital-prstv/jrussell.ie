@@ -13,3 +13,5 @@ publish-site:
 
 serve:
     zola serve --drafts
+
+build-serve: build-site serve
