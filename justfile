@@ -4,6 +4,8 @@ _default:
     @just --list
 
 build-site:
+    git submodule sync
+    git submodule update --init --recursive
     zola build
 
 publish-site:
