@@ -73,6 +73,9 @@ workflows:
             syntaxes/.* update-website true
             themes/.* update-website true
             .circleci/.* update-changelog true
+            justfile update-changelog true
+            README.md update-changelog true
+            renovate.json update-changelog true
 
   on_success:
     when:
