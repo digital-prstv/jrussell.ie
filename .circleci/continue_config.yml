@@ -99,7 +99,14 @@ jobs:
 
       - run:
           name: Build site
-          command: <<include(scripts/build.sh)>>
+          command: |
+            set -e
+
+            if [ "" != "${OD}" ]; then
+                zola build --output-dir "${OD}"
+            else
+                zola build
+            fi
 
       - when:
           condition: << parameters.list_directory >>
