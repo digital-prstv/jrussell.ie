@@ -60,3 +60,9 @@ menu = [
 quick_navigation_buttons = true
 show_previous_next_article_links = true
 invert_previous_next_article_links = true
+
+socials = [
+    { name = "github", url = "https://github.com/jerusdp/", icon = "github" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/russellj/", icon = "linkedin" },
+    { name = "bluesky", url = "https://bsky.app/profile/jerus.bsky.social", icon = "bluesky" },
+]
