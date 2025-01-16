@@ -9,7 +9,7 @@ header = {title = "Welcome to my latest ruminations", img = "img/main.png", img_
 section_path = "blog/_index.md"  # Where to find your posts.
 max_posts = 5  # Show up to 5 posts on the main page.
 post_listing_date = "both"
-projects_path = "projects/_index.md"
+# projects_path = "projects/_index.md"
 
 
 +++
