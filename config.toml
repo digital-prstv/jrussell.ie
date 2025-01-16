@@ -48,3 +48,15 @@ even_title = "ruminations"
 skin = "indigo_ingot"
 compact_tags = true
 tag_sorting = "frequency"
+
+menu = [
+    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    # { name = "technology", url = "technology", trailing_slash = true },
+    { name = "projects", url = "projects", trailing_slash = true },
+]
+
+quick_navigation_buttons = true
+show_previous_next_article_links = true
+invert_previous_next_article_links = true
