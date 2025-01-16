@@ -1,6 +1,6 @@
 +++
-title = "Influences - updated January 2025"
-date = 2025-01-10
+title = "Influences"
+date = 2021-11-06
 draft = false
 
 [taxonomies]
@@ -9,180 +9,152 @@ tags = ["podcasts", "insights"]
 +++
 
 If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help.
-My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't use one of its many heuristics to assume away an important detail.
-
+My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't assume away some important detail with one of its many heuristics.
 <!-- more -->
 ## People and Society
 
+- [A Slight Change of Plans with Maya Shankar][url_ps_ascpms]
 - [Against the Rules with Michael Lewis][url_ps_arml]
-- [Benjamen Walker's Theory of Everything][url_ps_bwte]
-- [Hot Money: The New Narcos][url_ps_hm]
-- [Imaginary Worlds][url_ps_iw]
-- [the memory palace][url_ps_]
-- [The Modi Raj from The Economist][url_jp_tep]
+- [Living With The Gods][url_ps_lwtg]
+- [How We Survive][url_ps_hws]
+- [Rough Translation][url_ps_rt]
+- [Not A Podcast ASOIAF Re-Read Podcast][url_ps_napasoiafrrp]
+- [Songonauts][url_ps_s]
+- [The Truth][url_ps_tt]
+- [Words To That Effect][url_ps_wtte]
+- [Ireland 2029: Shaping Our Future][url_ps_isof]
 - [The Next Five][url_ps_tnf]
-- [Next Year in Moscow][url_jp_tep]
-- [On with Kara Swisher][url_ps_owks]
-- [Pivot][url_ps_p]
+- [The World Ahead from The Economist][url_ps_twate]
+- [WSJ’s The Future of Everything][url_ps_wsjtfe]
+- [CONFLICTED][url_ps_conflicted]
+- [Imaginary Worlds][url_ps_iw]
+- [Motherfocloir][url_ps_m]
+- [What Trump Can Teach Us About Con Law][url_ps_wtctuacl]
 - [Reply All][url_ps_ra]
-- [Thinking Allowed][url_ps_ta]
+- [Irish Mythology Podcast][url_ps_imp]
+- [Benjamen Walker's Theory of Everything][url_ps_bwte]
+- [Into the Zone][url_ps_iz]
+- [the memory palace][url_ps_]
+- [No Stupid Questions][url_ps_nsq]
+- [The Reboot Podcast][url_ps_trp]
 - [WorkLife with Adam Grant][url_ps_wlag]
+- [Thinking Allowed][url_ps_ta]
+- [Future of Work][url_ps_fw]
 
 ## History
 
+- [Bad Women: The Ripper Retold][url_h_bwtrr]
 - [Cautionary Tales with Tim Harford][url_h_ctth]
-- [Dan Carlin's Hardcore History: Addendum][url_h_dchha]
 - [Dan Carlin's Hardcore History][url_h_dchh]
-- [Fall of Civilizations Podcast][url_h_focp]
+- [Dan Carlin's Hardcore History: Addendum][url_h_dchha]
+- [GunPlot][url_h_gp]
 - [The History of Ireland][url_h_thi]
 - [How to Invent a Country][url_h_hic]
-- [The Last Archive][url_h_tla]
 - [Revisionist History][url_h_rh]
 - [Revolutions][url_h_r]
+- [Talking History Highlights][url_h_thh]
+- [This Day in Esoteric Political History][url_h_tdeph]
+- [Wind of Change][url_h_wc]
 
 ## Thought Leaders
 
 - [Conversations with Tyler][url_tl_ct]
+- [The Economist Asks][url_tl_tea]
 - [Freakonomics Radio][url_tl_fr]
+- [The Freakonomics Radio Book Club][url_tl_tfrbc]
 - [Full Steam with Jess Kelly][url_tl_fsjk]
-- [Futures Human: The Series][url_tl_rh]
 - [In Our Time][url_tl_iot]
 - [Intelligence Squared][url_tl_is]
+- [Intelligence Squared Business][url_tl_isb]
 - [The Jordan Harbinger Show][url_tl_tjhs]
 - [People I (Mostly) Admire][url_tl_pima]
 - [The Rachman Review][url_tl_trr]
-- [Thoughtworks Technology Podcast][url_tl_tw]
+- [Real Humans][url_tl_rh]
+- [Should This Exist?][url_tl_ste]
+- [Slo Mo: A Podcast with Mo Gawdat][url_tl_smapmg]
+- [Sudhir Breaks the Internet][url_tl_sbi]
 
 ## Software Engineering
 
 - [Engineering Culture by InfoQ][url_se_eciq]
 - [The InfoQ Podcast][url_se_tiqp]
 - [The New Stack Podcast][url_se_tnsp]
+- [On The Metal][url_se_otm]
+- [The ReadME Podcast][url_se_trmep]
 - [Rustacean Station][url_se_rs]
+- [Windows Insider Podcast][url_se_wip]
 
 ## Business and Economy
 
+- [The Architects Of Business][url_be_taob]
+- [Dear HBR:][url_be_dhbr]
+- [The HBR Channel][url_be_thbrc]
+- [HBR IdeaCast][url_be_hbric]
+- [Masters of Scale with Reid Hoffman][url_be_msrh]
+- [50 Things That Made the Modern Economy][url_be_ttmme]
 - [The David McWilliams Podcast][url_be_tdmwp]
-- [The Economics Show][url_be_tes]
-- [Pragmatism in Practice][url_be_pip]
+- [Pitchfork Economics with Nick Hanauer][url_be_penh]
+- [Planet Money][url_be_pm]
 
 ## Journalism and Politics
 
-- [Assume Nothing][url_jp_an]
-- [The Best Movies You've Never Seen][url_jp_tbmyns]
-- [Black Box][url_jp_bb]
-- [Boom! from The Economist][url_jp_tep]
-- [Common Sense with Dan Carlin][url_jp_csdc]
-- [Drum Tower][url_jp_tep]
-- [The Ezra Klein Show][url_jp_teks]
 - [FT News Briefing][url_jp_ftnb]
-- [GoodFellows: Conversations from the Hoover Institution][url_jp_gcfhi]
-- [In The News][url_jp_itn]
-- [Inside Politics with Hugh Linehan][url_jp_ipwhl]
+- [The Indicator from Planet Money][url_jp_tipm]
 - [The Intelligence from The Economist][url_jp_tite]
-- [Money Talks from The Economist][url_jp_tep]
+- [The Irish Times World View Podcast][url_jp_titwvp]
+- [Make Me Smart with Kai and Molly][url_jp_mmskm]
+- [Marketplace][url_jp_m]
+- [Money Talks from The Economist][url_jp_mtte]
+- [The Post Podcast][url_jp_tpp]
+- [Assume Nothing][url_jp_an]
+- [The Audio Long Read][url_jp_talr]
+- [Common Sense with Dan Carlin][url_jp_csdc]
+- [The Gallup Podcast][url_jp_tgp]
+- [The Indo Daily][url_jp_tid]
 - [More or Less: Behind the Stats][url_jp_mlbs]
-- [Political Fix][url_jp_pf]
+- [Today in Focus][url_jp_tf]
+- [UNDISCOVERED][url_jp_undiscovered]
+- [Untold Killing][url_jp_uk]
+- [Inside Politics][url_jp_ip]
+- [Payne's Politics][url_jp_pp]
 - [POLITICO's EU Confidential][url_jp_politicoeuc]
-- [Power Play][url_jp_pp]
-- [The Rest Is Classified][url_jp_gh]
-- [The Rest Is Politics: US][url_jp_trip]
-- [The Rest Is Politics][url_jp_trip]
-- [UK Politics Podcast][url_jp_upp]
-- [The World in Brief from The Economist][url_jp_twib]
+- [What Am Politics?][url_jp_wap]
 - [Your Politics][url_jp_yp]
+- [Brexit Republic][url_n_br]
 
 ## Science and Technology
 
-- [99% Invisible][url_st_i]
-- [Babbage from The Economist][url_jp_tep]
-- [The Big Tech Show][url_st_tbts]
-- [Command_Line Heroes][url_st_clh]
+- [The CloudBytes Podcast][url_st_tcbp]
+- [CYBER][url_st_cyber]
+- [Cyber Humanity][url_st_ch]
+- [The Daily Swig][url_st_tds]
 - [Darknet Diaries][url_st_dd]
 - [Defensive Security Podcast - Malware, Hacking, Cyber Security & Infosec][url_st_dspmhcsi]
 - [Down the Security Rabbithole Podcast][url_st_dsrp]
-- [Freakonomics, M.D.][url_st_fmd]
-- [FT Tech Tonic][url_st_fttt]
-- [Futureproof with Jonathan McCrea][url_st_fjmc]
 - [Hacked][url_st_h]
-- [Hard Fork][url_st_hf]
-- [The Infinite Monkey Cage][url_st_timc]
 - [Malicious Life][url_st_ml]
-- [Tech Radio Podcast][url_st_trp]
-- [Tech Talk with Jess Kelly][url_st_ttjk]
-
-## Archived
-
-- [50 Things That Made the Modern Economy][url_be_ttmme]
-- [A Slight Change of Plans with Maya Shankar][url_ps_ascpms]
-- [The Architects Of Business][url_be_taob]
-- [The Audio Long Read][url_jp_talr]
-- [AWS Morning Brief][url_st_awsmb]
-- [Bad Women: The Ripper Retold][url_h_bwtrr]
-- [Brexit Republic][url_n_br]
-- [The CloudBytes Podcast][url_st_tcbp]
-- [CONFLICTED][url_ps_conflicted]
-- [Cyber Humanity][url_st_ch]
-- [CYBER][url_st_cyber]
-- [The Daily Swig][url_st_tds]
-- [Data Privacy Detective][url_st_dpd]
-- [Data Privacy Podcast][url_st_dpp]
-- [Dear HBR:][url_be_dhbr]
-- [The Freakonomics Radio Book Club][url_tl_tfrbc]
-- [Future of Work][url_ps_fw]
-- [The Gallup Podcast][url_jp_tgp]
-- [Go and See][url_st_gs]
-- [GunPlot][url_h_gp]
-- [The HBR Channel][url_be_thbrc]
-- [HBR IdeaCast][url_be_hbric]
-- [How We Survive][url_ps_hws]
-- [The Indicator from Planet Money][url_jp_tipm]
-- [The Indo Daily][url_jp_tid]
-- [Intelligence Squared Business][url_tl_isb]
-- [Into the Zone][url_ps_iz]
-- [Ireland 2029: Shaping Our Future][url_ps_isof]
-- [Irish Mythology Podcast][url_ps_imp]
-- [The Irish Times World View Podcast][url_jp_titwvp]
-- [Living With The Gods][url_ps_lwtg]
-- [Make Me Smart with Kai and Molly][url_jp_mmskm]
-- [Marketplace Tech][url_st_mt]
-- [Marketplace][url_jp_m]
-- [Masters of Scale with Reid Hoffman][url_be_msrh]
-- [Motherfocloir][url_ps_m]
-- [No Stupid Questions][url_ps_nsq]
-- [Not A Podcast ASOIAF Re-Read Podcast][url_ps_napasoiafrrp]
-- [On The Metal][url_se_otm]
-- [Pandemic: Coronavirus Edition][url_st_pce]
-- [Pitchfork Economics with Nick Hanauer][url_be_penh]
-- [Planet Money][url_be_pm]
-- [The Post Podcast][url_jp_tpp]
-- [The Privacy Advisor Podcast][url_st_tpap]
-- [The ReadME Podcast][url_se_trmep]
-- [The Reboot Podcast][url_ps_trp]
-- [Rough Translation][url_ps_rt]
-- [Science Vs][url_st_sv]
-- [Science Weekly][url_st_sw]
-- [Should This Exist?][url_tl_ste]
-- [Slo Mo: A Podcast with Mo Gawdat][url_tl_smapmg]
 - [Smashing Security][url_st_ss]
 - [The Social-Engineer Podcast][url_st_tsep]
-- [Songonauts][url_ps_s]
 - [Sources and Sinks][url_st_ss]
-- [Sudhir Breaks the Internet][url_tl_sbi]
-- [Talking History Highlights][url_h_thh]
+- [Data Privacy Detective][url_st_dpd]
+- [Data Privacy Podcast][url_st_dpp]
+- [The Privacy Advisor Podcast][url_st_tpap]
+- [99% Invisible][url_st_i]
+- [Freakonomics, M.D.][url_st_fmd]
+- [Pandemic: Coronavirus Edition][url_st_pce]
+- [Futureproof with Jonathan McCrea][url_st_fjmc]
+- [The Infinite Monkey Cage][url_st_timc]
+- [Science Vs][url_st_sv]
+- [Science Weekly][url_st_sw]
+- [AWS Morning Brief][url_st_awsmb]
+- [Babbage from The Economist][url_st_bte]
+- [The Big Tech Show][url_st_tbts]
+- [FT Tech Tonic][url_st_fttt]
+- [Marketplace Tech][url_st_mt]
+- [Tech Radio Podcast][url_st_trp]
+- [Tech Talk with Jess Kelly][url_st_ttjk]
 - [Technology on Pat Kenny][url_st_tpk]
-- [The World Ahead from The Economist][url_jp_tep]
-- [This Day in Esoteric Political History][url_h_tdeph]
-- [Today in Focus][url_jp_tf]
-- [The Truth][url_ps_tt]
-- [UNDISCOVERED][url_jp_undiscovered]
-- [Untold Killing][url_jp_uk]
-- [What Am Politics?][url_jp_wap]
-- [What Trump Can Teach Us About Con Law][url_ps_wtctuacl]
-- [Wind of Change][url_h_wc]
-- [Windows Insider Podcast][url_se_wip]
-- [Words To That Effect][url_ps_wtte]
-- [WSJ’s The Future of Everything][url_ps_wsjtfe]
+- [Go and See][url_st_gs]
 
 [url_be_taob]: https://soundcloud.com/thearchitectsofbusiness
 [url_be_dhbr]: https://hbr.org/podcasts/dear-hbr
@@ -211,6 +183,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_jp_titwvp]: http://www.irishtimes.com/news/world/world-view
 [url_jp_mmskm]: https://www.marketplace.org/shows/make-me-smart-with-kai-and-molly/
 [url_jp_m]: https://www.marketplace.org/shows/marketplace/
+[url_jp_mtte]: https://www.economist.com/
 [url_jp_tpp]: https://www.businesspost.ie/
 [url_jp_an]: https://bbc.co.uk/programmes/m000psj8
 [url_jp_talr]: https://www.theguardian.com/news/series/the-audio-long-read
@@ -221,7 +194,8 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_jp_tf]: https://www.theguardian.com/news/series/todayinfocus
 [url_jp_undiscovered]: https://undiscoveredpod.podbean.com/
 [url_jp_uk]: https://untoldkilling.podbean.com/
-[url_jp_upp]: https://www.ft.com/uk-politics-podcast
+[url_jp_ip]: http://www.irishtimes.com/
+[url_jp_pp]: https://www.ft.com/uk-politics-podcast
 [url_jp_politicoeuc]: https://www.politico.eu/eu-confidential-podcast/
 [url_jp_wap]: https://audioboom.com/channel/what-am-politics
 [url_jp_yp]: https://www.rte.ie/news/politics/
@@ -237,6 +211,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_ps_wtte]: http://wttepodcast.com/
 [url_ps_isof]: http://thejournal.ie/
 [url_ps_tnf]: https://play.acast.com/s/the-next-five
+[url_ps_twate]: https://www.economist.com/
 [url_ps_wsjtfe]: https://www.wsj.com/podcasts/wsj-the-future-of-everything
 [url_ps_conflicted]: https://conflicted.podbean.com/
 [url_ps_iw]: https://www.imaginaryworldspodcast.org/
@@ -274,6 +249,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_st_sv]: https://gimletmedia.com/science-vs/
 [url_st_sw]: https://www.theguardian.com/science/series/science
 [url_st_awsmb]: https://www.lastweekinaws.com/
+[url_st_bte]: https://www.economist.com/
 [url_st_tbts]: https://www.independent.ie/podcasts/the-big-tech-show/
 [url_st_fttt]: http://ft.com/
 [url_st_mt]: https://www.marketplace.org/shows/marketplace-tech/
@@ -289,6 +265,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_se_rs]: https://rustacean-station.org/
 [url_se_wip]: https://insider.windows.com/
 [url_tl_ct]: https://www.conversationswithtyler.com/
+[url_tl_tea]: https://www.economist.com/
 [url_tl_fr]: http://freakonomics.com/
 [url_tl_tfrbc]: https://the-freakonomics-radio-book-club.simplecast.com/
 [url_tl_fsjk]: https://www.newstalk.com/podcasts/full-steam-with-jess-kelly
@@ -302,25 +279,3 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_tl_ste]: https://art19.com/shows/should-this-exist
 [url_tl_smapmg]: https://www.mogawdat.com/
 [url_tl_sbi]: https://sudhir-breaks-the-internet.simplecast.com/
-[url_jp_tbmyns]: https://pca.st/cy8xuo9v
-[url_jp_bb]: https://www.theguardian.com/technology/series/blackbox
-[url_st_clh]: https://www.redhat.com/en/command-line-heroes
-[url_jp_tep]: https://www.economist.com/audio/podcasts
-[url_be_tes]: https://shows.acast.com/the-economics-show-with-soumaya-keynes
-[url_jp_teks]: https://www.nytimes.com/ezra-klein-podcast
-[url_h_focp]: https://fallofcivilizationspodcast.com/
-[url_jp_gcfhi]: https://goodfellows.podbean.com/
-[url_st_hf]: https://www.nytimes.com/column/hard-fork
-[url_ps_hm]: https://www.iheart.com/podcast/1297-hot-money-who-rules-porn-97459449/
-[url_jp_ipwhl]: https://www.irishtimes.com/podcasts/inside-politics/
-[url_jp_itn]: https://www.irishtimes.com/podcasts/in-the-news/
-[url_h_tla]: https://www.pushkin.fm/podcasts/the-last-archive
-[url_ps_owks]: https://nymag.com/on-with-kara-swisher
-[url_ps_p]: http://nymag.com/pivot
-[url_jp_pf]: https://www.ft.com/uk-politics-podcast
-[url_jp_pp]: https://www.politico.eu/power-play-podcast/
-[url_be_pip]: http://pragmatisminpractice.libsyn.com/website
-[url_jp_gh]: https://www.goalhanger.com/
-[url_jp_trip]: http://therestispolitics.com/
-[url_tl_tw]: https://www.thoughtworks.com/podcasts
-[url_jp_twib]: https://www.economist.com/audio/podcasts/the-world-in-brief
