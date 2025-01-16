@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   terraform: circleci/terraform@3.5.0
   aws-cli: circleci/aws-cli@5.1.2
-  zola: jerus-org/zola@1.1.0
+  zola: jerus-org/zola@1.2.0
   toolkit: digital-prstv/circleci-toolkit@2.0.0
 
 # Define a job to be invoked later in a workflow.
@@ -37,7 +37,79 @@ parameters:
     type: string
     default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
 
+executors:
+  zola:
+    docker:
+      - image: jerusdp/ci-zola:0.19.2
+
 jobs:
+  build:
+    description: >
+      Build public site using zola.
+
+    executor:
+      name: "zola"
+
+    parameters:
+      zola_version:
+        type: string
+        description: "The of zola to use"
+      update_submodules:
+        type: boolean
+        default: true
+        description: "If true, the git submodules will be updated."
+      list_directory:
+        type: boolean
+        default: false
+        description: "If true, list the directory after the update."
+      output_dir:
+        type: string
+        default: ""
+        description: "If true, list the directory after the update."
+
+    steps:
+      - checkout
+
+      - when:
+          condition: << parameters.update_submodules >>
+          steps:
+            - run:
+                name: Sync git submodules
+                command: |
+                  cat .gitmodules
+            - run:
+                name: Sync git submodules
+                command: |
+                  git submodule sync
+
+            - run:
+                name: Update git submodules
+                command: |
+                  git submodule update --init
+
+      - run:
+          name: Confirm zola version
+          command: |
+            zola --version
+
+      - run:
+          name: Export OUTPUT_DIRECTORY
+          command: |
+            echo "export OD=<< parameters.output_dir >>" >> "$BASH_ENV"
+
+      - run:
+          name: Build site
+          command: <<include(scripts/build.sh)>>
+
+      - when:
+          condition: << parameters.list_directory >>
+          steps:
+            - run:
+                name: List directory contents
+                command: |
+                  pwd
+                  ls -la
+
   authorise_aws:
     docker:
       - image: cimg/base:2025.01
@@ -297,7 +369,7 @@ workflows:
   build_website:
     when: << pipeline.parameters.update-website >>
     jobs:
-      - zola/build:
+      - build:
           zola_version: 0.19.2
           list_directory: true
           pre-steps:
@@ -313,7 +385,7 @@ workflows:
             branches:
               ignore: main
           requires:
-            - zola/build
+            - build
           context:
             - release
             - bot-check
