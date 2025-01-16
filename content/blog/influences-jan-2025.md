@@ -1,6 +1,7 @@
 +++
 title = "Influences - updated January 2025"
 date = 2025-01-10
+updated = 2025-01-16
 draft = false
 
 [taxonomies]
@@ -118,7 +119,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_h_thi]: https://thehistoryofireland.com/
 [url_h_hic]: http://www.bbc.co.uk/programmes/p0683ms3
 [url_h_rh]: http://revisionisthistory.com/
-[url_h_r]: http://www.revolutionspodcast.com/
+[url_h_r]: https://thehistoryofrome.typepad.com/revolutions_podcast/
 [url_jp_ftnb]: http://ft.com/
 [url_jp_tite]: https://theintelligence.economist.com/
 [url_jp_an]: https://bbc.co.uk/programmes/m000psj8
@@ -146,7 +147,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_st_timc]: http://www.bbc.co.uk/programmes/b00snr0w
 [url_st_tbts]: https://www.independent.ie/podcasts/the-big-tech-show/
 [url_st_fttt]: http://ft.com/
-[url_st_trp]: http://www.techradiopodcast.com/
+[url_st_trp]: https://www.techcentral.ie/category/radio/
 [url_st_ttjk]: https://www.newstalk.com/podcasts/tech-talk-with-jess-kelly
 [url_se_eciq]: https://bit.ly/3CibOVS
 [url_se_tiqp]: https://bit.ly/3yxbEaU
@@ -160,7 +161,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_tl_tjhs]: https://www.podcastone.com/the-jordan-harbinger-show
 [url_tl_pima]: https://people-i-mostly-admire.simplecast.com/
 [url_tl_trr]: https://play.acast.com/s/therachmanreview
-[url_tl_rh]: https://www.futurehuman.xyz/
+[url_tl_rh]: https://www.siliconrepublic.com/future-human/
 [url_jp_tbmyns]: https://pca.st/cy8xuo9v
 [url_jp_bb]: https://www.theguardian.com/technology/series/blackbox
 [url_st_clh]: https://www.redhat.com/en/command-line-heroes

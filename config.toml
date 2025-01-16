@@ -23,7 +23,14 @@ include_description = true
 include_path = true
 include_content = true
 
-
+# Configuration of the link checker.
+[link_checker]
+# Skip link checking for external URLs that start with these prefixes
+skip_prefixes = [
+    "http://www.linkedin.com/",
+    "https://frostbrowntodd.com",
+    "https://http://www.dataprivacypod.com/",
+]
 
 [markdown]
 # Whether to do syntax highlighting

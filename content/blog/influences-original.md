@@ -1,6 +1,7 @@
 +++
 title = "Influences"
 date = 2021-11-06
+updated = 2025-01-16
 draft = false
 
 [taxonomies]
@@ -173,7 +174,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_h_thi]: https://thehistoryofireland.com/
 [url_h_hic]: http://www.bbc.co.uk/programmes/p0683ms3
 [url_h_rh]: http://revisionisthistory.com/
-[url_h_r]: http://www.revolutionspodcast.com/
+[url_h_r]: https://thehistoryofrome.typepad.com/revolutions_podcast/
 [url_h_thh]: https://www.newstalk.com/podcasts/highlights-from-talking-history
 [url_h_tdeph]: https://www.jodyavirgan.com/political-history-show
 [url_h_wc]: https://crooked.com/podcast-series/wind-of-change/
@@ -197,7 +198,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_jp_ip]: http://www.irishtimes.com/
 [url_jp_pp]: https://www.ft.com/uk-politics-podcast
 [url_jp_politicoeuc]: https://www.politico.eu/eu-confidential-podcast/
-[url_jp_wap]: https://audioboom.com/channel/what-am-politics
+[url_jp_wap]: https://headstuff.org/what-am-politics
 [url_jp_yp]: https://www.rte.ie/news/politics/
 [url_n_br]: https://www.rte.ie/news/
 [url_ps_ascpms]: https://www.pushkin.fm/show/slight-change-of-plans/
@@ -215,7 +216,7 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_ps_wsjtfe]: https://www.wsj.com/podcasts/wsj-the-future-of-everything
 [url_ps_conflicted]: https://conflicted.podbean.com/
 [url_ps_iw]: https://www.imaginaryworldspodcast.org/
-[url_ps_m]: https://audioboom.com/channel/motherfocloir
+[url_ps_m]: https://headstuff.org/motherfocloir/
 [url_ps_wtctuacl]: https://trumpconlaw.com/
 [url_ps_ra]: http://gimletmedia.com/shows/reply-all
 [url_ps_imp]: http://irishmythologypodcast.ie/
@@ -253,10 +254,10 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_st_tbts]: https://www.independent.ie/podcasts/the-big-tech-show/
 [url_st_fttt]: http://ft.com/
 [url_st_mt]: https://www.marketplace.org/shows/marketplace-tech/
-[url_st_trp]: http://www.techradiopodcast.com/
+[url_st_trp]: https://www.techcentral.ie/category/radio/
 [url_st_ttjk]: https://www.newstalk.com/podcasts/tech-talk-with-jess-kelly
 [url_st_tpk]: https://www.newstalk.com/podcasts/technology-on-pat-kenny
-[url_st_gs]: https://cms.megaphone.fm/channel/pushkinshowcase?selected=CAD8998901677
+[url_st_gs]: https://www.pushkin.fm/podcasts/go-and-see
 [url_se_eciq]: https://bit.ly/3CibOVS
 [url_se_tiqp]: https://bit.ly/3yxbEaU
 [url_se_tnsp]: https://thenewstack.simplecast.com/
@@ -268,14 +269,14 @@ My tastes in film, TV and books run a wide gamut but if I was to pin it to one g
 [url_tl_tea]: https://www.economist.com/
 [url_tl_fr]: http://freakonomics.com/
 [url_tl_tfrbc]: https://the-freakonomics-radio-book-club.simplecast.com/
-[url_tl_fsjk]: https://www.newstalk.com/podcasts/full-steam-with-jess-kelly
+[url_tl_fsjk]: https://www.newstalk.com/podcasts/full-steam-with-jess-kellyf
 [url_tl_iot]: http://www.bbc.co.uk/programmes/b006qykl
 [url_tl_is]: http://www.intelligencesquared.com/
-[url_tl_isb]: https://play.acast.com/s/intelligence-squared-business
+[url_tl_isb]: https://www.intelligencesquared.com/business-podcast/
 [url_tl_tjhs]: https://www.podcastone.com/the-jordan-harbinger-show
 [url_tl_pima]: https://people-i-mostly-admire.simplecast.com/
 [url_tl_trr]: https://play.acast.com/s/therachmanreview
-[url_tl_rh]: https://www.futurehuman.xyz/
+[url_tl_rh]: https://www.siliconrepublic.com/future-human/
 [url_tl_ste]: https://art19.com/shows/should-this-exist
 [url_tl_smapmg]: https://www.mogawdat.com/
 [url_tl_sbi]: https://sudhir-breaks-the-internet.simplecast.com/
