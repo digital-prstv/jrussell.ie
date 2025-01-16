@@ -27,9 +27,11 @@ include_content = true
 [link_checker]
 # Skip link checking for external URLs that start with these prefixes
 skip_prefixes = [
-    "http://www.linkedin.com/",
-    "https://frostbrowntodd.com",
-    "https://http://www.dataprivacypod.com/",
+    "https://www.linkedin.com/",
+    "https://frostbrowntodd.com/",
+    "http://www.dataprivacypod.com/",
+    "https://www.newstalk.com/",
+    "https://www.wsj.com/",
 ]
 
 [markdown]
