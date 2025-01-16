@@ -8,6 +8,7 @@ compile_sass = true
 build_search_index = true
 
 theme = "tabi"
+title = "ruminations"
 
 taxonomies = [
     # You can enable/disable RSS
@@ -22,7 +23,8 @@ highlight_code = true
 
 # extra_syntaxes = ["syntaxes"]
 
-highlight_theme = "gruvbox-dark"
+# highlight_theme = "gruvbox-dark"
+highlight_theme = "css"
 render_emoji = true
 
 [extra]
