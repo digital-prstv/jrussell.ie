@@ -74,7 +74,7 @@ jobs:
           condition: << parameters.update_submodules >>
           steps:
             - run:
-                name: Sync git submodules
+                name: check known modules
                 command: |
                   cat .gitmodules
             - run:
@@ -86,6 +86,10 @@ jobs:
                 name: Update git submodules
                 command: |
                   git submodule update --init
+            - run:
+                name: list themes directory
+                command: |
+                  ls -R themes
 
       - run:
           name: Confirm zola version
