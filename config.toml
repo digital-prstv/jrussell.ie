@@ -4,9 +4,6 @@ base_url = "https://www.jrussell.ie"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
-
 theme = "tabi"
 title = "ruminations"
 
@@ -15,6 +12,18 @@ taxonomies = [
     { name = "categories", feed = true },
     { name = "tags", feed = true },
 ]
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[search]
+index_format = "elasticlunr_json" # Or the less efficient "elasticlunr_javascript".
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+
+
 
 [markdown]
 # Whether to do syntax highlighting
