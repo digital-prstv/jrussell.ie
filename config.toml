@@ -66,3 +66,12 @@ socials = [
     { name = "linkedin", url = "https://www.linkedin.com/in/russellj/", icon = "linkedin" },
     { name = "bluesky", url = "https://bsky.app/profile/jerus.bsky.social", icon = "bluesky" },
 ]
+
+footer_menu = [
+    {url = "about", name = "about", trailing_slash = true},
+    {url = "privacy", name = "privacy", trailing_slash = true},
+    {url = "sitemap.xml", name = "sitemap", trailing_slash = false},
+    {url = "https://www.jrussell.ie", name = "external link", trailing_slash = true},
+]
+
+copyright = "© $CURRENT_YEAR Jeremiah Russell $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
