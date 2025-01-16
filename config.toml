@@ -45,3 +45,6 @@ even_menu = [
     { url = "$BASE_URL/about", name = "About" },
 ]
 even_title = "ruminations"
+skin = "indigo_ingot"
+compact_tags = true
+tag_sorting = "frequency"
