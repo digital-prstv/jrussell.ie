@@ -72,6 +72,7 @@ workflows:
             templates/.* update-website true
             syntaxes/.* update-website true
             themes/.* update-website true
+            config.toml update-website true
             .circleci/.* update-changelog true
             justfile update-changelog true
             README.md update-changelog true
