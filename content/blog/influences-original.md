@@ -1,7 +1,7 @@
 +++
 title = "Influences"
 date = 2021-11-06
-updated = 2025-01-16
+updated = 2025-01-17
 draft = false
 
 [taxonomies]
@@ -10,8 +10,9 @@ tags = ["podcasts", "insights"]
 +++
 
 If you want to understand where some of my crazy (or less) ideas might come from this reference to my influences may help.
-My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't assume away some important detail with one of its many heuristics.
 <!-- more -->
+My tastes in film, TV and books run a wide gamut but if I was to pin it to one genre it would probably by Science Fiction and Fantasy (is that two?). There is something about taking you out of a familiar world that really helps to focus on delivering a particular message. Perhaps its the fact that everything is strange; anything is possible. It ensures that your brain doesn't assume away some important detail with one of its many heuristics.
+
 ## People and Society
 
 - [A Slight Change of Plans with Maya Shankar][url_ps_ascpms]
