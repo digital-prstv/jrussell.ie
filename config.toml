@@ -61,11 +61,11 @@ tag_sorting = "frequency"
 
 menu = [
     { name = "blog", url = "blog", trailing_slash = true },
-    { name = "archive", url = "archive", trailing_slash = true },
-    { name = "tags", url = "tags", trailing_slash = true },
-    { name = "categories", url = "categories", trailing_slash = true },
-    # { name = "technology", url = "technology", trailing_slash = true },
+    # { name = "categories", url = "categories", trailing_slash = true },
+    { name = "technology", url = "blog/technology", trailing_slash = true },
     # { name = "projects", url = "projects", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
 ]
 
 quick_navigation_buttons = true
