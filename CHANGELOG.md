@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Rebuild with tabi theme(pr [#58])
+
 ### Changed
 
 - ci(circleci)-remove fixed version from workflow configuration(pr [#55])
@@ -47,5 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#55]: https://github.com/digital-prstv/jrussell.ie/pull/55
 [#56]: https://github.com/digital-prstv/jrussell.ie/pull/56
 [#57]: https://github.com/digital-prstv/jrussell.ie/pull/57
+[#58]: https://github.com/digital-prstv/jrussell.ie/pull/58
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0

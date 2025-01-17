@@ -1,7 +1,7 @@
 +++
 title = "Privacy"
 path = "privacy"
-template = "privacy.html"
+template = "info-page.html"
 +++
 
 This site uses no cookies and only essential scripts.

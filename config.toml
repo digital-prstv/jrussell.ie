@@ -4,15 +4,35 @@ base_url = "https://www.jrussell.ie"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
-
-theme = "even"
+theme = "tabi"
+title = "ruminations"
 
 taxonomies = [
     # You can enable/disable RSS
     { name = "categories", feed = true },
     { name = "tags", feed = true },
+]
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[search]
+index_format = "elasticlunr_json" # Or the less efficient "elasticlunr_javascript".
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+
+# Configuration of the link checker.
+[link_checker]
+# Skip link checking for external URLs that start with these prefixes
+skip_prefixes = [
+    "https://www.linkedin.com/",
+    "https://frostbrowntodd.com/",
+    "http://www.dataprivacypod.com/",
+    "https://www.newstalk.com/",
+    "https://www.wsj.com/",
+    "https://thehistoryofrome.",
 ]
 
 [markdown]
@@ -22,7 +42,8 @@ highlight_code = true
 
 # extra_syntaxes = ["syntaxes"]
 
-highlight_theme = "gruvbox-dark"
+# highlight_theme = "gruvbox-dark"
+highlight_theme = "css"
 render_emoji = true
 
 [extra]
@@ -34,3 +55,38 @@ even_menu = [
     { url = "$BASE_URL/about", name = "About" },
 ]
 even_title = "ruminations"
+skin = "ruminate"
+compact_tags = true
+tag_sorting = "frequency"
+
+menu = [
+    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    { name = "categories", url = "categories", trailing_slash = true },
+    # { name = "technology", url = "technology", trailing_slash = true },
+    # { name = "projects", url = "projects", trailing_slash = true },
+]
+
+quick_navigation_buttons = true
+show_previous_next_article_links = true
+invert_previous_next_article_links = true
+
+socials = [
+    { name = "github", url = "https://github.com/jerusdp/", icon = "github" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/russellj/", icon = "linkedin" },
+    { name = "bluesky", url = "https://bsky.app/profile/jerus.bsky.social", icon = "bluesky" },
+]
+
+footer_menu = [
+    {url = "about", name = "about", trailing_slash = true},
+    {url = "privacy", name = "privacy", trailing_slash = true},
+    {url = "sitemap.xml", name = "sitemap", trailing_slash = false},
+    {url = "https://www.jrussell.ie", name = "external link", trailing_slash = true},
+]
+
+copyright = "© $CURRENT_YEAR Jeremiah Russell $SEPARATOR Unless otherwise noted, the content in this website is available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license."
+
+show_reading_time = true
+
+email = "amVycnlAanJ1c3NlbGwuaWU="
