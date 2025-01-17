@@ -7,3 +7,4 @@ transparent = true
 [extra]
 series = true
 +++
+Articles on technology, software development, and related topics.
