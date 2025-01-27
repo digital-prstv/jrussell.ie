@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   terraform: circleci/terraform@3.5.0
   aws-cli: circleci/aws-cli@5.1.2
-  zola: jerus-org/zola@1.2.1
+  zola: jerus-org/zola@1.2.2
   toolkit: digital-prstv/circleci-toolkit@2.0.0
 
 # Define a job to be invoked later in a workflow.
