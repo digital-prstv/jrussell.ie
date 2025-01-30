@@ -9,6 +9,7 @@ title = "ruminations"
 
 taxonomies = [
     # You can enable/disable RSS
+    { name = "topic", feed = true },
     { name = "categories", feed = true },
     { name = "tags", feed = true },
 ]
@@ -47,30 +48,18 @@ highlight_theme = "css"
 render_emoji = true
 
 [extra]
-# This is the default menu
-even_menu = [
-    { url = "$BASE_URL", name = "Home" },
-    { url = "$BASE_URL/categories", name = "Categories" },
-    { url = "$BASE_URL/tags", name = "Tags" },
-    { url = "$BASE_URL/about", name = "About" },
-]
-even_title = "ruminations"
-skin = "ruminate"
-compact_tags = true
-tag_sorting = "frequency"
-
 menu = [
     { name = "blog", url = "blog", trailing_slash = true },
     # { name = "categories", url = "categories", trailing_slash = true },
-    { name = "technology", url = "blog/technology", trailing_slash = true },
+    { name = "technology", url = "topic/technology", trailing_slash = true },
     # { name = "projects", url = "projects", trailing_slash = true },
     { name = "tags", url = "tags", trailing_slash = true },
     { name = "archive", url = "archive", trailing_slash = true },
 ]
 
-quick_navigation_buttons = true
-show_previous_next_article_links = true
-invert_previous_next_article_links = true
+quick_navigation_buttons = false
+show_previous_next_article_links = false
+invert_previous_next_article_links = false
 
 socials = [
     { name = "github", url = "https://github.com/jerusdp/", icon = "github" },
