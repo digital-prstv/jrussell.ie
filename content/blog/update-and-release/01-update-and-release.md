@@ -1,7 +1,7 @@
 +++
 title = "Update and Release"
 date = 2025-01-17
-updated = 2025-01-16
+updated = 2025-01-30
 draft = false
 
 [taxonomies]
@@ -10,27 +10,26 @@ topic = ["Technology"]
 tags = ["rust", "circleci", "sbom"]
 +++
 
-## Introducing Our Software Update and Release Workflow Series
+## Why an update and release workflow?
 
-We’re excited to launch a new series of blog posts dedicated to sharing our comprehensive software update and release workflow. This series aims to provide an in-depth look at the processes we’ve established, the best practices we’ve adopted, and the innovative tools we've built and integrated to streamline our workflow.
-
-## Why Share Our Workflow?
-
-In the fast-paced world of software development, a well-defined update and release workflow is crucial. It ensures that we deliver high-quality products to our users efficiently and reliably. By sharing our approach, we hope to help other teams refine their processes and adopt useful tools that can enhance their productivity and software quality.
+In the fast-paced world of software development, a well-defined update and release workflow is crucial. It ensures that we deliver high-quality products to our users and sustain the quality of these products over time, even as the products on which our software depends is updated. By sharing our approach, we hope to help other teams refine their processes and adopt useful tools that can enhance their productivity and software quality.
 
 ## What to Expect
 
-1. **Overview of Our Workflow**: We’ll kick things off with a detailed overview of our entire software update and release workflow. You’ll gain insights into each stage of the process, from ideation to deployment.
+1. **Overview of Our Workflow**: We’ll kick things off with a detailed overview of the dependency update and release workflow. We’ll cover the key steps involved, from identification of updates through automated testing and release.
+<!-- 
+1. **Identifying dependency updates**: Discover the tools we use for identifying updates and implementing the required changes onto our own tools. We'll discuss dependency management tools and the configurations we use to manage our dependencies.
 
-2. **Planning and Coordination Tools**: Discover the tools we use for planning and coordinating our releases. We'll discuss project management platforms, communication tools, and how these help keep everyone aligned.
+2. **Continuous Integration and Delivery**: We’ll dive into our CI/CD pipelines, showcasing how we use automation to build, test, and deploy our software efficiently and reliably.
 
-3. **Automated Testing and Quality Assurance**: Learn about the automated testing frameworks and QA tools we’ve implemented to ensure our software updates are thoroughly vetted before going live.
+3. **How this works in practice: nextsv**: We'll walk you through a simple example of how our workflow works in practice. The example is based on simple tool that is used as part of the CI pipeline and provides a straight-forward example of how the workflow works.
 
-4. **Continuous Integration and Delivery**: We’ll dive into our CI/CD pipelines, showcasing how we use automation to build, test, and deploy our software efficiently and reliably.
+4. **How this works in practice: ci-container**: We'll walk you through a docker based example. We'll share the challenges complexity of the testing requirements and how the release process works.
 
-5. **User Feedback and Iteration**: After a release, gathering user feedback is essential. We’ll explore the tools and methods we use to collect insights from our users and how we incorporate their feedback into future updates.
+5. **How this works in practice: hcaptcha**: We'll walk you through a complex real-world example. We'll share the challenges complexity of the testing requirements and how the release process works.
 
-6. **Lessons Learned and Best Practices**: Through this journey, we’ve learned valuable lessons that have shaped our workflow. We'll wrap up the series by sharing these insights and the best practices we've adopted along the way.
+6. **Lessons Learned and Best Practices**: Through this journey, we've learned valuable lessons that have shaped our workflow. We'll wrap up the series by sharing these insights and the best practices we've adopted along the way.
+-->
 
 **Join Us on This Journey!**
 
