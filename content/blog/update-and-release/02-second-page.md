@@ -6,6 +6,7 @@ draft = false
 
 [taxonomies]
 categories = ["Technology", "DevSecOps", "Security"]
+topic = ["Technology"]
 tags = ["rust", "circleci", "sbom"]
 +++
 

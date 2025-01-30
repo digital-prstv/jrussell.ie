@@ -14,21 +14,21 @@ Welcome to $SERIES_HTML_LINK!
 
 This $SERIES_PAGES_NUMBER-part series outlines the workflow and tools I've implemented to ensure that the open-source software I produce is updated and released weekly, addressing any security issues that may arise in dependencies.
 
-Up next: $NEXT_HTML_LINK - $NEXT_DESCRIPTION
+Next: $NEXT_HTML_LINK - $NEXT_DESCRIPTION
 """
 
 middle = """
 📚 Part $SERIES_PAGE_INDEX of $SERIES_PAGES_NUMBER in $SERIES_HTML_LINK
 
-Previously: $PREV_HTML_LINK
-Next up: $NEXT_HTML_LINK
+- Previous: $PREV_HTML_LINK
+- Next: $NEXT_HTML_LINK
 """
 
 prev_only = """
 Welcome to the final part of $SERIES_HTML_LINK!
 New here? Start with $FIRST_HTML_LINK to build a strong foundation.
 
-Previously: $PREV_HTML_LINK
+- Previous: $PREV_HTML_LINK
 """
 
 # Fallback template.

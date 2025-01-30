@@ -6,18 +6,19 @@ draft = false
 
 [taxonomies]
 # categories = ["Technology", "DevSecOps", "Security"]
+topic = ["Technology"]
 tags = ["rust", "circleci", "sbom"]
 +++
 
-**Introducing Our Software Update and Release Workflow Series**
+## Introducing Our Software Update and Release Workflow Series
 
 We’re excited to launch a new series of blog posts dedicated to sharing our comprehensive software update and release workflow. This series aims to provide an in-depth look at the processes we’ve established, the best practices we’ve adopted, and the innovative tools we've built and integrated to streamline our workflow.
 
-**Why Share Our Workflow?**
+## Why Share Our Workflow?
 
 In the fast-paced world of software development, a well-defined update and release workflow is crucial. It ensures that we deliver high-quality products to our users efficiently and reliably. By sharing our approach, we hope to help other teams refine their processes and adopt useful tools that can enhance their productivity and software quality.
 
-**What to Expect:**
+## What to Expect
 
 1. **Overview of Our Workflow**: We’ll kick things off with a detailed overview of our entire software update and release workflow. You’ll gain insights into each stage of the process, from ideation to deployment.
 

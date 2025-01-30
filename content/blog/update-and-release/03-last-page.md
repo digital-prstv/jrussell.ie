@@ -2,10 +2,11 @@
 title = "Last Page"
 date = 2025-01-17
 updated = 2025-01-16
-draft = false
+draft = true
 
 [taxonomies]
 categories = ["Technology", "DevSecOps", "Security"]
+topic = ["Technology"]
 tags = ["rust", "circleci", "sbom"]
 +++
 
