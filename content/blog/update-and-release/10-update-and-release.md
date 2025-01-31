@@ -7,7 +7,7 @@ draft = false
 [taxonomies]
 # categories = ["Technology", "DevSecOps", "Security"]
 topic = ["Technology"]
-tags = ["rust", "circleci", "sbom"]
+tags = ["devsecops", "software", "security", "practices"]
 +++
 
 ## Why an update and release workflow?
