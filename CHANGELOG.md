@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - Dependencies: update dependency zola to v1.2.2(pr [#60])
+- Dependencies: update cimg/base docker tag to v2025.02(pr [#62])
 
 ## [1.0.0] - 2025-01-14
 
@@ -59,5 +60,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#58]: https://github.com/digital-prstv/jrussell.ie/pull/58
 [#60]: https://github.com/digital-prstv/jrussell.ie/pull/60
 [#61]: https://github.com/digital-prstv/jrussell.ie/pull/61
+[#62]: https://github.com/digital-prstv/jrussell.ie/pull/62
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
