@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - 🔧 chore(gitmodules): update submodule configuration(pr [#64])
 
+### Security
+
+- Dependencies: update dependency aws-cli to v5.2.0(pr [#65])
+
 ## [1.1.0] - 2025-02-05
 
 ### Added
@@ -72,6 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#62]: https://github.com/digital-prstv/jrussell.ie/pull/62
 [#63]: https://github.com/digital-prstv/jrussell.ie/pull/63
 [#64]: https://github.com/digital-prstv/jrussell.ie/pull/64
+[#65]: https://github.com/digital-prstv/jrussell.ie/pull/65
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
