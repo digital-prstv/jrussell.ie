@@ -97,7 +97,6 @@ allowed_domains = [
     { directive = "script-src", domains = ["'self'"] },
     { directive = "style-src", domains = ["'self'"] },
     { directive = "frame-src", domains = ["player.vimeo.com", "https://www.youtube-nocookie.com"] },
-    { directive = "connect-src", domains = [ "https://webmention.io"] },
 ]
 
 # Enable the CSP directives configured (or default).
@@ -115,7 +114,7 @@ enable_subset = true
 custom_subset = true
 
 [extra.webmentions]
-enable = true
+enabled = true
 # Specify the domain registered with webmention.io.
 domain = "www.jrussell.ie"
 
@@ -125,8 +124,7 @@ domain = "www.jrussell.ie"
 
 # data configuration for the webmention.min.js script
 # The base URL to use for this page. Defaults to window.location
-page_url = "https://beesbuzz.biz/code/439-Falsehoods-programmers-believe-about-email"
-
+# page_url = ""
 # Additional URLs to check, separated by |s
 # add_urls 
 
