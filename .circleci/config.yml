@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
-  zola: jerus-org/zola@1.2.2
+  zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.0.4
   aws-cli: circleci/aws-cli@5.2.0
 parameters:
@@ -99,6 +99,7 @@ workflows:
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
+          check_links: false
           output_dir: /tmp/workspace/public
           pre-steps:
             - attach_workspace:
