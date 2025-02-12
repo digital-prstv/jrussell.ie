@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - Dependencies: update dependency aws-cli to v5.2.0(pr [#65])
+- Dependencies: update dependency terraform to v3.5.1(pr [#68])
 
 ## [1.1.0] - 2025-02-05
 
@@ -79,6 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#64]: https://github.com/digital-prstv/jrussell.ie/pull/64
 [#65]: https://github.com/digital-prstv/jrussell.ie/pull/65
 [#66]: https://github.com/digital-prstv/jrussell.ie/pull/66
+[#68]: https://github.com/digital-prstv/jrussell.ie/pull/68
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
