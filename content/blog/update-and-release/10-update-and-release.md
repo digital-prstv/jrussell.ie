@@ -1,7 +1,7 @@
 +++
 title = "Update and Release"
 date = 2025-01-17
-updated = 2025-01-30
+updated = 2025-02-12
 draft = false
 
 [taxonomies]
@@ -34,3 +34,5 @@ In the fast-paced world of software development, a well-defined update and relea
 **Join Us on This Journey!**
 
 We believe that sharing knowledge and experiences enhances collective learning in the software development community. Whether you’re a developer, project manager, or product owner, there’s something valuable for everyone in this series. Stay tuned for our upcoming posts, and let’s embark on this journey of learning and improving together!
+
+{{ webmentions() }}
