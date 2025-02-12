@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - 🔧 chore(gitmodules): update submodule configuration(pr [#64])
+- ✨ feat(config): update configuration settings to support webmentions(pr [#66])
 
 ### Security
 
@@ -77,6 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#63]: https://github.com/digital-prstv/jrussell.ie/pull/63
 [#64]: https://github.com/digital-prstv/jrussell.ie/pull/64
 [#65]: https://github.com/digital-prstv/jrussell.ie/pull/65
+[#66]: https://github.com/digital-prstv/jrussell.ie/pull/66
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/digital-prstv/jrussell.ie/releases/tag/v1.0.0
