@@ -42,9 +42,6 @@ jobs:
     steps:
       - checkout
       - circleci-cli/install
-      - run:
-          name: Generate shared configuration
-          command: circleci config pack .circleci/shared >> .circleci/shared-config.yml
       - path-filtering/set-parameters:
           base-revision: main
           config-path: .circleci/continue_no_updates.yml
