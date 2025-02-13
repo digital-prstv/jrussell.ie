@@ -62,7 +62,7 @@ jobs:
       - path-filtering/generate-config
       - run:
           name: validate config
-          command: circleci config validate --org-slug github/digital-prstv --token $CIRCLE_TOKEN /tmp/generated-config.yml
+          command: circleci config validate --org-slug github/digital-prstv /tmp/generated-config.yml
       - continuation/continue:
           configuration_path: /tmp/generated-config.yml
 
