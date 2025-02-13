@@ -5,6 +5,7 @@ orbs:
   zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.0.4
   aws-cli: circleci/aws-cli@5.2.0
+  terraform: circleci/terraform@3.5.1
 parameters:
   success-flag:
     type: boolean
@@ -21,6 +22,11 @@ parameters:
     default: false
     description: |
       If set to true, the release-website workflow will be triggered.
+  release-iac:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the release-iac workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -39,6 +45,175 @@ jobs:
       - run: # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
+  authorise_aws:
+    docker:
+      - image: cimg/base:2025.02
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
+          region: eu-west-1
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths:
+            - .aws
+  plan-01-remote:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
+
+  apply-01-remote:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/01-remote
+          backend_config_file: ../remote.config
+
+  plan-10-static:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
+
+  apply-10-static:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/10-static
+          backend_config_file: ../remote.config
+
+  plan-20-network:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
+
+  apply-20-network:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/20-network
+          backend_config_file: ../remote.config
+
+  plan-21-site-cert:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
+
+  apply-21-site-cert:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/21-site-cert
+          backend_config_file: ../remote.config
+
+  plan-22-sec-headers:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
+
+  apply-22-sec-headers:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
+      - terraform/apply:
+          path: ./iac/22-sec-headers
+          backend_config_file: ../remote.config
+
+  plan-30-edge:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/plan:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
+
+  apply-30-edge:
+    docker:
+      - image: cimg/base:2025.02
+    executor: terraform/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/
+      - terraform/install
+      - terraform/apply:
+          path: ./iac/30-edge
+          backend_config_file: ../remote.config
 
 workflows:
   check_last_commit:
@@ -47,6 +222,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
+        - not: << pipeline.parameters.release-iac >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -59,6 +235,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
+        - not: << pipeline.parameters.release-iac >>
 
     jobs:
       - path-filtering/filter:
@@ -84,6 +261,7 @@ workflows:
         - << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
+        - not: << pipeline.parameters.release-iac >>
 
     jobs:
       - toolkit/end_success
@@ -94,6 +272,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - << pipeline.parameters.release-website >>
+        - not: << pipeline.parameters.release-iac >>
 
     jobs:
       - zola/build:
@@ -122,6 +301,117 @@ workflows:
       - toolkit/save_next_version:
           requires:
             - update_site
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+
+      - toolkit/make_release:
+          name: website github release
+          context:
+            - release
+            - bot-check
+          requires:
+            - toolkit/save_next_version
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          when_cargo_release: false
+          pcu_update_changelog: true
+      - toolkit/no_release:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          requires:
+            - toolkit/save_next_version:
+                - failed
+
+  release_iac:
+    when:
+      and:
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.release-website >>
+        - << pipeline.parameters.release-iac >>
+
+    jobs:
+      - authorise_aws
+      - plan-01-remote:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-10-static:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-20-network:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-21-site-cert:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-22-sec-headers:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - plan-30-edge:
+          context:
+            - AWS-DEV
+          requires:
+            - authorise_aws
+      - apply-01-remote:
+          context:
+            - AWS-DEV
+          requires:
+            - plan-01-remote
+            - plan-10-static
+            - plan-20-network
+            - plan-21-site-cert
+            - plan-22-sec-headers
+            - plan-30-edge
+      - apply-10-static:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-20-network:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-21-site-cert:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-20-network
+      - apply-22-sec-headers:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-01-remote
+      - apply-30-edge:
+          context:
+            - AWS-DEV
+          requires:
+            - apply-10-static
+            - apply-21-site-cert
+            - apply-22-sec-headers
+      - toolkit/update_changelog:
+          branches:
+            ignore: main
+          requires:
+            - apply-30-edge
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+
+      - toolkit/save_next_version:
+          requires:
+            - apply-30-edge
           min_rust_version: << pipeline.parameters.min-rust-version >>
 
       - toolkit/make_release:
