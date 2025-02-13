@@ -4,8 +4,7 @@ version: 2.1
 orbs:
   terraform: circleci/terraform@3.5.1
   aws-cli: circleci/aws-cli@5.2.0
-  zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.0.4
+  continue: circleci/continuation@1.1.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -166,60 +165,8 @@ workflows:
             - AWS-DEV
           requires:
             - authorise_aws
-      - toolkit/update_changelog:
-          branches:
-            ignore: main
+      - continue/continue:
           requires:
             - plan-30-edge
-          context:
-            - release
-            - bot-check
-            - pcu-app
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-
-  build_website:
-    when: << pipeline.parameters.update-website >>
-    jobs:
-      - zola/build:
-          zola_version: 0.19.2
-          list_directory: true
-          pre-steps:
-            - attach_workspace:
-                at: /home/circleci/
-          post-steps:
-            - persist_to_workspace:
-                root: /home/circleci/
-                paths:
-                  - project/public
-      - toolkit/update_changelog:
-          filters:
-            branches:
-              ignore: main
-          requires:
-            - zola/build
-          context:
-            - release
-            - bot-check
-            - pcu-app
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-
-  update_changelog:
-    when: << pipeline.parameters.update-changelog >>
-    jobs:
-      - toolkit/update_changelog:
-          filters:
-            branches:
-              ignore: main
-          context:
-            - release
-            - bot-check
-            - pcu-app
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-      - toolkit/end_success:
-          message: "Changelog update already completed in PR."
-          filters:
-            branches:
-              only: main
+          continue: 
+            - configuration_path: .circleci/continue_changelog.yml

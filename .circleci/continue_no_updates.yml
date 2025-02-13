@@ -1,0 +1,45 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+parameters:
+  update-infrastructure:
+    type: boolean
+    default: false
+    description: Update the site infrastructure
+  update-website:
+    type: boolean
+    default: false
+    description: |
+      Build the website using zola. 
+      Copy to the internet when run on the main branch.
+  validation-flag:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the generate-config workflow will be triggered.
+  update-changelog:
+    type: boolean
+    default: false
+    description: |
+      If set to true, the update-changelog workflow will be triggered.
+  min-rust-version:
+    type: string
+    default: "1.81"
+  fingerprint:
+    type: string
+    default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
+
+jobs:
+  no_updates:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: echo "No updates"
+
+workflows:
+  no_update-workflow:
+    jobs:
+      - no_updates
