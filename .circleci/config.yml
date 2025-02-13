@@ -263,7 +263,7 @@ workflows:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
         - not: << pipeline.parameters.release-iac >>
     jobs:
