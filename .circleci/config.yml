@@ -2,6 +2,8 @@ version: 2.1
 setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
+  circleci-cli: circleci/circleci-cli@0.1.9
+  continuation: circleci/continuation@1.1.0
   zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.0.4
   aws-cli: circleci/aws-cli@5.2.0
@@ -35,6 +37,35 @@ parameters:
     default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
 
 jobs:
+  setup:
+    executor: path-filtering/default
+    steps:
+      - checkout
+      - circleci-cli/install
+      - circleci-cli/setup
+      - path-filtering/set-parameters:
+          base-revision: main
+          config-path: .circleci/continue_no_updates.yml
+          mapping: |
+            iac/.* update-infrastructure true .circleci/continue_iac.yml
+            content/.* update-website true .circleci/continue_website.yml
+            sass/.* update-website true .circleci/continue_website.yml
+            static/.* update-website true .circleci/continue_website.yml
+            templates/.* update-website true .circleci/continue_website.yml
+            syntaxes/.* update-website true .circleci/continue_website.yml
+            themes/.* update-website true .circleci/continue_website.yml
+            config.toml update-website true .circleci/continue_website.yml
+            .circleci/.* update-changelog true .circleci/continue_changelog.yml
+            justfile update-changelog true .circleci/continue_changelog.yml
+            README.md update-changelog true .circleci/continue_changelog.yml
+            renovate.json update-changelog true .circleci/continue_changelog.yml
+      - path-filtering/generate-config
+      - run:
+          name: validate config
+          command: circleci config validate --org-slug github/digital-prstv /tmp/generated-config.yml
+      - continuation/continue:
+          configuration_path: /tmp/generated-config.yml
+
   update_site:
     executor: aws-cli/default
 
@@ -229,31 +260,17 @@ workflows:
           name: choose pipeline based on committer
           context: bot-check
 
-  generate-config:
+  setup-workflow:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
         - not: << pipeline.parameters.release-iac >>
-
     jobs:
-      - path-filtering/filter:
-          base-revision: main
-          config-path: .circleci/continue_config.yml
-          mapping: |
-            iac/.* update-infrastructure true
-            content/.* update-website true
-            sass/.* update-website true
-            static/.* update-website true
-            templates/.* update-website true
-            syntaxes/.* update-website true
-            themes/.* update-website true
-            config.toml update-website true
-            .circleci/.* update-changelog true
-            justfile update-changelog true
-            README.md update-changelog true
-            renovate.json update-changelog true
+      - setup:
+            context:
+              - circleci-api
 
   on_success:
     when:
