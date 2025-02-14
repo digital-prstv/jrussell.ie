@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci): update CircleCI configuration for IAC deployment(pr [#70])
 - 👷 ci(circleci): update CircleCI configuration for modular workflow(pr [#71])
 - 👷 ci(circleci): remove unused orbs and streamline workflows(pr [#73])
+- ♻️ refactor(iac): modularize s3 bucket configuration(pr [#74])
 
 ## [1.1.1] - 2025-02-12
 
@@ -92,6 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#70]: https://github.com/digital-prstv/jrussell.ie/pull/70
 [#71]: https://github.com/digital-prstv/jrussell.ie/pull/71
 [#73]: https://github.com/digital-prstv/jrussell.ie/pull/73
+[#74]: https://github.com/digital-prstv/jrussell.ie/pull/74
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...HEAD
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
