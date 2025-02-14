@@ -5,17 +5,31 @@ locals {
 
 resource "aws_s3_bucket" "logs" {
   bucket = "${local.site_name}-weblogs"
+}
+
+resource "aws_s3_bucket_acl" "logs" {
+  bucket = aws_s3_bucket.logs.id
+
   acl    = "log-delivery-write"
+}
 
-  lifecycle_rule {
+resource "aws_s3_bucket_lifecycle_configuration" "logs" {
+  bucket = aws_s3_bucket.logs.id
+
+  rule {
     id      = "log"
-    enabled = true
+    status  = "enabled"
 
-    prefix = "log/"
+    filter {
+      and {
 
-    tags = {
-      "rule"      = "log"
-      "autoclean" = "true"
+        prefix = "log/"
+
+        tags = {
+          "rule"      = "log"
+          "autoclean" = "true"
+        } 
+      }
     }
 
     transition {
@@ -33,10 +47,12 @@ resource "aws_s3_bucket" "logs" {
     }
   }
 
-  lifecycle_rule {
+  rule {
     id      = "tmp"
-    prefix  = "tmp/"
-    enabled = true
+    filter {
+      prefix  = "tmp/"
+    }
+    status  = "Enabled"
 
     expiration {
       date = "2016-01-12"
@@ -48,10 +64,18 @@ resource "aws_s3_bucket" "logs" {
 resource "aws_s3_bucket" "www_site" {
   bucket = local.site_name
 
-  website {
-    index_document = "index.html"
-  }
+}
 
+resource "aws_s3_bucket_website_configuration" "www_site" {
+  bucket = aws_s3_bucket.www_site.id
+  
+  index_document {
+    suffix = "index.html"
+  }
+}
+
+resource "aws_s3_bucket_cors_configuration"  "www_site" {
+  bucket = aws_s3_bucket.www_site.id
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST"]
@@ -60,7 +84,11 @@ resource "aws_s3_bucket" "www_site" {
     max_age_seconds = 3000
   }
 
-  logging {
+}
+
+resource "aws_s3_bucket_logging" "www_site" {
+  bucket = aws_s3_bucket.www_site.id
+
     target_bucket = aws_s3_bucket.logs.id
     target_prefix = "log/${local.site_name}/"
   }
@@ -73,18 +101,27 @@ resource "aws_s3_bucket" "www_site" {
   #   }
   # }
 
-  versioning {
-    enabled = true
+resource "aws_s3_bucket_versioning" "www_site" {
+  bucket = aws_s3_bucket.www_site.id
+
+  versioning_configuration {
+    status = "Enabled"
+}
+
   }
 
-  lifecycle_rule {
-    enabled = true
+  resource "aws_s3_bucket_lifecycle_configuration" "www_site" { 
+    bucket = aws_s3_bucket.www_site.id
+  depends_on = [aws_s3_bucket.logs]
+
+  rule {
+    id = "log"
+    status = "Enabled"
     noncurrent_version_expiration {
-      days = 14
+      noncurrent_days = 14
     }
 
   }
 
-  depends_on = [aws_s3_bucket.logs]
 }
 
