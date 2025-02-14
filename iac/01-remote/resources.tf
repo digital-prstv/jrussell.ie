@@ -16,14 +16,15 @@ resource "aws_kms_alias" "remote-bucket" {
 
 resource "aws_s3_bucket" "tf_remote_state" {
   bucket = "jrussell-iac-state"
-  acl    = "private"
 
   tags = {
     Name    = "www.jrussell.ie"
     Project = "about-me"
   }
+}
 
-  server_side_encryption_configuration {
+resource "aws_s3_bucket_server_side_encryption_configuration" "tf_remote_state" {
+  bucket = aws_s3_bucket.tf_remote_state.id
     rule {
       apply_server_side_encryption_by_default {
         kms_master_key_id = aws_kms_key.bucket.arn
@@ -32,15 +33,24 @@ resource "aws_s3_bucket" "tf_remote_state" {
     }
   }
 
-  versioning {
-    enabled = true
-  }
+resource "aws_s3_bucket_versioning" "tf_remote_state" {
+  bucket = aws_s3_bucket.tf_remote_state.id
 
-  lifecycle_rule {
-    enabled = true
+  versioning_configuration {
+    status = enabled
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "tf_remote_state" {
+  depends_on = [ aws_s3_bucket_versioning.tf_remote_state ]
+  bucket = aws_s3_bucket.tf_remote_state.id
+
+  rule {
+    id = "config"
     noncurrent_version_expiration {
-      days = 14
+      noncurrent_days = 14
     }
 
+    status = "Enabled"
   }
 }
