@@ -240,20 +240,21 @@ workflows:
     jobs:
       - path-filtering/filter:
           base-revision: main
-          config-path: .circleci/continue_config.yml
+          # config-path: .circleci/continue_config.yml
+          config-path: .circleci/continue_no_updates.yml
           mapping: |
-            iac/.* update-infrastructure true
-            content/.* update-website true
-            sass/.* update-website true
-            static/.* update-website true
-            templates/.* update-website true
-            syntaxes/.* update-website true
-            themes/.* update-website true
-            config.toml update-website true
-            .circleci/.* update-changelog true
-            justfile update-changelog true
-            README.md update-changelog true
-            renovate.json update-changelog true
+            iac/.* update-infrastructure true .circleci/continue_iac.yml
+            content/.* update-website true .circleci/continue_website.yml
+            sass/.* update-website true .circleci/continue_website.yml
+            static/.* update-website true .circleci/continue_website.yml
+            templates/.* update-website true .circleci/continue_website.yml
+            syntaxes/.* update-website true .circleci/continue_website.yml
+            themes/.* update-website true .circleci/continue_website.yml
+            config.toml update-website true .circleci/continue_website.yml
+            .circleci/.* update-changelog true .circleci/continue_changelog.yml
+            justfile update-changelog true .circleci/continue_changelog.yml
+            README.md update-changelog true .circleci/continue_changelog.yml
+            renovate.json update-changelog true .circleci/continue_changelog.yml
 
   on_success:
     when:
