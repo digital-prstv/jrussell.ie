@@ -2,8 +2,6 @@ version: 2.1
 setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
-  circleci-cli: circleci/circleci-cli@0.1.9
-  continuation: circleci/continuation@1.1.0
   zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.0.4
   aws-cli: circleci/aws-cli@5.2.0
@@ -24,11 +22,11 @@ parameters:
     default: false
     description: |
       If set to true, the release-website workflow will be triggered.
-  release-iac:
+  deploy-iac:
     type: boolean
     default: false
     description: |
-      If set to true, the release-iac workflow will be triggered.
+      If set to true, the deploy-iac workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -37,35 +35,6 @@ parameters:
     default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
 
 jobs:
-  setup:
-    executor: path-filtering/default
-    steps:
-      - checkout
-      - circleci-cli/install
-      - circleci-cli/setup
-      - path-filtering/set-parameters:
-          base-revision: main
-          config-path: .circleci/continue_no_updates.yml
-          mapping: |
-            iac/.* update-infrastructure true .circleci/continue_iac.yml
-            content/.* update-website true .circleci/continue_website.yml
-            sass/.* update-website true .circleci/continue_website.yml
-            static/.* update-website true .circleci/continue_website.yml
-            templates/.* update-website true .circleci/continue_website.yml
-            syntaxes/.* update-website true .circleci/continue_website.yml
-            themes/.* update-website true .circleci/continue_website.yml
-            config.toml update-website true .circleci/continue_website.yml
-            .circleci/.* update-changelog true .circleci/continue_changelog.yml
-            justfile update-changelog true .circleci/continue_changelog.yml
-            README.md update-changelog true .circleci/continue_changelog.yml
-            renovate.json update-changelog true .circleci/continue_changelog.yml
-      - path-filtering/generate-config
-      - run:
-          name: validate config
-          command: circleci config validate --org-slug github/digital-prstv /tmp/generated-config.yml
-      - continuation/continue:
-          configuration_path: /tmp/generated-config.yml
-
   update_site:
     executor: aws-cli/default
 
@@ -253,24 +222,39 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - toolkit/choose_pipeline:
           name: choose pipeline based on committer
           context: bot-check
 
-  setup-workflow:
+  generate-config:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
+
     jobs:
-      - setup:
-            context:
-              - circleci-api
+      - path-filtering/filter:
+          base-revision: main
+          # config-path: .circleci/continue_config.yml
+          config-path: .circleci/continue_no_updates.yml
+          mapping: |
+            iac/.* update-infrastructure true .circleci/continue_iac.yml
+            content/.* update-website true .circleci/continue_website.yml
+            sass/.* update-website true .circleci/continue_website.yml
+            static/.* update-website true .circleci/continue_website.yml
+            templates/.* update-website true .circleci/continue_website.yml
+            syntaxes/.* update-website true .circleci/continue_website.yml
+            themes/.* update-website true .circleci/continue_website.yml
+            config.toml update-website true .circleci/continue_website.yml
+            .circleci/.* update-changelog true .circleci/continue_changelog.yml
+            justfile update-changelog true .circleci/continue_changelog.yml
+            README.md update-changelog true .circleci/continue_changelog.yml
+            renovate.json update-changelog true .circleci/continue_changelog.yml
 
   on_success:
     when:
@@ -278,7 +262,7 @@ workflows:
         - << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - toolkit/end_success
@@ -289,7 +273,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - zola/build:
@@ -337,13 +321,13 @@ workflows:
             - toolkit/save_next_version:
                 - failed
 
-  release_iac:
+  deploy_iac:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - << pipeline.parameters.release-iac >>
+        - << pipeline.parameters.deploy-iac >>
 
     jobs:
       - authorise_aws
@@ -414,36 +398,4 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
-      - toolkit/update_changelog:
-          branches:
-            ignore: main
-          requires:
-            - apply-30-edge
-          context:
-            - release
-            - bot-check
-            - pcu-app
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
 
-      - toolkit/save_next_version:
-          requires:
-            - apply-30-edge
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-
-      - toolkit/make_release:
-          name: website github release
-          context:
-            - release
-            - bot-check
-          requires:
-            - toolkit/save_next_version
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          when_cargo_release: false
-          pcu_update_changelog: true
-      - toolkit/no_release:
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          requires:
-            - toolkit/save_next_version:
-                - failed
