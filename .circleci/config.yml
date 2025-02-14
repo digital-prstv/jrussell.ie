@@ -24,11 +24,11 @@ parameters:
     default: false
     description: |
       If set to true, the release-website workflow will be triggered.
-  release-iac:
+  deploy-iac:
     type: boolean
     default: false
     description: |
-      If set to true, the release-iac workflow will be triggered.
+      If set to true, the deploy-iac workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -253,7 +253,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -266,7 +266,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
     jobs:
       - setup:
             context:
@@ -278,7 +278,7 @@ workflows:
         - << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - toolkit/end_success
@@ -289,7 +289,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - << pipeline.parameters.release-website >>
-        - not: << pipeline.parameters.release-iac >>
+        - not: << pipeline.parameters.deploy-iac >>
 
     jobs:
       - zola/build:
@@ -337,13 +337,13 @@ workflows:
             - toolkit/save_next_version:
                 - failed
 
-  release_iac:
+  deploy_iac:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
         - not: << pipeline.parameters.release-website >>
-        - << pipeline.parameters.release-iac >>
+        - << pipeline.parameters.deploy-iac >>
 
     jobs:
       - authorise_aws
@@ -414,36 +414,4 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
-      - toolkit/update_changelog:
-          branches:
-            ignore: main
-          requires:
-            - apply-30-edge
-          context:
-            - release
-            - bot-check
-            - pcu-app
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
 
-      - toolkit/save_next_version:
-          requires:
-            - apply-30-edge
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-
-      - toolkit/make_release:
-          name: website github release
-          context:
-            - release
-            - bot-check
-          requires:
-            - toolkit/save_next_version
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          when_cargo_release: false
-          pcu_update_changelog: true
-      - toolkit/no_release:
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          requires:
-            - toolkit/save_next_version:
-                - failed
