@@ -2,11 +2,10 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-setup: true
 orbs:
   terraform: circleci/terraform@3.5.1
   aws-cli: circleci/aws-cli@5.2.0
-  continue: circleci/continuation@1.1.0
+  toolkit: digital-prstv/circleci-toolkit@2.0.4
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -167,7 +166,20 @@ workflows:
             - AWS-DEV
           requires:
             - authorise_aws
-      - continue/continue:
+      - toolkit/update_changelog:
           requires:
             - plan-30-edge
-          configuration_path: .circleci/continue_changelog.yml
+          filters:
+            branches:
+              ignore: main
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+      - toolkit/end_success:
+          message: "Changelog update already completed in PR."
+          filters:
+            branches:
+              only: main
