@@ -37,7 +37,7 @@ resource "aws_s3_bucket_versioning" "tf_remote_state" {
   bucket = aws_s3_bucket.tf_remote_state.id
 
   versioning_configuration {
-    status = enabled
+    status = "Enabled"
   }
 }
 
