@@ -18,7 +18,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "logs" {
 
   rule {
     id      = "log"
-    status  = "enabled"
+    status  = "Enabled"
 
     filter {
       and {
@@ -55,11 +55,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "logs" {
     status  = "Enabled"
 
     expiration {
-      date = "2016-01-12"
+      date = "2016-01-12T00:00:00Z"
     }
   }
 }
-
 
 resource "aws_s3_bucket" "www_site" {
   bucket = local.site_name
