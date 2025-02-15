@@ -168,6 +168,11 @@ workflows:
             - authorise_aws
       - toolkit/update_changelog:
           requires:
+            - plan-01-remote
+            - plan-10-static
+            - plan-20-network
+            - plan-21-site-cert
+            - plan-22-sec-headers
             - plan-30-edge
           filters:
             branches:
