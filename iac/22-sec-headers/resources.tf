@@ -8,7 +8,7 @@ resource "aws_lambda_function" "lambda" {
   description   = local.lambda_description
   role          = aws_iam_role.role.arn
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs22.x"
   filename      = "javascript.zip"
   publish       = true
 
