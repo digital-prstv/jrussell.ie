@@ -3,16 +3,23 @@ locals {
   lambda_description = "Edge Lambda to apply security Headers for www.jrussell.ie"
 }
 
+data "archive_file" "lambda" {
+  type        = "zip"
+  source_file = "index.js"
+  output_path = "javascript.zip"
+}
+
 resource "aws_lambda_function" "lambda" {
   function_name = local.name
   description   = local.lambda_description
   role          = aws_iam_role.role.arn
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
-  filename      = "javascript.zip"
+  runtime       = "nodejs22.x"
+  filename      = data.archive_file.lambda.output_path
   publish       = true
 
-  source_code_hash = filebase64sha256("index.js")
+  # source_code_hash = filebase64sha256("index.js")
+  source_code_hash = data.archive_file.lambda.output_base64sha256
 
 }
 
