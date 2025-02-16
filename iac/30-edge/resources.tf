@@ -12,7 +12,7 @@ data "aws_s3_bucket" "static_site" {
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   provider = aws.us
-  comment  = "Acecss Identity for ${local.site_name}"
+  comment  = "Access Identity for ${local.site_name}"
 }
 
 data "aws_lambda_function" "website_rewriter" {
