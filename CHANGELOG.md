@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ♻️ refactor(iac): modularize s3 bucket configuration(pr [#74])
 - ♻️ refactor(iac): update S3 bucket configurations(pr [#75])
 - 🐛 fix(sec-headers): comment out Content-Security-Policy header(pr [#76])
+- 💄 style(resources): fix typo in CloudFront comment(pr [#77])
 
 ## [1.1.1] - 2025-02-12
 
@@ -98,6 +99,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#74]: https://github.com/digital-prstv/jrussell.ie/pull/74
 [#75]: https://github.com/digital-prstv/jrussell.ie/pull/75
 [#76]: https://github.com/digital-prstv/jrussell.ie/pull/76
+[#77]: https://github.com/digital-prstv/jrussell.ie/pull/77
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...HEAD
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
