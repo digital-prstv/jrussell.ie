@@ -55,5 +55,4 @@ workflows:
       - continue/continue:
           requires:
             - zola/build
-          continue: 
-            - configuration_path: .circleci/continue_changelog.yml
+          configuration_path: .circleci/continue_changelog.yml
