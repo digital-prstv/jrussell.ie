@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🐛 fix(sec-headers): comment out Content-Security-Policy header(pr [#76])
 - 💄 style(resources): fix typo in CloudFront comment(pr [#77])
 - ✨ feat(styles): add comprehensive SCSS structure for styling(pr [#79])
+- Stuck(pr [#80])
 
 ### Security
 
@@ -107,6 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#77]: https://github.com/digital-prstv/jrussell.ie/pull/77
 [#78]: https://github.com/digital-prstv/jrussell.ie/pull/78
 [#79]: https://github.com/digital-prstv/jrussell.ie/pull/79
+[#80]: https://github.com/digital-prstv/jrussell.ie/pull/80
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...HEAD
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
