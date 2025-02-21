@@ -254,6 +254,7 @@ workflows:
             justfile update-changelog true
             README.md update-changelog true
             renovate.json update-changelog true
+            .githooks/.* update-changelog true
 
   on_success:
     when:
