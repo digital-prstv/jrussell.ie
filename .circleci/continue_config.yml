@@ -40,7 +40,7 @@ parameters:
 jobs:
   authorise_aws:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: aws-cli/default
     steps:
       - checkout
@@ -53,7 +53,7 @@ jobs:
             - .aws
   plan-01-remote:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
@@ -66,7 +66,7 @@ jobs:
 
   plan-10-static:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
@@ -79,7 +79,7 @@ jobs:
 
   plan-20-network:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
@@ -92,7 +92,7 @@ jobs:
 
   plan-21-site-cert:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
@@ -105,7 +105,7 @@ jobs:
 
   plan-22-sec-headers:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
@@ -118,7 +118,7 @@ jobs:
 
   plan-30-edge:
     docker:
-      - image: cimg/base:2025.03
+      - image: cimg/base:2025.04
     executor: terraform/default
     steps:
       - checkout
