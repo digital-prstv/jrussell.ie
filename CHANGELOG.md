@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-update toolkit orb version(pr [#84])
 - 👷 ci(circleci)-update toolkit orb version(pr [#85])
 - 🔧 chore(ci)-separate deploy-iac workflow into its own file(pr [#86])
+- 👷 ci(circleci)-add IaC validation pipeline(pr [#87])
 
 ### Security
 
@@ -127,6 +128,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#84]: https://github.com/digital-prstv/jrussell.ie/pull/84
 [#85]: https://github.com/digital-prstv/jrussell.ie/pull/85
 [#86]: https://github.com/digital-prstv/jrussell.ie/pull/86
+[#87]: https://github.com/digital-prstv/jrussell.ie/pull/87
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
