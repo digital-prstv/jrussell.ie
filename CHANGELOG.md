@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - 🔧 chore(githooks): add pre-commit hook script(pr [#81])
 - 👷 ci(circleci)-update toolkit orb version(pr [#84])
+- 👷 ci(circleci)-update toolkit orb version(pr [#85])
 
 ### Security
 
@@ -123,6 +124,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#81]: https://github.com/digital-prstv/jrussell.ie/pull/81
 [#82]: https://github.com/digital-prstv/jrussell.ie/pull/82
 [#84]: https://github.com/digital-prstv/jrussell.ie/pull/84
+[#85]: https://github.com/digital-prstv/jrussell.ie/pull/85
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
