@@ -60,6 +60,9 @@ workflows:
           pcu_verbosity: "-vvv"
           context:
             - release
+            - bot-check
+            - pcu-app
+            - bluesky
           requires:
             - zola/build
 

@@ -112,6 +112,11 @@ workflows:
       - toolkit/bluesky:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           command: post
+          context:
+            - release
+            - bot-check
+            - pcu-app
+            - bluesky
 
       - update_site:
           context:
