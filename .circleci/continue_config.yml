@@ -57,6 +57,9 @@ workflows:
             branches:
               ignore: main
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          pcu-verbosity: "-vvv"
+          context:
+            - release
 
       - toolkit/update_changelog:
           filters:
