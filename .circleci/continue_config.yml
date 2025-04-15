@@ -52,12 +52,19 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
+      - toolkit/bluesky:
+          filters:
+            branches:
+              ignore: main
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+
       - toolkit/update_changelog:
           filters:
             branches:
               ignore: main
           requires:
             - zola/build
+            - toolkit/bluesky
           context:
             - release
             - bot-check

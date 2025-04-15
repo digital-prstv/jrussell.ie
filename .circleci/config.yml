@@ -109,6 +109,9 @@ workflows:
                 root: /tmp/workspace
                 paths:
                   - public
+      - toolkit/bluesky:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          command: post
 
       - update_site:
           context:
