@@ -21,11 +21,6 @@ parameters:
     default: false
     description: |
       If set to true, the release-website workflow will be triggered.
-  # deploy-iac:
-  #   type: boolean
-  #   default: false
-  #   description: |
-  #     If set to true, the deploy-iac workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -70,7 +65,6 @@ workflows:
           base-revision: main
           config-path: .circleci/continue_config.yml
           mapping: |
-            iac/.* update-infrastructure true
             content/.* update-website true
             sass/.* update-website true
             static/.* update-website true
