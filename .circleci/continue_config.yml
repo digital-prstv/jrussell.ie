@@ -79,9 +79,16 @@ workflows:
                 name: make workspace dir
                 command: |
 
-                  mkdir -p /tmp/bsky
-                  ls /tmp
-                  ls /tmp/bsky
+                  mkdir -p /tmp/bsky/bluesky
+                  ls -l /tmp
+                  ls -l /tmp/bsky
+
+                  cp -r /home/circleci/project/bluesky /tmp/bsky/bluesky/
+
+
+                  echo "persisting to workspace the following"
+                  ls -l bluesky
+                  ls -l /tmp/bsky/bluesky
 
             - persist_to_workspace:
                 root: /tmp/bsky
@@ -103,6 +110,12 @@ workflows:
           pre-steps:
             - attach_workspace:
                 at: /tmp/bsky
+            - run:
+                name: Copy bluesky from tmp
+                command: |
+
+                  ls -l /tmp/bsky
+                  cp -r /tmp/bsky/bluesky /home/circleci/project/bluesky
 
   update_changelog:
     when: << pipeline.parameters.update-changelog >>
