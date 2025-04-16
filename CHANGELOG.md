@@ -15,7 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci)-separate deploy-iac workflow into its own file(pr [#86])
 - 👷 ci(circleci)-add IaC validation pipeline(pr [#87])
 - 👷 ci(circleci)-add bluesky toolkit configuration to workflows(pr [#88])
-- 📝 docs(blog)-add new blog posts on DeepMind conversation(pr [#89])
 
 ### Security
 
