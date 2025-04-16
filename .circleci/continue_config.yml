@@ -59,6 +59,7 @@ workflows:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           pcu_verbosity: "-vvv"
+          command: "draft"
           context:
             - release
             - bot-check
