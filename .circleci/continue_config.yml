@@ -66,6 +66,11 @@ workflows:
             - bluesky
           requires:
             - zola/build
+          post-steps:
+            - persist_to_workspace:
+                root: /tmp/bsky
+                paths:
+                  - bluesky
 
       - toolkit/update_changelog:
           filters:
@@ -79,6 +84,9 @@ workflows:
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          pre-steps:
+            - attach_workspace:
+                at: /tmp/bsky
 
   update_changelog:
     when: << pipeline.parameters.update-changelog >>
