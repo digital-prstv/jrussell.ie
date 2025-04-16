@@ -38,6 +38,7 @@ skip_prefixes = [
     "https://immersivelabs.com/",
     "http://gimletmedia.com/",
     "https://www.marketplace.org/",
+    "https://gimletmedia.com/",
 ]
 
 [markdown]
