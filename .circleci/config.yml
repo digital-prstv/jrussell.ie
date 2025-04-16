@@ -3,7 +3,7 @@ setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.6.0
+  toolkit: digital-prstv/circleci-toolkit@2.6.1
   aws-cli: circleci/aws-cli@5.2.0
 parameters:
   success-flag:
@@ -26,7 +26,7 @@ parameters:
     default: "1.81"
   fingerprint:
     type: string
-    default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
+    default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
 
 jobs:
   update_site:
@@ -36,7 +36,8 @@ jobs:
       - aws-cli/setup:
           role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
-      - run: # Deploy to S3 using the sync command
+      - run:
+          # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
