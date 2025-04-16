@@ -67,6 +67,10 @@ workflows:
           requires:
             - zola/build
           post-steps:
+            - run:
+                name: make workspace dir
+                command: |
+                  mkdir -p /tmp/bsky
             - persist_to_workspace:
                 root: /tmp/bsky
                 paths:
