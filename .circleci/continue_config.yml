@@ -69,9 +69,20 @@ workflows:
             - zola/build
           post-steps:
             - run:
+                name: list project directory
+                command: |
+
+                  ls -l /home/circleci/project
+                  ls -l /tmp
+
+            - run:
                 name: make workspace dir
                 command: |
+
                   mkdir -p /tmp/bsky
+                  ls /tmp
+                  ls /tmp/bsky
+
             - persist_to_workspace:
                 root: /tmp/bsky
                 paths:
