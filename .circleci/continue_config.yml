@@ -58,7 +58,7 @@ workflows:
               ignore: main
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
-          pcu_verbosity: "-vvv"
+          pcu_verbosity: "-vv"
           command: "draft"
           context:
             - release
