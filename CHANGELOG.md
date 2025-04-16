@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci)-separate deploy-iac workflow into its own file(pr [#86])
 - 👷 ci(circleci)-add IaC validation pipeline(pr [#87])
 - 👷 ci(circleci)-add bluesky toolkit configuration to workflows(pr [#88])
+- 📝 docs(blog)-add new blog posts on DeepMind conversation(pr [#89])
 
 ### Security
 
@@ -131,6 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#86]: https://github.com/digital-prstv/jrussell.ie/pull/86
 [#87]: https://github.com/digital-prstv/jrussell.ie/pull/87
 [#88]: https://github.com/digital-prstv/jrussell.ie/pull/88
+[#89]: https://github.com/digital-prstv/jrussell.ie/pull/89
 [#89]: https://github.com/digital-prstv/jrussell.ie/pull/89
 [#89]: https://github.com/digital-prstv/jrussell.ie/pull/89
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
