@@ -111,6 +111,7 @@ workflows:
                 paths:
                   - public
       - toolkit/bluesky:
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           command: post
           context:
