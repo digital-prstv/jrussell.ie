@@ -3,8 +3,8 @@ setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.7.1
-  aws-cli: circleci/aws-cli@5.2.0
+  toolkit: digital-prstv/circleci-toolkit@2.8.0
+  aws-cli: circleci/aws-cli@5.3.1
 parameters:
   success-flag:
     type: boolean
