@@ -52,39 +52,21 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
-      - toolkit/bluesky:
-          filters:
-            branches:
-              ignore: main
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          pcu_verbosity: "-vv"
-          command: "draft"
-          context:
-            - release
-            - bot-check
-            - pcu-app
-            - bluesky
-          requires:
-            - zola/build
-          post-steps:
-            - persist_to_workspace:
-                root: /home/circleci/
-                paths:
-                  - project/.git
 
       - toolkit/update_changelog:
           filters:
             branches:
               ignore: main
           requires:
-            - toolkit/bluesky
+            - zola/build
           context:
             - release
             - bot-check
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          bluesky: true
+          command: "draft"
 
   update_changelog:
     when: << pipeline.parameters.update-changelog >>
