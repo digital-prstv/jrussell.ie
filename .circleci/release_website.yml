@@ -78,6 +78,7 @@ workflows:
       - toolkit/save_next_version:
           requires:
             - update_site
+            - toolkit/bluesky
           min_rust_version: << pipeline.parameters.min-rust-version >>
 
       - toolkit/make_release:
