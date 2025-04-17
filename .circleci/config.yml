@@ -2,9 +2,7 @@ version: 2.1
 setup: true
 orbs:
   path-filtering: circleci/path-filtering@1.2.0
-  zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.8.0
-  aws-cli: circleci/aws-cli@5.3.1
 parameters:
   success-flag:
     type: boolean
@@ -16,11 +14,6 @@ parameters:
     default: false
     description: |
       If set to true, the generate-config workflow will be triggered.
-  release-website:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the release-website workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
@@ -28,26 +21,12 @@ parameters:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
 
-jobs:
-  update_site:
-    executor: aws-cli/default
-
-    steps:
-      - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
-          region: eu-west-1
-      - run:
-          # Deploy to S3 using the sync command
-          name: Deploy to S3
-          command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
-
 workflows:
   check_last_commit:
     when:
       and:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
-        - not: << pipeline.parameters.release-website >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -59,7 +38,6 @@ workflows:
       and:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
-        - not: << pipeline.parameters.release-website >>
 
     jobs:
       - path-filtering/filter:
@@ -84,69 +62,6 @@ workflows:
       and:
         - << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
-        - not: << pipeline.parameters.release-website >>
 
     jobs:
       - toolkit/end_success
-
-  release_website:
-    when:
-      and:
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
-        - << pipeline.parameters.release-website >>
-
-    jobs:
-      - zola/build:
-          zola_version: 0.19.2
-          list_directory: true
-          check_links: false
-          output_dir: /tmp/workspace/public
-          pre-steps:
-            - attach_workspace:
-                at: /tmp/workspace
-          post-steps:
-            - persist_to_workspace:
-                root: /tmp/workspace
-                paths:
-                  - public
-      - toolkit/bluesky:
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          command: post
-          context:
-            - release
-            - bot-check
-            - pcu-app
-            - bluesky
-
-      - update_site:
-          context:
-            - AWS-DEV
-          requires:
-            - zola/build
-          pre-steps:
-            - attach_workspace:
-                at: /tmp/workspace
-
-      - toolkit/save_next_version:
-          requires:
-            - update_site
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-
-      - toolkit/make_release:
-          name: website github release
-          context:
-            - release
-            - bot-check
-          requires:
-            - toolkit/save_next_version
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          when_cargo_release: false
-          pcu_update_changelog: true
-      - toolkit/no_release:
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          requires:
-            - toolkit/save_next_version:
-                - failed
