@@ -3,7 +3,7 @@
 version: 2.1
 orbs:
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.6.0
+  toolkit: digital-prstv/circleci-toolkit@2.8.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -52,11 +52,6 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
-      - toolkit/bluesky:
-          filters:
-            branches:
-              ignore: main
-          min_rust_version: << pipeline.parameters.min-rust-version >>
 
       - toolkit/update_changelog:
           filters:
@@ -64,16 +59,20 @@ workflows:
               ignore: main
           requires:
             - zola/build
-            - toolkit/bluesky
           context:
             - release
             - bot-check
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          bluesky: true
+          bluesky_command: "draft"
 
   update_changelog:
-    when: << pipeline.parameters.update-changelog >>
+    when:
+      and:
+        - << pipeline.parameters.update-changelog >>
+        - not: << pipeline.parameters.update-website >>
     jobs:
       - toolkit/update_changelog:
           filters:

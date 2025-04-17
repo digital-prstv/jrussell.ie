@@ -1,0 +1,78 @@
+{
+  "createdAt": "2025-04-17T14:00:41.492865Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/content/blog/update-and-release/20-overview-of-our-workflow/index.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 377,
+        "byteStart": 283
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "devsecops"
+        }
+      ],
+      "index": {
+        "byteEnd": 240,
+        "byteStart": 230
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "software"
+        }
+      ],
+      "index": {
+        "byteEnd": 250,
+        "byteStart": 241
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "circleci"
+        }
+      ],
+      "index": {
+        "byteEnd": 260,
+        "byteStart": 251
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "security"
+        }
+      ],
+      "index": {
+        "byteEnd": 270,
+        "byteStart": 261
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "practices"
+        }
+      ],
+      "index": {
+        "byteEnd": 281,
+        "byteStart": 271
+      }
+    }
+  ],
+  "text": "Overview of Our Workflow\n\nWe’ll kick things off with a detailed overview of the dependency update and release workflow. We’ll cover the key steps involved, from identification of updates through automated testing and release. #devsecops #software #circleci #security #practices\n\nhttps://www.jrussell.ie/content/blog/update-and-release/20-overview-of-our-workflow/index.html"
+}
