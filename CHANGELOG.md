@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci)-separate release website workflow configuration(pr [#91])
 - 👷 ci(circleci)-update release workflow dependencies(pr [#92])
 - 👷 ci(circleci)-remove unused parameters from release_website.yml(pr [#93])
+- 🔧 chore(ci)-update toolkit orb version in CircleCI config(pr [#94])
 
 ### Security
 
@@ -144,6 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#92]: https://github.com/digital-prstv/jrussell.ie/pull/92
 [#93]: https://github.com/digital-prstv/jrussell.ie/pull/93
 [#90]: https://github.com/digital-prstv/jrussell.ie/pull/90
+[#94]: https://github.com/digital-prstv/jrussell.ie/pull/94
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
