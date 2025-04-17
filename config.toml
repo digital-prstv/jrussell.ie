@@ -39,6 +39,10 @@ skip_prefixes = [
     "http://gimletmedia.com/",
     "https://www.marketplace.org/",
     "https://gimletmedia.com/",
+    "https://thenewstack.simplecast.com/",
+    "https://people-i-mostly-admire.simplecast.com/",
+    "https://sudhir-breaks-the-internet.simplecast.com/",
+    "https://the-freakonomics-radio-book-club.simplecast.com/",
 ]
 
 [markdown]
