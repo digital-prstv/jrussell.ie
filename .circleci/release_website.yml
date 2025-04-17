@@ -5,21 +5,6 @@ orbs:
   toolkit: digital-prstv/circleci-toolkit@2.8.0
   aws-cli: circleci/aws-cli@5.3.1
 parameters:
-  success-flag:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the success workflow will be triggered.
-  validation-flag:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the generate-config workflow will be triggered.
-  release-website:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the release-website workflow will be triggered.
   min-rust-version:
     type: string
     default: "1.81"
