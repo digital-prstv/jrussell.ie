@@ -69,7 +69,10 @@ workflows:
           bluesky_command: "draft"
 
   update_changelog:
-    when: << pipeline.parameters.update-changelog >>
+    when:
+      and:
+        - << pipeline.parameters.update-changelog >>
+        - not: << pipeline.parameters.update-website >>
     jobs:
       - toolkit/update_changelog:
           filters:
