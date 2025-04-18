@@ -25,50 +25,54 @@ jobs:
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
-  # bluesky:
-  #   description: >
-  #     Execute bluesky draft or post commands.
+  bluesky:
+    description: >
+      Execute bluesky draft or post commands.
 
-  #   executor:
-  #     name: toolkit/base_env
+    executor:
+      name: toolkit/base_env
 
-  #   parameters:
-  #     ssh_fingerprint:
-  #       type: string
-  #       description: |
-  #         The fingerprint of the ssh key to use
-  #     min_rust_version:
-  #       type: string
-  #     command:
-  #       type: enum
-  #       default: draft
-  #       enum:
-  #         - draft
-  #         - post
-  #     pcu_verbosity:
-  #       type: string
-  #       default: "-vv"
-  #     blog_directory:
-  #       type: string
-  #       default: "content/blog"
-
-  #   steps:
-  #     - checkout
-  #     - add_ssh_keys:
-  #         fingerprints:
-  #           - <<parameters.ssh_fingerprint>>
-  #     - run:
-  #         name: Remove original SSH key from agent
-  #         command: |
-  #           ssh-add -l
-  #           ssh-add -d ~/.ssh/id_rsa.pub
-  #           ssh-add -l
-  #     - toolkit/gpg_key
-  #     - toolkit/git_config
-  #     - toolkit/bsky:
-  #         command: << parameters.command >>
-  #         pcu_verbosity: << parameters.pcu_verbosity >>
-  #         blog_directory: << parameters.blog_directory >>
+    parameters:
+      ssh_fingerprint:
+        type: string
+        description: |
+          The fingerprint of the ssh key to use
+      command:
+        type: enum
+        default: draft
+        enum:
+          - draft
+          - post
+      pcu_verbosity:
+        type: string
+        default: "-vv"
+      blog_directory:
+        type: string
+        default: "content/blog"
+      remove_ssh_key:
+        type: boolean
+        default: true
+        description: "Remove the original SSH key from the agent"
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - <<parameters.ssh_fingerprint>>
+      - when:
+          condition: << parameters.remove_ssh_key >>
+          steps:
+            - run:
+                name: Remove original SSH key from agent
+                command: |
+                  ssh-add -l
+                  ssh-add -d ~/.ssh/id_rsa.pub
+                  ssh-add -l
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - toolkit/bsky:
+          command: << parameters.command >>
+          pcu_verbosity: << parameters.pcu_verbosity >>
+          blog_directory: << parameters.blog_directory >>
 
 workflows:
   release_website:
@@ -86,10 +90,10 @@ workflows:
                 root: /tmp/workspace
                 paths:
                   - public
-      - toolkit/bluesky:
+      - bluesky:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           command: post
-          remove_ssh_keys: false
+          remove_ssh_key: false
           context:
             - release
             - bot-check
@@ -108,7 +112,7 @@ workflows:
       - toolkit/save_next_version:
           requires:
             - update_site
-            - toolkit/bluesky
+            - bluesky
           min_rust_version: << pipeline.parameters.min-rust-version >>
 
       - toolkit/make_release:
