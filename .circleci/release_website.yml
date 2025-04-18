@@ -106,7 +106,7 @@ jobs:
           command: |
             set -exo pipefail
 
-            cargo install --git  https://github.com/jerus-org/pcu.git
+            cargo install --force --git  https://github.com/jerus-org/pcu.git
 
       - bsky:
           command: << parameters.command >>
