@@ -89,6 +89,7 @@ workflows:
       - toolkit/bluesky:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           command: post
+          remove_ssh_keys: false
           context:
             - release
             - bot-check
