@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.8.1
+  toolkit: digital-prstv/circleci-toolkit@2.8.3
   aws-cli: circleci/aws-cli@5.3.1
 parameters:
   min-rust-version:
@@ -89,6 +89,7 @@ workflows:
       - toolkit/bluesky:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           command: post
+          remove_ssh_keys: false
           context:
             - release
             - bot-check
