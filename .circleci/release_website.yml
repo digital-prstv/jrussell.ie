@@ -11,6 +11,38 @@ parameters:
   fingerprint:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
+commands:
+  bsky:
+    description: >
+      Execute bluesky draft or post commands.
+
+    parameters:
+      command:
+        type: enum
+        default: draft
+        enum:
+          - draft
+          - post
+      pcu_verbosity:
+        type: string
+        default: "-vv"
+      blog_directory:
+        type: string
+        default: "content/blog"
+
+    steps:
+      - run:
+          name: Execute bluesky command `<< parameters.command >>`
+          command: |
+            set -exo pipefail
+
+            if [ "<< parameters.command >>" == "draft" ] ; then
+              echo "Drafting a new post"
+              pcu << parameters.pcu_verbosity >> bsky draft << parameters.blog_directory >>
+            elif [ "<< parameters.command >>" == "post" ] ; then
+              echo "Posting a new post"
+              pcu << parameters.pcu_verbosity >> bsky post
+            fi
 
 jobs:
   update_site:
@@ -69,7 +101,14 @@ jobs:
                   ssh-add -l
       - toolkit/gpg_key
       - toolkit/git_config
-      - toolkit/bsky:
+      - run:
+          name: Install Latest pcu
+          command: |
+            set -exo pipefail
+
+            cargo install --git  https://github.com/jerus-org/pcu.git
+
+      - bsky:
           command: << parameters.command >>
           pcu_verbosity: << parameters.pcu_verbosity >>
           blog_directory: << parameters.blog_directory >>
