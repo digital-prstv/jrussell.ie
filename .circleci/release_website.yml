@@ -93,6 +93,7 @@ workflows:
       - bluesky:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           command: post
+          pcu_verbosity: "-vvv"
           remove_ssh_key: false
           context:
             - release
