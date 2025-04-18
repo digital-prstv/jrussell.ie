@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci)-update toolkit orb version in CircleCI config(pr [#94])
 - 🔧 chore(ci)-remove unnecessary rust version parameter(pr [#95])
 - 👷 ci(circleci)-update circleci-toolkit orb version(pr [#96])
+- 👷 ci(circleci)-enable bluesky job in release workflow(pr [#97])
 
 ### Security
 
@@ -150,6 +151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#94]: https://github.com/digital-prstv/jrussell.ie/pull/94
 [#95]: https://github.com/digital-prstv/jrussell.ie/pull/95
 [#96]: https://github.com/digital-prstv/jrussell.ie/pull/96
+[#97]: https://github.com/digital-prstv/jrussell.ie/pull/97
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
