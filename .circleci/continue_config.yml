@@ -3,7 +3,7 @@
 version: 2.1
 orbs:
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.8.3
+  toolkit: digital-prstv/circleci-toolkit@2.9.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
