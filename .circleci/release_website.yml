@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.8.3
+  toolkit: digital-prstv/circleci-toolkit@2.9.0
   aws-cli: circleci/aws-cli@5.3.1
 parameters:
   min-rust-version:
@@ -11,38 +11,39 @@ parameters:
   fingerprint:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
-commands:
-  bsky:
-    description: >
-      Execute bluesky draft or post commands.
 
-    parameters:
-      command:
-        type: enum
-        default: draft
-        enum:
-          - draft
-          - post
-      pcu_verbosity:
-        type: string
-        default: "-vv"
-      blog_directory:
-        type: string
-        default: "content/blog"
+# commands:
+#   bsky:
+#     description: >
+#       Execute bluesky draft or post commands.
 
-    steps:
-      - run:
-          name: Execute bluesky command `<< parameters.command >>`
-          command: |
-            set -exo pipefail
+#     parameters:
+#       command:
+#         type: enum
+#         default: draft
+#         enum:
+#           - draft
+#           - post
+#       pcu_verbosity:
+#         type: string
+#         default: "-vv"
+#       blog_directory:
+#         type: string
+#         default: "content/blog"
 
-            if [ "<< parameters.command >>" == "draft" ] ; then
-              echo "Drafting a new post"
-              pcu << parameters.pcu_verbosity >> bsky draft << parameters.blog_directory >>
-            elif [ "<< parameters.command >>" == "post" ] ; then
-              echo "Posting a new post"
-              pcu << parameters.pcu_verbosity >> bsky post
-            fi
+#     steps:
+#       - run:
+#           name: Execute bluesky command `<< parameters.command >>`
+#           command: |
+#             set -exo pipefail
+
+#             if [ "<< parameters.command >>" == "draft" ] ; then
+#               echo "Drafting a new post"
+#               pcu << parameters.pcu_verbosity >> bsky draft << parameters.blog_directory >>
+#             elif [ "<< parameters.command >>" == "post" ] ; then
+#               echo "Posting a new post"
+#               pcu << parameters.pcu_verbosity >> bsky post
+#             fi
 
 jobs:
   update_site:
@@ -57,61 +58,61 @@ jobs:
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
-  bluesky:
-    description: >
-      Execute bluesky draft or post commands.
+  # bluesky:
+  #   description: >
+  #     Execute bluesky draft or post commands.
 
-    executor:
-      name: toolkit/base_env
+  #   executor:
+  #     name: toolkit/base_env
 
-    parameters:
-      ssh_fingerprint:
-        type: string
-        description: |
-          The fingerprint of the ssh key to use
-      command:
-        type: enum
-        default: draft
-        enum:
-          - draft
-          - post
-      pcu_verbosity:
-        type: string
-        default: "-vv"
-      blog_directory:
-        type: string
-        default: "content/blog"
-      remove_ssh_key:
-        type: boolean
-        default: true
-        description: "Remove the original SSH key from the agent"
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - <<parameters.ssh_fingerprint>>
-      - when:
-          condition: << parameters.remove_ssh_key >>
-          steps:
-            - run:
-                name: Remove original SSH key from agent
-                command: |
-                  ssh-add -l
-                  ssh-add -d ~/.ssh/id_rsa.pub
-                  ssh-add -l
-      - toolkit/gpg_key
-      - toolkit/git_config
-      - run:
-          name: Install Latest pcu
-          command: |
-            set -exo pipefail
+  #   parameters:
+  #     ssh_fingerprint:
+  #       type: string
+  #       description: |
+  #         The fingerprint of the ssh key to use
+  #     command:
+  #       type: enum
+  #       default: draft
+  #       enum:
+  #         - draft
+  #         - post
+  #     pcu_verbosity:
+  #       type: string
+  #       default: "-vv"
+  #     blog_directory:
+  #       type: string
+  #       default: "content/blog"
+  #     remove_ssh_key:
+  #       type: boolean
+  #       default: true
+  #       description: "Remove the original SSH key from the agent"
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints:
+  #           - <<parameters.ssh_fingerprint>>
+  #     - when:
+  #         condition: << parameters.remove_ssh_key >>
+  #         steps:
+  #           - run:
+  #               name: Remove original SSH key from agent
+  #               command: |
+  #                 ssh-add -l
+  #                 ssh-add -d ~/.ssh/id_rsa.pub
+  #                 ssh-add -l
+  #     - toolkit/gpg_key
+  #     - toolkit/git_config
+  #     - run:
+  #         name: Install Latest pcu
+  #         command: |
+  #           set -exo pipefail
 
-            cargo install --force --git  https://github.com/jerus-org/pcu.git
+  #           cargo install --force --git  https://github.com/jerus-org/pcu.git
 
-      - bsky:
-          command: << parameters.command >>
-          pcu_verbosity: << parameters.pcu_verbosity >>
-          blog_directory: << parameters.blog_directory >>
+  #     - bsky:
+  #         command: << parameters.command >>
+  #         pcu_verbosity: << parameters.pcu_verbosity >>
+  #         blog_directory: << parameters.blog_directory >>
 
 workflows:
   release_website:
@@ -129,16 +130,6 @@ workflows:
                 root: /tmp/workspace
                 paths:
                   - public
-      - bluesky:
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          command: post
-          pcu_verbosity: "-vvv"
-          remove_ssh_key: false
-          context:
-            - release
-            - bot-check
-            - pcu-app
-            - bluesky
 
       - update_site:
           context:
@@ -152,7 +143,6 @@ workflows:
       - toolkit/save_next_version:
           requires:
             - update_site
-            - bluesky
           min_rust_version: << pipeline.parameters.min-rust-version >>
 
       - toolkit/make_release:
@@ -160,12 +150,15 @@ workflows:
           context:
             - release
             - bot-check
+            - bluesky
           requires:
             - toolkit/save_next_version
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
           pcu_update_changelog: true
+          when_bluesky: true
+          bluesky_command: "post"
       - toolkit/no_release:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           requires:
