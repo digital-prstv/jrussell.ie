@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-add bluesky commands and pcu installation(pr [#99])
 - 👷 ci(circleci)-update cargo installation command(pr [#100])
 - 👷 ci(circleci)-update toolkit orb version(pr [#101])
+- 🔧 chore(ci)-remove commented out bluesky commands(pr [#102])
 
 ### Security
 
@@ -160,6 +161,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#99]: https://github.com/digital-prstv/jrussell.ie/pull/99
 [#100]: https://github.com/digital-prstv/jrussell.ie/pull/100
 [#101]: https://github.com/digital-prstv/jrussell.ie/pull/101
+[#102]: https://github.com/digital-prstv/jrussell.ie/pull/102
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
