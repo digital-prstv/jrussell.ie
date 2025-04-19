@@ -61,6 +61,7 @@ workflows:
           context:
             - release
             - bot-check
+            - pcu-app
             - bluesky
           requires:
             - toolkit/save_next_version
