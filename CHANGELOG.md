@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-add when_update_pcu parameter to release workflow(pr [#103])
 - 👷 ci(circleci)-add pcu-app context to release workflow(pr [#104])
 - 👷 ci(circleci)-update release_website workflow(pr [#105])
+- 🔧 chore(ci)-update SSH verification steps in release workflow(pr [#106])
 
 ### Security
 
@@ -168,6 +169,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#103]: https://github.com/digital-prstv/jrussell.ie/pull/103
 [#104]: https://github.com/digital-prstv/jrussell.ie/pull/104
 [#105]: https://github.com/digital-prstv/jrussell.ie/pull/105
+[#106]: https://github.com/digital-prstv/jrussell.ie/pull/106
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
