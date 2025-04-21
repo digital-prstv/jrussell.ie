@@ -25,9 +25,20 @@ jobs:
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
+  check_ssh:
+    executor: toolkit/base_env
+    steps:
+      - run:
+          name: Check SSH
+          command: |
+            ls -l /home/circleci/
+            ls -l /home/circleci/.ssh
+
 workflows:
   release_website:
     jobs:
+      - check_ssh
+
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
@@ -69,6 +80,7 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
           when_update_pcu: true
+          pcu_verbosity: "-vvvv"
           pcu_update_changelog: true
           remove_ssh_key: false
           when_bluesky: true
