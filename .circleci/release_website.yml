@@ -31,8 +31,8 @@ jobs:
       - run:
           name: Check SSH
           command: |
-            ls -l /home/circleci/
-            ls -l /home/circleci/.ssh
+            ls -la /home/circleci/
+            ssh-add -l
 
 workflows:
   release_website:
