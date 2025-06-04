@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update dependency path-filtering to v2(pr [#111])
 - Dependencies: update dependency aws-cli to v5.3.4(pr [#112])
 - Dependencies: update dependency aws-cli to v5.3.5(pr [#113])
+- Dependencies: update cimg/base docker tag to v2025.06(pr [#114])
 
 ## [1.1.2] - 2025-02-20
 
@@ -184,6 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#111]: https://github.com/digital-prstv/jrussell.ie/pull/111
 [#112]: https://github.com/digital-prstv/jrussell.ie/pull/112
 [#113]: https://github.com/digital-prstv/jrussell.ie/pull/113
+[#114]: https://github.com/digital-prstv/jrussell.ie/pull/114
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
