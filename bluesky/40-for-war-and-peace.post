@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-06-27T06:03:30.646052Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/content/blog/deepmind/40-for-war-and-peace/index.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 237,
+        "byteStart": 160
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 140,
+        "byteStart": 137
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "deepseek"
+        }
+      ],
+      "index": {
+        "byteEnd": 150,
+        "byteStart": 141
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 158,
+        "byteStart": 151
+      }
+    }
+  ],
+  "text": "For war and peace\n\nTime for a more direct approach as the AI has not yet identified that the response has too many lines to be a sonnet. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepmind/40-for-war-and-peace/index.html"
+}

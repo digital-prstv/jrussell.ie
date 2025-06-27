@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-06-27T06:03:30.584361Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/content/blog/deepmind/30-how-does-quatrain-start/index.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 267,
+        "byteStart": 184
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 164,
+        "byteStart": 161
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "deepseek"
+        }
+      ],
+      "index": {
+        "byteEnd": 174,
+        "byteStart": 165
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 182,
+        "byteStart": 175
+      }
+    }
+  ],
+  "text": "How does each quatrain start?\n\nThe problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepmind/30-how-does-quatrain-start/index.html"
+}

@@ -7,14 +7,14 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepmind", "sonnet"]
+tags = ["AI", "deepseek", "sonnet"]
 +++
 
 ## Instruction
 
 Can you correct to a 14 line sonnet
 
-## DeepMind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 
