@@ -7,7 +7,7 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepmind", "sonnet"]
+tags = ["AI", "deepseek", "sonnet"]
 +++
 
 ```

@@ -1,5 +1,5 @@
 +++
-title = "A conversation with DeepMind"
+title = "A conversation with DeepSeek"
 template = "series.html"
 sort_by = "slug"
 transparent = true
@@ -13,7 +13,7 @@ next_only = """
 Welcome to $SERIES_HTML_LINK! 
 $SERIES_PAGES_OLIST
 
-This $SERIES_PAGES_NUMBER-part series details a conversation with DeepMind to generate and refine a sonnet.
+This $SERIES_PAGES_NUMBER-part series details a conversation with DeepSeek to generate and refine a sonnet.
 
 Next: $NEXT_HTML_LINK - $NEXT_DESCRIPTION
 """
