@@ -1,8 +1,8 @@
 +++
 title = "How does each quatrain start?"
 description = "The problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response."
-date = 2025-02-12
-updated = 2025-02-12
+date = 2025-06-30
+updated = 2025-06-30
 draft = false
 
 [taxonomies]

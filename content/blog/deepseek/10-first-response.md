@@ -1,8 +1,8 @@
 +++
 title = "Initial question and first responses"
 description = "Here we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response."
-date = 2025-02-12
-updated = 2025-02-12
+date = 2025-06-30
+updated = 2025-06-30
 draft = false
 
 [taxonomies]

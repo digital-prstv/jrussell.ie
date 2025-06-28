@@ -1,8 +1,8 @@
 +++
 title = "For war and peace"
 description = "Time for a more direct approach as the AI has not yet identified that the response has too many lines to be a sonnet."
-date = 2025-02-12
-updated = 2025-02-12
+date = 2025-06-30
+updated = 2025-06-30
 draft = false
 
 [taxonomies]

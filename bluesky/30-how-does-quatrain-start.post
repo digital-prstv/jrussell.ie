@@ -1,11 +1,11 @@
 {
-  "createdAt": "2025-06-27T06:03:30.584361Z",
+  "createdAt": "2025-06-28T07:31:27.468772Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/content/blog/deepmind/30-how-does-quatrain-start/index.html"
+          "uri": "https://www.jrussell.ie/content/blog/deepseek/30-how-does-quatrain-start/index.html"
         }
       ],
       "index": {
@@ -50,5 +50,5 @@
       }
     }
   ],
-  "text": "How does each quatrain start?\n\nThe problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepmind/30-how-does-quatrain-start/index.html"
+  "text": "How does each quatrain start?\n\nThe problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/30-how-does-quatrain-start/index.html"
 }
