@@ -1,11 +1,11 @@
 {
-  "createdAt": "2025-06-27T06:03:30.839545Z",
+  "createdAt": "2025-06-28T07:31:27.700011Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/content/blog/deepmind/70-final-output/index.html"
+          "uri": "https://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
         }
       ],
       "index": {
@@ -50,5 +50,5 @@
       }
     }
   ],
-  "text": "The Paradox of Strife\n\nThe final draft following all reviews of the sonnet. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepmind/70-final-output/index.html"
+  "text": "The Paradox of Strife\n\nThe final draft following all reviews of the sonnet. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
 }

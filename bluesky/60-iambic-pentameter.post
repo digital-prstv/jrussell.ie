@@ -1,11 +1,11 @@
 {
-  "createdAt": "2025-06-27T06:03:30.780750Z",
+  "createdAt": "2025-06-28T07:31:27.642188Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/content/blog/deepmind/60-iambic-pentameter/index.html"
+          "uri": "https://www.jrussell.ie/content/blog/deepseek/60-iambic-pentameter/index.html"
         }
       ],
       "index": {
@@ -50,5 +50,5 @@
       }
     }
   ],
-  "text": "Iambic pentameter compliance\n\nThe final 14 line response seems to be taking a few too many licenses with the iambic pentameter constraint so a review is in order. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepmind/60-iambic-pentameter/index.html"
+  "text": "Iambic pentameter compliance\n\nThe final 14 line response seems to be taking a few too many licenses with the iambic pentameter constraint so a review is in order. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/60-iambic-pentameter/index.html"
 }
