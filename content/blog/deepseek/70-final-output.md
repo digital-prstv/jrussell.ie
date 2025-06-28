@@ -1,8 +1,8 @@
 +++
 title = "The Paradox of Strife"
 description = "The final draft following all reviews of the sonnet."
-date = 2025-02-12
-updated = 2025-02-12
+date = 2025-06-30
+updated = 2025-06-30
 draft = false
 
 [taxonomies]

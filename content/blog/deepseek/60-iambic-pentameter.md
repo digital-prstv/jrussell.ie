@@ -1,8 +1,8 @@
 +++
 title = "Iambic pentameter compliance"
 description = "The final 14 line response seems to be taking a few too many licenses with the iambic pentameter constraint so a review is in order."
-date = 2025-02-12
-updated = 2025-02-12
+date = 2025-06-30
+updated = 2025-06-30
 draft = false
 
 [taxonomies]
