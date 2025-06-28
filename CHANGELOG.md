@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(ci)-update SSH verification steps in release workflow(pr [#106])
 - 🔧 chore(blog)-update tags and references from deepmind to deepseek(pr [#117])
 - 👷 ci(circleci)-update toolkit orb version to 2.11.0(pr [#118])
+- 🔧 chore(blog)-rename deepmind to deepseek(pr [#120])
 
 ### Security
 
@@ -194,6 +195,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#116]: https://github.com/digital-prstv/jrussell.ie/pull/116
 [#117]: https://github.com/digital-prstv/jrussell.ie/pull/117
 [#118]: https://github.com/digital-prstv/jrussell.ie/pull/118
+[#120]: https://github.com/digital-prstv/jrussell.ie/pull/120
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
