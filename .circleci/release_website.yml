@@ -3,7 +3,7 @@ setup: true
 orbs:
   zola: jerus-org/zola@1.2.3
   toolkit: digital-prstv/circleci-toolkit@2.11.0
-  aws-cli: circleci/aws-cli@5.4.0
+  aws-cli: circleci/aws-cli@5.4.1
 parameters:
   min-rust-version:
     type: string
