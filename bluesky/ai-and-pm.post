@@ -1,0 +1,186 @@
+{
+  "createdAt": "2025-07-15T16:48:42.523142Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/content/blog/ai-and-pm/index.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 1204,
+        "byteStart": 1147
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 850,
+        "byteStart": 847
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Project"
+        }
+      ],
+      "index": {
+        "byteEnd": 871,
+        "byteStart": 863
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Team"
+        }
+      ],
+      "index": {
+        "byteEnd": 888,
+        "byteStart": 883
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Virtual"
+        }
+      ],
+      "index": {
+        "byteEnd": 906,
+        "byteStart": 898
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Organisational"
+        }
+      ],
+      "index": {
+        "byteEnd": 935,
+        "byteStart": 920
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Digital"
+        }
+      ],
+      "index": {
+        "byteEnd": 951,
+        "byteStart": 943
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Productivity"
+        }
+      ],
+      "index": {
+        "byteEnd": 980,
+        "byteStart": 967
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Change"
+        }
+      ],
+      "index": {
+        "byteEnd": 994,
+        "byteStart": 987
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "PMO"
+        }
+      ],
+      "index": {
+        "byteEnd": 1010,
+        "byteStart": 1006
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Stakeholder"
+        }
+      ],
+      "index": {
+        "byteEnd": 1051,
+        "byteStart": 1039
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Workforce"
+        }
+      ],
+      "index": {
+        "byteEnd": 1073,
+        "byteStart": 1063
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 1089,
+        "byteStart": 1086
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Human-AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 1111,
+        "byteStart": 1102
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Strategic"
+        }
+      ],
+      "index": {
+        "byteEnd": 1136,
+        "byteStart": 1126
+      }
+    }
+  ],
+  "text": "Integrating AI as a Virtual Team Member: A Strategic Guide for Project Management and Delivery Teams\n\n🚀 **Ready to transform your project team with AI?**\n\nThis comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential.\n\n**Key insights:**\n✅ AI enhances stakeholder communication & automates reporting\n✅ Requires careful balance between efficiency gains & junior staff development\n✅ Needs strategic implementation as a formal organisational project\n✅ Functions best with domain expertise & human oversight\n\nDon't let AI disrupt your talent pipeline—discover how to preserve learning opportunities while building next-generation skills for sustainable success. #AI integration #Project management #Team dynamics #Virtual team members #Organisational change #Digital transformation #Productivity tools #Change management #PMO (Project Management Office) #Stakeholder management #Workforce development #AI supervision #Human-AI collaboration #Strategic planning\n\nhttps://www.jrussell.ie/content/blog/ai-and-pm/index.html"
+}
