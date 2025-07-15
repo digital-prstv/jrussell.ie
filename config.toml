@@ -43,6 +43,7 @@ skip_prefixes = [
     "https://people-i-mostly-admire.simplecast.com/",
     "https://sudhir-breaks-the-internet.simplecast.com/",
     "https://the-freakonomics-radio-book-club.simplecast.com/",
+    "https://blogwh1t3rabbit.medium.com/",
 ]
 
 [markdown]
