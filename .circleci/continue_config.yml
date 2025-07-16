@@ -68,6 +68,7 @@ workflows:
           bluesky: true
           bluesky_command: "draft"
           update_pcu: true
+          pcu_verbosity: "-vvvv"
   update_changelog:
     when:
       and:
