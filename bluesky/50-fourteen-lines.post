@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:42.831662Z",
+  "createdAt": "2025-07-16T10:48:31.453311Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 249,
-        "byteStart": 175
+        "byteEnd": 250,
+        "byteStart": 176
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "AI"
+          "tag": "#AI"
         }
       ],
       "index": {
-        "byteEnd": 155,
+        "byteEnd": 156,
         "byteStart": 152
       }
     },
@@ -29,26 +29,26 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
-        "byteEnd": 165,
-        "byteStart": 156
+        "byteEnd": 166,
+        "byteStart": 157
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
-        "byteEnd": 173,
-        "byteStart": 166
+        "byteEnd": 174,
+        "byteStart": 167
       }
     }
   ],
-  "text": "Correct to fourteen lines\n\nEven though it finally identified that the response was too long, a prompt is required to request to correction to 14 lines. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/50-fourteen-lines/index.html"
+  "text": "Correct to fourteen lines\n\nEven though it finally identified that the response was too long, a prompt is required to request to correction to 14 lines. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/50-fourteen-lines/index.html"
 }

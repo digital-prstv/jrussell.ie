@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:43.021870Z",
+  "createdAt": "2025-07-16T10:48:31.646526Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 377,
-        "byteStart": 283
+        "byteEnd": 378,
+        "byteStart": 284
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "devsecops"
+          "tag": "#Devsecops"
         }
       ],
       "index": {
-        "byteEnd": 240,
+        "byteEnd": 241,
         "byteStart": 230
       }
     },
@@ -29,50 +29,50 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "software"
+          "tag": "Software"
         }
       ],
       "index": {
-        "byteEnd": 250,
-        "byteStart": 241
+        "byteEnd": 251,
+        "byteStart": 242
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "circleci"
+          "tag": "Circleci"
         }
       ],
       "index": {
-        "byteEnd": 260,
-        "byteStart": 251
+        "byteEnd": 261,
+        "byteStart": 252
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "security"
+          "tag": "Security"
         }
       ],
       "index": {
-        "byteEnd": 270,
-        "byteStart": 261
+        "byteEnd": 271,
+        "byteStart": 262
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "practices"
+          "tag": "Practices"
         }
       ],
       "index": {
-        "byteEnd": 281,
-        "byteStart": 271
+        "byteEnd": 282,
+        "byteStart": 272
       }
     }
   ],
-  "text": "Overview of Our Workflow\n\nWe’ll kick things off with a detailed overview of the dependency update and release workflow. We’ll cover the key steps involved, from identification of updates through automated testing and release. #devsecops #software #circleci #security #practices\n\nhttps://www.jrussell.ie/content/blog/update-and-release/20-overview-of-our-workflow/index.html"
+  "text": "Overview of Our Workflow\n\nWe’ll kick things off with a detailed overview of the dependency update and release workflow. We’ll cover the key steps involved, from identification of updates through automated testing and release. ##Devsecops #Software #Circleci #Security #Practices\n\nhttps://www.jrussell.ie/content/blog/update-and-release/20-overview-of-our-workflow/index.html"
 }

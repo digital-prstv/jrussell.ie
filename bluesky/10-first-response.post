@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:42.583551Z",
+  "createdAt": "2025-07-16T10:48:31.188401Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 334,
-        "byteStart": 260
+        "byteEnd": 335,
+        "byteStart": 261
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "AI"
+          "tag": "#AI"
         }
       ],
       "index": {
-        "byteEnd": 240,
+        "byteEnd": 241,
         "byteStart": 237
       }
     },
@@ -29,26 +29,26 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
-        "byteEnd": 250,
-        "byteStart": 241
+        "byteEnd": 251,
+        "byteStart": 242
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
-        "byteEnd": 258,
-        "byteStart": 251
+        "byteEnd": 259,
+        "byteStart": 252
       }
     }
   ],
-  "text": "Initial question and first responses\n\nHere we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
+  "text": "Initial question and first responses\n\nHere we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
 }

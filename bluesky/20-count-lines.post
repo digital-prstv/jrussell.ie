@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:42.646159Z",
+  "createdAt": "2025-07-16T10:48:31.254319Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 307,
-        "byteStart": 236
+        "byteEnd": 308,
+        "byteStart": 237
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "AI"
+          "tag": "#AI"
         }
       ],
       "index": {
-        "byteEnd": 216,
+        "byteEnd": 217,
         "byteStart": 213
       }
     },
@@ -29,26 +29,26 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
-        "byteEnd": 226,
-        "byteStart": 217
+        "byteEnd": 227,
+        "byteStart": 218
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
-        "byteEnd": 234,
-        "byteStart": 227
+        "byteEnd": 235,
+        "byteStart": 228
       }
     }
   ],
-  "text": "Count lines\n\nThe initial response is too long to be a sonnet as it has eighteen lines instead of fourteen. The follow up instruction is design to test if the AI can diagnose the problem with its initial response. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/20-count-lines/index.html"
+  "text": "Count lines\n\nThe initial response is too long to be a sonnet as it has eighteen lines instead of fourteen. The follow up instruction is design to test if the AI can diagnose the problem with its initial response. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/20-count-lines/index.html"
 }

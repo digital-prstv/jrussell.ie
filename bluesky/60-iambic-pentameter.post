@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:42.892169Z",
+  "createdAt": "2025-07-16T10:48:31.514905Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 263,
-        "byteStart": 186
+        "byteEnd": 264,
+        "byteStart": 187
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "AI"
+          "tag": "#AI"
         }
       ],
       "index": {
-        "byteEnd": 166,
+        "byteEnd": 167,
         "byteStart": 163
       }
     },
@@ -29,26 +29,26 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
-        "byteEnd": 176,
-        "byteStart": 167
+        "byteEnd": 177,
+        "byteStart": 168
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
-        "byteEnd": 184,
-        "byteStart": 177
+        "byteEnd": 185,
+        "byteStart": 178
       }
     }
   ],
-  "text": "Iambic pentameter compliance\n\nThe final 14 line response seems to be taking a few too many licenses with the iambic pentameter constraint so a review is in order. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/60-iambic-pentameter/index.html"
+  "text": "Iambic pentameter compliance\n\nThe final 14 line response seems to be taking a few too many licenses with the iambic pentameter constraint so a review is in order. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/60-iambic-pentameter/index.html"
 }

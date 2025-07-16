@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-15T16:48:42.960677Z",
+  "createdAt": "2025-07-16T10:48:31.578766Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 171,
-        "byteStart": 99
+        "byteEnd": 172,
+        "byteStart": 100
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "AI"
+          "tag": "#AI"
         }
       ],
       "index": {
-        "byteEnd": 79,
+        "byteEnd": 80,
         "byteStart": 76
       }
     },
@@ -29,26 +29,26 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
-        "byteEnd": 89,
-        "byteStart": 80
+        "byteEnd": 90,
+        "byteStart": 81
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
-        "byteEnd": 97,
-        "byteStart": 90
+        "byteEnd": 98,
+        "byteStart": 91
       }
     }
   ],
-  "text": "The Paradox of Strife\n\nThe final draft following all reviews of the sonnet. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
+  "text": "The Paradox of Strife\n\nThe final draft following all reviews of the sonnet. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
 }
