@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-06-28T07:31:27.526687Z",
+  "createdAt": "2025-07-16T12:46:49.394632Z",
   "facets": [
     {
       "features": [
@@ -29,7 +29,7 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "deepseek"
+          "tag": "Deepseek"
         }
       ],
       "index": {
@@ -41,7 +41,7 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "sonnet"
+          "tag": "Sonnet"
         }
       ],
       "index": {
@@ -50,5 +50,5 @@
       }
     }
   ],
-  "text": "For war and peace\n\nTime for a more direct approach as the AI has not yet identified that the response has too many lines to be a sonnet. #AI #deepseek #sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/40-for-war-and-peace/index.html"
+  "text": "For war and peace\n\nTime for a more direct approach as the AI has not yet identified that the response has too many lines to be a sonnet. #AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/40-for-war-and-peace/index.html"
 }

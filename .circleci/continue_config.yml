@@ -67,7 +67,8 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           bluesky: true
           bluesky_command: "draft"
-
+          update_pcu: true
+          pcu_verbosity: "-vvvv"
   update_changelog:
     when:
       and:

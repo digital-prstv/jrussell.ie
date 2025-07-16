@@ -7,14 +7,14 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Instruction
 
 How does each quatrain start.
 
-## Deepmind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 

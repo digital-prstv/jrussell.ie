@@ -1,0 +1,198 @@
+{
+  "createdAt": "2025-07-16T12:46:49.111745Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/content/blog/ai-a-virtual-team-member/index.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 1202,
+        "byteStart": 1130
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AIIntegration"
+        }
+      ],
+      "index": {
+        "byteEnd": 861,
+        "byteStart": 847
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "ProjectManagement"
+        }
+      ],
+      "index": {
+        "byteEnd": 880,
+        "byteStart": 862
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "TeamDynamics"
+        }
+      ],
+      "index": {
+        "byteEnd": 894,
+        "byteStart": 881
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "VirtualTeamMembers"
+        }
+      ],
+      "index": {
+        "byteEnd": 914,
+        "byteStart": 895
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "OrganisationalChange"
+        }
+      ],
+      "index": {
+        "byteEnd": 936,
+        "byteStart": 915
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DigitalTransformation"
+        }
+      ],
+      "index": {
+        "byteEnd": 959,
+        "byteStart": 937
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "ProductivityTools"
+        }
+      ],
+      "index": {
+        "byteEnd": 978,
+        "byteStart": 960
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "ChangeManagement"
+        }
+      ],
+      "index": {
+        "byteEnd": 996,
+        "byteStart": 979
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "PMO"
+        }
+      ],
+      "index": {
+        "byteEnd": 1001,
+        "byteStart": 997
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "ProjectManagementOffice"
+        }
+      ],
+      "index": {
+        "byteEnd": 1026,
+        "byteStart": 1002
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "StakeholderManagement"
+        }
+      ],
+      "index": {
+        "byteEnd": 1049,
+        "byteStart": 1027
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "WorkforceDevelopment"
+        }
+      ],
+      "index": {
+        "byteEnd": 1071,
+        "byteStart": 1050
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AISupervision"
+        }
+      ],
+      "index": {
+        "byteEnd": 1086,
+        "byteStart": 1072
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Human-AICollaboration"
+        }
+      ],
+      "index": {
+        "byteEnd": 1109,
+        "byteStart": 1087
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "StrategicPlanning"
+        }
+      ],
+      "index": {
+        "byteEnd": 1128,
+        "byteStart": 1110
+      }
+    }
+  ],
+  "text": "Integrating AI as a Virtual Team Member: A Strategic Guide for Project Management and Delivery Teams\n\n🚀 **Ready to transform your project team with AI?**\n\nThis comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential.\n\n**Key insights:**\n✅ AI enhances stakeholder communication & automates reporting\n✅ Requires careful balance between efficiency gains & junior staff development\n✅ Needs strategic implementation as a formal organisational project\n✅ Functions best with domain expertise & human oversight\n\nDon't let AI disrupt your talent pipeline—discover how to preserve learning opportunities while building next-generation skills for sustainable success. #AIIntegration #ProjectManagement #TeamDynamics #VirtualTeamMembers #OrganisationalChange #DigitalTransformation #ProductivityTools #ChangeManagement #PMO #ProjectManagementOffice #StakeholderManagement #WorkforceDevelopment #AISupervision #Human-AICollaboration #StrategicPlanning\n\nhttps://www.jrussell.ie/content/blog/ai-a-virtual-team-member/index.html"
+}
