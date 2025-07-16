@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-16T10:48:31.254319Z",
+  "createdAt": "2025-07-16T12:08:40.057060Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 308,
-        "byteStart": 237
+        "byteEnd": 307,
+        "byteStart": 236
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "#AI"
+          "tag": "AI"
         }
       ],
       "index": {
-        "byteEnd": 217,
+        "byteEnd": 216,
         "byteStart": 213
       }
     },
@@ -33,8 +33,8 @@
         }
       ],
       "index": {
-        "byteEnd": 227,
-        "byteStart": 218
+        "byteEnd": 226,
+        "byteStart": 217
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 235,
-        "byteStart": 228
+        "byteEnd": 234,
+        "byteStart": 227
       }
     }
   ],
-  "text": "Count lines\n\nThe initial response is too long to be a sonnet as it has eighteen lines instead of fourteen. The follow up instruction is design to test if the AI can diagnose the problem with its initial response. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/20-count-lines/index.html"
+  "text": "Count lines\n\nThe initial response is too long to be a sonnet as it has eighteen lines instead of fourteen. The follow up instruction is design to test if the AI can diagnose the problem with its initial response. #AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/20-count-lines/index.html"
 }

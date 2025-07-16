@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-16T10:48:31.188401Z",
+  "createdAt": "2025-07-16T12:08:39.996391Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 335,
-        "byteStart": 261
+        "byteEnd": 334,
+        "byteStart": 260
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "#AI"
+          "tag": "AI"
         }
       ],
       "index": {
-        "byteEnd": 241,
+        "byteEnd": 240,
         "byteStart": 237
       }
     },
@@ -33,8 +33,8 @@
         }
       ],
       "index": {
-        "byteEnd": 251,
-        "byteStart": 242
+        "byteEnd": 250,
+        "byteStart": 241
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 259,
-        "byteStart": 252
+        "byteEnd": 258,
+        "byteStart": 251
       }
     }
   ],
-  "text": "Initial question and first responses\n\nHere we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response. ##AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
+  "text": "Initial question and first responses\n\nHere we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response. #AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
 }

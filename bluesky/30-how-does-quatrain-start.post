@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-16T10:48:31.319529Z",
+  "createdAt": "2025-07-16T12:08:40.120652Z",
   "facets": [
     {
       "features": [
@@ -9,19 +9,19 @@
         }
       ],
       "index": {
-        "byteEnd": 268,
-        "byteStart": 185
+        "byteEnd": 267,
+        "byteStart": 184
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "#AI"
+          "tag": "AI"
         }
       ],
       "index": {
-        "byteEnd": 165,
+        "byteEnd": 164,
         "byteStart": 161
       }
     },
@@ -33,8 +33,8 @@
         }
       ],
       "index": {
-        "byteEnd": 175,
-        "byteStart": 166
+        "byteEnd": 174,
+        "byteStart": 165
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 183,
-        "byteStart": 176
+        "byteEnd": 182,
+        "byteStart": 175
       }
     }
   ],
-  "text": "How does each quatrain start?\n\nThe problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response. ##AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/30-how-does-quatrain-start/index.html"
+  "text": "How does each quatrain start?\n\nThe problem hasn't been diagnosed yet so another oblique question to prompt an analysis of the structure of the current response. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/30-how-does-quatrain-start/index.html"
 }
