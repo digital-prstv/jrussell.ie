@@ -1,7 +1,7 @@
 +++
 title = "Integrating AI as a Virtual Team Member: A Strategic Guide for Project Management and Delivery Teams"
 description = "This comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential."
-date = 2025-07-15
+date = 2025-07-16
 draft = false
 
 [taxonomies]
