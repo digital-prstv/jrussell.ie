@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.1.5] - 2025-07-16
 
 ### Changed
 
@@ -204,7 +204,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#122]: https://github.com/digital-prstv/jrussell.ie/pull/122
 [#123]: https://github.com/digital-prstv/jrussell.ie/pull/123
 [#125]: https://github.com/digital-prstv/jrussell.ie/pull/125
-[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
+[1.1.5]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...v1.1.5
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
