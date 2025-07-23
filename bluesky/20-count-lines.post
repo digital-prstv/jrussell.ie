@@ -1,0 +1,42 @@
+{
+  "createdAt": "2025-07-23T13:33:18.516101Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 201,
+        "byteStart": 198
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Deepseek"
+        }
+      ],
+      "index": {
+        "byteEnd": 211,
+        "byteStart": 202
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 219,
+        "byteStart": 212
+      }
+    }
+  ],
+  "text": "Count lines\n\nThe initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response. #AI #Deepseek #Sonnet\n\nstatic/s/UrmQ8le.html"
+}

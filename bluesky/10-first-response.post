@@ -1,0 +1,42 @@
+{
+  "createdAt": "2025-07-23T13:33:18.442822Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 223,
+        "byteStart": 220
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Deepseek"
+        }
+      ],
+      "index": {
+        "byteEnd": 233,
+        "byteStart": 224
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 241,
+        "byteStart": 234
+      }
+    }
+  ],
+  "text": "Initial request to Deepmind and its response\n\nWe submitted an initial request for a sonnet about war's role in peace and received Deepmind's first response, which included both its prompt analysis and reasoning process. #AI #Deepseek #Sonnet\n\nstatic/s/UrmQ8q6.html"
+}
