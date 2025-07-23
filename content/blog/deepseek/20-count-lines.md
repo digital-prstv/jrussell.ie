@@ -1,8 +1,8 @@
 +++
 title = "Count lines"
-description = "The initial response is too long to be a sonnet as it has eighteen lines instead of fourteen. The follow up instruction is design to test if the AI can diagnose the problem with its initial response."
+description = "The initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-23
 draft = false
 
 [taxonomies]
@@ -56,4 +56,3 @@ The sonnet provided contains 14 lines, adhering to the traditional structure of 
 
 Each line follows iambic pentameter, and the rhyme scheme is ABAB CDCD EFEF GG.
 
-{{ webmentions() }}
