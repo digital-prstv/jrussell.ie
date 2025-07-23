@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-23T13:33:18.516101Z",
+  "createdAt": "2025-07-23T17:12:43.875408Z",
   "facets": [
     {
       "features": [
@@ -17,7 +17,7 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Deepseek"
+          "tag": "DeepSeek"
         }
       ],
       "index": {
@@ -38,5 +38,5 @@
       }
     }
   ],
-  "text": "Count lines\n\nThe initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response. #AI #Deepseek #Sonnet\n\nstatic/s/UrmQ8le.html"
+  "text": "Count lines\n\nThe initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response. #AI #DeepSeek #Sonnet\n\nstatic/s/UrnJNgI.html"
 }

@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-23T13:33:18.442822Z",
+  "createdAt": "2025-07-23T17:12:43.809950Z",
   "facets": [
     {
       "features": [
@@ -17,7 +17,7 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Deepseek"
+          "tag": "DeepSeek"
         }
       ],
       "index": {
@@ -38,5 +38,5 @@
       }
     }
   ],
-  "text": "Initial request to Deepseek and its response\n\nWe submitted an initial request for a sonnet about war's role in peace and received Deepseek's first response, which included both its prompt analysis and reasoning process. #AI #Deepseek #Sonnet\n\nstatic/s/UrmQ8q6.html"
+  "text": "Initial request to DeepSeek and its response\n\nWe submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process. #AI #DeepSeek #Sonnet\n\nstatic/s/UrnJNkf.html"
 }
