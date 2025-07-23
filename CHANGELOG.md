@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-update toolkit orb version to 2.11.0(pr [#118])
 - 🔧 chore(blog)-rename deepmind to deepseek(pr [#120])
 - 📝 docs(blog)-add guide on integrating AI in project management(pr [#125])
+- 📝 docs(blog)-add new blog post on initial request to Claude(pr [#126])
 
 ### Security
 
@@ -204,6 +205,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#122]: https://github.com/digital-prstv/jrussell.ie/pull/122
 [#123]: https://github.com/digital-prstv/jrussell.ie/pull/123
 [#125]: https://github.com/digital-prstv/jrussell.ie/pull/125
+[#126]: https://github.com/digital-prstv/jrussell.ie/pull/126
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
