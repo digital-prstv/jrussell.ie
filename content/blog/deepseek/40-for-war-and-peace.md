@@ -7,14 +7,14 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Instruction
 
 Where does "For war and peace ... " fit in the sonnet?
 
-## Deepmind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 

@@ -7,14 +7,14 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Instruction
 
 Check and demonstrate iambic pentameter compliance.
 
-## Deepmind thinking through the request
+## DeepSeek thinking through the request
 
 Okay, the user asked me to check and demonstrate iambic pentameter compliance in the revised sonnet. First, I need to recall what iambic pentameter is. It's a line of verse with five iambs, each iamb being an unstressed syllable followed by a stressed one. So each line should have ten syllables with that da-DUM rhythm.
 

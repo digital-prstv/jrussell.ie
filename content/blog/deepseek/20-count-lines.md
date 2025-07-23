@@ -7,14 +7,14 @@ draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Instruction
 
 Count the lines.
 
-## Deepmind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 
