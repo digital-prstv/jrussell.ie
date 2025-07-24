@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-24T17:03:17.456920Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urt7Wjo.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 277,
+        "byteStart": 239
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 221,
+        "byteStart": 218
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Claude"
+        }
+      ],
+      "index": {
+        "byteEnd": 229,
+        "byteStart": 222
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 237,
+        "byteStart": 230
+      }
+    }
+  ],
+  "text": "Initial request to Claude and its response\n\nWe submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urt7Wjo.html"
+}
