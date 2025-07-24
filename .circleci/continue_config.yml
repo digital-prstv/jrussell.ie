@@ -166,6 +166,10 @@ jobs:
         default: true
         description: Optional flag to push the commit to the remote repository
         type: boolean
+      pcu_explicit_push:
+        default: false
+        description: Optional flag for explicit push. Ensures push even if changelog not changed.
+        type: boolean
       pcu_verbosity:
         default: "-vv"
         description: The verbosity of the pcu command
@@ -267,6 +271,14 @@ jobs:
       - when:
           condition:
             equal:
+              - true
+              - << parameters.pcu_explicit_push >>
+          steps:
+            - toolkit/push_cmd:
+                pcu_verbosity: <<parameters.pcu_verbosity>>
+      - when:
+          condition:
+            equal:
               - pipeline
               - << parameters.update_log_option >>
           steps:
@@ -323,6 +335,8 @@ workflows:
           blog_directory: "content/blog"
           update_pcu: true
           pcu_verbosity: "-vvvv"
+          pcu_push: false
+          pcu_explicit_push: true
 
   update_changelog_only:
     when:
