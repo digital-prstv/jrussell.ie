@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-24T16:32:52.884998Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urszs8n.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 281,
+        "byteStart": 243
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 223,
+        "byteStart": 220
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DeepSeek"
+        }
+      ],
+      "index": {
+        "byteEnd": 233,
+        "byteStart": 224
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 241,
+        "byteStart": 234
+      }
+    }
+  ],
+  "text": "Initial request to DeepSeek and its response\n\nWe submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urszs8n.html"
+}
