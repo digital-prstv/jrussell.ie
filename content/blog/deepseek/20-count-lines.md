@@ -2,7 +2,7 @@
 title = "Count lines"
 description = "The initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response."
 date = 2025-06-30
-updated = 2025-07-23
+updated = 2025-07-24
 draft = false
 
 [taxonomies]
