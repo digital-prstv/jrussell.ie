@@ -70,6 +70,20 @@ workflows:
           blog_directory: "content/blog"
           update_pcu: true
           pcu_verbosity: "-vvvv"
+          pcu_push: false
+
+      - toolkit/commit_and_push:
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          requires:
+            - toolkit/update_changelog
+          pcu_verbosity: "-vvvv"
+          changelog_updated: true
+          pcu_commit_message: "chore: update changelog for pr"
 
   update_changelog:
     when:
