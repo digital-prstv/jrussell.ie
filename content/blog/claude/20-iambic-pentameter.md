@@ -8,6 +8,10 @@ draft = false
 [taxonomies]
 topic = ["Technology"]
 tags = ["AI", "Claude", "sonnet"]
+
+[bluesky]
+description = "Claude provides a detailed syllable-by-syllable analysis, marking stressed and unstressed patterns to demonstrate technical compliance with traditional sonnet form."
+
 +++
 
 ## Instruction
