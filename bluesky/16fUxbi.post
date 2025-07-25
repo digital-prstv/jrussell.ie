@@ -1,0 +1,66 @@
+{
+  "createdAt": "2025-07-25T17:00:07.175602Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/UryxGC1.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 298,
+        "byteStart": 260
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Devsecops"
+        }
+      ],
+      "index": {
+        "byteEnd": 227,
+        "byteStart": 217
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Software"
+        }
+      ],
+      "index": {
+        "byteEnd": 237,
+        "byteStart": 228
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Security"
+        }
+      ],
+      "index": {
+        "byteEnd": 247,
+        "byteStart": 238
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Practices"
+        }
+      ],
+      "index": {
+        "byteEnd": 258,
+        "byteStart": 248
+      }
+    }
+  ],
+  "text": "Why Build an Update and Release Workflow?\n\nModern software relies on frequently updated libraries. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and technical debt. #Devsecops #Software #Security #Practices\n\nhttps://www.jrussell.ie/s/UryxGC1.html"
+}

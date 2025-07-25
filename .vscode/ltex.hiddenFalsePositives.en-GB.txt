@@ -30,3 +30,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qbluesky description = \"Claude provides a detailed syllable-by-syllable analysis, marking stressed and unstressed patterns to demonstrate technical compliance with traditional sonnet form.\"\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qbluesky description = \"A curated selection of potential titles for the sonnet exploring how peace emerges from conflict, ranging from metaphorical to direct, with analysis of each option's thematic strengths and a recommendation for the most fitting choice.\"\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qbluesky description = \"A curated selection of potential titles for the sonnet exploring how peace emerges from conflict, ranging from metaphorical to direct and a recommendation for the most fitting choice.\"\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qbluesky description=\"Modern software relies on frequently updated libraries.\\E$"}

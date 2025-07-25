@@ -1,7 +1,7 @@
 +++
 title = "The Harvest of Conflict"
 description = "The final sonnet after all revisions."
-date = 2025-06-30
+date = 2025-07-25
 updated = 2025-07-25
 draft = false
 
