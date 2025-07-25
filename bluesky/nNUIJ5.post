@@ -1,16 +1,16 @@
 {
-  "createdAt": "2025-07-25T12:01:39.935734Z",
+  "createdAt": "2025-07-25T12:01:40.062579Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/s/Urt7Wjo.html"
+          "uri": "https://www.jrussell.ie/s/Urxk7Pv.html"
         }
       ],
       "index": {
-        "byteEnd": 296,
-        "byteStart": 258
+        "byteEnd": 286,
+        "byteStart": 248
       }
     },
     {
@@ -21,8 +21,8 @@
         }
       ],
       "index": {
-        "byteEnd": 240,
-        "byteStart": 237
+        "byteEnd": 230,
+        "byteStart": 227
       }
     },
     {
@@ -33,8 +33,8 @@
         }
       ],
       "index": {
-        "byteEnd": 248,
-        "byteStart": 241
+        "byteEnd": 238,
+        "byteStart": 231
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 256,
-        "byteStart": 249
+        "byteEnd": 246,
+        "byteStart": 239
       }
     }
   ],
-  "text": "Initial Request: Sonnet Generation with AI Analysis by Claude\n\nWe submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urt7Wjo.html"
+  "text": "Technical Analysis: Demonstrating Meter Compliance by Claude\n\nClaude provides a detailed syllable-by-syllable analysis, marking stressed and unstressed patterns to demonstrate technical compliance with traditional sonnet form. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7Pv.html"
 }

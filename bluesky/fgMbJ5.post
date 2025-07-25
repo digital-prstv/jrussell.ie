@@ -1,16 +1,16 @@
 {
-  "createdAt": "2025-07-25T12:01:40.313909Z",
+  "createdAt": "2025-07-25T12:01:40.191553Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/s/Urt7WkS.html"
+          "uri": "https://www.jrussell.ie/s/Urxk7LL.html"
         }
       ],
       "index": {
-        "byteEnd": 266,
-        "byteStart": 228
+        "byteEnd": 122,
+        "byteStart": 84
       }
     },
     {
@@ -21,20 +21,20 @@
         }
       ],
       "index": {
-        "byteEnd": 208,
-        "byteStart": 205
+        "byteEnd": 66,
+        "byteStart": 63
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "DeepSeek"
+          "tag": "Claude"
         }
       ],
       "index": {
-        "byteEnd": 218,
-        "byteStart": 209
+        "byteEnd": 74,
+        "byteStart": 67
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 226,
-        "byteStart": 219
+        "byteEnd": 82,
+        "byteStart": 75
       }
     }
   ],
-  "text": "Testing DeepSeek's Error Detection: Sonnet Length Violation\n\nThe initial eighteen-line response exceeded the sonnet's fourteen-line requirement. The follow-up tests whether the AI can identify this error. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urt7WkS.html"
+  "text": "The Harvest of Conflict\n\nThe final sonnet after all revisions. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7LL.html"
 }

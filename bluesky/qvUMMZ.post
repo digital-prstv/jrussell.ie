@@ -1,16 +1,16 @@
 {
-  "createdAt": "2025-07-25T12:01:40.313909Z",
+  "createdAt": "2025-07-25T12:01:40.573152Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/s/Urt7WkS.html"
+          "uri": "https://www.jrussell.ie/s/Urxk7ci.html"
         }
       ],
       "index": {
-        "byteEnd": 266,
-        "byteStart": 228
+        "byteEnd": 210,
+        "byteStart": 172
       }
     },
     {
@@ -21,8 +21,8 @@
         }
       ],
       "index": {
-        "byteEnd": 208,
-        "byteStart": 205
+        "byteEnd": 152,
+        "byteStart": 149
       }
     },
     {
@@ -33,8 +33,8 @@
         }
       ],
       "index": {
-        "byteEnd": 218,
-        "byteStart": 209
+        "byteEnd": 162,
+        "byteStart": 153
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 226,
-        "byteStart": 219
+        "byteEnd": 170,
+        "byteStart": 163
       }
     }
   ],
-  "text": "Testing DeepSeek's Error Detection: Sonnet Length Violation\n\nThe initial eighteen-line response exceeded the sonnet's fourteen-line requirement. The follow-up tests whether the AI can identify this error. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urt7WkS.html"
+  "text": "Meter Review: Iambic Pentameter Deviations by DeepSeek\n\nThe final fourteen-line response deviates too much from iambic pentameter, requiring review. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7ci.html"
 }
