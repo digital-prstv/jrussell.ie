@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T17:00:06.924538Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7X6.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 256,
+        "byteStart": 218
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 198,
+        "byteStart": 195
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DeepSeek"
+        }
+      ],
+      "index": {
+        "byteEnd": 208,
+        "byteStart": 199
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 216,
+        "byteStart": 209
+      }
+    }
+  ],
+  "text": "Direct Request Required: DeepSeek Identified but Didn't Self-Correct\n\nEven though it finally identified that the response was too long, a prompt is required to request to correction to 14 lines. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7X6.html"
+}

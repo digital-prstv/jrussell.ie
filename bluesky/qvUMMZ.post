@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T17:00:06.994223Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7ci.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 210,
+        "byteStart": 172
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 152,
+        "byteStart": 149
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DeepSeek"
+        }
+      ],
+      "index": {
+        "byteEnd": 162,
+        "byteStart": 153
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 170,
+        "byteStart": 163
+      }
+    }
+  ],
+  "text": "Meter Review: Iambic Pentameter Deviations by DeepSeek\n\nThe final fourteen-line response deviates too much from iambic pentameter, requiring review. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7ci.html"
+}

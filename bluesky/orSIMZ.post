@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T17:00:06.842502Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7YX.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 253,
+        "byteStart": 215
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 195,
+        "byteStart": 192
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DeepSeek"
+        }
+      ],
+      "index": {
+        "byteEnd": 205,
+        "byteStart": 196
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 213,
+        "byteStart": 206
+      }
+    }
+  ],
+  "text": "Direct Intervention: Addressing DeepSeek's Format Recognition Failure\n\nWe take a more direct approach since the AI hasn't recognized that its response exceeds the fourteen-line sonnet format. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7YX.html"
+}
