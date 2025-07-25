@@ -19,3 +19,11 @@ ci-add
 ci-remove
 ci-update
 aws
+deepseek
+deepseek
+OLIST
+$SERIES
+plowshares
+volta
+CDCD
+da-DUM

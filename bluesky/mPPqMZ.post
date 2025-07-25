@@ -1,16 +1,16 @@
 {
-  "createdAt": "2025-07-16T12:46:49.580959Z",
+  "createdAt": "2025-07-25T12:01:40.508398Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
+          "uri": "https://www.jrussell.ie/s/Urxk7X6.html"
         }
       ],
       "index": {
-        "byteEnd": 171,
-        "byteStart": 99
+        "byteEnd": 256,
+        "byteStart": 218
       }
     },
     {
@@ -21,20 +21,20 @@
         }
       ],
       "index": {
-        "byteEnd": 79,
-        "byteStart": 76
+        "byteEnd": 198,
+        "byteStart": 195
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Deepseek"
+          "tag": "DeepSeek"
         }
       ],
       "index": {
-        "byteEnd": 89,
-        "byteStart": 80
+        "byteEnd": 208,
+        "byteStart": 199
       }
     },
     {
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 97,
-        "byteStart": 90
+        "byteEnd": 216,
+        "byteStart": 209
       }
     }
   ],
-  "text": "The Paradox of Strife\n\nThe final draft following all reviews of the sonnet. #AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/70-final-output/index.html"
+  "text": "Direct Request Required: DeepSeek Identified but Didn't Self-Correct\n\nEven though it finally identified that the response was too long, a prompt is required to request to correction to 14 lines. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7X6.html"
 }

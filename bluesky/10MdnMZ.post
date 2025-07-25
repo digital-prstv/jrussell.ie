@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T12:01:40.377657Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7j1.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 247,
+        "byteStart": 209
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 189,
+        "byteStart": 186
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "DeepSeek"
+        }
+      ],
+      "index": {
+        "byteEnd": 199,
+        "byteStart": 190
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 207,
+        "byteStart": 200
+      }
+    }
+  ],
+  "text": "Second Indirect Prompt: Testing Structural Awareness of DeepSeek\n\nSince the problem remains undiagnosed, we ask another indirect question to prompt analysis of the response's structure. #AI #DeepSeek #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7j1.html"
+}

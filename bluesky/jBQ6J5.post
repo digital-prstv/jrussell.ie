@@ -1,16 +1,16 @@
 {
-  "createdAt": "2025-07-16T12:46:49.211246Z",
+  "createdAt": "2025-07-25T12:01:39.935734Z",
   "facets": [
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#link",
-          "uri": "https://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
+          "uri": "https://www.jrussell.ie/s/Urt7Wjo.html"
         }
       ],
       "index": {
-        "byteEnd": 334,
-        "byteStart": 260
+        "byteEnd": 296,
+        "byteStart": 258
       }
     },
     {
@@ -29,11 +29,11 @@
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Deepseek"
+          "tag": "Claude"
         }
       ],
       "index": {
-        "byteEnd": 250,
+        "byteEnd": 248,
         "byteStart": 241
       }
     },
@@ -45,10 +45,10 @@
         }
       ],
       "index": {
-        "byteEnd": 258,
-        "byteStart": 251
+        "byteEnd": 256,
+        "byteStart": 249
       }
     }
   ],
-  "text": "Initial question and first responses\n\nHere we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response. #AI #Deepseek #Sonnet\n\nhttps://www.jrussell.ie/content/blog/deepseek/10-first-response/index.html"
+  "text": "Initial Request: Sonnet Generation with AI Analysis by Claude\n\nWe submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urt7Wjo.html"
 }

@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T12:01:40.062579Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7Pv.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 286,
+        "byteStart": 248
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 230,
+        "byteStart": 227
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Claude"
+        }
+      ],
+      "index": {
+        "byteEnd": 238,
+        "byteStart": 231
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 246,
+        "byteStart": 239
+      }
+    }
+  ],
+  "text": "Technical Analysis: Demonstrating Meter Compliance by Claude\n\nClaude provides a detailed syllable-by-syllable analysis, marking stressed and unstressed patterns to demonstrate technical compliance with traditional sonnet form. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7Pv.html"
+}

@@ -1,20 +1,20 @@
 +++
-title = "For war and peace"
-description = "Time for a more direct approach as the AI has not yet identified that the response has too many lines to be a sonnet."
+title = "Direct Intervention: Addressing DeepSeek's Format Recognition Failure"
+description = "We take a more direct approach since the AI hasn't recognized that its response exceeds the fourteen-line sonnet format."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Instruction
 
 Where does "For war and peace ... " fit in the sonnet?
 
-## Deepmind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 
@@ -244,4 +244,4 @@ While the theme of the line aligns with a volta (traditional turn in a sonnet’
 
 Apologies for the earlier inconsistency—thank you for catching this! 🙇♂️
 
-{{ webmentions() }}
+

@@ -1,6 +1,7 @@
 +++
 title = "Stuck in the middle"
 date = 2025-02-19
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
@@ -34,4 +35,4 @@ It's not clear today that there are two sides in the room. It feels more like th
 
 Who will stand in the middle with Ukraine?
 
-{{ webmentions() }}
+

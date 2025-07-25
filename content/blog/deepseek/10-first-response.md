@@ -1,20 +1,20 @@
 +++
-title = "Initial question and first responses"
-description = "Here we set the initial request for a sonnet about the role of war in peace and get the first response from Deepmind including its analysis of the prompt and thought process to prepare the response."
+title = "Initial Request: Sonnet Generation with AI Analysis by DeepSeek"
+description = "We submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
 topic = ["Technology"]
-tags = ["AI", "deepseek", "sonnet"]
+tags = ["AI", "DeepSeek", "sonnet"]
 +++
 
 ## Request
 
 Compose a sonnet about the role of war in peace.
 
-## Deepmind thought process and response
+## DeepSeek thought process and response
 
 ### Thought process
 
@@ -40,6 +40,7 @@ Alright, time to put it all together, keeping the structure tight and the theme 
 
 ### Response
 
+```txt
 Sonnet: The Paradox of Strife
 
 In tempest’s wake, where thunder rends the air,
@@ -64,5 +65,6 @@ Both bound by laws that none may dare to parse.
 
 So history’s page, inked red yet edged with light,
 Proclaims this truth: From ends of wrath, beginnings take flight.
+```
 
 This sonnet grapples with war’s paradoxical role in shaping peace, weaving imagery of destruction and renewal while questioning the cost. The volta in the final couplet suggests that peace, though born of violence, carries the weight of its origins.

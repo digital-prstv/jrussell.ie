@@ -1,0 +1,54 @@
+{
+  "createdAt": "2025-07-25T12:01:40.191553Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/Urxk7LL.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 122,
+        "byteStart": 84
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 66,
+        "byteStart": 63
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Claude"
+        }
+      ],
+      "index": {
+        "byteEnd": 74,
+        "byteStart": 67
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Sonnet"
+        }
+      ],
+      "index": {
+        "byteEnd": 82,
+        "byteStart": 75
+      }
+    }
+  ],
+  "text": "The Harvest of Conflict\n\nThe final sonnet after all revisions. #AI #Claude #Sonnet\n\nhttps://www.jrussell.ie/s/Urxk7LL.html"
+}
