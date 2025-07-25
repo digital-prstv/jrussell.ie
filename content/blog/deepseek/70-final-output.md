@@ -1,8 +1,8 @@
 +++
 title = "The Paradox of Strife"
-description = "The final draft following all reviews of the sonnet."
+description = "The final sonnet after all revisions."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
@@ -32,4 +32,3 @@ So hist’ry’s page, inked red yet edged with light
 Proclaims: From wrath’s harsh end, new births take flight
 ```
 
-{{ webmentions() }}

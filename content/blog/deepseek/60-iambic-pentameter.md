@@ -1,8 +1,8 @@
 +++
-title = "Iambic pentameter compliance"
-description = "The final 14 line response seems to be taking a few too many licences with the iambic pentameter constraint, so a review is in order."
+title = "Meter Review: Iambic Pentameter Deviations by DeepSeek"
+description = "The final fourteen-line response deviates too much from iambic pentameter, requiring review."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
@@ -99,18 +99,13 @@ Revised Sonnet with Scansion
     Fix: Replace beginnings with births:
     “Proclaims: From wrath’s harsh end, new births take flight.”
 
-Summary
+#### Summary
 
-    12/14 lines follow strict iambic pentameter.
-
-    2 lines use poetic license:
-
-        Line 8 (spun thin as a spondee).
-
-        Line 14 (syllable adjustment needed).
-
-    Elisions (e.g., violence’s → vi-lence’s, history’s → his-t’ry’s) ensure meter compliance.
+- 12/14 lines follow strict iambic pentameter.
+- 2 lines use poetic licence:
+  - Line 8 (spun thin as a spondee).
+  - Line 14 (syllable adjustment needed).
+- Elisions (e.g., violence’s → vi-lence’s, history’s → his-t’ry’s) ensure meter compliance.
 
 Would you like further refinements? ✍️
 
-{{ webmentions() }}

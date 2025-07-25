@@ -1,8 +1,8 @@
 +++
-title = "Count lines"
-description = "The initial response contained eighteen lines instead of the required fourteen for a sonnet. The follow-up instruction tests whether the AI can identify this error in its own response."
+title = "Testing DeepSeek's Error Detection: Sonnet Length Violation"
+description = "The initial eighteen-line response exceeded the sonnet's fourteen-line requirement. The follow-up tests whether the AI can identify this error."
 date = 2025-06-30
-updated = 2025-07-24
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
@@ -50,9 +50,8 @@ So, putting it all together: the answer is 14 lines, structured as three quatrai
 
 The sonnet provided contains 14 lines, adhering to the traditional structure of a Shakespearean sonnet:
 
-    Three quatrains (4-line stanzas)
-
-    One closing couplet (2-line stanza).
+- Three quatrains (4-line stanzas)
+- One closing couplet (2-line stanza).
 
 Each line follows iambic pentameter, and the rhyme scheme is ABAB CDCD EFEF GG.
 

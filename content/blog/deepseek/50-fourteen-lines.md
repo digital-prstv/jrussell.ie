@@ -1,8 +1,8 @@
 +++
-title = "Correct to fourteen lines"
+title = "Direct Request Required: DeepSeek Identified but Didn't Self-Correct"
 description = "Even though it finally identified that the response was too long, a prompt is required to request to correction to 14 lines."
 date = 2025-06-30
-updated = 2025-06-30
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
@@ -295,4 +295,4 @@ Meter: Iambic pentameter throughout.
 
 Let me know if you’d like further tweaks! 🌟
 
-{{ webmentions() }}
+

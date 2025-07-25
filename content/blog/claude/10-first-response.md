@@ -1,8 +1,8 @@
 +++
-title = "Initial request to Claude and its response"
+title = "Initial Request: Sonnet Generation with AI Analysis by Claude"
 description = "We submitted an initial request for a sonnet about war's role in peace and received DeepSeek's first response, which included both its prompt analysis and reasoning process."
-date = 2025-07-24
-updated = 2025-07-24
+date = 2025-07-25
+updated = 2025-07-25
 draft = false
 
 [taxonomies]
