@@ -1,7 +1,7 @@
 +++
 title = "Eight Titles for a War and Peace Sonnet"
 description = "A curated selection of potential titles for the sonnet exploring how peace emerges from conflict, ranging from metaphorical to direct, with analysis of each option's thematic strengths and a recommendation for the most fitting choice."
-date = 2025-06-30
+date = 2025-07-25
 updated = 2025-07-25
 draft = false
 
