@@ -8,6 +8,9 @@ draft = false
 [taxonomies]
 topic = ["Technology"]
 tags = ["AI", "Claude", "sonnet"]
+
+[bluesky]
+description = "A curated selection of potential titles for the sonnet exploring how peace emerges from conflict, ranging from metaphorical to direct and a recommendation for the most fitting choice."
 +++
 
 ## Instruction
