@@ -9,6 +9,9 @@ draft = false
 # categories = ["Technology", "DevSecOps", "Security"]
 topic = ["Technology"]
 tags = ["devsecops", "software", "security", "practices"]
+
+[bluesky]
+description="Modern software relies on frequently updated libraries. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and technical debt."
 +++
 
 Modern software depends on countless external libraries and frameworks that update frequently. Without a systematic approach to managing these dependencies, you risk security vulnerabilities, compatibility issues, and technical debt that compounds over time. A well-designed workflow automates the heavy lifting while maintaining quality standards, letting you focus on building features instead of chasing dependency updates.
