@@ -2,13 +2,24 @@
 title = "Why Build an Update and Release Workflow?"
 description = "Modern software relies on external libraries that update constantly. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and accumulating technical debt."
 date = 2025-01-17
-updated = 2025-07-25
+updated = 2025-07-26
 draft = false
 
 [taxonomies]
 # categories = ["Technology", "DevSecOps", "Security"]
 topic = ["Technology"]
-tags = ["devsecops", "software", "security", "practices"]
+tags = ["dependency-management",
+"automation",
+"devops",
+"ci-cd",
+"software-development",
+"security",
+"open-source",
+"software-engineering",
+"maintenance",
+"developers",
+"tech-lead"
+]
 
 [bluesky]
 description="Modern software relies on frequently updated libraries. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and technical debt."
