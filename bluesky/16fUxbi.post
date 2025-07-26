@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-07-25T17:00:07.175602Z",
+  "createdAt": "2025-07-26T08:04:10.277747Z",
   "facets": [
     {
       "features": [
@@ -9,32 +9,20 @@
         }
       ],
       "index": {
-        "byteEnd": 298,
-        "byteStart": 260
+        "byteEnd": 300,
+        "byteStart": 262
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Devsecops"
+          "tag": "Devops"
         }
       ],
       "index": {
-        "byteEnd": 227,
+        "byteEnd": 224,
         "byteStart": 217
-      }
-    },
-    {
-      "features": [
-        {
-          "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Software"
-        }
-      ],
-      "index": {
-        "byteEnd": 237,
-        "byteStart": 228
       }
     },
     {
@@ -45,22 +33,34 @@
         }
       ],
       "index": {
-        "byteEnd": 247,
-        "byteStart": 238
+        "byteEnd": 234,
+        "byteStart": 225
       }
     },
     {
       "features": [
         {
           "$type": "app.bsky.richtext.facet#tag",
-          "tag": "Practices"
+          "tag": "Open-source"
         }
       ],
       "index": {
-        "byteEnd": 258,
+        "byteEnd": 247,
+        "byteStart": 235
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Maintenance"
+        }
+      ],
+      "index": {
+        "byteEnd": 260,
         "byteStart": 248
       }
     }
   ],
-  "text": "Why Build an Update and Release Workflow?\n\nModern software relies on frequently updated libraries. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and technical debt. #Devsecops #Software #Security #Practices\n\nhttps://www.jrussell.ie/s/UryxGC1.html"
+  "text": "Why Build an Update and Release Workflow?\n\nModern software relies on frequently updated libraries. Without systematic dependency management, you'll face security vulnerabilities, breaking changes, and technical debt. #Devops #Security #Open-source #Maintenance\n\nhttps://www.jrussell.ie/s/UryxGC1.html"
 }
