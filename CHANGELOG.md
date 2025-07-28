@@ -5,14 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] 
+## [Unreleased]
 
-## [1.1.8] - 2025-07-25
+### Changed
+
+- 🔧 chore(ci)-remove obsolete SSH check job from CircleCI config(pr [#133])
+
+## [1.1.8] - 2025-07-28
 
 ### Changed
 
 - 📝 docs(blog)-update DeepSeek series description(pr [#131])
 - 📝 docs(blog)-update blog description for clarity(pr [#132])
+- 🔧 chore(ci)-remove obsolete SSH check job from CircleCI config(pr [#133])
 
 ## [1.1.7] - 2025-07-25
 
@@ -217,6 +222,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#126]: https://github.com/digital-prstv/jrussell.ie/pull/126
 [#131]: https://github.com/digital-prstv/jrussell.ie/pull/131
 [#132]: https://github.com/digital-prstv/jrussell.ie/pull/132
+[#133]: https://github.com/digital-prstv/jrussell.ie/pull/133
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...HEAD
 [1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
 [1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...v1.1.7
