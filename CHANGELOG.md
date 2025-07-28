@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] 
 
+## [1.1.8] - 2025-07-25
+
 ### Changed
 
 - 📝 docs(blog)-update DeepSeek series description(pr [#131])
@@ -215,7 +217,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#126]: https://github.com/digital-prstv/jrussell.ie/pull/126
 [#131]: https://github.com/digital-prstv/jrussell.ie/pull/131
 [#132]: https://github.com/digital-prstv/jrussell.ie/pull/132
-[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...HEAD
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...HEAD
+[1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
 [1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...v1.1.7
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
