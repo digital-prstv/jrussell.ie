@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] 
+
+### Changed
+
+- 📝 docs(blog)-update DeepSeek series description(pr [#131])
+- 📝 docs(blog)-update blog description for clarity(pr [#132])
+
+## [1.1.7] - 2025-07-25
 
 ### Changed
 
@@ -37,7 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(blog)-rename deepmind to deepseek(pr [#120])
 - 📝 docs(blog)-add guide on integrating AI in project management(pr [#125])
 - 📝 docs(blog)-add new blog post on initial request to Claude(pr [#126])
-- 📝 docs(blog)-update DeepSeek series description(pr [#131])
 
 ### Security
 
@@ -208,7 +214,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#125]: https://github.com/digital-prstv/jrussell.ie/pull/125
 [#126]: https://github.com/digital-prstv/jrussell.ie/pull/126
 [#131]: https://github.com/digital-prstv/jrussell.ie/pull/131
-[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
+[#132]: https://github.com/digital-prstv/jrussell.ie/pull/132
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...HEAD
+[1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...v1.1.7
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.0.0...v1.1.0
