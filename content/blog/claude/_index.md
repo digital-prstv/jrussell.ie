@@ -1,5 +1,6 @@
 +++
 title = "A conversation with Claude"
+description = "This series documents a conversation with Claude to create a sonnet about the relationship between war and peace."
 template = "series.html"
 sort_by = "slug"
 transparent = true
@@ -76,4 +77,4 @@ This article is part $SERIES_PAGE_INDEX of $SERIES_PAGES_NUMBER in $SERIES_HTML_
 
 +++
 
-This series outlines the workflow and tools I've implemented to ensure that the open-source software I produce is updated and released weekly, addressing any security issues that may arise in dependencies.
+This series documents a conversation with Claude to create a sonnet about the relationship between war and peace. The first post presents the initial request, followed by subsequent posts containing clarifying questions to refine the AI's response. The series concludes with the final poem.
