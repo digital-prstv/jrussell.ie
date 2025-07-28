@@ -25,20 +25,9 @@ jobs:
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
-  check_ssh:
-    executor: toolkit/base_env
-    steps:
-      - run:
-          name: Check SSH
-          command: |
-            ls -la /home/circleci/
-            ssh-add -l
-
 workflows:
   release_website:
     jobs:
-      - check_ssh
-
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
