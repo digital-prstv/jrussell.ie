@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - 📝 docs(blog)-add description to influences post(pr [#134])
+- 📝 docs(blog)-update description and fix typos in blog post(pr [#135])
 
 ## [1.1.9] - 2025-07-28
 
@@ -230,6 +231,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#132]: https://github.com/digital-prstv/jrussell.ie/pull/132
 [#133]: https://github.com/digital-prstv/jrussell.ie/pull/133
 [#134]: https://github.com/digital-prstv/jrussell.ie/pull/134
+[#135]: https://github.com/digital-prstv/jrussell.ie/pull/135
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
