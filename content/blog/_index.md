@@ -1,5 +1,6 @@
 +++
 title = "Blog"
+description = "Blog"
 paginate_by = 5
 sort_by = "date"
 [extra]
