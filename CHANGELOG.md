@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(blog)-add guide on integrating AI in project management(pr [#125])
 - 📝 docs(blog)-add new blog post on initial request to Claude(pr [#126])
 - 📝 docs(blog)-update DeepSeek series description(pr [#131])
+- 📝 docs(blog)-update blog description for clarity(pr [#132])
 
 ### Security
 
@@ -208,6 +209,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#125]: https://github.com/digital-prstv/jrussell.ie/pull/125
 [#126]: https://github.com/digital-prstv/jrussell.ie/pull/126
 [#131]: https://github.com/digital-prstv/jrussell.ie/pull/131
+[#132]: https://github.com/digital-prstv/jrussell.ie/pull/132
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.0...v1.1.1
