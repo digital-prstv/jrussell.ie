@@ -271,14 +271,6 @@ jobs:
       - when:
           condition:
             equal:
-              - true
-              - << parameters.pcu_explicit_push >>
-          steps:
-            - toolkit/push_cmd:
-                pcu_verbosity: <<parameters.pcu_verbosity>>
-      - when:
-          condition:
-            equal:
               - pipeline
               - << parameters.update_log_option >>
           steps:
@@ -288,7 +280,17 @@ jobs:
                 pcu_verbosity: <<parameters.pcu_verbosity>>
       - when:
           condition:
-            not: << parameters.pcu_push >>
+            equal:
+              - true
+              - << parameters.pcu_explicit_push >>
+          steps:
+            - toolkit/push_cmd:
+                pcu_verbosity: <<parameters.pcu_verbosity>>
+      - when:
+          condition:
+            and:
+              - not: << parameters.pcu_push >>
+              - not: << parameters.pcu_explicit_push >>
           steps:
             - run:
                 command: |
@@ -309,6 +311,7 @@ workflows:
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
+          check_links: false
           pre-steps:
             - attach_workspace:
                 at: /home/circleci/

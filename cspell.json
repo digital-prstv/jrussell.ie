@@ -4,8 +4,13 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
+        "elasticlunr",
+        "gruvbox",
+        "jrussell",
         "oxymorons",
-        "plowshares"
+        "plowshares",
+        "Sass",
+        "webmention"
     ],
     "ignoreWords": [],
     "import": []
