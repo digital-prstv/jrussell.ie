@@ -1,5 +1,6 @@
 +++
 title = "Latest posts"
+description = "Latest posts"
 sort_by = "date"
 
 # Do not set `paginate_by` here.
