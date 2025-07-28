@@ -1,5 +1,6 @@
 +++
 title = "First post - what and why!"
+description = "The name, ruminations, is intended to set an expectation for an eclectic set of topics. I have a broad set of influences and interests (perhaps not unlike many) and tend more towards the generalist than the specialist. Expect nothing, everything and anything, and then I hope not to disappoint!"
 date = 2021-11-05
 draft = false
 
@@ -10,7 +11,7 @@ tags = ["first post"]
 
 ## Introduction
 
-The name, ruminations, is intended to set an expectation for an eclectic set of topics. I have a broad set of influences and interests (perhaps not unlike many) and tend more towards the generalist than the specialist. Expect nothing, everything and anything and then I hope not to disappoint!
+The name, ruminations, is intended to set an expectation for an eclectic set of topics. I have a broad set of influences and interests (perhaps not unlike many) and tend more towards the generalist than the specialist. Expect nothing, everything and anything, and then I hope not to disappoint!
 <!-- more -->
 ## What
 
