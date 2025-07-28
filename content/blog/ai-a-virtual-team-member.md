@@ -1,6 +1,6 @@
 +++
 title = "Integrating AI as a Virtual Team Member: A Strategic Guide for Project Management and Delivery Teams"
-description = "This comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential."
+ description = "🚀 **Ready to transform your project team with AI?**\n\nThis comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential.\n\n**Key insights:**\n✅ AI enhances stakeholder communication & automates reporting\n✅ Requires careful balance between efficiency gains & junior staff development\n✅ Needs strategic implementation as a formal organisational project\n✅ Functions best with domain expertise & human oversight\n\nDon't let AI disrupt your talent pipeline—discover how to preserve learning opportunities while building next-generation skills for sustainable success." 
 date = 2025-07-16
 draft = false
 
@@ -26,8 +26,8 @@ tags = ["AI integration",
 "Human-AI collaboration",
 "Strategic planning"]
 
-[extra]
-bluesky = "🚀 **Ready to transform your project team with AI?**\n\nThis comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential.\n\n**Key insights:**\n✅ AI enhances stakeholder communication & automates reporting\n✅ Requires careful balance between efficiency gains & junior staff development\n✅ Needs strategic implementation as a formal organisational project\n✅ Functions best with domain expertise & human oversight\n\nDon't let AI disrupt your talent pipeline—discover how to preserve learning opportunities while building next-generation skills for sustainable success." 
+[bluesky]
+description = "This comprehensive guide explores how to successfully integrate AI as a virtual team member—not just another tool. Learn why treating AI like an overly enthusiastic newcomer who needs proper supervision is key to unlocking its potential."
 +++
 
 ## AI Support for Project Management and Delivery Teams
