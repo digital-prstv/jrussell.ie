@@ -1,5 +1,6 @@
 +++
-title = "Next post"
+title = "Final Post"
+description = "Placeholder for the final post"
 date = 2025-01-17
 updated = 2025-01-16
 draft = false
