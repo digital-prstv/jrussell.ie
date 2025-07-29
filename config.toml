@@ -91,6 +91,7 @@ show_reading_time = true
 
 email = "amVycnlAanJ1c3NlbGwuaWU="
 mermaid = true
+serve_local_mermaid = false
 
 # Custom security headers. What urls should your website be able to connect to?
 # You need to specify the CSP and the URLs associated with the directive.
