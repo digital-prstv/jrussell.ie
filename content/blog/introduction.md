@@ -23,4 +23,4 @@ The short answer: because I have lots going on in my head and should really put 
 
 The long answer: well, that will take a paragraph or more :) !
 
-The idea has been a long time baking - I secured the domain name over ten years ago. I have wanted to write (if only to improve my writing), but its always been the "last thing". I was encouraged to do so, but still did not take action. Now, I will no longer get that encouragement so I guess its past time to get to doing.
+The idea has been a long time baking - I secured the domain name over ten years ago. I have wanted to write (if only to improve my writing), but it's always been the "last thing". I was encouraged to do so, but still did not take action. Now, I will no longer get that encouragement, so I guess its passed time to get to doing.
