@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(blog)-add description to introduction post(pr [#136])
 - 💄 style(blog)-correct grammatical errors in introduction(pr [#137])
 - 📝 docs(blog)-update blog post title and add description(pr [#138])
+- 📝 docs(blog)-update blog description and correct grammar(pr [#139])
 
 ## [1.1.9] - 2025-07-28
 
@@ -238,6 +239,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#136]: https://github.com/digital-prstv/jrussell.ie/pull/136
 [#137]: https://github.com/digital-prstv/jrussell.ie/pull/137
 [#138]: https://github.com/digital-prstv/jrussell.ie/pull/138
+[#139]: https://github.com/digital-prstv/jrussell.ie/pull/139
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8

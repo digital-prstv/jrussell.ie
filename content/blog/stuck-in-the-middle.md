@@ -1,5 +1,8 @@
 +++
 title = "Stuck in the middle"
+description = """Bully to the left of me,  
+Bully to the right of me,  
+Stuck in the middle with whom?"""
 date = 2025-02-19
 updated = 2025-07-25
 draft = false
@@ -11,7 +14,7 @@ tags = ["politics", "geopolitics", "war", "europe", "ukraine", "russia", "us", "
 
 Bully to the left of me,  
 Bully to the right of me,  
-Stuck in the middle with who?
+Stuck in the middle with whom?
 
 <!-- more -->
 
