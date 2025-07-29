@@ -1,5 +1,6 @@
 +++
 title = "Update and Release"
+description = "Every week, your dependencies release new versions. Some fix critical security vulnerabilities. Others introduce breaking changes that could crash your application. Most developers handle this reactively—updating when something breaks or when they remember to check. But what if you could automate the entire process while maintaining quality and reliability?"
 template = "series.html"
 sort_by = "slug"
 transparent = true
