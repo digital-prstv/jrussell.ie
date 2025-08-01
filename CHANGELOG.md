@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(blog)-add description to update-and-release post(pr [#140])
 - 📝 docs(blog)-add overview of workflow blog post(pr [#141])
 
+### Security
+
+- Dependencies: update cimg/base docker tag to v2025.08(pr [#143])
+
 ## [1.1.9] - 2025-07-28
 
 ### Changed
@@ -244,6 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#139]: https://github.com/digital-prstv/jrussell.ie/pull/139
 [#140]: https://github.com/digital-prstv/jrussell.ie/pull/140
 [#141]: https://github.com/digital-prstv/jrussell.ie/pull/141
+[#143]: https://github.com/digital-prstv/jrussell.ie/pull/143
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
