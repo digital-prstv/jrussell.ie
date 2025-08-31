@@ -1,7 +1,7 @@
 version: 2.1
 setup: true
 orbs:
-  path-filtering: circleci/path-filtering@2.0.2
+  path-filtering: circleci/path-filtering@2.0.3
   toolkit: digital-prstv/circleci-toolkit@2.12.1
 parameters:
   success-flag:
