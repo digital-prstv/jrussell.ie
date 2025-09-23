@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(blog)-update blog description and correct grammar(pr [#139])
 - 📝 docs(blog)-add description to update-and-release post(pr [#140])
 - 📝 docs(blog)-add overview of workflow blog post(pr [#141])
+- 🔧 chore(ci)-update pcu configuration in release workflow(pr [#151])
 
 ### Security
 
@@ -264,6 +265,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#147]: https://github.com/digital-prstv/jrussell.ie/pull/147
 [#148]: https://github.com/digital-prstv/jrussell.ie/pull/148
 [#150]: https://github.com/digital-prstv/jrussell.ie/pull/150
+[#151]: https://github.com/digital-prstv/jrussell.ie/pull/151
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
