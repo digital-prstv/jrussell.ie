@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- ✨ add gen-changelog project documentation(pr [#150])
+
 ### Changed
 
 - 📝 docs(blog)-add description to influences post(pr [#134])
@@ -259,6 +263,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#146]: https://github.com/digital-prstv/jrussell.ie/pull/146
 [#147]: https://github.com/digital-prstv/jrussell.ie/pull/147
 [#148]: https://github.com/digital-prstv/jrussell.ie/pull/148
+[#150]: https://github.com/digital-prstv/jrussell.ie/pull/150
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
