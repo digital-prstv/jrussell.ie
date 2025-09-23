@@ -70,7 +70,7 @@ workflows:
           when_cargo_release: false
           when_update_pcu: true
           pcu_verbosity: "-vvvv"
-          pcu_update_changelog: true
+          pcu_update_prlog: true
           remove_ssh_key: false
           when_bluesky: true
           bluesky_command: "post"
