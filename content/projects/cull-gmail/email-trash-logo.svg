@@ -1,0 +1,39 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  
+  <!-- Trash bin -->
+  <g transform="translate(100, 110)">
+    <!-- Bin lid -->
+    <rect x="-35" y="-45" width="70" height="6" rx="2" fill="#6c757d"/>
+    <rect x="-30" y="-50" width="60" height="5" rx="2" fill="#495057"/>
+    
+    <!-- Bin body -->
+    <path d="M -28 -39 L -22 15 Q -22 20 -17 20 L 17 20 Q 22 20 22 15 L 28 -39 Z" 
+          fill="#6c757d" stroke="#495057" stroke-width="2"/>
+    
+    <!-- Bin lines -->
+    <line x1="-15" y1="-35" x2="-12" y2="15" stroke="#495057" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="-35" x2="0" y2="15" stroke="#495057" stroke-width="2" stroke-linecap="round"/>
+    <line x1="15" y1="-35" x2="12" y2="15" stroke="#495057" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Email envelope -->
+  <g transform="translate(100, 65)">
+    <!-- Envelope body -->
+    <rect x="-28" y="-18" width="56" height="36" rx="3" fill="#ffffff" stroke="#495057" stroke-width="2.5"/>
+    
+    <!-- Envelope flap -->
+    <path d="M -28 -18 L 0 2 L 28 -18" fill="none" stroke="#495057" stroke-width="2.5" stroke-linejoin="round"/>
+    
+    <!-- Email lines (optional detail) -->
+    <line x1="-18" y1="2" x2="18" y2="2" stroke="#adb5bd" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-18" y1="8" x2="10" y2="8" stroke="#adb5bd" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Arrow pointing down -->
+  <g transform="translate(100, 90)">
+    <path d="M 0 -5 L 0 15 M -6 9 L 0 15 L 6 9" 
+          stroke="#dc3545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>
