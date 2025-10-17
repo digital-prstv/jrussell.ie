@@ -1,0 +1,18 @@
+{
+  "createdAt": "2025-10-17T15:09:35.053416Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/UxdZT4R.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 182,
+        "byteStart": 144
+      }
+    }
+  ],
+  "text": "A conversation with Claude\n\nThis series documents a conversation with Claude to create a sonnet about the relationship between war and peace. \n\nhttps://www.jrussell.ie/s/UxdZT4R.html"
+}
