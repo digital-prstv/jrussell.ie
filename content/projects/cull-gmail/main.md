@@ -425,7 +425,7 @@ crontab -e
 
 ### Dry-Run Mode
 
-- **Default behavior**: All operations are dry-run unless explicitly executed
+- **Default behaviour**: All operations are dry-run unless explicitly executed
 - **Messages**: Use `list` action to preview what would be affected
 - **Rules**: Run without `--execute` flag to see what would happen
 
