@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - 💄 style(cull-gmail)-correct typo in dry-run mode description(pr [#158])
 
+### Security
+
+- Dependencies: update dependency toolkit to v2.13.5(pr [#159])
+
 ## [1.3.0] - 2025-10-17
 
 ### Added
@@ -291,6 +295,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#156]: https://github.com/digital-prstv/jrussell.ie/pull/156
 [#157]: https://github.com/digital-prstv/jrussell.ie/pull/157
 [#158]: https://github.com/digital-prstv/jrussell.ie/pull/158
+[#159]: https://github.com/digital-prstv/jrussell.ie/pull/159
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.3.0...HEAD
 [1.3.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...v1.2.0
