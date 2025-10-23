@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- ✨ add serve-ip and serve-ip-no-draft commands(pr [#160])
+
 ### Changed
 
 - 💄 style(cull-gmail)-correct typo in dry-run mode description(pr [#158])
@@ -296,6 +300,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#157]: https://github.com/digital-prstv/jrussell.ie/pull/157
 [#158]: https://github.com/digital-prstv/jrussell.ie/pull/158
 [#159]: https://github.com/digital-prstv/jrussell.ie/pull/159
+[#160]: https://github.com/digital-prstv/jrussell.ie/pull/160
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.3.0...HEAD
 [1.3.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...v1.2.0
