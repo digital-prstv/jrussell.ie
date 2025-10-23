@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - 💄 style(cull-gmail)-correct typo in dry-run mode description(pr [#158])
+- 📝 docs(blog)-add blog post about the Irish presidential election(pr [#161])
 
 ### Security
 
@@ -301,6 +302,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#158]: https://github.com/digital-prstv/jrussell.ie/pull/158
 [#159]: https://github.com/digital-prstv/jrussell.ie/pull/159
 [#160]: https://github.com/digital-prstv/jrussell.ie/pull/160
+[#161]: https://github.com/digital-prstv/jrussell.ie/pull/161
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.3.0...HEAD
 [1.3.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...v1.2.0
