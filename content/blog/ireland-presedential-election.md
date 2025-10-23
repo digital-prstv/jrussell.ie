@@ -32,11 +32,11 @@ Jim Gavin was selected by nominators following best practice—choosing a civil�
 
 A past incident, poorly managed before the campaign launch, damaged his momentum. Additionally, his relatively late entry meant he missed the longer “ramp‑up” period enjoyed by his rivals and in-experience resulted in an early exit. 
 
-### Heather Humphries  
+### Heather Humphreys 
 
-Fine Gael initially nominated a candidate, then replaced her with Heather Humphries. While she brings political experience, she remains closely tied to party politics, which may conflict with the non‑partisan nature of the presidency.
+Fine Gael initially nominated a candidate, then replaced her with Heather Humphreys. While she brings political experience, she remains closely tied to party politics, which may conflict with the non‑partisan nature of the presidency.
 
-Although she entered the race earlier than Gavin, her campaign was slow to ramp up. In the intial week she appeared cautious, and perhaps overly defensive. While getting up to pace she was always facing a battle from behind and lost what may have been an ally when Gavin stopped campaigning.
+Although she entered the race earlier than Gavin, her campaign was slow to ramp up. In the initial week she appeared cautious, and perhaps overly defensive. While getting up to pace she was always facing a battle from behind and lost what may have been an ally when Gavin stopped campaigning.
 
 ### Catherine Connolly  
 
