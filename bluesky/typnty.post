@@ -1,0 +1,66 @@
+{
+  "createdAt": "2025-10-23T13:46:01.968773Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V0S1fsG.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 184,
+        "byteStart": 146
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Geopolitics"
+        }
+      ],
+      "index": {
+        "byteEnd": 113,
+        "byteStart": 101
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Governance"
+        }
+      ],
+      "index": {
+        "byteEnd": 125,
+        "byteStart": 114
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Ireland"
+        }
+      ],
+      "index": {
+        "byteEnd": 134,
+        "byteStart": 126
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Politics"
+        }
+      ],
+      "index": {
+        "byteEnd": 144,
+        "byteStart": 135
+      }
+    }
+  ],
+  "text": "Presidential Election in Ireland\n\nSomething about the president of Ireland and the election in 2025. #Geopolitics #Governance #Ireland #Politics\n\nhttps://www.jrussell.ie/s/V0S1fsG.html"
+}
