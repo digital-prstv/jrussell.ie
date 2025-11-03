@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update dependency toolkit to v2.15.1(pr [#164])
 - Dependencies: update dependency toolkit to v2.16.0(pr [#165])
 - Dependencies: update cimg/base docker tag to v2025.11(pr [#166])
+- Dependencies: update dependency path-filtering to v3(pr [#167])
 
 ## [1.4.1] - 2025-10-23
 
@@ -323,6 +324,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#164]: https://github.com/digital-prstv/jrussell.ie/pull/164
 [#165]: https://github.com/digital-prstv/jrussell.ie/pull/165
 [#166]: https://github.com/digital-prstv/jrussell.ie/pull/166
+[#167]: https://github.com/digital-prstv/jrussell.ie/pull/167
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.4.1...HEAD
 [1.4.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.3.0...v1.4.0
