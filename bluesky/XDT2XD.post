@@ -1,0 +1,114 @@
+{
+  "createdAt": "2025-12-03T17:35:23.058557Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V4L4yvg.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 281,
+        "byteStart": 243
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Geopolitics"
+        }
+      ],
+      "index": {
+        "byteEnd": 164,
+        "byteStart": 152
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Politics"
+        }
+      ],
+      "index": {
+        "byteEnd": 174,
+        "byteStart": 165
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Ukraine"
+        }
+      ],
+      "index": {
+        "byteEnd": 183,
+        "byteStart": 175
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Russia"
+        }
+      ],
+      "index": {
+        "byteEnd": 191,
+        "byteStart": 184
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Versailles"
+        }
+      ],
+      "index": {
+        "byteEnd": 203,
+        "byteStart": 192
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Keynes"
+        }
+      ],
+      "index": {
+        "byteEnd": 211,
+        "byteStart": 204
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "International-law"
+        }
+      ],
+      "index": {
+        "byteEnd": 230,
+        "byteStart": 212
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Diplomacy"
+        }
+      ],
+      "index": {
+        "byteEnd": 241,
+        "byteStart": 231
+      }
+    }
+  ],
+  "text": "Is this 'Dark Versailles?'\n\nIs the latest proposal for peace between Russia and Ukraine inspried by the Treaty of Versailles (or is it all in my head)? #Geopolitics #Politics #Ukraine #Russia #Versailles #Keynes #International-law #Diplomacy\n\nhttps://www.jrussell.ie/s/V4L4yvg.html"
+}
