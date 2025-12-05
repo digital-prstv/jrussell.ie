@@ -1,6 +1,6 @@
 +++
 title = "Is this 'Dark Versailles?'"
-description = "Is the latest proposal for peace between Russia and Ukraine inspried by the Treaty of Versailles (or is it all in my head)?"
+description = "Is the latest proposal for peace between Russia and Ukraine inspired by the Treaty of Versailles (or is it all in my head)?"
 date = 2025-12-03
 updated = 2025-12-03
 draft = false
