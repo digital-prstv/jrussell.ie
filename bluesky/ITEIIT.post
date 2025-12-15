@@ -1,0 +1,18 @@
+{
+  "createdAt": "2025-12-15T16:58:28.828157Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/UxdZStd.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 51,
+        "byteStart": 13
+      }
+    }
+  ],
+  "text": "Blog\n\nBlog \n\nhttps://www.jrussell.ie/s/UxdZStd.html"
+}
