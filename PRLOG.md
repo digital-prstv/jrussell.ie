@@ -9,6 +9,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Engineering-critical(pr [#174])
+
+## [1.6.0] - 2025-12-04
+
+### Added
+
+- ✨ add initial blog post about politicians(pr [#169])
+
+## [1.5.0] - 2025-12-03
+
+### Added
+
+- ✨ add dark-versailles post(pr [#170])
+
+### Security
+
+- Dependencies: update dependency toolkit to v2.15.0(pr [#163])
+- Dependencies: update dependency toolkit to v2.15.1(pr [#164])
+- Dependencies: update dependency toolkit to v2.16.0(pr [#165])
+- Dependencies: update cimg/base docker tag to v2025.11(pr [#166])
+- Dependencies: update dependency path-filtering to v3(pr [#167])
+- Dependencies: update cimg/base docker tag to v2025.12(pr [#168])
+
+## [1.4.1] - 2025-10-23
+
+### Fixed
+
+- 🐛 blog: correct spelling errors in presidential election post(pr [#162])
+
+## [1.4.0] - 2025-10-23
+
+### Added
+
+- ✨ add serve-ip and serve-ip-no-draft commands(pr [#160])
+
+### Changed
+
+- 💄 style(cull-gmail)-correct typo in dry-run mode description(pr [#158])
+- 📝 docs(blog)-add blog post about the Irish presidential election(pr [#161])
+
+### Security
+
+- Dependencies: update dependency toolkit to v2.13.5(pr [#159])
+
+## [1.3.0] - 2025-10-17
+
+### Added
+
+- ✨ add documentation for cull-gmail project(pr [#157])
+
+### Security
+
+- Dependencies: update dependency toolkit to v2.13.2(pr [#152])
+- Dependencies: update dependency toolkit to v2.13.4(pr [#153])
+- Dependencies: update cimg/base docker tag to v2025.10(pr [#155])
+- Dependencies: update dependency path-filtering to v2.1.0(pr [#156])
+
+## [1.2.0] - 2025-09-23
+
+### Added
+
+- ✨ add gen-changelog project documentation(pr [#150])
+
+### Changed
+
 - 📝 docs(blog)-add description to influences post(pr [#134])
 - 📝 docs(blog)-update description and fix typos in blog post(pr [#135])
 - 📝 docs(blog)-add description to introduction post(pr [#136])
@@ -17,7 +82,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(blog)-update blog description and correct grammar(pr [#139])
 - 📝 docs(blog)-add description to update-and-release post(pr [#140])
 - 📝 docs(blog)-add overview of workflow blog post(pr [#141])
-- 💄 style(blog)-fix gantt chart date format spacing(pr [#142])
+- 🔧 chore(ci)-update pcu configuration in release workflow(pr [#151])
+
+### Security
+
+- Dependencies: update cimg/base docker tag to v2025.08(pr [#143])
+- Dependencies: update dependency terraform to v3.7.0(pr [#144])
+- Dependencies: update dependency path-filtering to v2.0.3(pr [#145])
+- Dependencies: update dependency path-filtering to v2.0.4(pr [#146])
+- Dependencies: update cimg/base docker tag to v2025.09(pr [#147])
+- Dependencies: update dependency toolkit to v2.13.0 - abandoned(pr [#148])
 
 ## [1.1.9] - 2025-07-28
 
@@ -245,8 +319,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#139]: https://github.com/digital-prstv/jrussell.ie/pull/139
 [#140]: https://github.com/digital-prstv/jrussell.ie/pull/140
 [#141]: https://github.com/digital-prstv/jrussell.ie/pull/141
-[#142]: https://github.com/digital-prstv/jrussell.ie/pull/142
-[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...HEAD
+[#143]: https://github.com/digital-prstv/jrussell.ie/pull/143
+[#144]: https://github.com/digital-prstv/jrussell.ie/pull/144
+[#145]: https://github.com/digital-prstv/jrussell.ie/pull/145
+[#146]: https://github.com/digital-prstv/jrussell.ie/pull/146
+[#147]: https://github.com/digital-prstv/jrussell.ie/pull/147
+[#148]: https://github.com/digital-prstv/jrussell.ie/pull/148
+[#150]: https://github.com/digital-prstv/jrussell.ie/pull/150
+[#151]: https://github.com/digital-prstv/jrussell.ie/pull/151
+[#152]: https://github.com/digital-prstv/jrussell.ie/pull/152
+[#153]: https://github.com/digital-prstv/jrussell.ie/pull/153
+[#155]: https://github.com/digital-prstv/jrussell.ie/pull/155
+[#156]: https://github.com/digital-prstv/jrussell.ie/pull/156
+[#157]: https://github.com/digital-prstv/jrussell.ie/pull/157
+[#158]: https://github.com/digital-prstv/jrussell.ie/pull/158
+[#159]: https://github.com/digital-prstv/jrussell.ie/pull/159
+[#160]: https://github.com/digital-prstv/jrussell.ie/pull/160
+[#161]: https://github.com/digital-prstv/jrussell.ie/pull/161
+[#162]: https://github.com/digital-prstv/jrussell.ie/pull/162
+[#163]: https://github.com/digital-prstv/jrussell.ie/pull/163
+[#164]: https://github.com/digital-prstv/jrussell.ie/pull/164
+[#165]: https://github.com/digital-prstv/jrussell.ie/pull/165
+[#166]: https://github.com/digital-prstv/jrussell.ie/pull/166
+[#167]: https://github.com/digital-prstv/jrussell.ie/pull/167
+[#168]: https://github.com/digital-prstv/jrussell.ie/pull/168
+[#170]: https://github.com/digital-prstv/jrussell.ie/pull/170
+[#169]: https://github.com/digital-prstv/jrussell.ie/pull/169
+[#174]: https://github.com/digital-prstv/jrussell.ie/pull/174
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.4.1...v1.5.0
+[1.4.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.9...v1.2.0
 [1.1.9]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.8...v1.1.9
 [1.1.8]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.7...v1.1.8
 [1.1.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.1.2...v1.1.7

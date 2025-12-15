@@ -2,7 +2,7 @@ version: 2.1
 setup: true
 orbs:
   zola: jerus-org/zola@1.2.3
-  toolkit: digital-prstv/circleci-toolkit@2.12.1
+  toolkit: digital-prstv/circleci-toolkit@2.16.0
   aws-cli: circleci/aws-cli@5.4.1
 parameters:
   min-rust-version:
@@ -70,7 +70,7 @@ workflows:
           when_cargo_release: false
           when_update_pcu: true
           pcu_verbosity: "-vvvv"
-          pcu_update_changelog: true
+          pcu_update_prlog: true
           remove_ssh_key: false
           when_bluesky: true
           bluesky_command: "post"

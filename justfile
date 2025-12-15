@@ -14,4 +14,11 @@ publish-site:
 serve:
     zola serve --drafts
 
+serve-ip:
+    zola serve -i 192.168.121.189 --drafts
+
+serve-ip-no-draft:
+    zola serve -i 192.168.121.189 
+    
+
 build-serve: build-site serve

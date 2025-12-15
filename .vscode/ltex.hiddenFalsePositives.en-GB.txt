@@ -40,3 +40,6 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qtaxonomies categories = \"Technology\", \"DevSecOps\", \"Security\" topic = \"Technology\" tags = \"rust\", \"circleci\", \"sbom\" +++ Coming soon!\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\Qgraph LR A\"DevelopmentProcess\" --> C\"PullRequest\" B\"DependencyCheck Process\" --> C C --> D\"CITesting\" C --> E\"CodeReview\" D --> F{\"TestsPass?\"}\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QF -->|Yes| H\"Ready toMerge\" G -->|Yes| H F -->|No| I\"FixIssues\" G -->|No| I I --> C H --> J\"Merge toMain Branch\" J --> K\"CircleCIPeriodic Trigger\" K --> L\"ReleaseProcess\" L --> M\"Update VersionNumbers\" M --> N\"PublishRelease\" {% end %}\\E$"}
+{"rule":"DOUBLE_PUNCTUATION","sentence":"^\\Qgantt title Release Cycle Schedule dateFormat  D..DD axisFormat %d\\E$"}
+{"rule":"CONSECUTIVE_SPACES","sentence":"^\\Qgantt title Release Cycle Schedule dateFormat  D..DD axisFormat %d\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qgen-changelog is a release tool to generate a changelog in the keep a changelog format from the commit history of a repository using conventional commit types to categorise and filter the commits sumarized in the change log.\\E$"}
