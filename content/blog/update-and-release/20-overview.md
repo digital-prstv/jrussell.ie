@@ -58,7 +58,7 @@ config:
 ---
 gantt
     title Release Cycle Schedule
-    dateFormat  X
+    dateFormat X
     axisFormat %s
     Today : vert, v1, 12, 1
     
