@@ -12,6 +12,7 @@ tags = ["geopolitics", "governance", "leadership", "China", "European Union", "U
 [extra]
 pinned = true
 quick_navigation_buttons = true
+social_media_card = "social_cards/blog_engineering_critical.png"
 
 [bluesky]
 description = "The US innovates, China replicates, Europe regulates—but this misses the deeper pattern. Each bloc exhibits a distinctive character shaped by who leads. Understanding Engineering, Regulation, and Investment characters reveals what democratic leaders must integrate."
@@ -58,7 +59,7 @@ The investment character is visible in American data governance. The United Stat
 
 This fragmentation reflects the investment character's logic: rather than treating privacy as a fundamental right requiring comprehensive protection, American governance treats it as an externality—a cost that falls outside the narrow definition of legitimate business expenses. Data protection becomes a consumer good, available to those with resources to purchase VPNs, password managers, and data removal services. A fundamental right is transformed into a market stratified by income.
 
-The [surveillance capitalism](https://www.hbs.edu/faculty/Pages/item.aspx?num=56791) model pioneered by American technology companies embodies this logic.[^6] Users receive 'free' services in exchange for data that fuels targeted advertising. The average Facebook user generates roughly 2,000 data points.[^7] Data brokers operate in what researchers describe as a 'policy vacuum.'[^8] Those who can afford premium tools achieve privacy; those who cannot become raw material for data extraction.
+The [surveillance capitalism](https://www.hbs.edu/faculty/Pages/item.aspx?num=56791) model pioneered by American technology companies embodies this logic.[^6] Users receive 'free' services in exchange for data that fuels targeted advertising. [On average, over 2,000 companies sent data about each Facebook user to the platform.](https://themarkup.org/privacy/2024/01/17/each-facebook-user-is-monitored-by-thousands-of-companies-study-indicates)[^7] [Data brokers operate in what researchers describe as a 'policy vacuum.'](https://policyreview.info/articles/analysis/untamed-and-discreet-role-data-brokers-surveillance-capitalism-transnational-and)[^8] Those who can afford premium tools achieve privacy; those who cannot become raw material for data extraction.
 
 ## The European Union: The Regulation Character
 
@@ -170,7 +171,7 @@ Each bloc has grasped part of this truth. China understands the imperative to bu
 
 [^6]: Shoshana Zuboff, [*The Age of Surveillance Capitalism*](https://www.hbs.edu/faculty/Pages/item.aspx?num=56791) (PublicAffairs, 2019). Zuboff coined the term and documented how Google and Facebook pioneered the model.
 
-[^7]: [Consumer Reports/The Markup (2024)](https://themarkup.org/privacy/2024/01/17/each-facebook-user-is-monitored-by-thousands-of-companies-study-indicates): Study found the average Facebook user tracked by thousands of companies; extensive data collection practices documented by privacy researchers.
+[^7]: [Consumer Reports/The Markup (2024)](https://themarkup.org/privacy/2024/01/17/each-facebook-user-is-monitored-by-thousands-of-companies-study-indicates): Study of 709 Facebook users found that "on average, data from each participant was shared by 2,230 companies" with Facebook. A total of 186,892 companies sent data about these users to the platform; some users had data shared by over 7,000 companies.
 
 [^8]: [Internet Policy Review](https://policyreview.info/articles/analysis/untamed-and-discreet-role-data-brokers-surveillance-capitalism-transnational-and): Data brokers operate in a 'policy vacuum' with minimal federal oversight; the industry is 'under-researched and under-regulated.'
 
