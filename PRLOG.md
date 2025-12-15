@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Engineering-critical(pr [#174])
 - 💄 style(blog)-fix gantt chart date format spacing(pr [#142])
 
+### Security
+
+- Dependencies: update dependency toolkit to v3(pr [#173])
+
 ## [1.6.0] - 2025-12-04
 
 ### Added
@@ -348,6 +352,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#169]: https://github.com/digital-prstv/jrussell.ie/pull/169
 [#174]: https://github.com/digital-prstv/jrussell.ie/pull/174
 [#142]: https://github.com/digital-prstv/jrussell.ie/pull/142
+[#173]: https://github.com/digital-prstv/jrussell.ie/pull/173
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.0...HEAD
 [1.6.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.4.1...v1.5.0
