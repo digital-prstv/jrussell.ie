@@ -2,7 +2,7 @@
 title = "Engineering is Critical: Three Economic Blocs and the Character of Leadership"
 description = "They say 'the US innovates, China replicates, and Europe regulates.' This framing captures something real, but misses the deeper pattern. Each of the world's three major economic blocs exhibits a distinctive character—a dominant disposition shaped by professional culture, institutional history, and the backgrounds of those who lead. Understanding these characters—Engineering, Regulation, and Investment—reveals why each bloc approaches challenges differently and what democratic leaders must learn from all three."
 date = 2025-12-15
-updated = 2025-12-15
+updated = 2025-12-16
 draft = false
 
 [taxonomies]
