@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update cimg/base docker tag to v2026(pr [#177])
+
 ## [1.6.2] - 2025-12-16
 
 ### Changed
@@ -360,6 +366,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#142]: https://github.com/digital-prstv/jrussell.ie/pull/142
 [#173]: https://github.com/digital-prstv/jrussell.ie/pull/173
 [#175]: https://github.com/digital-prstv/jrussell.ie/pull/175
+[#177]: https://github.com/digital-prstv/jrussell.ie/pull/177
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...HEAD
 [1.6.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.5.0...v1.6.0
