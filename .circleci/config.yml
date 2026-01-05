@@ -4,17 +4,17 @@ orbs:
   path-filtering: circleci/path-filtering@3.0.0
   toolkit: digital-prstv/circleci-toolkit@4.0.1
 parameters:
-  success-flag:
+  success_flag:
     type: boolean
     default: false
     description: |
       If set to true, the success workflow will be triggered.
-  validation-flag:
+  validation_flag:
     type: boolean
     default: false
     description: |
       If set to true, the generate-config workflow will be triggered.
-  min-rust-version:
+  min_rust_version:
     type: string
     default: "1.81"
   fingerprint:
@@ -25,8 +25,8 @@ workflows:
   check_last_commit:
     when:
       and:
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.validation_flag >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -36,8 +36,8 @@ workflows:
   generate-config:
     when:
       and:
-        - not: << pipeline.parameters.success-flag >>
-        - << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - << pipeline.parameters.validation_flag >>
 
     jobs:
       - path-filtering/filter:
@@ -60,8 +60,8 @@ workflows:
   on_success:
     when:
       and:
-        - << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.validation_flag >>
 
     jobs:
       - toolkit/end_success
