@@ -19,7 +19,7 @@ parameters:
     description: |
       Build the website using zola. 
       Copy to the internet when run on the main branch.
-  validation-flag:
+  validation_flag:
     type: boolean
     default: false
     description: |
@@ -29,7 +29,7 @@ parameters:
     default: false
     description: |
       If set to true, the update-changelog workflow will be triggered.
-  min-rust-version:
+  min_rust_version:
     type: string
     default: "1.81"
   fingerprint:
@@ -175,4 +175,4 @@ workflows:
             - bot-check
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>

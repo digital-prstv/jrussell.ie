@@ -4,12 +4,12 @@ orbs:
   aws-cli: circleci/aws-cli@5.4.1
   terraform: circleci/terraform@3.7.0
 parameters:
-  success-flag:
+  success_flag:
     type: boolean
     default: false
     description: |
       If set to true, the success workflow will be triggered.
-  validation-flag:
+  validation_flag:
     type: boolean
     default: false
     description: |
@@ -24,7 +24,7 @@ parameters:
     default: false
     description: |
       If set to true, the deploy-iac workflow will be triggered.
-  min-rust-version:
+  min_rust_version:
     type: string
     default: "1.81"
   fingerprint:
@@ -206,8 +206,8 @@ workflows:
   deploy_iac:
     when:
       and:
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.validation_flag >>
         - not: << pipeline.parameters.release-website >>
         - << pipeline.parameters.deploy-iac >>
 

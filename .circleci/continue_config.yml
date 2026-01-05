@@ -18,7 +18,7 @@ parameters:
     description: |
       Build the website using zola. 
       Copy to the internet when run on the main branch.
-  validation-flag:
+  validation_flag:
     type: boolean
     default: false
     description: |
@@ -28,7 +28,7 @@ parameters:
     default: false
     description: |
       If set to true, the update-changelog workflow will be triggered.
-  min-rust-version:
+  min_rust_version:
     type: string
     default: "1.81"
   fingerprint:
@@ -41,7 +41,7 @@ parameters:
 executors:
   rust-env:
     docker:
-      - image: jerusdp/ci-rust:<<pipeline.parameters.min-rust-version>>
+      - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
 
 commands:
   update_log:
@@ -332,7 +332,7 @@ workflows:
             - bot-check
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
           bluesky: true
           bluesky_command: "draft"
           blog_directory: "content/blog"
@@ -356,7 +356,7 @@ workflows:
             - bot-check
             - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
       - toolkit/end_success:
           message: "Changelog update already completed in PR."
           filters:
