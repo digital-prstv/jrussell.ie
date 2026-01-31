@@ -1,0 +1,54 @@
+{
+  "createdAt": "2026-01-31T10:08:09.260432Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V9sFPR7.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 288,
+        "byteStart": 250
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 227,
+        "byteStart": 224
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Employment"
+        }
+      ],
+      "index": {
+        "byteEnd": 239,
+        "byteStart": 228
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Careers"
+        }
+      ],
+      "index": {
+        "byteEnd": 248,
+        "byteStart": 240
+      }
+    }
+  ],
+  "text": "The Entry-Level Extinction\n\nAI is eliminating entry-level jobs—the pathway to building expertise. Senior positions are fine, but the ladder to get there is disappearing. You can't promote from within if there's no within. #AI #Employment #Careers\n\nhttps://www.jrussell.ie/s/V9sFPR7.html"
+}

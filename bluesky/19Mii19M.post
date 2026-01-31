@@ -1,0 +1,54 @@
+{
+  "createdAt": "2026-01-31T10:08:09.316950Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V9sFPSb.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 280,
+        "byteStart": 242
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 216,
+        "byteStart": 213
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Productivity"
+        }
+      ],
+      "index": {
+        "byteEnd": 230,
+        "byteStart": 217
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Training"
+        }
+      ],
+      "index": {
+        "byteEnd": 240,
+        "byteStart": 231
+      }
+    }
+  ],
+  "text": "The Overlooked Opportunity\n\nAI could tackle maintenance backlogs in healthcare, legal systems, and infrastructure—while providing entry-level workers meaningful training. True productivity vs wealth extraction. #AI #Productivity #Training\n\nhttps://www.jrussell.ie/s/V9sFPSb.html"
+}
