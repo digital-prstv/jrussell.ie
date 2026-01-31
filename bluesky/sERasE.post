@@ -1,0 +1,54 @@
+{
+  "createdAt": "2026-01-31T10:08:09.200440Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V9sFPBT.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 291,
+        "byteStart": 253
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 227,
+        "byteStart": 224
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Infrastructure"
+        }
+      ],
+      "index": {
+        "byteEnd": 243,
+        "byteStart": 228
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Policy"
+        }
+      ],
+      "index": {
+        "byteEnd": 251,
+        "byteStart": 244
+      }
+    }
+  ],
+  "text": "Building on Quicksand\n\nAI deployment reveals three critical challenges: inadequate infrastructure, monopolization threatening resilience, and elimination of entry-level career pathways. The path forward isn't predetermined. #AI #Infrastructure #Policy\n\nhttps://www.jrussell.ie/s/V9sFPBT.html"
+}

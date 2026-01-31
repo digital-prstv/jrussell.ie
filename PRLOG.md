@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- ✨ Add AI Transition blog series(pr [#182])
+
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2026(pr [#177])
@@ -373,6 +377,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#178]: https://github.com/digital-prstv/jrussell.ie/pull/178
 [#179]: https://github.com/digital-prstv/jrussell.ie/pull/179
 [#180]: https://github.com/digital-prstv/jrussell.ie/pull/180
+[#182]: https://github.com/digital-prstv/jrussell.ie/pull/182
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...HEAD
 [1.6.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.0...v1.6.1

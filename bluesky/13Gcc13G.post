@@ -1,0 +1,54 @@
+{
+  "createdAt": "2026-01-31T10:08:09.220352Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/V9sFPMV.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 248,
+        "byteStart": 210
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "AI"
+        }
+      ],
+      "index": {
+        "byteEnd": 182,
+        "byteStart": 179
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Infrastructure"
+        }
+      ],
+      "index": {
+        "byteEnd": 198,
+        "byteStart": 183
+      }
+    },
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#tag",
+          "tag": "Security"
+        }
+      ],
+      "index": {
+        "byteEnd": 208,
+        "byteStart": 199
+      }
+    }
+  ],
+  "text": "The Infrastructure Debt Crisis\n\nRunning AI on legacy infrastructure is like running bullet trains on century-old rails. The Gilded Age railroad disasters offer a cautionary tale. #AI #Infrastructure #Security\n\nhttps://www.jrussell.ie/s/V9sFPMV.html"
+}
