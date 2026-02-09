@@ -18,7 +18,6 @@ jobs:
 
     steps:
       - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
       - run:
           # Deploy to S3 using the sync command
@@ -30,7 +29,6 @@ jobs:
 
     steps:
       - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-JerusDP
           region: eu-west-1
       - run:
           name: Deploy to company S3
