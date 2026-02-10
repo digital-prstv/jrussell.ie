@@ -1,7 +1,7 @@
 version: 2.1
 setup: true
 orbs:
-  zola: jerus-org/zola@1.2.3
+  zola: jerus-org/zola@1.3.0
   toolkit: digital-prstv/circleci-toolkit@4.1.0
   aws-cli: circleci/aws-cli@5.4.1
 parameters:
@@ -18,12 +18,21 @@ jobs:
 
     steps:
       - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
           region: eu-west-1
       - run:
           # Deploy to S3 using the sync command
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
+
+  update_company_site:
+    executor: aws-cli/default
+
+    steps:
+      - aws-cli/setup:
+          region: eu-west-1
+      - run:
+          name: Deploy to company S3
+          command: aws s3 sync --delete /tmp/workspace/public-company s3://www.jerusdataprotection.ie
 
 workflows:
   release_website:
@@ -47,6 +56,30 @@ workflows:
             - AWS-DEV
           requires:
             - zola/build
+          pre-steps:
+            - attach_workspace:
+                at: /tmp/workspace
+
+      - zola/build:
+          name: build_company
+          zola_version: 0.19.2
+          config: config.jerusdataprotection.toml
+          check_links: false
+          output_dir: /tmp/workspace/public-company
+          pre-steps:
+            - attach_workspace:
+                at: /tmp/workspace
+          post-steps:
+            - persist_to_workspace:
+                root: /tmp/workspace
+                paths:
+                  - public-company
+
+      - update_company_site:
+          context:
+            - AWS-COMPANY
+          requires:
+            - build_company
           pre-steps:
             - attach_workspace:
                 at: /tmp/workspace

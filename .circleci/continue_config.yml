@@ -2,7 +2,7 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
-  zola: jerus-org/zola@1.2.3
+  zola: jerus-org/zola@1.3.0
   toolkit: digital-prstv/circleci-toolkit@4.1.0
 
 # Define a job to be invoked later in a workflow.
@@ -85,6 +85,63 @@ commands:
           name: Update changelog or halt step
 
 jobs:
+  push_changes:
+    executor: rust-env
+    parameters:
+      ssh_fingerprint:
+        description: The fingerprint of the ssh key to use
+        type: string
+      remove_ssh_key:
+        default: true
+        description: Remove the original SSH key from the agent
+        type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - <<parameters.ssh_fingerprint>>
+      - when:
+          condition: << parameters.remove_ssh_key >>
+          steps:
+            - run:
+                command: |
+                  ssh-add -l
+                  ssh-add -d ~/.ssh/id_rsa.pub
+                  ssh-add -l
+                name: Remove original SSH key from agent
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - run:
+          name: Apply changed files
+          command: |
+            set -ex
+            if [ -s /tmp/workspace/changes/manifest.txt ]; then
+              while IFS= read -r file; do
+                if [ -f "/tmp/workspace/changes/files/$file" ]; then
+                  mkdir -p "$(dirname "$file")"
+                  cp "/tmp/workspace/changes/files/$file" "$file"
+                fi
+              done < /tmp/workspace/changes/manifest.txt
+            else
+              echo "No changes to apply"
+            fi
+      - run:
+          name: Commit changes
+          command: |
+            set -ex
+            pcu <<parameters.pcu_verbosity>> commit --commit-message "chore: update changelog and drafts"
+      - run:
+          name: Push changes to remote
+          command: |
+            set -ex
+            pcu <<parameters.pcu_verbosity>> push
+
   update_changelog:
     executor: rust-env
     parameters:
@@ -239,13 +296,6 @@ jobs:
             pcu --version
           name: pcu version
       - when:
-          condition: << parameters.bluesky >>
-          steps:
-            - toolkit/bsky:
-                blog_directory: << parameters.blog_directory >>
-                command: << parameters.bluesky_command >>
-                pcu_verbosity: << parameters.pcu_verbosity >>
-      - when:
           condition:
             equal:
               - halt
@@ -279,30 +329,34 @@ jobs:
                 pcu_push: <<parameters.pcu_push>>
                 pcu_verbosity: <<parameters.pcu_verbosity>>
       - when:
-          condition:
-            equal:
-              - true
-              - << parameters.pcu_explicit_push >>
+          condition: << parameters.bluesky >>
           steps:
-            - toolkit/push_cmd:
-                pcu_verbosity: <<parameters.pcu_verbosity>>
-      - when:
-          condition:
-            and:
-              - not: << parameters.pcu_push >>
-              - not: << parameters.pcu_explicit_push >>
-          steps:
-            - run:
-                command: |
-                  set -ex
-
-                  mkdir -p /tmp/workspace
-                  cp CHANGELOG.md /tmp/workspace/CHANGELOG.md
-                name: Save CHANGELOG.md to workspace
-            - persist_to_workspace:
-                paths:
-                  - CHANGELOG.md
-                root: /tmp/workspace
+            - toolkit/bsky:
+                blog_directory: << parameters.blog_directory >>
+                command: << parameters.bluesky_command >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+      - run:
+          name: Stage changed files for push
+          when: always
+          command: |
+            set -ex
+            mkdir -p /tmp/workspace/changes/files
+            branch=$(git rev-parse --abbrev-ref HEAD)
+            git diff --name-only --diff-filter=ACMR "origin/${branch}..HEAD" \
+              > /tmp/workspace/changes/manifest.txt 2>/dev/null || true
+            if [ -s /tmp/workspace/changes/manifest.txt ]; then
+              while IFS= read -r file; do
+                if [ -f "$file" ]; then
+                  mkdir -p "/tmp/workspace/changes/files/$(dirname "$file")"
+                  cp "$file" "/tmp/workspace/changes/files/$file"
+                fi
+              done < /tmp/workspace/changes/manifest.txt
+            fi
+      - persist_to_workspace:
+          when: always
+          root: /tmp/workspace
+          paths:
+            - changes
 
 workflows:
   build_website:
@@ -320,6 +374,12 @@ workflows:
                 root: /home/circleci/
                 paths:
                   - project/public
+
+      - zola/build:
+          name: build_company
+          zola_version: 0.19.2
+          config: config.jerusdataprotection.toml
+          check_links: false
 
       - update_changelog:
           filters:
@@ -339,7 +399,35 @@ workflows:
           update_pcu: true
           pcu_verbosity: "-vvv"
           pcu_push: false
-          pcu_explicit_push: true
+          pcu_explicit_push: false
+
+      - push_changes:
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - update_changelog
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          pcu_verbosity: "-vvv"
+
+      - push_changes:
+          name: push_changes_on_fail
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - update_changelog:
+                - failed
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          pcu_verbosity: "-vvv"
 
   update_changelog_only:
     when:

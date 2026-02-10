@@ -11,6 +11,14 @@ build-site:
 publish-site:
     aws s3 cp public s3://www.jrussell.ie --recursive
 
+build-company:
+    git submodule sync
+    git submodule update --init --recursive
+    zola --config config.jerusdataprotection.toml build
+
+publish-company:
+    aws s3 cp public s3://www.jerusdataprotection.ie --recursive
+
 serve:
     zola serve --drafts
 
