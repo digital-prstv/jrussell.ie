@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - serve jrussell.ie content on jerusdataprotection.ie(pr [#184])
 
+### Fixed
+
+- pass role_arn for AWS OIDC auth(pr [#185])
+
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2026.02(pr [#183])
@@ -390,6 +394,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#182]: https://github.com/digital-prstv/jrussell.ie/pull/182
 [#183]: https://github.com/digital-prstv/jrussell.ie/pull/183
 [#184]: https://github.com/digital-prstv/jrussell.ie/pull/184
+[#185]: https://github.com/digital-prstv/jrussell.ie/pull/185
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...HEAD
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
 [1.6.2]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.1...v1.6.2
