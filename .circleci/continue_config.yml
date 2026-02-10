@@ -373,6 +373,7 @@ workflows:
           context:
             - release
             - bot-check
+            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           remove_ssh_key: false
           pcu_verbosity: "-vvv"
@@ -388,6 +389,7 @@ workflows:
           context:
             - release
             - bot-check
+            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           remove_ssh_key: false
           pcu_verbosity: "-vvv"
