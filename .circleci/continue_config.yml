@@ -128,11 +128,14 @@ jobs:
                   cp "/tmp/workspace/changes/files/$file" "$file"
                 fi
               done < /tmp/workspace/changes/manifest.txt
-              git add -A
-              git commit -S -m "chore: update changelog and drafts"
             else
               echo "No changes to apply"
             fi
+      - run:
+          name: Commit changes
+          command: |
+            set -ex
+            pcu <<parameters.pcu_verbosity>> commit --commit-message "chore: update changelog and drafts"
       - run:
           name: Push changes to remote
           command: |
