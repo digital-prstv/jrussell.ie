@@ -95,6 +95,10 @@ jobs:
         default: true
         description: Remove the original SSH key from the agent
         type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
     steps:
       - checkout
       - attach_workspace:
@@ -114,7 +118,7 @@ jobs:
       - toolkit/gpg_key
       - toolkit/git_config
       - run:
-          name: Apply changes and push
+          name: Apply changed files
           command: |
             set -ex
             if [ -s /tmp/workspace/changes/manifest.txt ]; then
@@ -125,11 +129,15 @@ jobs:
                 fi
               done < /tmp/workspace/changes/manifest.txt
               git add -A
-              git commit -m "chore: update changelog and drafts"
-              git push
+              git commit -S -m "chore: update changelog and drafts"
             else
-              echo "No changes to push"
+              echo "No changes to apply"
             fi
+      - run:
+          name: Push changes to remote
+          command: |
+            set -ex
+            pcu <<parameters.pcu_verbosity>> push
 
   update_changelog:
     executor: rust-env
@@ -399,7 +407,9 @@ workflows:
           context:
             - release
             - bot-check
+            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          pcu_verbosity: "-vvv"
 
       - push_changes:
           name: push_changes_on_fail
@@ -412,7 +422,9 @@ workflows:
           context:
             - release
             - bot-check
+            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          pcu_verbosity: "-vvv"
 
   update_changelog_only:
     when:
