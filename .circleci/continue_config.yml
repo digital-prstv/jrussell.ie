@@ -95,13 +95,10 @@ jobs:
         default: true
         description: Remove the original SSH key from the agent
         type: boolean
-      pcu_verbosity:
-        default: "-vv"
-        description: The verbosity of the pcu command
-        type: string
     steps:
+      - checkout
       - attach_workspace:
-          at: /home/circleci
+          at: /tmp/workspace
       - add_ssh_keys:
           fingerprints:
             - <<parameters.ssh_fingerprint>>
@@ -114,18 +111,25 @@ jobs:
                   ssh-add -d ~/.ssh/id_rsa.pub
                   ssh-add -l
                 name: Remove original SSH key from agent
-      - run:
-          name: Add GitHub to known hosts
-          command: |
-            mkdir -p ~/.ssh
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
       - toolkit/gpg_key
       - toolkit/git_config
       - run:
-          name: Push changes to remote
+          name: Apply changes and push
           command: |
             set -ex
-            pcu <<parameters.pcu_verbosity>> push
+            if [ -s /tmp/workspace/changes/manifest.txt ]; then
+              while IFS= read -r file; do
+                if [ -f "/tmp/workspace/changes/files/$file" ]; then
+                  mkdir -p "$(dirname "$file")"
+                  cp "/tmp/workspace/changes/files/$file" "$file"
+                fi
+              done < /tmp/workspace/changes/manifest.txt
+              git add -A
+              git commit -m "chore: update changelog and drafts"
+              git push
+            else
+              echo "No changes to push"
+            fi
 
   update_changelog:
     executor: rust-env
@@ -320,11 +324,28 @@ jobs:
                 blog_directory: << parameters.blog_directory >>
                 command: << parameters.bluesky_command >>
                 pcu_verbosity: << parameters.pcu_verbosity >>
+      - run:
+          name: Stage changed files for push
+          when: always
+          command: |
+            set -ex
+            mkdir -p /tmp/workspace/changes/files
+            branch=$(git rev-parse --abbrev-ref HEAD)
+            git diff --name-only --diff-filter=ACMR "origin/${branch}..HEAD" \
+              > /tmp/workspace/changes/manifest.txt 2>/dev/null || true
+            if [ -s /tmp/workspace/changes/manifest.txt ]; then
+              while IFS= read -r file; do
+                if [ -f "$file" ]; then
+                  mkdir -p "/tmp/workspace/changes/files/$(dirname "$file")"
+                  cp "$file" "/tmp/workspace/changes/files/$file"
+                fi
+              done < /tmp/workspace/changes/manifest.txt
+            fi
       - persist_to_workspace:
           when: always
-          root: /home/circleci
+          root: /tmp/workspace
           paths:
-            - project
+            - changes
 
 workflows:
   build_website:
@@ -378,10 +399,7 @@ workflows:
           context:
             - release
             - bot-check
-            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          remove_ssh_key: false
-          pcu_verbosity: "-vvv"
 
       - push_changes:
           name: push_changes_on_fail
@@ -394,10 +412,7 @@ workflows:
           context:
             - release
             - bot-check
-            - pcu-app
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          remove_ssh_key: false
-          pcu_verbosity: "-vvv"
 
   update_changelog_only:
     when:
