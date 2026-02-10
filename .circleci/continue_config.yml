@@ -374,6 +374,7 @@ workflows:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          remove_ssh_key: false
           pcu_verbosity: "-vvv"
 
       - push_changes:
@@ -388,6 +389,7 @@ workflows:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          remove_ssh_key: false
           pcu_verbosity: "-vvv"
 
   update_changelog_only:
