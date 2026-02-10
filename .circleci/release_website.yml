@@ -19,6 +19,7 @@ jobs:
     steps:
       - aws-cli/setup:
           region: eu-west-1
+          role_arn: ${AWS_ROLE_ARN}
       - run:
           # Deploy to S3 using the sync command
           name: Deploy to S3
@@ -30,6 +31,7 @@ jobs:
     steps:
       - aws-cli/setup:
           region: eu-west-1
+          role_arn: ${AWS_ROLE_ARN}
       - run:
           name: Deploy to company S3
           command: aws s3 sync --delete /tmp/workspace/public-company s3://www.jerusdataprotection.ie
