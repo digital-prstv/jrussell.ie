@@ -99,8 +99,13 @@ jobs:
           name: Create bluesky drafts for new blog posts
           command: pcu -vv bsky draft --allow-empty content/blog
       - run:
-          name: Push drafts to remote
-          command: pcu -vv push
+          name: Push drafts to remote if any were created
+          command: |
+            if git diff --quiet HEAD origin/HEAD; then
+              echo "No new commits — skipping push"
+            else
+              pcu -vv push
+            fi
 
 workflows:
   validation:
