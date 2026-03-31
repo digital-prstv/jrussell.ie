@@ -97,28 +97,10 @@ jobs:
       - checkout
       - run:
           name: Create bluesky drafts for new blog posts
-          command: |
-            set -ex
-            exit_code=0
-            pcu -vv bsky draft content/blog > /tmp/bsky-stdout.txt 2> /tmp/bsky-stderr.txt || exit_code=$?
-            cat /tmp/bsky-stdout.txt
-            if [ -s /tmp/bsky-stderr.txt ]; then
-              cat /tmp/bsky-stderr.txt
-            fi
-            if [ "${exit_code}" -ne 0 ]; then
-              if grep -q "BlogPostListEmpty" /tmp/bsky-stderr.txt /tmp/bsky-stdout.txt 2>/dev/null; then
-                echo "No new blog posts to draft — continuing"
-              else
-                echo "pcu bsky draft failed with exit_code=${exit_code}"
-                exit "${exit_code}"
-              fi
-            fi
+          command: pcu -vv bsky draft --allow-empty content/blog
       - run:
-          name: Commit and push drafts
-          command: |
-            set -ex
-            pcu -vv commit --commit-message "chore: update bluesky drafts"
-            pcu -vv push
+          name: Push drafts to remote
+          command: pcu -vv push
 
 workflows:
   validation:
