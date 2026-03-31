@@ -109,12 +109,6 @@ jobs:
 
 workflows:
   validation:
-    when:
-      and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not:
-            equal: [main, << pipeline.git.branch >>]
     jobs:
       # Website builds — validate on PR branches
       - zola/build:
