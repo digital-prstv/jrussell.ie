@@ -26,11 +26,7 @@ jobs:
             set -eo pipefail
             if git diff HEAD^ HEAD -- iac/ | grep -q .; then
               echo "IaC changes detected — triggering deploy pipeline"
-              curl -s -X POST \
-                "https://circleci.com/api/v2/pipeline" \
-                -H "Circle-Token: ${CIRCLE_TOKEN}" \
-                -H "Content-Type: application/json" \
-                -d '{"definition_id": "a18ece2d-9fcd-4444-a115-2eb4bd706be5", "branch": "main", "parameters": {"deploy-iac": true}}'
+              curl -s -X POST "${DEPLOY_IAC_WEBHOOK}"
             else
               echo "No IaC changes — skipping deploy"
             fi
