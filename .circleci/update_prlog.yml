@@ -30,7 +30,7 @@ jobs:
                 "https://circleci.com/api/v2/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pipeline" \
                 -H "Circle-Token: ${CIRCLE_TOKEN}" \
                 -H "Content-Type: application/json" \
-                -d '{"definition_id": "a18ece2d-9fcd-4444-a115-2eb4bd706be5", "branch": "main"}'
+                -d '{"definition_id": "a18ece2d-9fcd-4444-a115-2eb4bd706be5", "branch": "main", "parameters": {"deploy-iac": true}}'
             else
               echo "No IaC changes — skipping deploy"
             fi
