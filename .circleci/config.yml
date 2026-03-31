@@ -101,7 +101,7 @@ jobs:
       - run:
           name: Push drafts to remote if any were created
           command: |
-            if git diff --quiet HEAD origin/HEAD; then
+            if git diff --quiet HEAD "origin/${CIRCLE_BRANCH}"; then
               echo "No new commits — skipping push"
             else
               pcu -vv push
