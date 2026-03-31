@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - skip push if bsky draft made no new commits(pr [#190])
 - suppress empty pipeline on main branch pushes(pr [#191])
+- pass deploy-iac parameter in API trigger(pr [#192])
 
 ### Security
 
@@ -414,6 +415,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#189]: https://github.com/digital-prstv/jrussell.ie/pull/189
 [#190]: https://github.com/digital-prstv/jrussell.ie/pull/190
 [#191]: https://github.com/digital-prstv/jrussell.ie/pull/191
+[#192]: https://github.com/digital-prstv/jrussell.ie/pull/192
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
