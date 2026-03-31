@@ -25,7 +25,8 @@ jobs:
             - .aws
 
   plan-01-remote:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -36,7 +37,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-01-remote:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -47,7 +49,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-10-static:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -58,7 +61,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-10-static:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -69,7 +73,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-20-network:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -80,7 +85,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-20-network:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -91,7 +97,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-21-site-cert:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -102,7 +109,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-21-site-cert:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -113,7 +121,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-22-sec-headers:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -124,7 +133,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-22-sec-headers:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -136,7 +146,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-30-edge:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -147,7 +158,8 @@ jobs:
           backend_config_file: ../remote.config
 
   apply-30-edge:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:

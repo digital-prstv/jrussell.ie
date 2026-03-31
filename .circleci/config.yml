@@ -20,7 +20,8 @@ jobs:
             - .aws
 
   plan-01-remote:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -31,7 +32,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-10-static:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -42,7 +44,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-20-network:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -53,7 +56,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-21-site-cert:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -64,7 +68,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-22-sec-headers:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -75,7 +80,8 @@ jobs:
           backend_config_file: ../remote.config
 
   plan-30-edge:
-    executor: terraform/default
+    docker:
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -89,9 +95,24 @@ jobs:
     executor: toolkit/base_env
     steps:
       - checkout
-      - toolkit/bsky:
-          command: draft
-          blog_directory: content/blog
+      - run:
+          name: Create bluesky drafts for new blog posts
+          command: |
+            set -ex
+            exit_code=0
+            pcu -vv bsky draft content/blog > /tmp/bsky-stdout.txt 2> /tmp/bsky-stderr.txt || exit_code=$?
+            cat /tmp/bsky-stdout.txt
+            if [ -s /tmp/bsky-stderr.txt ]; then
+              cat /tmp/bsky-stderr.txt
+            fi
+            if [ "${exit_code}" -ne 0 ]; then
+              if grep -q "BlogPostListEmpty" /tmp/bsky-stderr.txt /tmp/bsky-stdout.txt 2>/dev/null; then
+                echo "No new blog posts to draft — continuing"
+              else
+                echo "pcu bsky draft failed with exit_code=${exit_code}"
+                exit "${exit_code}"
+              fi
+            fi
       - run:
           name: Commit and push drafts
           command: |
