@@ -101,7 +101,7 @@ jobs:
       - run:
           name: Push drafts to remote if any were created
           command: |
-            if git diff --quiet HEAD origin/HEAD; then
+            if git diff --quiet HEAD "origin/${CIRCLE_BRANCH}"; then
               echo "No new commits — skipping push"
             else
               pcu -vv push
@@ -110,26 +110,23 @@ jobs:
 workflows:
   validation:
     when:
-      not:
-        equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not:
+            equal: [main, << pipeline.git.branch >>]
     jobs:
       # Website builds — validate on PR branches
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
           check_links: false
-          filters:
-            branches:
-              ignore: main
 
       - zola/build:
           name: build-company
           zola_version: 0.19.2
           config: config.jerusdataprotection.toml
           check_links: false
-          filters:
-            branches:
-              ignore: main
 
       # Bluesky draft — create draft posts for new blog entries
       - bluesky_draft:
@@ -140,68 +137,44 @@ workflows:
             - bluesky
           requires:
             - zola/build
-          filters:
-            branches:
-              ignore: main
 
       # IaC validation — Terraform plans in parallel on PR branches
       - authorise_aws:
           context:
             - AWS-DEV
-          filters:
-            branches:
-              ignore: main
 
       - plan-01-remote:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
 
       - plan-10-static:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
 
       - plan-20-network:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
 
       - plan-21-site-cert:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
 
       - plan-22-sec-headers:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
 
       - plan-30-edge:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-          filters:
-            branches:
-              ignore: main
