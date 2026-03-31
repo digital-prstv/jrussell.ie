@@ -18,23 +18,24 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Detect IaC changes in merge — halt if none
+          name: Detect IaC changes in merge
           command: |
             set -eo pipefail
             echo "Checking for IaC changes..."
-            exit_code=0
-            git diff HEAD^ HEAD -- iac/ > /tmp/iac-diff.txt 2>/tmp/iac-diff-err.txt || exit_code=$?
-            if [ -s /tmp/iac-diff-err.txt ]; then
-              echo "git diff stderr:"
-              cat /tmp/iac-diff-err.txt
-            fi
-            echo "exit=${exit_code}"
-            if [ -s /tmp/iac-diff.txt ]; then
+            if git diff HEAD^ HEAD -- iac/ | grep -q .; then
               echo "IaC changes detected — proceeding with deploy"
             else
-              echo "No IaC changes — halting deploy workflow"
-              circleci-agent step halt
+              echo "No IaC changes in this merge"
+              exit 1
             fi
+
+  no_iac_deploy:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - run:
+          name: No IaC changes to deploy
+          command: echo "No IaC changes detected in this merge — skipping deploy"
 
   authorise_aws:
     executor: aws-cli/default
@@ -299,3 +300,8 @@ workflows:
             - apply-10-static
             - apply-21-site-cert
             - apply-22-sec-headers
+
+      - no_iac_deploy:
+          requires:
+            - check_iac_changes:
+                - failed
