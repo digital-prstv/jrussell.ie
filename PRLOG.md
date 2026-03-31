@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- chore-3-file CI migration to toolkit 6.0.0(pr [#189])
+
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2026.03(pr [#186])
@@ -402,6 +406,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#184]: https://github.com/digital-prstv/jrussell.ie/pull/184
 [#185]: https://github.com/digital-prstv/jrussell.ie/pull/185
 [#186]: https://github.com/digital-prstv/jrussell.ie/pull/186
+[#189]: https://github.com/digital-prstv/jrussell.ie/pull/189
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
