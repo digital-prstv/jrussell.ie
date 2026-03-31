@@ -4,13 +4,6 @@ orbs:
   aws-cli: circleci/aws-cli@5.4.1
   terraform: circleci/terraform@3.7.0
 
-parameters:
-  deploy-iac:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the deploy-iac workflow will be triggered.
-
 jobs:
   authorise_aws:
     executor: aws-cli/default
@@ -171,7 +164,6 @@ jobs:
 
 workflows:
   deploy_iac:
-    when: << pipeline.parameters.deploy-iac >>
     jobs:
       - authorise_aws
 

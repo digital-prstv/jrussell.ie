@@ -8,8 +8,6 @@ parameters:
 
 orbs:
   toolkit: digital-prstv/circleci-toolkit@6.0.0
-  aws-cli: circleci/aws-cli@5.4.1
-  terraform: circleci/terraform@3.7.0
 
 jobs:
   check_iac_changes:
@@ -18,181 +16,24 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Detect IaC changes in merge
+          name: Switch to main
+          command: |
+            git fetch origin main
+            git checkout main
+      - run:
+          name: Detect IaC changes — trigger deploy pipeline if found
           command: |
             set -eo pipefail
-            echo "Checking for IaC changes..."
             if git diff HEAD^ HEAD -- iac/ | grep -q .; then
-              echo "IaC changes detected — proceeding with deploy"
+              echo "IaC changes detected — triggering deploy pipeline"
+              curl -s -X POST \
+                "https://circleci.com/api/v2/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pipeline" \
+                -H "Circle-Token: ${CIRCLE_TOKEN}" \
+                -H "Content-Type: application/json" \
+                -d '{"definition_id": "a18ece2d-9fcd-4444-a115-2eb4bd706be5", "branch": "main"}'
             else
-              echo "No IaC changes in this merge"
-              exit 1
+              echo "No IaC changes — skipping deploy"
             fi
-
-  no_iac_deploy:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - run:
-          name: No IaC changes to deploy
-          command: echo "No IaC changes detected in this merge — skipping deploy"
-
-  authorise_aws:
-    executor: aws-cli/default
-    steps:
-      - checkout
-      - aws-cli/setup:
-          role_arn: arn:aws:iam::086010417807:role/CircleCI-Digital-PRSTV
-          region: eu-west-1
-      - persist_to_workspace:
-          root: /home/circleci/
-          paths:
-            - .aws
-
-  plan-01-remote:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/01-remote
-          backend_config_file: ../remote.config
-
-  plan-10-static:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/10-static
-          backend_config_file: ../remote.config
-
-  plan-20-network:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/20-network
-          backend_config_file: ../remote.config
-
-  plan-21-site-cert:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/21-site-cert
-          backend_config_file: ../remote.config
-
-  plan-22-sec-headers:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/22-sec-headers
-          backend_config_file: ../remote.config
-
-  plan-30-edge:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/plan:
-          path: ./iac/30-edge
-          backend_config_file: ../remote.config
-
-  apply-01-remote:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/apply:
-          path: ./iac/01-remote
-          backend_config_file: ../remote.config
-
-  apply-10-static:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/apply:
-          path: ./iac/10-static
-          backend_config_file: ../remote.config
-
-  apply-20-network:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/apply:
-          path: ./iac/20-network
-          backend_config_file: ../remote.config
-
-  apply-21-site-cert:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/apply:
-          path: ./iac/21-site-cert
-          backend_config_file: ../remote.config
-
-  apply-22-sec-headers:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - run: zip -j ./iac/22-sec-headers/javascript.zip ./iac/22-sec-headers/index.js
-      - terraform/apply:
-          path: ./iac/22-sec-headers
-          backend_config_file: ../remote.config
-
-  apply-30-edge:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /home/circleci/
-      - terraform/install
-      - terraform/apply:
-          path: ./iac/30-edge
-          backend_config_file: ../remote.config
 
 workflows:
   update_prlog:
@@ -207,101 +48,6 @@ workflows:
           pcu_from_merge: --from-merge
           update_pcu: << pipeline.parameters.update_pcu >>
 
-  deploy_iac_on_merge:
-    jobs:
-      - check_iac_changes
-
-      - authorise_aws:
+      - check_iac_changes:
           context:
-            - AWS-DEV
-          requires:
-            - check_iac_changes
-
-      - plan-01-remote:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - plan-10-static:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - plan-20-network:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - plan-21-site-cert:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - plan-22-sec-headers:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - plan-30-edge:
-          context:
-            - AWS-DEV
-          requires:
-            - authorise_aws
-
-      - approve-iac-deploy:
-          type: approval
-          requires:
-            - plan-01-remote
-            - plan-10-static
-            - plan-20-network
-            - plan-21-site-cert
-            - plan-22-sec-headers
-            - plan-30-edge
-
-      - apply-01-remote:
-          context:
-            - AWS-DEV
-          requires:
-            - approve-iac-deploy
-
-      - apply-10-static:
-          context:
-            - AWS-DEV
-          requires:
-            - apply-01-remote
-
-      - apply-20-network:
-          context:
-            - AWS-DEV
-          requires:
-            - apply-01-remote
-
-      - apply-21-site-cert:
-          context:
-            - AWS-DEV
-          requires:
-            - apply-20-network
-
-      - apply-22-sec-headers:
-          context:
-            - AWS-DEV
-          requires:
-            - apply-01-remote
-
-      - apply-30-edge:
-          context:
-            - AWS-DEV
-          requires:
-            - apply-10-static
-            - apply-21-site-cert
-            - apply-22-sec-headers
-
-      - no_iac_deploy:
-          requires:
-            - check_iac_changes:
-                - failed
+            - release
