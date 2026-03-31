@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - suppress empty pipeline on main branch pushes(pr [#191])
 - pass deploy-iac parameter in API trigger(pr [#192])
 - use global pipeline endpoint for definition_id trigger(pr [#199])
+- use custom webhook to trigger IaC deploy(pr [#200])
 
 ### Security
 
@@ -428,6 +429,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#196]: https://github.com/digital-prstv/jrussell.ie/pull/196
 [#199]: https://github.com/digital-prstv/jrussell.ie/pull/199
 [#197]: https://github.com/digital-prstv/jrussell.ie/pull/197
+[#200]: https://github.com/digital-prstv/jrussell.ie/pull/200
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
