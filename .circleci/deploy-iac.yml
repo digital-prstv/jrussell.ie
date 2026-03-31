@@ -1,40 +1,18 @@
 version: 2.1
-setup: true
+
 orbs:
   aws-cli: circleci/aws-cli@5.4.1
   terraform: circleci/terraform@3.7.0
+
 parameters:
-  success_flag:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the success workflow will be triggered.
-  validation_flag:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the generate-config workflow will be triggered.
-  release-website:
-    type: boolean
-    default: false
-    description: |
-      If set to true, the release-website workflow will be triggered.
   deploy-iac:
     type: boolean
     default: false
     description: |
       If set to true, the deploy-iac workflow will be triggered.
-  min_rust_version:
-    type: string
-    default: "1.81"
-  fingerprint:
-    type: string
-    default: "SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg"
 
 jobs:
   authorise_aws:
-    docker:
-      - image: cimg/base:2026.03
     executor: aws-cli/default
     steps:
       - checkout
@@ -45,10 +23,10 @@ jobs:
           root: /home/circleci/
           paths:
             - .aws
+
   plan-01-remote:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -60,8 +38,7 @@ jobs:
 
   apply-01-remote:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -73,8 +50,7 @@ jobs:
 
   plan-10-static:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -86,8 +62,7 @@ jobs:
 
   apply-10-static:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -99,8 +74,7 @@ jobs:
 
   plan-20-network:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -112,8 +86,7 @@ jobs:
 
   apply-20-network:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -125,8 +98,7 @@ jobs:
 
   plan-21-site-cert:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -138,8 +110,7 @@ jobs:
 
   apply-21-site-cert:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -151,8 +122,7 @@ jobs:
 
   plan-22-sec-headers:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -164,8 +134,7 @@ jobs:
 
   apply-22-sec-headers:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -178,8 +147,7 @@ jobs:
 
   plan-30-edge:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -191,8 +159,7 @@ jobs:
 
   apply-30-edge:
     docker:
-      - image: cimg/base:2026.03
-    executor: terraform/default
+      - image: cimg/base:current
     steps:
       - checkout
       - attach_workspace:
@@ -204,48 +171,48 @@ jobs:
 
 workflows:
   deploy_iac:
-    when:
-      and:
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.validation_flag >>
-        - not: << pipeline.parameters.release-website >>
-        - << pipeline.parameters.deploy-iac >>
-
+    when: << pipeline.parameters.deploy-iac >>
     jobs:
       - authorise_aws
+
       - plan-01-remote:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+
       - plan-10-static:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+
       - plan-20-network:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+
       - plan-21-site-cert:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+
       - plan-22-sec-headers:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
+
       - plan-30-edge:
           context:
             - AWS-DEV
           requires:
             - authorise_aws
-      - apply-01-remote:
-          context:
-            - AWS-DEV
+
+      - approve-iac-deploy:
+          type: approval
           requires:
             - plan-01-remote
             - plan-10-static
@@ -253,26 +220,37 @@ workflows:
             - plan-21-site-cert
             - plan-22-sec-headers
             - plan-30-edge
+
+      - apply-01-remote:
+          context:
+            - AWS-DEV
+          requires:
+            - approve-iac-deploy
+
       - apply-10-static:
           context:
             - AWS-DEV
           requires:
             - apply-01-remote
+
       - apply-20-network:
           context:
             - AWS-DEV
           requires:
             - apply-01-remote
+
       - apply-21-site-cert:
           context:
             - AWS-DEV
           requires:
             - apply-20-network
+
       - apply-22-sec-headers:
           context:
             - AWS-DEV
           requires:
             - apply-01-remote
+
       - apply-30-edge:
           context:
             - AWS-DEV
