@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2026.03(pr [#186])
+- Dependencies: update terraform aws to v6(pr [#198])
 
 ## [1.8.0] - 2026-02-10
 
@@ -420,6 +421,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#192]: https://github.com/digital-prstv/jrussell.ie/pull/192
 [#193]: https://github.com/digital-prstv/jrussell.ie/pull/193
 [#194]: https://github.com/digital-prstv/jrussell.ie/pull/194
+[#198]: https://github.com/digital-prstv/jrussell.ie/pull/198
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
