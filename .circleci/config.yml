@@ -95,6 +95,8 @@ jobs:
     executor: toolkit/base_env
     steps:
       - checkout
+      - toolkit/gpg_key
+      - toolkit/git_config
       - run:
           name: Create bluesky drafts for new blog posts
           command: pcu -vv bsky draft --allow-empty content/blog
