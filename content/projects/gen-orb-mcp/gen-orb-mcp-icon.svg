@@ -1,0 +1,32 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+
+  <!-- Orb (left) -->
+  <circle cx="62" cy="100" r="28" fill="#0ea5e9"/>
+  <ellipse cx="62" cy="100" rx="20" ry="28" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <ellipse cx="62" cy="100" rx="28" ry="16" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Arrow -->
+  <path d="M 96 100 L 112 100" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 107 94 L 114 100 L 107 106" fill="none" stroke="#64748b" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- MCP node cluster (right) -->
+  <!-- Central node -->
+  <circle cx="146" cy="100" r="11" fill="#0891b2"/>
+  <!-- Upper node -->
+  <circle cx="146" cy="68" r="7.5" fill="#06b6d4"/>
+  <!-- Lower node -->
+  <circle cx="146" cy="132" r="7.5" fill="#06b6d4"/>
+  <!-- Far-upper node -->
+  <circle cx="170" cy="82" r="6" fill="#22d3ee"/>
+  <!-- Far-lower node -->
+  <circle cx="170" cy="118" r="6" fill="#22d3ee"/>
+
+  <!-- Connecting lines -->
+  <line x1="146" y1="89" x2="146" y2="75.5" stroke="#0ea5e9" stroke-width="2" opacity="0.8"/>
+  <line x1="146" y1="111" x2="146" y2="124.5" stroke="#0ea5e9" stroke-width="2" opacity="0.8"/>
+  <line x1="155" y1="93" x2="165" y2="85.5" stroke="#0ea5e9" stroke-width="2" opacity="0.8"/>
+  <line x1="155" y1="107" x2="165" y2="114.5" stroke="#0ea5e9" stroke-width="2" opacity="0.8"/>
+</svg>
