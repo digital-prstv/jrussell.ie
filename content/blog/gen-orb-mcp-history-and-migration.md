@@ -7,6 +7,9 @@ draft = false
 [taxonomies]
 categories = ["Open Source", "Developer Tools"]
 tags = ["Rust", "MCP", "CircleCI", "AI", "code generation", "migration", "gen-orb-mcp"]
+
+[bluesky]
+description = "gen-orb-mcp now automates orb version-history population via `prime` and embeds AI-guided migration tools in generated MCP servers. One command, full history, interactive migrations."
 +++
 
 Private CircleCI orbs are invisible to AI coding assistants. An orb can contain dozens of
