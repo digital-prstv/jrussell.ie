@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - pass deploy-iac parameter in API trigger(pr [#192])
 - use global pipeline endpoint for definition_id trigger(pr [#199])
 - use custom webhook to trigger IaC deploy(pr [#200])
+- ci: break bluesky_draft push loop(pr [#204])
 
 ### Security
 
@@ -434,6 +435,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#200]: https://github.com/digital-prstv/jrussell.ie/pull/200
 [#201]: https://github.com/digital-prstv/jrussell.ie/pull/201
 [#203]: https://github.com/digital-prstv/jrussell.ie/pull/203
+[#204]: https://github.com/digital-prstv/jrussell.ie/pull/204
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
