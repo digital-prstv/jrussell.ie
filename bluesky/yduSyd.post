@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-04-02T11:48:32.436773Z",
+  "facets": [
+    {
+      "features": [
+        {
+          "$type": "app.bsky.richtext.facet#link",
+          "uri": "https://www.jrussell.ie/s/VFdIJ7V.html"
+        }
+      ],
+      "index": {
+        "byteEnd": 299,
+        "byteStart": 261
+      }
+    }
+  ],
+  "text": "gen-orb-mcp: Teaching AI Your Orb's Full History — and How to Migrate It\n\ngen-orb-mcp now automates orb version-history population via `prime` and embeds AI-guided migration tools in generated MCP servers. One command, full history, interactive migrations. \n\nhttps://www.jrussell.ie/s/VFdIJ7V.html"
+}
