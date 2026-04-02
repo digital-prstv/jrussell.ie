@@ -99,12 +99,15 @@ jobs:
       - toolkit/git_config
       - run:
           name: Create bluesky drafts for new blog posts
-          command: pcu -vv bsky draft --allow-empty content/blog
-      - run:
-          name: Push drafts to remote if any were created
           command: |
-            if git diff --quiet HEAD "origin/${CIRCLE_BRANCH}"; then
-              echo "No new commits — skipping push"
+            BEFORE=$(git rev-parse HEAD)
+            pcu -vv bsky draft --allow-empty content/blog
+            AFTER=$(git rev-parse HEAD)
+            if [ "$BEFORE" = "$AFTER" ]; then
+              echo "No commit made — skipping push"
+            elif git diff --diff-filter=A --quiet "$BEFORE" "$AFTER" -- bluesky/ static/s/; then
+              echo "No new draft files added (timestamp-only update) — skipping push"
+              git reset --hard "$BEFORE"
             else
               pcu -vv push
             fi
