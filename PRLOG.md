@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore-3-file CI migration to toolkit 6.0.0(pr [#189])
 - ci-remove redundant validation workflow when condition(pr [#193])
 - chore-extend shared renovate config for CircleCI orb tracking(pr [#194])
+- docs-add gen-orb-mcp project documentation and blog post(pr [#203])
 
 ### Fixed
 
@@ -432,6 +433,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#197]: https://github.com/digital-prstv/jrussell.ie/pull/197
 [#200]: https://github.com/digital-prstv/jrussell.ie/pull/200
 [#201]: https://github.com/digital-prstv/jrussell.ie/pull/201
+[#203]: https://github.com/digital-prstv/jrussell.ie/pull/203
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
