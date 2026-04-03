@@ -10,6 +10,28 @@ tags = ["Rust", "MCP", "CircleCI", "AI", "code generation", "migration", "gen-or
 
 [bluesky]
 description = "gen-orb-mcp now automates orb version-history population via `prime` and embeds AI-guided migration tools in generated MCP servers. One command, full history, interactive migrations."
+
+[linkedin]
+description = """
+Just shipped: gen-orb-mcp now builds your orb's full version history automatically and embeds AI-guided migration tools directly into the generated MCP server.
+
+The problem it solves
+Private CircleCI orbs are invisible to AI assistants — no public docs, no context. When you ship a breaking change, the blast radius is every consumer repo that hasn't updated. Migration guides don't get read. PRs pile up. CI breaks for months.
+
+What's new
+
+prime — one command that walks your orb's git tags, snapshots each version's YAML, and computes conformance-rule diffs between consecutive versions. Run it in your release pipeline and the history archive stays current automatically.
+
+Multi-version MCP server — generated servers now embed prior-version snapshots alongside the current version, so an AI assistant can answer cross-version questions and guide users through migrations interactively using plan_migration and apply_migration tools.
+
+Conformance-based migration — rules describe the target version's contract, not a series of patches. A consumer jumping from v4.7 to v5.0 gets the same result as one that went through every intermediate version.
+
+--rename-map — for the tricky job-family-swap pattern where git's rename detection needs a hint.
+
+Full docs, getting started guide, and CLI reference at the link below.
+
+#Rust #CircleCI #MCP #AI #DevTools #OpenSource
+"""
 +++
 
 Private CircleCI orbs are invisible to AI coding assistants. An orb can contain dozens of
