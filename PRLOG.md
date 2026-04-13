@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- add LinkedIn promotion and update publish date(pr [#210])
+
 ### Changed
 
 - chore-3-file CI migration to toolkit 6.0.0(pr [#189])
@@ -448,6 +452,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#207]: https://github.com/digital-prstv/jrussell.ie/pull/207
 [#208]: https://github.com/digital-prstv/jrussell.ie/pull/208
 [#209]: https://github.com/digital-prstv/jrussell.ie/pull/209
+[#210]: https://github.com/digital-prstv/jrussell.ie/pull/210
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
