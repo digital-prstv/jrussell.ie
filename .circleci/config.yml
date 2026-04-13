@@ -137,7 +137,7 @@ workflows:
           requires:
             - zola/build
 
-      # LinkedIn draft — stage LinkedIn posts for new blog entries
+      # LinkedIn draft — stage LinkedIn posts for new blog entries (pcu >= 0.6.16)
       - toolkit/linkedin:
           name: linkedin_draft
           subcommand: draft
