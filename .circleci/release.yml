@@ -111,3 +111,14 @@ workflows:
             - bluesky
           requires:
             - toolkit/release_prlog
+
+      - toolkit/linkedin:
+          name: linkedin_post
+          subcommand: post
+          context:
+            - release
+            - bot-check
+            - pcu-app
+            - linkedin
+          requires:
+            - toolkit/release_prlog

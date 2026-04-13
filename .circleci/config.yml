@@ -137,6 +137,18 @@ workflows:
           requires:
             - zola/build
 
+      # LinkedIn draft — stage LinkedIn posts for new blog entries
+      - toolkit/linkedin:
+          name: linkedin_draft
+          subcommand: draft
+          allow_empty: true
+          context:
+            - release
+            - bot-check
+            - pcu-app
+          requires:
+            - zola/build
+
       # IaC validation — Terraform plans in parallel on PR branches
       - authorise_aws:
           context:

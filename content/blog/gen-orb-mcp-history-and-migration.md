@@ -1,7 +1,7 @@
 +++
 title = "gen-orb-mcp: Teaching AI Your Orb's Full History — and How to Migrate It"
 description = "Recent releases of gen-orb-mcp bring automated version-history population and conformance-based migration tooling. The `prime` command walks your git tags and builds the full prior-version archive in one step; generated MCP servers now expose `plan_migration` and `apply_migration` tools so an AI assistant can guide users through breaking changes interactively."
-date = 2026-04-02
+date = 2026-04-13
 draft = false
 
 [taxonomies]
