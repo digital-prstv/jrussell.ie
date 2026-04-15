@@ -1,17 +1,14 @@
 +++
-title = "gen-orb-mcp: Teaching AI Your Orb's Full History — and How to Migrate It"
-description = "Recent releases of gen-orb-mcp bring automated version-history population and conformance-based migration tooling. The `prime` command walks your git tags and builds the full prior-version archive in one step; generated MCP servers now expose `plan_migration` and `apply_migration` tools so an AI assistant can guide users through breaking changes interactively."
 date = 2026-04-13
+description = "Recent releases of gen-orb-mcp bring automated version-history population and conformance-based migration tooling. The `prime` command walks your git tags and builds the full prior-version archive in one step; generated MCP servers now expose `plan_migration` and `apply_migration` tools so an AI assistant can guide users through breaking changes interactively."
 draft = false
-
-[taxonomies]
-categories = ["Open Source", "Developer Tools"]
-tags = ["Rust", "MCP", "CircleCI", "AI", "code generation", "migration", "gen-orb-mcp"]
+title = "gen-orb-mcp: Teaching AI Your Orb's Full History — and How to Migrate It"
 
 [bluesky]
 description = "gen-orb-mcp now automates orb version-history population via `prime` and embeds AI-guided migration tools in generated MCP servers. One command, full history, interactive migrations."
 
 [linkedin]
+created = 2026-04-15
 description = """
 Just shipped: gen-orb-mcp now builds your orb's full version history automatically and embeds AI-guided migration tools directly into the generated MCP server.
 
@@ -32,6 +29,10 @@ Full docs, getting started guide, and CLI reference at the link below.
 
 #Rust #CircleCI #MCP #AI #DevTools #OpenSource
 """
+
+[taxonomies]
+categories = ["Open Source", "Developer Tools"]
+tags = ["Rust", "MCP", "CircleCI", "AI", "code generation", "migration", "gen-orb-mcp"]
 +++
 
 Private CircleCI orbs are invisible to AI coding assistants. An orb can contain dozens of
