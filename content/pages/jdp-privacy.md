@@ -1,6 +1,6 @@
 +++
 title = "Privacy"
-path = "privacy"
+path = "jdp-privacy"
 template = "info-page.html"
 +++
 
