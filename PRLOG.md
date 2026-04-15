@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore-extend shared renovate config for CircleCI orb tracking(pr [#194])
 - docs-add gen-orb-mcp project documentation and blog post(pr [#203])
 - docs-add [linkedin] frontmatter to gen-orb-mcp blog post(pr [#205])
+- chore-stage LinkedIn draft for gen-orb-mcp post(pr [#212])
 
 ### Fixed
 
@@ -453,6 +454,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#208]: https://github.com/digital-prstv/jrussell.ie/pull/208
 [#209]: https://github.com/digital-prstv/jrussell.ie/pull/209
 [#210]: https://github.com/digital-prstv/jrussell.ie/pull/210
+[#212]: https://github.com/digital-prstv/jrussell.ie/pull/212
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...HEAD
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.6.2...v1.7.0
