@@ -112,6 +112,23 @@ jobs:
               pcu -vv push
             fi
 
+  # Local job — mirrors toolkit/linkedin but adds git pull --rebase so it can
+  # run sequentially after bluesky_draft without a non-fast-forward push failure.
+  # Replace with toolkit/linkedin (sync: true) once pcu sync and the toolkit
+  # sync parameter land (see linkedin-bsky-draft-race-fix plan).
+  linkedin_draft:
+    executor: toolkit/base_env
+    steps:
+      - checkout
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - run:
+          name: Sync with remote (pick up bluesky_draft push)
+          command: git pull --rebase origin "$CIRCLE_BRANCH"
+      - toolkit/lnkd:
+          subcommand: draft
+          allow_empty: true
+
 workflows:
   validation:
     jobs:
@@ -136,18 +153,26 @@ workflows:
             - bluesky
           requires:
             - zola/build
+          filters:
+            branches:
+              ignore: [main]
 
-      # LinkedIn draft — stage LinkedIn posts for new blog entries (pcu >= 0.6.16)
-      - toolkit/linkedin:
-          name: linkedin_draft
-          subcommand: draft
-          allow_empty: true
+      # LinkedIn draft — stage LinkedIn posts for new blog entries.
+      # Runs sequentially after bluesky_draft (which may push to the branch first).
+      # git pull --rebase ensures the local checkout includes any bluesky_draft push
+      # before linkedin commits and pushes, avoiding a non-fast-forward failure.
+      # NOTE: local job — to be replaced by toolkit/linkedin with sync: true once
+      # pcu sync and the toolkit sync parameter are implemented.
+      - linkedin_draft:
           context:
             - release
             - bot-check
             - pcu-app
           requires:
-            - zola/build
+            - bluesky_draft
+          filters:
+            branches:
+              ignore: [main]
 
       # IaC validation — Terraform plans in parallel on PR branches
       - authorise_aws:
