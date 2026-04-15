@@ -6,6 +6,73 @@ orbs:
   aws-cli: circleci/aws-cli@5.4.1
   terraform: circleci/terraform@3.7.0
 
+# Local command — prototype of the proposed toolkit/lnkd update.
+# Key change: --push is removed from pcu linkedin draft; push is instead
+# performed via a separate `pcu push` call when the push parameter is true.
+# Using `pcu push` (cmd=="push") correctly resolves CIRCLE_BRANCH, whereas
+# pcu linkedin draft --push (cmd=="linkedin") resolved to "main" and silently
+# pushed nothing.  Separating push also allows multiple draft commands to
+# aggregate their commits before a single push.
+# Once proven here, propose this as a replacement for toolkit/lnkd.
+commands:
+  lnkd:
+    description: >
+      Execute `pcu linkedin draft` or `pcu linkedin post` commands.
+      For draft: set push: true to push via a separate `pcu push` call after
+      drafting so that CIRCLE_BRANCH is resolved correctly.
+    parameters:
+      subcommand:
+        type: enum
+        default: draft
+        enum:
+          - draft
+          - post
+        description: "Whether to draft or post LinkedIn content"
+      content_dir:
+        type: string
+        default: "content/blog"
+        description: "Path to the blog content directory"
+      allow_empty:
+        type: boolean
+        default: false
+        description: "Warn instead of failing when no posts match the filter (draft only)"
+      push:
+        type: boolean
+        default: false
+        description: >
+          Push after drafting via a separate `pcu push` call (draft only).
+          Defaults to false so the caller controls when to push, enabling
+          multiple draft commands to aggregate commits into one push.
+      pcu_verbosity:
+        type: string
+        default: "-vv"
+        description: "Verbosity flags passed to pcu"
+    steps:
+      - run:
+          name: Execute linkedin `<< parameters.subcommand >>` command
+          command: |
+            set -exo pipefail
+
+            if [ "<< parameters.subcommand >>" == "draft" ]; then
+              allow_empty_flag=""
+              if [ "<< parameters.allow_empty >>" == "true" ]; then
+                allow_empty_flag="--allow-empty"
+              fi
+              BEFORE=$(git rev-parse HEAD)
+              pcu << parameters.pcu_verbosity >> linkedin draft \
+                ${allow_empty_flag} \
+                << parameters.content_dir >>
+              AFTER=$(git rev-parse HEAD)
+              if [ "$BEFORE" = "$AFTER" ]; then
+                echo "No commit made — skipping push"
+              elif [ "<< parameters.push >>" == "true" ]; then
+                pcu << parameters.pcu_verbosity >> push
+              fi
+            elif [ "<< parameters.subcommand >>" == "post" ]; then
+              pcu << parameters.pcu_verbosity >> linkedin post \
+                --release
+            fi
+
 jobs:
   authorise_aws:
     executor: aws-cli/default
@@ -112,6 +179,29 @@ jobs:
               pcu -vv push
             fi
 
+  # Local job — uses the local lnkd command (prototype of the toolkit change)
+  # with push: false, then pushes separately via `pcu push`. This keeps draft
+  # and push decoupled: pcu push (cmd=="push") correctly resolves CIRCLE_BRANCH,
+  # and separating the steps allows multiple draft commands to aggregate into
+  # one push in future.  git pull --rebase first to pick up any bluesky_draft
+  # commit and avoid a non-fast-forward failure.
+  linkedin_draft:
+    executor: toolkit/base_env
+    steps:
+      - checkout
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - run:
+          name: Sync with remote (pick up bluesky_draft push)
+          command: git pull --rebase origin "$CIRCLE_BRANCH"
+      - lnkd:
+          subcommand: draft
+          allow_empty: true
+          push: false
+      - run:
+          name: Push LinkedIn draft commits
+          command: pcu -vv push
+
 workflows:
   validation:
     jobs:
@@ -136,18 +226,25 @@ workflows:
             - bluesky
           requires:
             - zola/build
+          filters:
+            branches:
+              ignore: [main]
 
-      # LinkedIn draft — stage LinkedIn posts for new blog entries
-      - toolkit/linkedin:
-          name: linkedin_draft
-          subcommand: draft
-          allow_empty: true
+      # LinkedIn draft — stage LinkedIn posts for new blog entries.
+      # Runs sequentially after bluesky_draft (which may push to the branch first).
+      # Uses local lnkd command (push: false) + separate pcu push step so that
+      # CIRCLE_BRANCH is resolved correctly.  Once the toolkit lnkd command ships
+      # the separated push pattern, replace with toolkit/lnkd (push: true).
+      - linkedin_draft:
           context:
             - release
             - bot-check
             - pcu-app
           requires:
-            - zola/build
+            - bluesky_draft
+          filters:
+            branches:
+              ignore: [main]
 
       # IaC validation — Terraform plans in parallel on PR branches
       - authorise_aws:
