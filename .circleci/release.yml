@@ -174,14 +174,19 @@ jobs:
           command: aws s3 sync --delete /tmp/workspace/public-company s3://www.jerusdataprotection.ie
 
   # Local job — uses local bsky command (push: false) then pushes separately
-  # via `pcu push`. bluesky_post runs first; linkedin_post requires it so the
-  # two post jobs are sequential and share a single rebase+push cycle.
+  # via `pcu push`. git pull --rebase picks up the toolkit/release_prlog push
+  # (checkout lands at CIRCLE_SHA1, before that commit) so bluesky_post is not
+  # pushing from a stale base. bluesky_post runs first; linkedin_post requires
+  # it and rebases again to pick up this job's push.
   bluesky_post:
     executor: toolkit/base_env
     steps:
       - checkout
       - toolkit/gpg_key
       - toolkit/git_config
+      - run:
+          name: Sync with remote (pick up release_prlog push)
+          command: git pull --rebase origin "$CIRCLE_BRANCH"
       - bsky:
           command: post
           push: false
