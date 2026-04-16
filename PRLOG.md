@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- config: migrate Renovate config(pr [#211])
+
 ## [1.9.1] - 2026-04-15
 
 ### Fixed
@@ -463,6 +469,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#210]: https://github.com/digital-prstv/jrussell.ie/pull/210
 [#212]: https://github.com/digital-prstv/jrussell.ie/pull/212
 [#214]: https://github.com/digital-prstv/jrussell.ie/pull/214
+[#211]: https://github.com/digital-prstv/jrussell.ie/pull/211
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.1...HEAD
 [1.9.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.0...v1.9.1
 [1.9.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.7.0...v1.8.0
