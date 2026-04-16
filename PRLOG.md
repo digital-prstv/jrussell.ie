@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - config: migrate Renovate config(pr [#211])
 - ci: add missing contexts to bluesky_post and re-enable linkedin_post(pr [#216])
 
+### Security
+
+- Dependencies: update terraform aws to >= 6.41.0(pr [#215])
+
 ## [1.9.1] - 2026-04-15
 
 ### Fixed
@@ -472,6 +476,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#214]: https://github.com/digital-prstv/jrussell.ie/pull/214
 [#211]: https://github.com/digital-prstv/jrussell.ie/pull/211
 [#216]: https://github.com/digital-prstv/jrussell.ie/pull/216
+[#215]: https://github.com/digital-prstv/jrussell.ie/pull/215
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.1...HEAD
 [1.9.1]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.0...v1.9.1
 [1.9.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.8.0...v1.9.0
