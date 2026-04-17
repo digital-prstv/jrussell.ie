@@ -139,7 +139,7 @@ commands:
               fi
             elif [ "<< parameters.subcommand >>" == "post" ]; then
               BEFORE=$(git rev-parse HEAD)
-              pcu << parameters.pcu_verbosity >> linkedin post
+              RUST_LOG=debug pcu << parameters.pcu_verbosity >> linkedin post
               AFTER=$(git rev-parse HEAD)
               if [ "$BEFORE" = "$AFTER" ]; then
                 echo "No commit made — skipping push"
@@ -209,6 +209,7 @@ jobs:
       - lnkd:
           subcommand: post
           push: false
+          pcu_verbosity: "-vvv"
       - run:
           name: Push LinkedIn post commits
           command: pcu -vv push
