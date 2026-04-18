@@ -11,143 +11,6 @@ orbs:
   zola: jerus-org/zola@1.3.1
   aws-cli: circleci/aws-cli@5.4.1
 
-# Local commands — prototypes of the proposed toolkit bsky and lnkd updates.
-# Key change: push is separated from the post subcommand and performed via a
-# dedicated `pcu push` step in the job. This uses cmd=="push" which correctly
-# resolves CIRCLE_BRANCH, whereas the internal --release push used cmd=="bsky"/
-# "linkedin" and resolved to "main" (silently correct here, but wrong pattern).
-# Separating push also allows sequential jobs to aggregate via git pull --rebase
-# before a single push, avoiding non-fast-forward failures.
-# Once proven here, propose both as replacements for toolkit/bsky and toolkit/lnkd.
-commands:
-  bsky:
-    description: >
-      Execute `pcu bsky draft` or `pcu bsky post` commands.
-      For post: set push: true to push via a separate `pcu push` call after
-      posting so that CIRCLE_BRANCH is resolved correctly.
-    parameters:
-      command:
-        type: enum
-        default: draft
-        enum:
-          - draft
-          - post
-        description: "Whether to draft or post Bluesky content"
-      blog_directory:
-        type: string
-        default: "content/blog"
-        description: "Path to the blog content directory"
-      allow_empty:
-        type: boolean
-        default: false
-        description: "Warn instead of failing when no posts match the filter (draft only)"
-      push:
-        type: boolean
-        default: false
-        description: >
-          Push after posting via a separate `pcu push` call.
-          Defaults to false so the caller controls when to push, enabling
-          sequential jobs to aggregate commits into one push.
-      pcu_verbosity:
-        type: string
-        default: "-vv"
-        description: "Verbosity flags passed to pcu"
-    steps:
-      - run:
-          name: Execute bsky `<< parameters.command >>` command
-          command: |
-            set -exo pipefail
-
-            if [ "<< parameters.command >>" == "draft" ]; then
-              allow_empty_flag=""
-              if [ "<< parameters.allow_empty >>" == "true" ]; then
-                allow_empty_flag="--allow-empty"
-              fi
-              BEFORE=$(git rev-parse HEAD)
-              pcu << parameters.pcu_verbosity >> bsky draft \
-                ${allow_empty_flag} \
-                << parameters.blog_directory >>
-              AFTER=$(git rev-parse HEAD)
-              if [ "$BEFORE" = "$AFTER" ]; then
-                echo "No commit made — skipping push"
-              elif [ "<< parameters.push >>" == "true" ]; then
-                pcu << parameters.pcu_verbosity >> push
-              fi
-            elif [ "<< parameters.command >>" == "post" ]; then
-              BEFORE=$(git rev-parse HEAD)
-              pcu << parameters.pcu_verbosity >> bsky post
-              AFTER=$(git rev-parse HEAD)
-              if [ "$BEFORE" = "$AFTER" ]; then
-                echo "No commit made — skipping push"
-              elif [ "<< parameters.push >>" == "true" ]; then
-                pcu << parameters.pcu_verbosity >> push
-              fi
-            fi
-
-  lnkd:
-    description: >
-      Execute `pcu linkedin draft` or `pcu linkedin post` commands.
-      For post: set push: true to push via a separate `pcu push` call after
-      posting so that CIRCLE_BRANCH is resolved correctly.
-    parameters:
-      subcommand:
-        type: enum
-        default: draft
-        enum:
-          - draft
-          - post
-        description: "Whether to draft or post LinkedIn content"
-      content_dir:
-        type: string
-        default: "content/blog"
-        description: "Path to the blog content directory"
-      allow_empty:
-        type: boolean
-        default: false
-        description: "Warn instead of failing when no posts match the filter (draft only)"
-      push:
-        type: boolean
-        default: false
-        description: >
-          Push after posting via a separate `pcu push` call.
-          Defaults to false so the caller controls when to push, enabling
-          sequential jobs to aggregate commits into one push.
-      pcu_verbosity:
-        type: string
-        default: "-vv"
-        description: "Verbosity flags passed to pcu"
-    steps:
-      - run:
-          name: Execute linkedin `<< parameters.subcommand >>` command
-          command: |
-            set -exo pipefail
-
-            if [ "<< parameters.subcommand >>" == "draft" ]; then
-              allow_empty_flag=""
-              if [ "<< parameters.allow_empty >>" == "true" ]; then
-                allow_empty_flag="--allow-empty"
-              fi
-              BEFORE=$(git rev-parse HEAD)
-              pcu << parameters.pcu_verbosity >> linkedin draft \
-                ${allow_empty_flag} \
-                << parameters.content_dir >>
-              AFTER=$(git rev-parse HEAD)
-              if [ "$BEFORE" = "$AFTER" ]; then
-                echo "No commit made — skipping push"
-              elif [ "<< parameters.push >>" == "true" ]; then
-                pcu << parameters.pcu_verbosity >> push
-              fi
-            elif [ "<< parameters.subcommand >>" == "post" ]; then
-              BEFORE=$(git rev-parse HEAD)
-              RUST_LOG=debug pcu << parameters.pcu_verbosity >> linkedin post
-              AFTER=$(git rev-parse HEAD)
-              if [ "$BEFORE" = "$AFTER" ]; then
-                echo "No commit made — skipping push"
-              elif [ "<< parameters.push >>" == "true" ]; then
-                pcu << parameters.pcu_verbosity >> push
-              fi
-            fi
-
 jobs:
   update_site:
     executor: aws-cli/default
@@ -172,47 +35,6 @@ jobs:
       - run:
           name: Deploy to company S3
           command: aws s3 sync --delete /tmp/workspace/public-company s3://www.jerusdataprotection.ie
-
-  # Local job — uses local bsky command (push: false) then pushes separately
-  # via `pcu push`. git pull --rebase picks up the toolkit/release_prlog push
-  # (checkout lands at CIRCLE_SHA1, before that commit) so bluesky_post is not
-  # pushing from a stale base. bluesky_post runs first; linkedin_post requires
-  # it and rebases again to pick up this job's push.
-  bluesky_post:
-    executor: toolkit/base_env
-    steps:
-      - checkout
-      - toolkit/gpg_key
-      - toolkit/git_config
-      - run:
-          name: Sync with remote (pick up release_prlog push)
-          command: git pull --rebase origin "$CIRCLE_BRANCH"
-      - bsky:
-          command: post
-          push: false
-      - run:
-          name: Push Bluesky post commits
-          command: pcu -vv push
-
-  # Local job — uses local lnkd command (push: false) then syncs and pushes
-  # separately via `pcu push`. git pull --rebase picks up the bluesky_post
-  # push before committing, avoiding a non-fast-forward failure.
-  linkedin_post:
-    executor: toolkit/base_env
-    steps:
-      - checkout
-      - toolkit/gpg_key
-      - toolkit/git_config
-      - run:
-          name: Sync with remote (pick up bluesky_post push)
-          command: git pull --rebase origin "$CIRCLE_BRANCH"
-      - lnkd:
-          subcommand: post
-          push: false
-          pcu_verbosity: "-vvv"
-      - run:
-          name: Push LinkedIn post commits
-          command: pcu -vv push
 
 workflows:
   release:
@@ -278,9 +100,8 @@ workflows:
 
       # Social posting — sequential: bluesky first, linkedin after.
       # bluesky_post pushes its deletion commit; linkedin_post rebases to pick
-      # it up before pushing its own commit. Order is conventional (bsky first)
-      # but either job can run standalone if the other has no work to do.
-      - bluesky_post:
+      # it up before pushing its own commit.
+      - toolkit/bluesky_post:
           context:
             - release
             - bot-check
@@ -289,11 +110,11 @@ workflows:
           requires:
             - toolkit/release_prlog
 
-      - linkedin_post:
+      - toolkit/linkedin_post:
           context:
             - release
             - bot-check
             - pcu-app
             - linkedin
           requires:
-            - bluesky_post
+            - toolkit/bluesky_post
