@@ -111,6 +111,7 @@ workflows:
             - toolkit/release_prlog
 
       - toolkit/linkedin_post:
+          pcu_verbosity: "-vvv"
           context:
             - release
             - bot-check
