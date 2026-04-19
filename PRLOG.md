@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- chore-inject RUST_LOG for gen_linkedin diagnostics(pr [#222])
+
 ## [1.9.6] - 2026-04-19
 
 ### Changed
@@ -505,6 +511,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#218]: https://github.com/digital-prstv/jrussell.ie/pull/218
 [#220]: https://github.com/digital-prstv/jrussell.ie/pull/220
 [#221]: https://github.com/digital-prstv/jrussell.ie/pull/221
+[#222]: https://github.com/digital-prstv/jrussell.ie/pull/222
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...HEAD
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
 [1.9.5]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.4...v1.9.5
 [1.9.4]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.3...v1.9.4
