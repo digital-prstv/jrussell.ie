@@ -112,6 +112,10 @@ workflows:
 
       - toolkit/linkedin_post:
           pcu_verbosity: "-vvv"
+          pre-steps:
+            - run:
+                name: Enable gen_linkedin debug logging
+                command: echo 'export RUST_LOG=gen_linkedin=debug' >> "$BASH_ENV"
           context:
             - release
             - bot-check
