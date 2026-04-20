@@ -29,6 +29,7 @@ Full docs, getting started guide, and CLI reference at the link below.
 
 #Rust #CircleCI #MCP #AI #DevTools #OpenSource
 """
+published = 2026-04-20
 
 [taxonomies]
 categories = ["Open Source", "Developer Tools"]
