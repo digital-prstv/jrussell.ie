@@ -1,8 +1,11 @@
 +++
-title = "Introducing gen-circleci-orb"
-description = "A new tool that generates CircleCI orbs directly from a CLI binary's --help output, eliminating the repetitive boilerplate of packaging every CLI tool as a reusable orb."
 date = 2026-04-22
+description = "A new tool that generates CircleCI orbs directly from a CLI binary's --help output, eliminating the repetitive boilerplate of packaging every CLI tool as a reusable orb."
 draft = false
+title = "Introducing gen-circleci-orb"
+
+[bluesky]
+created = 2026-04-22
 
 [taxonomies]
 categories = ["Tools", "Open Source"]
