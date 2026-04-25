@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update terraform hashicorp/terraform to >= 1.14.9(pr [#223])
+
 ## [1.9.7] - 2026-04-19
 
 ### Changed
@@ -512,6 +518,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#220]: https://github.com/digital-prstv/jrussell.ie/pull/220
 [#221]: https://github.com/digital-prstv/jrussell.ie/pull/221
 [#222]: https://github.com/digital-prstv/jrussell.ie/pull/222
+[#223]: https://github.com/digital-prstv/jrussell.ie/pull/223
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
 [1.9.5]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.4...v1.9.5
