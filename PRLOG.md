@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update terraform hashicorp/terraform to >= 1.14.9(pr [#223])
+- Dependencies: update terraform aws to >= 6.42.0(pr [#225])
+- Dependencies: update terraform aws to >= 6.43.0(pr [#227])
+- Dependencies: update terraform hashicorp/terraform to >= 1.15.0(pr [#226])
+- Dependencies: update terraform hashicorp/terraform to >= 1.15.1(pr [#228])
+- Dependencies: update terraform aws to >= 6.44.0(pr [#230])
+- Dependencies: update terraform hashicorp/terraform to >= 1.15.2(pr [#229])
+
 ## [1.9.7] - 2026-04-19
 
 ### Changed
@@ -512,6 +524,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#220]: https://github.com/digital-prstv/jrussell.ie/pull/220
 [#221]: https://github.com/digital-prstv/jrussell.ie/pull/221
 [#222]: https://github.com/digital-prstv/jrussell.ie/pull/222
+[#223]: https://github.com/digital-prstv/jrussell.ie/pull/223
+[#225]: https://github.com/digital-prstv/jrussell.ie/pull/225
+[#227]: https://github.com/digital-prstv/jrussell.ie/pull/227
+[#226]: https://github.com/digital-prstv/jrussell.ie/pull/226
+[#228]: https://github.com/digital-prstv/jrussell.ie/pull/228
+[#230]: https://github.com/digital-prstv/jrussell.ie/pull/230
+[#229]: https://github.com/digital-prstv/jrussell.ie/pull/229
+[Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
 [1.9.5]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.4...v1.9.5
