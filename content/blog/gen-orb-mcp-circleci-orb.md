@@ -4,14 +4,11 @@ description = "gen-orb-mcp now ships a CircleCI orb — generated automatically 
 draft = true
 title = "gen-orb-mcp now has a CircleCI orb — and it generated itself"
 
-[taxonomies]
-categories = ["Tools", "Open Source"]
-tags = ["circleci", "orb", "automation", "rust", "mcp"]
-
 [bluesky]
 description = "gen-orb-mcp now ships a CircleCI orb (jerus-org/gen-orb-mcp). The orb was generated automatically by gen-circleci-orb — the tool that introspects --help output and produces orb source. One command installs all five subcommands as jobs in your pipeline."
 
 [linkedin]
+created = 2026-05-08
 description = """
 gen-orb-mcp now ships a CircleCI orb — and it generated itself.
 
@@ -23,6 +20,10 @@ The interesting part is the dogfooding loop: gen-circleci-orb introspects gen-or
 
 Details in the blog post.
 """
+
+[taxonomies]
+categories = ["Tools", "Open Source"]
+tags = ["circleci", "orb", "automation", "rust", "mcp"]
 +++
 
 [gen-orb-mcp](https://github.com/jerus-org/gen-orb-mcp) — the tool that generates MCP

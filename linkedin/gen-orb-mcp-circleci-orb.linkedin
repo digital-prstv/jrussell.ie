@@ -1,0 +1,6 @@
+{
+  "text": "gen-orb-mcp now ships a CircleCI orb — and it generated itself.\n\nThe orb (jerus-org/gen-orb-mcp) was produced by gen-circleci-orb, a new tool that reads a binary's --help output and emits a complete, publishable CircleCI orb: commands, jobs, executor, Dockerfile, and CI pipeline wiring.\n\nWhat this means: every gen-orb-mcp subcommand (generate, validate, diff, migrate, prime) is now available as a first-class CircleCI job. Drop the orb into your config and run them directly in your pipeline without installing anything manually.\n\nThe interesting part is the dogfooding loop: gen-circleci-orb introspects gen-orb-mcp's --help, maps every flag to an orb parameter, wraps each subcommand in a job, and wires the whole thing into the release pipeline with one init command. The orb source files I committed were written entirely by the tool, validated against the live binary.\n\nDetails in the blog post.\n",
+  "link": "https://jrussell.ie/blog/gen-orb-mcp-circleci-orb",
+  "created_at": "2026-05-08",
+  "source_path": "./content/blog/gen-orb-mcp-circleci-orb.md"
+}
