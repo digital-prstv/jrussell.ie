@@ -69,18 +69,38 @@ parameters:
   output:
     type: string
     description: Output directory for the generated MCP server
-    default: ./out
+    default: ./dist
+  force:
+    type: boolean
+    description: Overwrite existing output without confirmation
+    default: false
 steps:
   - run:
       name: generate
-      command: >-
-        gen-orb-mcp generate
-        --orb-path "<< parameters.orb_path >>"
-        <<# parameters.output >>--output "<< parameters.output >>"<</ parameters.output >>
+      command: <<include(scripts/generate.sh)>>
+      environment:
+        ORB_PATH: << parameters.orb_path >>
+        OUTPUT: << parameters.output >>
+        FORCE: << parameters.force >>
 ```
 
-Optional parameters use CircleCI's mustache conditional syntax so they're only included in
-the command when set. Required parameters are always included without a conditional.
+And the included `scripts/generate.sh`:
+
+```bash
+set -- gen-orb-mcp generate
+set -- "$@" --orb-path "${ORB_PATH}"
+[ -n "${OUTPUT:-}" ] && set -- "$@" --output "${OUTPUT}"
+[ "${FORCE:-false}" = "true" ] && set -- "$@" --force
+"$@"
+```
+
+Parameters are passed through an `environment:` block, where CircleCI substitutes
+`<< parameters.x >>` at the YAML level before the step runs. The script reads them as
+ordinary shell variables. Required parameters unconditionally append their flag; optional
+string parameters use a shell guard (`[ -n "${VAR:-}" ]`) to skip the flag when the
+variable is empty; boolean parameters compare to the string `"true"`. The long command
+is kept in the script file, not inlined in the YAML, which satisfies the orb best-practice
+review rule (RC009) requiring complex run steps to use `<<include(...)>>`.
 
 Validation passes immediately:
 
