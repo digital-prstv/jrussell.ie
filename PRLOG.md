@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update terraform aws to >= 6.46.0(pr [#235])
 - Dependencies: update hashicorp terraform(pr [#238])
 - Dependencies: update hashicorp terraform to >= 6.49.0(pr [#239])
+- Dependencies: update dependency toolkit to v6.3.0(pr [#240])
 
 ## [1.9.7] - 2026-04-19
 
@@ -545,6 +546,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#235]: https://github.com/digital-prstv/jrussell.ie/pull/235
 [#238]: https://github.com/digital-prstv/jrussell.ie/pull/238
 [#239]: https://github.com/digital-prstv/jrussell.ie/pull/239
+[#240]: https://github.com/digital-prstv/jrussell.ie/pull/240
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
