@@ -1,0 +1,71 @@
+# Build the Zola site and deploy it to GitHub Pages.
+#
+# Migration phasing (see docs/dns-migration.md):
+#   Phase 1 (validation): run manually via "Run workflow" and pass
+#     base_url = https://digital-prstv.github.io/jrussell.ie  so the project-page
+#     subpath resolves. Do NOT add static/CNAME yet.
+#   Phase 2 (cutover): default base_url (https://www.jrussell.ie) + static/CNAME +
+#     Cloudflare DNS. At that point, uncomment the `push` trigger below so merges to
+#     main publish automatically.
+name: Deploy site to GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Zola base_url to build with"
+        required: true
+        default: "https://www.jrussell.ie"
+  # Enable in Phase 2 once DNS/custom-domain cutover is verified:
+  # push:
+  #   branches: [main]
+
+# Allow one concurrent deployment; let in-progress runs finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  ZOLA_VERSION: "0.19.2"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with tabi theme submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Zola ${{ env.ZOLA_VERSION }}
+        run: |
+          set -euo pipefail
+          curl -sSfL \
+            "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar xz
+          sudo mv zola /usr/local/bin/zola
+          zola --version
+
+      - name: Build
+        run: zola build --base-url "${{ github.event.inputs.base_url }}"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
