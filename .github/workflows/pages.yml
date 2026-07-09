@@ -1,21 +1,17 @@
 # Build the Zola site and deploy it to GitHub Pages.
 #
-# Migration phasing (see docs/dns-migration.md):
-#   Phase 1 (validation): run manually via "Run workflow" and pass
-#     base_url = https://digital-prstv.github.io/jrussell.ie  so the project-page
-#     subpath resolves. Do NOT add static/CNAME yet.
-#   Phase 2 (cutover): default base_url (https://www.jrussell.ie) + static/CNAME +
-#     Cloudflare DNS. At that point, uncomment the `push` trigger below so merges to
-#     main publish automatically.
+# base_url is taken from actions/configure-pages, NOT hard-coded, so the build
+# always matches the actual serving origin:
+#   Phase 1 (no custom domain): https://digital-prstv.github.io/jrussell.ie
+#   Phase 2 (custom domain set in Settings -> Pages): https://www.jrussell.ie
+# This prevents cross-origin asset links being blocked by the site's own CSP.
+#
+# Phase 2: once the custom-domain cutover is verified, uncomment the `push`
+# trigger below so merges to main publish automatically.
 name: Deploy site to GitHub Pages
 
 on:
   workflow_dispatch:
-    inputs:
-      base_url:
-        description: "Zola base_url to build with"
-        required: true
-        default: "https://www.jrussell.ie"
   # Enable in Phase 2 once DNS/custom-domain cutover is verified:
   # push:
   #   branches: [main]
@@ -38,9 +34,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout (with tabi theme submodule)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: recursive
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Install Zola ${{ env.ZOLA_VERSION }}
         run: |
@@ -52,7 +52,7 @@ jobs:
           zola --version
 
       - name: Build
-        run: zola build --base-url "${{ github.event.inputs.base_url }}"
+        run: zola build --base-url "${{ steps.pages.outputs.base_url }}"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
