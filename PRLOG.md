@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update hashicorp terraform to >= 6.49.0(pr [#239])
 - Dependencies: update dependency toolkit to v6.3.0(pr [#240])
 - Dependencies: update hashicorp terraform to >= 1.15.6(pr [#241])
+- Dependencies: update actions/upload-pages-artifact action to v5(pr [#248])
 
 ## [1.9.7] - 2026-04-19
 
@@ -559,6 +560,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#241]: https://github.com/digital-prstv/jrussell.ie/pull/241
 [#245]: https://github.com/digital-prstv/jrussell.ie/pull/245
 [#249]: https://github.com/digital-prstv/jrussell.ie/pull/249
+[#248]: https://github.com/digital-prstv/jrussell.ie/pull/248
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
