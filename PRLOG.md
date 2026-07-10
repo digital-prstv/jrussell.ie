@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update actions/upload-pages-artifact action to v5(pr [#248])
 - Dependencies: update hashicorp terraform(pr [#242])
 - Dependencies: update dependency toolkit to v6.6.0(pr [#244])
+- Dependencies: update dependency aws-cli to v5.4.2(pr [#243])
 
 ## [1.9.7] - 2026-04-19
 
@@ -565,6 +566,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#248]: https://github.com/digital-prstv/jrussell.ie/pull/248
 [#242]: https://github.com/digital-prstv/jrussell.ie/pull/242
 [#244]: https://github.com/digital-prstv/jrussell.ie/pull/244
+[#243]: https://github.com/digital-prstv/jrussell.ie/pull/243
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
