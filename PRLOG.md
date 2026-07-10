@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ci-GitHub Pages migration — Phase 0 (workflow + DNS plan)(pr [#245])
+- docs-record DKIM off; add email-auth (DKIM+DMARC) as Phase 2b(pr [#251])
 
 ### Fixed
 
@@ -573,6 +574,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#246]: https://github.com/digital-prstv/jrussell.ie/pull/246
 [#247]: https://github.com/digital-prstv/jrussell.ie/pull/247
 [#250]: https://github.com/digital-prstv/jrussell.ie/pull/250
+[#251]: https://github.com/digital-prstv/jrussell.ie/pull/251
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
