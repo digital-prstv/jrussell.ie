@@ -44,8 +44,9 @@ read the active **DKIM selector + TXT value** and record it here before cutover.
 - [ ] GitHub → Settings → Pages → Custom domain = `www.jrussell.ie`; wait for the
       Let's Encrypt cert (grey-cloud `www` temporarily if issuance stalls behind the
       proxy, then re-enable orange). Enable **Enforce HTTPS**.
-- [ ] Add `static/CNAME` = `www.jrussell.ie`; set workflow build back to the production
-      `base_url` and enable the `push: main` trigger.
+- [ ] Setting the custom domain above makes `actions/configure-pages` emit
+      `base_url = https://www.jrussell.ie` automatically — no workflow change needed for
+      the URL. Just enable the `push: main` trigger in `pages.yml` for auto-publish.
 - [ ] **Cutover:** change nameservers at the `.ie` registrar from Route53 → Cloudflare.
 
 ## Verify (post-cutover)
