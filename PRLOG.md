@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ci-GitHub Pages migration — Phase 0 (workflow + DNS plan)(pr [#245])
 
+### Fixed
+
+- pages: derive base_url from configure-pages (fix unstyled deploy)(pr [#249])
+
 ### Security
 
 - Dependencies: update terraform hashicorp/terraform to >= 1.14.9(pr [#223])
@@ -554,6 +558,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#240]: https://github.com/digital-prstv/jrussell.ie/pull/240
 [#241]: https://github.com/digital-prstv/jrussell.ie/pull/241
 [#245]: https://github.com/digital-prstv/jrussell.ie/pull/245
+[#249]: https://github.com/digital-prstv/jrussell.ie/pull/249
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
