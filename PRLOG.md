@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update dependency aws-cli to v5.4.2(pr [#243])
 - Dependencies: update actions/checkout action to v7(pr [#246])
 - Dependencies: update actions/deploy-pages action to v5(pr [#247])
+- Dependencies: update actions/configure-pages action to v6(pr [#250])
 
 ## [1.9.7] - 2026-04-19
 
@@ -571,6 +572,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#243]: https://github.com/digital-prstv/jrussell.ie/pull/243
 [#246]: https://github.com/digital-prstv/jrussell.ie/pull/246
 [#247]: https://github.com/digital-prstv/jrussell.ie/pull/247
+[#250]: https://github.com/digital-prstv/jrussell.ie/pull/250
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
