@@ -6,15 +6,12 @@
 #   Phase 2 (custom domain set in Settings -> Pages): https://www.jrussell.ie
 # This prevents cross-origin asset links being blocked by the site's own CSP.
 #
-# Phase 2: once the custom-domain cutover is verified, uncomment the `push`
-# trigger below so merges to main publish automatically.
 name: Deploy site to GitHub Pages
 
 on:
   workflow_dispatch:
-  # Enable in Phase 2 once DNS/custom-domain cutover is verified:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
 # Allow one concurrent deployment; let in-progress runs finish.
 concurrency:
