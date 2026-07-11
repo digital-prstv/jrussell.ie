@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - pages: derive base_url from configure-pages (fix unstyled deploy)(pr [#249])
+- pages: emit https URLs (use config.toml base_url)(pr [#253])
 
 ### Security
 
@@ -577,6 +578,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#250]: https://github.com/digital-prstv/jrussell.ie/pull/250
 [#251]: https://github.com/digital-prstv/jrussell.ie/pull/251
 [#252]: https://github.com/digital-prstv/jrussell.ie/pull/252
+[#253]: https://github.com/digital-prstv/jrussell.ie/pull/253
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
