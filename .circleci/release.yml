@@ -9,20 +9,6 @@ parameters:
 orbs:
   toolkit: digital-prstv/circleci-toolkit@6.6.0
   zola: jerus-org/zola@1.3.1
-  aws-cli: circleci/aws-cli@5.4.2
-
-jobs:
-  update_site:
-    executor: aws-cli/default
-    steps:
-      - aws-cli/setup:
-          region: eu-west-1
-          role_arn: ${AWS_ROLE_ARN}
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Deploy to S3
-          command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
 workflows:
   release:
@@ -45,28 +31,9 @@ workflows:
             - bot-check
             - pcu-app
 
-      # Build and deploy the site to the S3 rollback bucket after release tag
-      # is created. (Live serving is via GitHub Pages; this keeps AWS as a
-      # standby rollback target.)
-      - zola/build:
-          name: build-website
-          zola_version: 0.19.2
-          list_directory: true
-          check_links: false
-          output_dir: /tmp/workspace/public
-          post-steps:
-            - persist_to_workspace:
-                root: /tmp/workspace
-                paths:
-                  - public
-          requires:
-            - toolkit/release_prlog
-
-      - update_site:
-          context:
-            - AWS-DEV
-          requires:
-            - build-website
+      # Site build+deploy is handled by GitHub Actions (.github/workflows/pages.yml)
+      # on push to main; live serving is GitHub Pages + Cloudflare. CircleCI
+      # retains version/PRLOG/social responsibilities only.
 
       # Social posting — sequential: bluesky first, linkedin after.
       # bluesky_post pushes its deletion commit; linkedin_post rebases to pick
