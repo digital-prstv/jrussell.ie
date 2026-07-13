@@ -24,18 +24,6 @@ jobs:
           name: Deploy to S3
           command: aws s3 sync --delete /tmp/workspace/public s3://www.jrussell.ie
 
-  update_company_site:
-    executor: aws-cli/default
-    steps:
-      - aws-cli/setup:
-          region: eu-west-1
-          role_arn: ${AWS_ROLE_ARN}
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: Deploy to company S3
-          command: aws s3 sync --delete /tmp/workspace/public-company s3://www.jerusdataprotection.ie
-
 workflows:
   release:
     jobs:
@@ -57,7 +45,9 @@ workflows:
             - bot-check
             - pcu-app
 
-      # Build and deploy both sites in parallel after release tag is created
+      # Build and deploy the site to the S3 rollback bucket after release tag
+      # is created. (Live serving is via GitHub Pages; this keeps AWS as a
+      # standby rollback target.)
       - zola/build:
           name: build-website
           zola_version: 0.19.2
@@ -77,26 +67,6 @@ workflows:
             - AWS-DEV
           requires:
             - build-website
-
-      - zola/build:
-          name: build-company
-          zola_version: 0.19.2
-          config: config.jerusdataprotection.toml
-          check_links: false
-          output_dir: /tmp/workspace/public-company
-          post-steps:
-            - persist_to_workspace:
-                root: /tmp/workspace
-                paths:
-                  - public-company
-          requires:
-            - toolkit/release_prlog
-
-      - update_company_site:
-          context:
-            - AWS-COMPANY
-          requires:
-            - build-company
 
       # Social posting — sequential: bluesky first, linkedin after.
       # bluesky_post pushes its deletion commit; linkedin_post rebases to pick

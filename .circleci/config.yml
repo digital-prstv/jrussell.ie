@@ -117,16 +117,10 @@ jobs:
 workflows:
   validation:
     jobs:
-      # Website builds — validate on PR branches
+      # Website build — validate on PR branches
       - zola/build:
           zola_version: 0.19.2
           list_directory: true
-          check_links: false
-
-      - zola/build:
-          name: build-company
-          zola_version: 0.19.2
-          config: config.jerusdataprotection.toml
           check_links: false
 
       # Bluesky draft — create draft posts for new blog entries
