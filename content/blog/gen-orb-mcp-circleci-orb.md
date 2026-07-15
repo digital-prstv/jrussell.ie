@@ -1,20 +1,20 @@
 +++
 date = 2026-04-29
-description = "gen-orb-mcp now ships a CircleCI orb — generated automatically by gen-circleci-orb from the binary's --help output. One command adds generate, validate, diff, migrate, and prime jobs to any CircleCI pipeline."
-draft = true
-title = "gen-orb-mcp now has a CircleCI orb — and it generated itself"
+description = "The gen-orb-mcp CircleCI orb is now public — any orb project can add it and run generate, validate, diff, migrate, and prime as first-class jobs. And it generated itself: gen-circleci-orb produced the orb from the binary's --help output."
+draft = false
+title = "gen-orb-mcp now has a public CircleCI orb — and it generated itself"
 
 [bluesky]
-description = "gen-orb-mcp now ships a CircleCI orb (jerus-org/gen-orb-mcp). The orb was generated automatically by gen-circleci-orb — the tool that introspects --help output and produces orb source. One command installs all five subcommands as jobs in your pipeline."
+description = "The gen-orb-mcp CircleCI orb (jerus-org/gen-orb-mcp) is now public — any CircleCI project can use it. And it generated itself: gen-circleci-orb introspects --help output and produces the orb source. One line installs all five subcommands as jobs in your pipeline."
 
 [linkedin]
 created = 2026-05-08
 description = """
-gen-orb-mcp now ships a CircleCI orb — and it generated itself.
+The gen-orb-mcp CircleCI orb is now public — and it generated itself.
 
-The orb (jerus-org/gen-orb-mcp) was produced by gen-circleci-orb, a new tool that reads a binary's --help output and emits a complete, publishable CircleCI orb: commands, jobs, executor, Dockerfile, and CI pipeline wiring.
+The orb (jerus-org/gen-orb-mcp) was produced by gen-circleci-orb, a tool that reads a binary's --help output and emits a complete, publishable CircleCI orb: commands, jobs, executor, Dockerfile, and CI pipeline wiring.
 
-What this means: every gen-orb-mcp subcommand (generate, validate, diff, migrate, prime) is now available as a first-class CircleCI job. Drop the orb into your config and run them directly in your pipeline without installing anything manually.
+What this means: every gen-orb-mcp subcommand (generate, validate, diff, migrate, prime) is now available as a first-class CircleCI job to any orb project, not just ours. Add one line to your config and run them directly in your pipeline without installing anything manually.
 
 The interesting part is the dogfooding loop: gen-circleci-orb introspects gen-orb-mcp's --help, maps every flag to an orb parameter, wraps each subcommand in a job, and wires the whole thing into the release pipeline with one init command. The orb source files I committed were written entirely by the tool, validated against the live binary.
 
@@ -42,8 +42,7 @@ wiring to keep everything in sync.
 ```bash
 gen-circleci-orb generate \
   --binary gen-orb-mcp \
-  --namespace jerus-org \
-  --output orb
+  --orb-namespace my-org
 ```
 
 That command produces 13 files. Here is `commands/generate.yml` as an example of what
@@ -108,40 +107,48 @@ key); everything inside `[OPTIONS]` is optional (boolean → `default: false`, s
 
 ## Wiring into the release pipeline
 
-The `init` subcommand patches the CI configs additively:
+The `init` subcommand patches the CI configs additively. It is interactive — run it with
+just the binary and it prompts for the rest — or pass everything up front to script it:
 
 ```bash
 gen-circleci-orb init \
-  --binary gen-orb-mcp \
-  --namespace jerus-org \
+  --binary my-tool \
+  --public-orb-namespace my-org \
+  --docker-namespace my-docker-org \
   --build-workflow validation \
   --release-workflow release \
+  --crate-tag-prefix my-tool-v \
   --requires-job common-tests \
-  --release-after-job release-gen-orb-mcp
+  --release-after-job release-my-tool
 ```
 
 This adds a `regenerate-orb` job to every build, followed by `orb-tools/pack` and
 `orb-tools/review` to validate the output. On release it adds `build-container` (builds
 and pushes the Docker image) and `orb-tools/publish` (publishes the orb to the CircleCI
-registry), running in parallel after the crate release job.
+registry), running after the crate release job.
 
-The generated CI is self-bootstrapping: it installs `gen-circleci-orb` at runtime via
-`cargo binstall`, uses only standard public CircleCI orbs (`circleci/docker`,
-`circleci/orb-tools`), and works for any public open-source project without prior orb
-setup. No circular dependency: `regenerate-orb` does not depend on the orb being
-published first.
+The regeneration runs inside the pre-built `gen-circleci-orb` orb — nothing is installed
+at build time — and works for any public open-source project without prior orb setup. No
+circular dependency: `regenerate-orb` does not depend on the orb being published first.
 
-## Using the orb
+## Using the orb — now public for any orb author
 
-Add it to your `.circleci/config.yml`:
+The `jerus-org/gen-orb-mcp` orb is **public**, so this is not just an internal convenience:
+any CircleCI project can add it and run gen-orb-mcp's subcommands as first-class jobs. Add
+it to your `.circleci/config.yml`:
 
 ```yaml
 orbs:
-  gen-orb-mcp: jerus-org/gen-orb-mcp@<version>
+  gen-orb-mcp: jerus-org/gen-orb-mcp@0.2.0
 ```
 
-Available jobs: `generate`, `validate`, `diff`, `migrate`, `prime`. Each job accepts the
-same parameters as the corresponding CLI subcommand.
+Available jobs: `generate`, `validate`, `diff`, `migrate`, `prime`, plus `build`, `publish`,
+and `save` for a full release pipeline. Each job accepts the same parameters as the
+corresponding CLI subcommand.
+
+If you adopt the release jobs, the env-var **names** the `publish` and `save` jobs read are
+configurable (via `--*-env` flags or a `gen-orb-mcp.toml` file), so you map them onto your
+own CI secrets — there is no jerus-org-specific convention to inherit.
 
 ## The loop
 
