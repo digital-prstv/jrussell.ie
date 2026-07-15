@@ -143,6 +143,8 @@ rules directly — can understand the orb and guide consumers through version up
 
 ## See Also
 
+- [Configuration Guide](@/projects/gen-circleci-orb/configuration-guide.md) — the `gen-circleci-orb.toml` file and simple tuning
+- [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md) — composing a single complex job
 - [CLI Reference](@/projects/gen-circleci-orb/cli-reference.md) — full command and option documentation
 - [Repository](https://github.com/jerus-org/gen-circleci-orb) — source and issue tracking
 - [API Documentation](https://docs.rs/gen-circleci-orb) — generated Rust API reference

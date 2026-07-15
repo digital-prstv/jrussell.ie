@@ -283,4 +283,5 @@ label = "Generate and compile MCP server"
 
 - [Configuration Guide](@/projects/gen-circleci-orb/configuration-guide.md) — the `gen-circleci-orb.toml` basics
 - [Getting Started](@/projects/gen-circleci-orb/getting-started.md) — install to running pipeline
+- [CLI Reference](@/projects/gen-circleci-orb/cli-reference.md) — commands and options
 - [gen-orb-mcp orb on the CircleCI registry](https://circleci.com/developer/orbs/orb/jerus-org/gen-orb-mcp) — the published orb this example builds
