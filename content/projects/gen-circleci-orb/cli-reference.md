@@ -131,6 +131,6 @@ in the tree).
 
 ## See Also
 
-- [Getting Started](getting-started) — install to running pipeline
+- [Getting Started](@/projects/gen-circleci-orb/getting-started.md) — install to running pipeline
 - [Repository](https://github.com/jerus-org/gen-circleci-orb) — source and issue tracking
 - [API Documentation](https://docs.rs/gen-circleci-orb) — generated Rust API reference

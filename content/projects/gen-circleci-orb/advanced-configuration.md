@@ -7,7 +7,7 @@ weight = 35
 tags = ["Rust", "CircleCI", "Orb", "Code Generation", "CLI", "Automation", "documentation"]
 +++
 
-The [Configuration Guide](configuration-guide) covers the `gen-circleci-orb.toml` that `init`
+The [Configuration Guide](@/projects/gen-circleci-orb/configuration-guide.md) covers the `gen-circleci-orb.toml` that `init`
 writes and the simple ways to tune generation. This guide covers the advanced feature that goes
 beyond one-job-per-subcommand: **composing a single, goal-oriented job** from the tool's own
 commands plus other steps.
@@ -99,7 +99,7 @@ Two step targets are worth knowing about:
   `attach_workspace` (boolean) and `workspace_root` (string, also prepended to `PATH`). That is why
   the example below references `<< parameters.workspace_root >>` without declaring it.
 - **`command = "set_https_remote"`** is available whenever `[orb].git_push_subcommands` is set (see
-  the [Configuration Guide](configuration-guide)). You do not author it — declaring a push
+  the [Configuration Guide](@/projects/gen-circleci-orb/configuration-guide.md)). You do not author it — declaring a push
   subcommand generates the shared command, and a composite can then reference it to prepare the git
   remote before its own push step.
 
@@ -281,6 +281,6 @@ label = "Generate and compile MCP server"
 
 ## See Also
 
-- [Configuration Guide](configuration-guide) — the `gen-circleci-orb.toml` basics
-- [Getting Started](getting-started) — install to running pipeline
+- [Configuration Guide](@/projects/gen-circleci-orb/configuration-guide.md) — the `gen-circleci-orb.toml` basics
+- [Getting Started](@/projects/gen-circleci-orb/getting-started.md) — install to running pipeline
 - [gen-orb-mcp orb on the CircleCI registry](https://circleci.com/developer/orbs/orb/jerus-org/gen-orb-mcp) — the published orb this example builds

@@ -12,7 +12,7 @@ writes it, and `generate` and `update` read it — so the flags you supply once 
 recorded here and never re-typed. It is plain TOML, safe to commit and review.
 
 This guide covers the file `init` writes and the simple ways to tune generation. For composing a
-single complex job from several commands, see the [Advanced Configuration Guide](advanced-configuration).
+single complex job from several commands, see the [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md).
 
 ## The sections `init` writes
 
@@ -54,7 +54,7 @@ This is a **per-subcommand** setting, not an on/off flag, and it has two effects
    `insteadOf` ssh→https rewrite that CircleCI's `checkout` injects and points `origin` at HTTPS,
    so that job's push authenticates by token instead of being rewritten back to SSH.
 2. As a byproduct, the shared `set_https_remote` **command** is generated. A composed job can
-   reference it too — see the [Advanced Configuration Guide](advanced-configuration).
+   reference it too — see the [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md).
 
 It is a list because a tool may have more than one push subcommand; list them all. `set_https_remote`
 is generated whenever the list is non-empty, independently of whether the listed subcommand's job
@@ -63,7 +63,7 @@ is later suppressed (see `generate_job`).
 ### `custom_files`
 
 Authorises hand-authored orb files the generator does not produce so they survive the prune step.
-Covered in the [Advanced Configuration Guide](advanced-configuration).
+Covered in the [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md).
 
 ## `[ci]` — release-pipeline wiring
 
@@ -172,10 +172,10 @@ steps = ["validate", "report"]
 
 `gen-circleci-orb config add-job-group --name check_and_report --steps validate,report` writes it.
 For goal-oriented jobs with explicit parameters, built-ins, custom scripts, and third-party-orb
-steps, see the [Advanced Configuration Guide](advanced-configuration).
+steps, see the [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md).
 
 ## See Also
 
-- [Advanced Configuration Guide](advanced-configuration) — composing a single complex job
-- [Getting Started](getting-started) — install to running pipeline
-- [CLI Reference](cli-reference) — commands and options
+- [Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md) — composing a single complex job
+- [Getting Started](@/projects/gen-circleci-orb/getting-started.md) — install to running pipeline
+- [CLI Reference](@/projects/gen-circleci-orb/cli-reference.md) — commands and options

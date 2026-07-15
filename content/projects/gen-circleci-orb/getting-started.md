@@ -135,7 +135,7 @@ rather than prompting. To change the wiring, edit `gen-circleci-orb.toml` and re
 
 ## Optional — MCP for your generated orb
 
-Pass `--mcp` to `init` to wire in [gen-orb-mcp](../gen-orb-mcp). Each release then generates a
+Pass `--mcp` to `init` to wire in [gen-orb-mcp](@/projects/gen-orb-mcp/index.md). Each release then generates a
 migration-rules file and (optionally) an MCP server, so an AI assistant — or a human reading the
 rules directly — can understand the orb and guide consumers through version upgrades.
 
@@ -143,6 +143,6 @@ rules directly — can understand the orb and guide consumers through version up
 
 ## See Also
 
-- [CLI Reference](cli-reference) — full command and option documentation
+- [CLI Reference](@/projects/gen-circleci-orb/cli-reference.md) — full command and option documentation
 - [Repository](https://github.com/jerus-org/gen-circleci-orb) — source and issue tracking
 - [API Documentation](https://docs.rs/gen-circleci-orb) — generated Rust API reference
