@@ -134,21 +134,33 @@ circular dependency: `regenerate-orb` does not depend on the orb being published
 ## Using the orb — now public for any orb author
 
 The `jerus-org/gen-orb-mcp` orb is **public**, so this is not just an internal convenience:
-any CircleCI project can add it and run gen-orb-mcp's subcommands as first-class jobs. Add
-it to your `.circleci/config.yml`:
+any CircleCI project can add it and run gen-orb-mcp's jobs. Add it to your
+`.circleci/config.yml`:
 
 ```yaml
 orbs:
   gen-orb-mcp: jerus-org/gen-orb-mcp@0.2.0
 ```
 
-Available jobs: `generate`, `validate`, `diff`, `migrate`, `prime`, plus `build`, `publish`,
-and `save` for a full release pipeline. Each job accepts the same parameters as the
-corresponding CLI subcommand.
+The subcommand jobs — `generate`, `validate`, `diff`, `migrate`, `build` — each map one-to-one
+to a CLI subcommand and take the same parameters. There is also a composed job,
+`build_mcp_server`, that runs the whole MCP-release pipeline (prime → generate → compile →
+publish → commit back) in a single step, so a consumer treats it as one activity.
 
-If you adopt the release jobs, the env-var **names** the `publish` and `save` jobs read are
-configurable (via `--*-env` flags or a `gen-orb-mcp.toml` file), so you map them onto your
-own CI secrets — there is no jerus-org-specific convention to inherit.
+## Not everything generated itself
+
+Here is the honest version of the headline. The per-subcommand jobs really did generate
+themselves — gen-circleci-orb read gen-orb-mcp's `--help` and emitted a job for each subcommand.
+But `build_mcp_server` has no matching subcommand: it is a *composed* job, hand-authored in
+gen-circleci-orb's configuration from several of gen-orb-mcp's commands plus checkout, workspace,
+and git-setup steps. The generator gives you the building blocks for free; assembling them into
+one goal-oriented job is a deliberate act you own. See gen-circleci-orb's
+[Advanced Configuration Guide](@/projects/gen-circleci-orb/advanced-configuration.md), where
+`build_mcp_server` is the worked example.
+
+If you adopt `build_mcp_server`, the env-var **names** its publish and save steps read are
+configurable (via `--*-env` flags or a `gen-orb-mcp.toml` file), so you map them onto your own CI
+secrets — there is no jerus-org-specific convention to inherit.
 
 ## The loop
 
