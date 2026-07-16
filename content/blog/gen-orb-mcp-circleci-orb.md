@@ -142,7 +142,7 @@ orbs:
   gen-orb-mcp: jerus-org/gen-orb-mcp@0.2.0
 ```
 
-The subcommand jobs — `generate`, `validate`, `diff`, `migrate`, `build` — each map one-to-one
+The subcommand jobs — `generate`, `validate`, `diff`, `migrate` — each map one-to-one
 to a CLI subcommand and take the same parameters. There is also a composed job,
 `build_mcp_server`, that runs the whole MCP-release pipeline (prime → generate → compile →
 publish → commit back) in a single step, so a consumer treats it as one activity.
