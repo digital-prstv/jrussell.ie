@@ -6,6 +6,7 @@ title = "Introducing gen-circleci-orb"
 
 [bluesky]
 created = 2026-04-22
+published = 2026-07-17
 
 [taxonomies]
 categories = ["Tools", "Open Source"]
