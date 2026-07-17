@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- ci-GitHub Pages migration — Phase 0 (workflow + DNS plan)(pr [#245])
+- docs-record DKIM off; add email-auth (DKIM+DMARC) as Phase 2b(pr [#251])
+- ci(pages)-auto-deploy on push to main (fix stale asset URLs)(pr [#252])
+- ci-remove jerusdataprotection.ie deploy(pr [#254])
+- ci-remove AWS deploy and IaC wiring (AWS exit)(pr [#255])
+- chore-remove dead IaC state backend (zero AWS)(pr [#256])
+
+### Fixed
+
+- pages: derive base_url from configure-pages (fix unstyled deploy)(pr [#249])
+- pages: emit https URLs (use config.toml base_url)(pr [#253])
+
 ### Security
 
 - Dependencies: update terraform hashicorp/terraform to >= 1.14.9(pr [#223])
@@ -16,6 +30,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update terraform hashicorp/terraform to >= 1.15.1(pr [#228])
 - Dependencies: update terraform aws to >= 6.44.0(pr [#230])
 - Dependencies: update terraform hashicorp/terraform to >= 1.15.2(pr [#229])
+- Dependencies: update terraform hashicorp/terraform to >= 1.15.3(pr [#231])
+- Dependencies: update terraform external to >= 2.4.0(pr [#232])
+- Dependencies: update terraform aws to >= 6.45.0(pr [#233])
+- Dependencies: update terraform hashicorp/terraform to >= 1.15.4(pr [#234])
+- Dependencies: update terraform aws to >= 6.46.0(pr [#235])
+- Dependencies: update hashicorp terraform(pr [#238])
+- Dependencies: update hashicorp terraform to >= 6.49.0(pr [#239])
+- Dependencies: update dependency toolkit to v6.3.0(pr [#240])
+- Dependencies: update hashicorp terraform to >= 1.15.6(pr [#241])
+- Dependencies: update actions/upload-pages-artifact action to v5(pr [#248])
+- Dependencies: update hashicorp terraform(pr [#242])
+- Dependencies: update dependency toolkit to v6.6.0(pr [#244])
+- Dependencies: update dependency aws-cli to v5.4.2(pr [#243])
+- Dependencies: update actions/checkout action to v7(pr [#246])
+- Dependencies: update actions/deploy-pages action to v5(pr [#247])
+- Dependencies: update actions/configure-pages action to v6(pr [#250])
+- Dependencies: update dependency toolkit to v6.6.1(pr [#257])
 
 ## [1.9.7] - 2026-04-19
 
@@ -531,6 +562,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#228]: https://github.com/digital-prstv/jrussell.ie/pull/228
 [#230]: https://github.com/digital-prstv/jrussell.ie/pull/230
 [#229]: https://github.com/digital-prstv/jrussell.ie/pull/229
+[#231]: https://github.com/digital-prstv/jrussell.ie/pull/231
+[#232]: https://github.com/digital-prstv/jrussell.ie/pull/232
+[#233]: https://github.com/digital-prstv/jrussell.ie/pull/233
+[#234]: https://github.com/digital-prstv/jrussell.ie/pull/234
+[#235]: https://github.com/digital-prstv/jrussell.ie/pull/235
+[#238]: https://github.com/digital-prstv/jrussell.ie/pull/238
+[#239]: https://github.com/digital-prstv/jrussell.ie/pull/239
+[#240]: https://github.com/digital-prstv/jrussell.ie/pull/240
+[#241]: https://github.com/digital-prstv/jrussell.ie/pull/241
+[#245]: https://github.com/digital-prstv/jrussell.ie/pull/245
+[#249]: https://github.com/digital-prstv/jrussell.ie/pull/249
+[#248]: https://github.com/digital-prstv/jrussell.ie/pull/248
+[#242]: https://github.com/digital-prstv/jrussell.ie/pull/242
+[#244]: https://github.com/digital-prstv/jrussell.ie/pull/244
+[#243]: https://github.com/digital-prstv/jrussell.ie/pull/243
+[#246]: https://github.com/digital-prstv/jrussell.ie/pull/246
+[#247]: https://github.com/digital-prstv/jrussell.ie/pull/247
+[#250]: https://github.com/digital-prstv/jrussell.ie/pull/250
+[#251]: https://github.com/digital-prstv/jrussell.ie/pull/251
+[#252]: https://github.com/digital-prstv/jrussell.ie/pull/252
+[#253]: https://github.com/digital-prstv/jrussell.ie/pull/253
+[#254]: https://github.com/digital-prstv/jrussell.ie/pull/254
+[#255]: https://github.com/digital-prstv/jrussell.ie/pull/255
+[#256]: https://github.com/digital-prstv/jrussell.ie/pull/256
+[#257]: https://github.com/digital-prstv/jrussell.ie/pull/257
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6

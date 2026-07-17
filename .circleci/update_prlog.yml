@@ -7,29 +7,7 @@ parameters:
     description: "If true, pcu is updated from its main github branch before running."
 
 orbs:
-  toolkit: digital-prstv/circleci-toolkit@6.2.0
-
-jobs:
-  check_iac_changes:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      - run:
-          name: Switch to main
-          command: |
-            git fetch origin main
-            git checkout main
-      - run:
-          name: Detect IaC changes — trigger deploy pipeline if found
-          command: |
-            set -eo pipefail
-            if git diff HEAD^ HEAD -- iac/ | grep -q .; then
-              echo "IaC changes detected — triggering deploy pipeline"
-              curl -s -X POST "${DEPLOY_IAC_WEBHOOK}"
-            else
-              echo "No IaC changes — skipping deploy"
-            fi
+  toolkit: digital-prstv/circleci-toolkit@6.6.1
 
 workflows:
   update_prlog:
@@ -43,7 +21,3 @@ workflows:
           target_branch: "main"
           pcu_from_merge: --from-merge
           update_pcu: << pipeline.parameters.update_pcu >>
-
-      - check_iac_changes:
-          context:
-            - release
