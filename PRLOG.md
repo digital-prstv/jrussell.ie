@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- add blog post introducing gen-circleci-orb(pr [#224])
+
 ### Changed
 
 - ci-GitHub Pages migration — Phase 0 (workflow + DNS plan)(pr [#245])
@@ -587,6 +591,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#255]: https://github.com/digital-prstv/jrussell.ie/pull/255
 [#256]: https://github.com/digital-prstv/jrussell.ie/pull/256
 [#257]: https://github.com/digital-prstv/jrussell.ie/pull/257
+[#224]: https://github.com/digital-prstv/jrussell.ie/pull/224
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
