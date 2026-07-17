@@ -46,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update actions/checkout action to v7(pr [#246])
 - Dependencies: update actions/deploy-pages action to v5(pr [#247])
 - Dependencies: update actions/configure-pages action to v6(pr [#250])
+- Dependencies: update dependency toolkit to v6.6.1(pr [#257])
 
 ## [1.9.7] - 2026-04-19
 
@@ -585,6 +586,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#254]: https://github.com/digital-prstv/jrussell.ie/pull/254
 [#255]: https://github.com/digital-prstv/jrussell.ie/pull/255
 [#256]: https://github.com/digital-prstv/jrussell.ie/pull/256
+[#257]: https://github.com/digital-prstv/jrussell.ie/pull/257
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...HEAD
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
 [1.9.6]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.5...v1.9.6
