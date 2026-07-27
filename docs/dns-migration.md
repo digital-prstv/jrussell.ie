@@ -13,8 +13,11 @@ record in Cloudflare and verify *before* switching nameservers.
 | TXT | jrussell.ie | `v=spf1 include:_spf.google.com ~all` | SPF |
 | A | www.jrussell.ie | 18.66.171.{13,44,104,105} | → CloudFront (replaced at cutover) |
 | A | jrussell.ie (apex) | (none) | apex is email-only today |
-| TXT | _dmarc.jrussell.ie | (none) | no DMARC currently — add post-cutover (Phase 2b) |
-| TXT | google._domainkey | (none) | **DKIM confirmed OFF** in Google Admin ("Not authenticating email") — nothing to replicate; enable post-cutover (Phase 2b) |
+| TXT | _dmarc.jrussell.ie | (none) | no DMARC at capture time — added post-cutover (Phase 2b, now live) |
+| TXT | google._domainkey | (none) | **DKIM confirmed OFF** in Google Admin ("Not authenticating email") — nothing to replicate; enabled post-cutover (Phase 2b, now live) |
+
+The table above is the **pre-cutover snapshot**, kept as the historical source of truth for
+what had to be replicated. For what is live today see [Phase 2b](#phase-2b--enable-email-authentication-dkim--dmarc-post-cutover).
 
 **Email surface to preserve = the 5 MX records + the one SPF TXT only.** DKIM and DMARC
 are not configured today, so there is nothing to carry over — which keeps the risky part
@@ -63,21 +66,57 @@ no DKIM TXT to export. (Confirmed 2026-07-10.)
 - [ ] `dig NS/MX/TXT/www jrussell.ie` reflect Cloudflare.
 - [ ] **Send + receive a test email** on @jrussell.ie.
 
-## Phase 2b — enable email authentication (DKIM + DMARC), post-cutover
+## Phase 2b — enable email authentication (DKIM + DMARC), post-cutover — **DONE**
 
-Optional deliverability improvement, done **only after** Cloudflare is authoritative and
-email is verified working — so each record is entered exactly once, in its final home.
-Neither is required to keep email flowing; do not start this until the cutover is stable.
+Deliverability improvement, done **only after** Cloudflare became authoritative and email
+was verified working — so each record was entered exactly once, in its final home. Neither
+is required to keep email flowing.
 
-- [ ] **DKIM** — Google Admin → Apps → Google Workspace → Gmail → Authenticate email →
+- [x] **DKIM** — Google Admin → Apps → Google Workspace → Gmail → Authenticate email →
       select `jrussell.ie` → **Generate new record** (default 2048-bit, selector
-      `google`). Add the generated TXT in **Cloudflare** (`google._domainkey`, DNS-only),
-      then click **Start authentication**. Verify: `dig +short TXT google._domainkey.jrussell.ie`.
-- [ ] **DMARC** — after DKIM + SPF both pass, add a `_dmarc` TXT in Cloudflare, starting
-      in monitor mode: `v=DMARC1; p=none; rua=mailto:<report-address>`. Tighten to
-      `p=quarantine` / `p=reject` later once reports look clean.
-- [ ] Re-send a test email and confirm SPF + DKIM + DMARC all `pass` in the recipient's
-      "show original" headers.
+      `google`). Added the generated TXT in **Cloudflare** (`google._domainkey`, DNS-only),
+      then **Start authentication**. Verify: `dig +short TXT google._domainkey.jrussell.ie`.
+- [x] **DMARC** — added a `_dmarc` TXT in Cloudflare in monitor mode (2026-07-11), with
+      `rua` pointing at **Cloudflare DMARC Management** (reports are parsed into the
+      dashboard rather than delivered to a mailbox).
+- [x] Test email re-sent; SPF + DKIM + DMARC all `pass` in the recipient's "show
+      original" headers.
+
+### Live email-auth records (verified 2026-07-27)
+
+| Record | Value |
+|--------|-------|
+| SPF (apex TXT) | `v=spf1 include:_spf.google.com ~all` |
+| DKIM `google._domainkey` | `v=DKIM1; k=rsa; p=…` (2048-bit, selector `google`) |
+| DMARC `_dmarc` | `v=DMARC1; p=quarantine; rua=mailto:<id>@dmarc-reports.cloudflare.net` |
+
+Only sending path is Google Workspace, which signs with DKIM and is covered by the SPF
+include — so both mechanisms align and no third-party sender needs authorising.
+
+### DMARC enforcement ladder
+
+Reports are reviewed in **Cloudflare → Email Security → DMARC Management → jrussell.ie**
+before each tightening step. Review means: every legitimate source shows an *aligned* pass,
+and no unexpected sender appears. Forwarders are the usual false positive — they break SPF
+but survive on DKIM, so they only matter if DKIM fails too.
+
+| Step | Policy | Date | Status |
+|------|--------|------|--------|
+| Monitor | `p=none` | 2026-07-11 | done — ~2 weeks of clean reports, Google Workspace only |
+| Enforce (quarantine) | `p=quarantine` | 2026-07-27 | **live** |
+| Enforce (reject) | `p=reject` | ~2026-08-24 | pending review of quarantine-period reports |
+
+Went straight to full-percentage `p=quarantine` rather than a `pct=` ramp: with a single
+DKIM-signed sending path a ramp only adds weeks of waiting without yielding new
+information. If a legitimate-but-unaligned source ever shows up, the fix is an SPF include
+or its own DKIM key — not a weaker policy.
+
+Final step (target ~2026-08-24, after ~4 weeks at quarantine with clean reports) — edit the
+`_dmarc` TXT in Cloudflare DNS (DNS-only) to:
+
+```
+v=DMARC1; p=reject; rua=mailto:<id>@dmarc-reports.cloudflare.net
+```
 
 ## Rollback
 
