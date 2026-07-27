@@ -88,10 +88,20 @@ is required to keep email flowing.
 |--------|-------|
 | SPF (apex TXT) | `v=spf1 include:_spf.google.com ~all` |
 | DKIM `google._domainkey` | `v=DKIM1; k=rsa; p=…` (2048-bit, selector `google`) |
-| DMARC `_dmarc` | `v=DMARC1; p=quarantine; rua=mailto:<id>@dmarc-reports.cloudflare.net` |
+| DMARC `_dmarc` | `v=DMARC1; p=reject; rua=mailto:<id>@dmarc-reports.cloudflare.net` |
 
 Only sending path is Google Workspace, which signs with DKIM and is covered by the SPF
-include — so both mechanisms align and no third-party sender needs authorising.
+include — so both mechanisms align and no third-party sender needs authorising. This is a
+personal account: there are **no** `Send mail as` aliases and no application or service
+that sends notification mail using an `@jrussell.ie` identity.
+
+**SPF stays at `~all`, deliberately** — do not "fix" the `Soft fail — Warning` badge in the
+Cloudflare dashboard. DMARC treats softfail and hardfail identically (both are a non-`pass`,
+so evaluation falls through to DKIM and then to the policy), which means `-all` adds nothing
+now that the policy is `reject`. Where the two differ is receivers that act on the SPF result
+alone: forwarded mail always fails SPF, because the relay sends from its own IP, and only the
+surviving DKIM signature rescues it. `~all` allows that rescue; `-all` invites a strict
+receiver to reject before DKIM is considered.
 
 ### DMARC enforcement ladder
 
@@ -103,20 +113,33 @@ but survive on DKIM, so they only matter if DKIM fails too.
 | Step | Policy | Date | Status |
 |------|--------|------|--------|
 | Monitor | `p=none` | 2026-07-11 | done — ~2 weeks of clean reports, Google Workspace only |
-| Enforce (quarantine) | `p=quarantine` | 2026-07-27 | **live** |
-| Enforce (reject) | `p=reject` | ~2026-08-24 | pending review of quarantine-period reports |
+| Enforce (quarantine) | `p=quarantine` | 2026-07-27 | done — superseded same day |
+| Enforce (reject) | `p=reject` | 2026-07-27 | **live** — verified by `dig` against the Cloudflare and Google resolvers and the authoritative NS |
 
-Went straight to full-percentage `p=quarantine` rather than a `pct=` ramp: with a single
-DKIM-signed sending path a ramp only adds weeks of waiting without yielding new
-information. If a legitimate-but-unaligned source ever shows up, the fix is an SPF include
-or its own DKIM key — not a weaker policy.
+No `pct=` ramp was used at either step: with a single DKIM-signed sending path a ramp only
+adds weeks of waiting without yielding new information. If a legitimate-but-unaligned source
+ever shows up, the fix is an SPF include or its own DKIM key — not a weaker policy.
 
-Final step (target ~2026-08-24, after ~4 weeks at quarantine with clean reports) — edit the
-`_dmarc` TXT in Cloudflare DNS (DNS-only) to:
+**Report evidence at the reject decision** (Cloudflare DMARC Management, 7 days to
+2026-07-27, 16 messages):
 
-```
-v=DMARC1; p=reject; rua=mailto:<id>@dmarc-reports.cloudflare.net
-```
+- **1 pass** — Google LLC, 100% SPF-aligned and 100% DKIM-aligned.
+- **15 fails** — 15 distinct sending services, each 1–2 messages from a single IP, all 0%
+  on SPF, DKIM and DMARC: consumer/mobile ISPs in Kazakhstan, Uzbekistan, China, Iran,
+  Brazil, Argentina, Indonesia and India. Classic snowshoe spoofing of the domain.
+
+Crucially **none** of the failures showed the forwarder signature (SPF fail + DKIM *pass*),
+so no legitimate relayed mail was in the failing set. Every failure was forgery — exactly
+the mail `p=reject` should bounce. The quarantine step was skipped forward to reject on the
+same day once it was confirmed there are no `Send mail as` aliases and no service accounts
+sending as the domain, which removed the only open question (a rarely-used legitimate path
+that had not yet appeared in a report).
+
+**Residual watch-item — mailing lists.** The one real-world risk left at `p=reject` for a
+personal domain: a list that resends a message unchanged breaks the DKIM signature, so
+receivers now bounce it, and some lists auto-unsubscribe bouncing addresses. Most modern
+lists rewrite `From:` (or apply ARC) and are unaffected, and no forwarding pattern appears
+in the reports. If it ever bites, the fix is list-side `From:` munging — not a weaker policy.
 
 ## Rollback
 
