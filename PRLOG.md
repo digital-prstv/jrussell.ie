@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- docs-record DMARC enforcement status(pr [#260])
+
 ### Security
 
 - Dependencies: update dependency toolkit to v6.6.2(pr [#258])
@@ -599,6 +603,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#257]: https://github.com/digital-prstv/jrussell.ie/pull/257
 [#224]: https://github.com/digital-prstv/jrussell.ie/pull/224
 [#258]: https://github.com/digital-prstv/jrussell.ie/pull/258
+[#260]: https://github.com/digital-prstv/jrussell.ie/pull/260
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.10.0...HEAD
 [1.10.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...v1.10.0
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
