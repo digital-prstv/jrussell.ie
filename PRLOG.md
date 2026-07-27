@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - docs-record DMARC enforcement status(pr [#260])
+- docs-DMARC now at p=reject(pr [#261])
 
 ### Security
 
@@ -606,6 +607,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#258]: https://github.com/digital-prstv/jrussell.ie/pull/258
 [#260]: https://github.com/digital-prstv/jrussell.ie/pull/260
 [#259]: https://github.com/digital-prstv/jrussell.ie/pull/259
+[#261]: https://github.com/digital-prstv/jrussell.ie/pull/261
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.10.0...HEAD
 [1.10.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...v1.10.0
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
