@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update dependency toolkit to v6.6.2(pr [#258])
 - Dependencies: update dependency toolkit to v7(pr [#259])
 - Dependencies: update dependency toolkit to v7.1.0(pr [#262])
+- Dependencies: update dependency toolkit to v7.3.0(pr [#263])
 
 ## [1.10.0] - 2026-07-17
 
@@ -610,6 +611,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#259]: https://github.com/digital-prstv/jrussell.ie/pull/259
 [#261]: https://github.com/digital-prstv/jrussell.ie/pull/261
 [#262]: https://github.com/digital-prstv/jrussell.ie/pull/262
+[#263]: https://github.com/digital-prstv/jrussell.ie/pull/263
 [Unreleased]: https://github.com/digital-prstv/jrussell.ie/compare/v1.10.0...HEAD
 [1.10.0]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.7...v1.10.0
 [1.9.7]: https://github.com/digital-prstv/jrussell.ie/compare/v1.9.6...v1.9.7
