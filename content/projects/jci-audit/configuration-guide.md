@@ -24,11 +24,21 @@ field, see [cargo-deny's](https://embarkstudios.github.io/cargo-deny/) and
 [advisories]
 db-path = "~/.cargo/advisory-db"
 db-urls = ["https://github.com/rustsec/advisory-db"]
+# Vulnerabilities are always denied by cargo-deny. unmaintained/unsound are
+# scope selectors ("all" | "workspace" | "transitive" | "none"); "all" checks
+# every crate in the graph and reports them as warnings.
 unmaintained = "all"
 yanked = "warn"
+# Canonical source of truth for advisory ignores. `.cargo/audit.toml` is
+# derived from this list via `jci-audit sync`. Give each entry a written
+# justification.
 ignore = []
 
 [licenses]
+# All licenses are denied unless explicitly allowed. Permissive licenses are
+# allowed globally; weak-copyleft licenses are NOT — scope them to the specific
+# transitive crates that carry them via [[licenses.exceptions]], so a new
+# copyleft dependency fails the check until consciously reviewed.
 allow = [
     "MIT",
     "Apache-2.0",
@@ -42,6 +52,7 @@ allow = [
     "CDLA-Permissive-2.0",
 ]
 
+# Example: admit a weak-copyleft license only for the crate that carries it.
 # [[licenses.exceptions]]
 # name = "some-crate"
 # allow = ["MPL-2.0"]
@@ -55,6 +66,11 @@ unknown-registry = "warn"
 unknown-git = "warn"
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
 ```
+
+This is the exact, verbatim template `jci-audit init` writes (`DENY_TEMPLATE` in the CLI's own
+source) — the `allow` list is a deliberate permissive baseline, not an arbitrary or expanded one;
+the same "consciously reviewed" friction the comment describes for copyleft exceptions is the
+design intent for the whole file, not just that one list.
 
 ### `[advisories]`
 
@@ -104,7 +120,9 @@ If your crate ships `THIRD-PARTY-LICENSES.md` notices via
 [`cargo-about`](https://github.com/EmbarkStudios/cargo-about), `jci-audit sync` also derives each
 crate's `about.toml` `accepted` list — scoped to that crate's own dependency graph, not a copy of
 `deny.toml`'s full workspace allow-list (SPDX expression evaluation against the allow-list,
-reachability excluding dev-only edges).
+reachability excluding dev-only edges). **A crate with no `about.toml` isn't required to have
+one**: `sync` only looks for `crates/*/about.toml` files that already exist and derives into those
+— a crate that hasn't opted in to cargo-about notices is simply never touched.
 
 ```toml
 # Derived — jci-audit sync manages this key:

@@ -7,20 +7,17 @@ weight = 25
 tags = ["Rust", "CircleCI", "Security", "CLI", "Orb", "documentation"]
 +++
 
-jci-audit orchestrates cargo-audit and cargo-deny per pipeline context: `check` gates PRs on both
-tools, `release` validates reproducibly against a pinned advisory-db, `sync` derives
-`.cargo/audit.toml` from the canonical `deny.toml`, `prune` detects stale advisory ignores,
-`verify` re-checks a past release, and `init` scaffolds a standard `deny.toml`.
+| Subcommand | Runs in | Purpose |
+|------------|---------|---------|
+| `check` | PR gate (CI), local to validate | `cargo-deny` policy + live `cargo-audit`, both blocking |
+| `release` | Release gate (CI) | Reproducible validation against a pinned advisory-db |
+| `sync` | `about.toml` half runs inside `check`; full sync is its own CI/local step | Derive `.cargo/audit.toml`/`about.toml` from `deny.toml` |
+| `prune` | Orb job (any workflow), or local | Detect advisory ignores that no longer fire |
+| `verify` | Local, from a released tag | Re-check a past release against a real checkout |
+| `init` | Local, one-time scaffold | Write the standard `deny.toml` template |
 
-```
-jci-audit [OPTIONS] <COMMAND>
-
-Options:
-  -v, --verbose...   Increase logging verbosity
-  -q, --quiet...     Decrease logging verbosity
-  -h, --help         Print help
-  -V, --version      Print version
-```
+Global flags on every subcommand: `-v`/`--verbose` and `-q`/`--quiet` (repeatable, adjust logging),
+`-h`/`--help`, `-V`/`--version`.
 
 ## `check` — PR/dev gate
 
@@ -38,7 +35,10 @@ Options:
 ## `release` — Release gate
 
 Locks `cargo-deny` to a pinned advisory-db commit and runs it offline; `cargo-audit` runs live as
-a non-blocking currency check. Writes the record locally to `.security/release-<VERSION>.json`.
+a non-blocking currency check. Writes the record to `.security/release-<VERSION>.json` **in the CI
+job's own working directory** — see the
+[Advanced Configuration Guide](@/projects/jci-audit/advanced-configuration.md) for what that means
+in practice and how to make it retrievable.
 
 ```
 jci-audit release [OPTIONS]

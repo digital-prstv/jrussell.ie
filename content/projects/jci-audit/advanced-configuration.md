@@ -17,11 +17,18 @@ location, and troubleshooting a `verify` mismatch. See the
 ## The release record is local-only, for now
 
 `jci-audit release` writes `.security/release-<VERSION>.json` to the working directory and does
-nothing else with it — no git commit, no push, no signing. Earlier versions committed and
-GPG-signed the record via [`pcu`](https://crates.io/crates/pcu); that path is gone
-([jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75) phase 1). Distributing
-the record as a signed GitHub release asset (verified via `rsign` in `verify`'s remote-fetch path)
-is tracked as #75's remaining phase and not yet shipped.
+nothing else with it — no git commit, no push, no signing. In practice, "local" means **the CI
+job's own ephemeral working directory** — not your repo clone, and not the GitHub release. Unless
+the pipeline explicitly stores it as a build artifact (as the
+[`jci-audit/release` orb job's example usage](@/projects/jci-audit/getting-started.md#wire-the-container-and-ci-scripting-circleci)
+does with `post-steps: store_artifacts`), the record is gone once that job's container is torn
+down — there's nothing to find in the repo afterwards, and that's expected today, not a bug.
+
+Earlier versions committed and GPG-signed the record via [`pcu`](https://crates.io/crates/pcu);
+that path is gone ([jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75)
+phase 1). Distributing the record as a signed GitHub release asset (verified via `rsign` in
+`verify`'s remote-fetch path) is tracked as #75's remaining phase and not yet shipped — that's
+exactly the gap that makes the record hard to find today.
 
 ---
 

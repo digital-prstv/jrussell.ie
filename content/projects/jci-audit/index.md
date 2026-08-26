@@ -35,6 +35,29 @@ from the CLI's own `--help` output, so its jobs never drift from the binary. It 
 **bin-only** publish: nothing links `jci-audit` as a library, so the published crate carries no
 importable `[lib]` target.
 
+## Architecture
+
+jci-audit is built as three components, deliberately kept distinct even though two of them
+currently ship together:
+
+1. **The CLI** — the `jci-audit` binary. Replaces ad hoc bash scripts: `init` scaffolds the
+   policy, and `check`/`release`/`sync`/`prune`/`verify` are the actual CI-service operations it
+   runs. Independently published to crates.io — the only one of the three with no CI-runner
+   dependency.
+2. **The container** — the execution environment the binary needs (`cargo-audit`, `cargo-deny`,
+   `rsign`, on an official Rust base).
+3. **CI-runner scripting** — currently CircleCI only: the commands, jobs, and executor that load
+   the container and invoke the CLI's operations as pipeline steps.
+
+Components 2 and 3 currently ship together, generated as a single CircleCI orb by
+[gen-circleci-orb](@/projects/gen-circleci-orb/index.md) — there's no path yet to reuse the same
+container with a different CI runner's scripting. The three-way split is what would make a future
+non-CircleCI runner a scripting-layer addition rather than a rewrite, once 2 and 3 are decoupled.
+
+`jci-audit verify`'s no-checkout path additionally assumes a GitHub-hosted repository (it fetches
+release assets and raw file contents from `github.com`) — a CLI-level constraint separate from the
+CI-runner question above.
+
 [Getting Started](@/projects/jci-audit/getting-started.md)
 
 [Configuration Guide](@/projects/jci-audit/configuration-guide.md)
