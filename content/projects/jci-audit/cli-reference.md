@@ -38,7 +38,12 @@ Locks `cargo-deny` to a pinned advisory-db commit and runs it offline; `cargo-au
 a non-blocking currency check. Writes the record to `.security/release-<VERSION>.json` **in the CI
 job's own working directory** — see the
 [Advanced Configuration Guide](@/projects/jci-audit/advanced-configuration.md) for what that means
-in practice and how to make it retrievable.
+in practice. Every release **since** `#75` phase 1 shipped has this problem — the record no longer
+gets committed, and nothing yet uploads it anywhere durable, so it doesn't survive past the CI job
+that wrote it (see that guide for why); that gap is tracked and open, not a documentation
+oversight. Records for the older, pre-phase-1 releases (`0.0.4`–`0.0.7`) are still committed in the
+repo and remain checkable from a real checkout — only releases cut after that change lose the
+record entirely.
 
 ```
 jci-audit release [OPTIONS]

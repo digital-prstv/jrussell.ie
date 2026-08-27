@@ -121,8 +121,15 @@ If your crate ships `THIRD-PARTY-LICENSES.md` notices via
 crate's `about.toml` `accepted` list — scoped to that crate's own dependency graph, not a copy of
 `deny.toml`'s full workspace allow-list (SPDX expression evaluation against the allow-list,
 reachability excluding dev-only edges). **A crate with no `about.toml` isn't required to have
-one**: `sync` only looks for `crates/*/about.toml` files that already exist and derives into those
-— a crate that hasn't opted in to cargo-about notices is simply never touched.
+one**: `sync` only looks for an existing `about.toml` and derives into it if found — a crate that
+hasn't opted in to cargo-about notices is simply never touched.
+
+**Discovery currently assumes a `crates/<name>/` workspace layout, not any workspace's real
+structure.** `sync` finds candidate crates by listing `crates/*/` directly, rather than reading
+which members the workspace `Cargo.toml` actually declares — so a workspace laid out any other way
+(a root-level crate, `packages/*`, `libs/*`, anything not literally under `crates/`) silently never
+gets its `about.toml` synced, with no error or warning. Tracked as
+[jerus-org/jci-audit#100](https://github.com/jerus-org/jci-audit/issues/100), not yet fixed.
 
 ```toml
 # Derived — jci-audit sync manages this key:

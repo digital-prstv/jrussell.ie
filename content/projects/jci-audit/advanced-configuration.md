@@ -14,21 +14,39 @@ location, and troubleshooting a `verify` mismatch. See the
 
 ---
 
-## The release record is local-only, for now
+## The release record is not retrievable today — a known, open gap
 
 `jci-audit release` writes `.security/release-<VERSION>.json` to the working directory and does
-nothing else with it — no git commit, no push, no signing. In practice, "local" means **the CI
-job's own ephemeral working directory** — not your repo clone, and not the GitHub release. Unless
-the pipeline explicitly stores it as a build artifact (as the
+nothing else with it — no git commit, no push, no signing. "Local" means **the CI job's own
+ephemeral working directory** — not your repo clone, and not the GitHub release. Storing it as a
+CI build artifact (as the
 [`jci-audit/release` orb job's example usage](@/projects/jci-audit/getting-started.md#wire-the-container-and-ci-scripting-circleci)
-does with `post-steps: store_artifacts`), the record is gone once that job's container is torn
-down — there's nothing to find in the repo afterwards, and that's expected today, not a bug.
+does with `post-steps: store_artifacts`) only buys the record a short reprieve: build-artifact
+retention is time-limited, and once it expires the record is gone for good, with nothing left in
+the repo or on the release to recover it from.
 
-Earlier versions committed and GPG-signed the record via [`pcu`](https://crates.io/crates/pcu);
-that path is gone ([jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75)
-phase 1). Distributing the record as a signed GitHub release asset (verified via `rsign` in
-`verify`'s remote-fetch path) is tracked as #75's remaining phase and not yet shipped — that's
-exactly the gap that makes the record hard to find today.
+This isn't a hypothetical: `jci-audit-v0.1.0`'s own release record is genuinely gone — hit by all
+three gaps at once, independently: never committed (that path was removed before `0.1.0` shipped,
+see below), never uploaded to the GitHub release (the CI-side upload doesn't exist yet, see below),
+and the CI build-artifact copy has already expired. `jci-audit verify --release-version 0.1.0` has
+nothing to check against, locally or remotely, and never will — the record can't be reconstructed
+after the fact with the same meaning, since it certifies the advisory-db commit and tool versions
+*at release time*, and the advisory-db has moved on since. **`0.1.0` has been yanked from
+crates.io as a result** — not a verifiable release. As of this writing every published version
+(`0.0.1`–`0.1.0`) is yanked, so `cargo install`/`cargo binstall jci-audit` currently has no
+version to resolve; that's expected to change once the next release ships (see #75 below) and
+isn't itself a documentation gap to track here.
+
+Earlier versions (`0.0.1`–`0.0.7`) committed and GPG-signed the record via
+[`pcu`](https://crates.io/crates/pcu); their records are still in the repo and checkable from a
+real checkout. That commit path is gone as of
+[jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75) phase 1 — every release
+since no longer commits the record, so `verify` needs an alternative source. Distributing the
+record as a signed GitHub release asset (verified via `rsign` in `verify`'s remote-fetch path) is
+fully built and wired into `verify` already — but the CI-side upload that would actually put a
+record and its signature on the release is `#75`'s remaining, not-yet-shipped phase. Until it
+ships, no release cut after phase 1 has a record that survives past the CI job's own retention
+window.
 
 ---
 

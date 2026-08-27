@@ -29,6 +29,13 @@ cargo install jci-audit
 cargo install cargo-audit cargo-deny
 ```
 
+**As of this writing, every published `jci-audit` version is yanked** (`0.1.0` most recently — its
+release record was unrecoverable, see
+[Advanced Configuration](@/projects/jci-audit/advanced-configuration.md#the-release-record-is-not-retrievable-today-a-known-open-gap)),
+so both commands above currently have no version to resolve. This is expected to clear with the
+next release, once [#75](https://github.com/jerus-org/jci-audit/issues/75)'s remaining phase ships
+and produces the first release with a genuinely retrievable record.
+
 Every subcommand that shells out to either tool checks for it first and reports, with actionable
 install guidance, if it's missing. In CI, the generated orb's container already has both — see
 below.
@@ -43,11 +50,16 @@ jci-audit init
 
 Writes a standard `deny.toml` (advisories, licenses, bans, sources) plus the `.cargo/audit.toml`
 derived from it, into the current directory — that's all `init` does. It doesn't sync any crate's
-`about.toml` (see [Keep derived files in sync](#keep-derived-files-in-sync) below) and it doesn't
-touch your CI config; wiring the orb in is a separate step, covered next. It refuses to overwrite
-an existing `deny.toml` unless you pass `--force`. The template denies all licenses except an
-explicit allow-list, and leaves `[advisories].ignore` empty — see the
-[Configuration Guide](@/projects/jci-audit/configuration-guide.md) for what each section means.
+`about.toml` (see [Keep derived files in sync](#keep-derived-files-in-sync) below), and it doesn't
+touch your CI config. It refuses to overwrite an existing `deny.toml` unless you pass `--force`.
+The template denies all licenses except an explicit allow-list, and leaves `[advisories].ignore`
+empty — see the [Configuration Guide](@/projects/jci-audit/configuration-guide.md) for what each
+section means.
+
+**No command wires the orb into your CircleCI config today** — the next section's YAML is a
+manual, copy-in step, with no CLI or orb equivalent to `gen-circleci-orb init`/`update`'s automated
+wiring for its own consumers. Tracked as
+[jerus-org/jci-audit#101](https://github.com/jerus-org/jci-audit/issues/101), not yet built.
 
 ---
 
