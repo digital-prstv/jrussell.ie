@@ -23,9 +23,8 @@ subsequent job needs the record handed to it explicitly.
 
 `jci-audit publish-record` is that handoff: it generates a one-use minisign keypair, signs the
 record, and uploads the record/`.sig`/`.pub` as named assets on the release — a fully
-self-contained path ([jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75)
-phase 2) needing nothing beyond this orb and a GitHub token with permission to upload (and,
-with `--publish`, publish) the release. `verify`'s remote-fetch path then fetches and
+self-contained step needing nothing beyond this orb and a GitHub token with permission to upload
+(and, with `--publish`, publish) the release. `verify`'s remote-fetch path then fetches and
 signature-checks that record with no local checkout at all. The full three-job chain:
 
 ```yaml
@@ -63,13 +62,8 @@ entirely inside the `publish_record` job — it never appears in the record's ow
 other step. Set the GitHub token via a context on the `publish_record` job, never as a parameter,
 so it never appears on a command line or in a CI log.
 
-Every jci-audit release since `jci-audit-v0.1.1` uses this path — see
-[jerus-org/jci-audit's own `.circleci/release.yml`](https://github.com/jerus-org/jci-audit/blob/main/.circleci/release.yml)
-for the real, currently-running wiring. The crate's currently published version
-(`cargo info jci-audit` or [crates.io](https://crates.io/crates/jci-audit)) is not yanked, and its
-record is retrievable through this path — the historical retention gap described in earlier
-drafts of this guide (`jci-audit-v0.1.0`'s record was genuinely lost, before `publish-record`
-existed) no longer applies to any release cut since.
+See [jerus-org/jci-audit's own `.circleci/release.yml`](https://github.com/jerus-org/jci-audit/blob/main/.circleci/release.yml)
+for a real, working example of this wiring.
 
 ---
 
@@ -149,16 +143,14 @@ Two other failure modes print no `MISMATCH` line at all:
 
 `sync`'s `about.toml` derivation scopes each crate's `accepted` list to its own dependency graph,
 and honours that crate's own `about.toml` `ignore-build-dependencies`/`ignore-transitive-dependencies`
-settings ([#63](https://github.com/jerus-org/jci-audit/issues/63)) — it does not copy the
-workspace-wide policy into every crate verbatim.
+settings — it does not copy the workspace-wide policy into every crate verbatim.
 
 `release-prep`/`verify` take a `-p`/`--package <NAME>` flag to scope the dependency digest and the
 record's own path (`.security/<package>-release-<VERSION>.json`) to just one crate's reachable
 graph, so a workspace can release its crates individually, in dependency order, without different
-crates' records colliding in the same pipeline run
-([#62](https://github.com/jerus-org/jci-audit/issues/62)). `publish-record` and `verify`'s
-remote-fetch path don't take a per-package record path yet — this org's own workspaces are still
-single-crate, so that extension is deferred until a real multi-crate consumer needs it.
+crates' records colliding in the same pipeline run. `publish-record` and `verify`'s remote-fetch
+path don't take a per-package record path yet — point `--record-path` at the right file explicitly
+if you're publishing records for more than one crate from the same pipeline.
 
 ---
 

@@ -67,10 +67,9 @@ unknown-git = "warn"
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
 ```
 
-This is the exact, verbatim template `jci-audit init` writes (`DENY_TEMPLATE` in the CLI's own
-source) — the `allow` list is a deliberate permissive baseline, not an arbitrary or expanded one;
-the same "consciously reviewed" friction the comment describes for copyleft exceptions is the
-design intent for the whole file, not just that one list.
+This is the exact template `jci-audit init` writes — the `allow` list is a deliberate permissive
+baseline, not an arbitrary or expanded one; the same "consciously reviewed" friction the comment
+describes for copyleft exceptions is the design intent for the whole file, not just that one list.
 
 ### `[advisories]`
 
