@@ -25,9 +25,9 @@ Release validation is where this differs most from a plain CI check: `cargo deny
 reproduced later — not just asserted once and trusted. `cargo audit` keeps running live alongside
 it, as a non-blocking currency check. `jci-audit verify` re-derives a past release's recorded
 inputs from a real checkout and confirms it still passes under the exceptions in force at the
-time; a no-checkout path that fetches and signature-checks the record straight from a published
-release is designed in but not yet wired up end to end (the release side doesn't sign and upload
-the record yet — see the [Advanced Configuration Guide](@/projects/jci-audit/advanced-configuration.md)).
+time; a no-checkout path fetches and signature-checks the record straight from a published
+release instead — `jci-audit publish-record` signs and uploads the record as a release asset for
+exactly this path to fetch (see the [Advanced Configuration Guide](@/projects/jci-audit/advanced-configuration.md)).
 
 jci-audit ships a crate to crates.io and a generated CircleCI orb, `jerus-org/jci-audit`, in
 tag-lockstep — the orb is produced by [gen-circleci-orb](@/projects/gen-circleci-orb/index.md)
@@ -41,11 +41,12 @@ jci-audit is built as three components, deliberately kept distinct even though t
 currently ship together:
 
 1. **The CLI** — the `jci-audit` binary. Replaces ad hoc bash scripts: `init` scaffolds the
-   policy, and `check`/`release`/`sync`/`prune`/`verify` are the actual CI-service operations it
-   runs. Independently published to crates.io — the only one of the three with no CI-runner
-   dependency.
+   policy, `wire-ci` wires the generated orb's jobs into a consumer's CI config, and
+   `check`/`release-prep`/`sync`/`prune`/`verify`/`publish-record` are the actual CI-service
+   operations it runs. Independently published to crates.io — the only one of the three with no
+   CI-runner dependency.
 2. **The container** — the execution environment the binary needs (`cargo-audit`, `cargo-deny`,
-   `rsign`, on an official Rust base).
+   `cargo-about`, `rsign`, on an official Rust base).
 3. **CI-runner scripting** — currently CircleCI only: the commands, jobs, and executor that load
    the container and invoke the CLI's operations as pipeline steps.
 

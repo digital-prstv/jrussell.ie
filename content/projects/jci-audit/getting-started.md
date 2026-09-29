@@ -19,26 +19,23 @@ something CI reported — not the primary way it's meant to run.
 
 ```bash
 cargo binstall jci-audit
-cargo binstall cargo-audit cargo-deny
+cargo binstall cargo-audit cargo-deny cargo-about
 ```
 
 ### From crates.io
 
 ```bash
 cargo install jci-audit
-cargo install cargo-audit cargo-deny
+cargo install cargo-audit cargo-deny cargo-about
 ```
 
-**As of this writing, every published `jci-audit` version is yanked** (`0.1.0` most recently — its
-release record was unrecoverable, see
-[Advanced Configuration](@/projects/jci-audit/advanced-configuration.md#the-release-record-is-not-retrievable-today-a-known-open-gap)),
-so both commands above currently have no version to resolve. This is expected to clear with the
-next release, once [#75](https://github.com/jerus-org/jci-audit/issues/75)'s remaining phase ships
-and produces the first release with a genuinely retrievable record.
+`cargo-about` is only needed for `jci-audit check`'s license-notices resolution/staleness checks
+(see [CLI Reference](@/projects/jci-audit/cli-reference.md)) — skip it if you only run `sync`,
+`prune`, or `init`.
 
-Every subcommand that shells out to either tool checks for it first and reports, with actionable
-install guidance, if it's missing. In CI, the generated orb's container already has both — see
-below.
+Every subcommand that shells out to any of these tools checks for it first and reports, with
+actionable install guidance, if it's missing. In CI, the generated orb's container already has
+all three — see below.
 
 ---
 
@@ -56,10 +53,17 @@ The template denies all licenses except an explicit allow-list, and leaves `[adv
 empty — see the [Configuration Guide](@/projects/jci-audit/configuration-guide.md) for what each
 section means.
 
-**No command wires the orb into your CircleCI config today** — the next section's YAML is a
-manual, copy-in step, with no CLI or orb equivalent to `gen-circleci-orb init`/`update`'s automated
-wiring for its own consumers. Tracked as
-[jerus-org/jci-audit#101](https://github.com/jerus-org/jci-audit/issues/101), not yet built.
+**`jci-audit wire-ci` wires the orb into your CircleCI config for you** — it writes (or resyncs)
+the managed job block the next section shows by hand, the same way `gen-circleci-orb init`/`update`
+does for its own consumers:
+
+```bash
+jci-audit wire-ci
+jci-audit check-ci-wiring   # CI: fail if the wiring has drifted from what wire-ci would generate
+```
+
+The next section shows the underlying YAML shape it produces, for when you want to see what's
+actually being wired or extend it by hand.
 
 ---
 
@@ -72,7 +76,7 @@ definitions together (see [Architecture](@/projects/jci-audit/index.md#architect
 version: 2.1
 
 orbs:
-  jci-audit: jerus-org/jci-audit@0.1.0
+  jci-audit: jerus-org/jci-audit@0.1.23
 
 workflows:
   validation:
@@ -80,17 +84,17 @@ workflows:
       - jci-audit/check
 ```
 
-That's the PR/dev gate. For the release gate, run it before your actual release job and store the
-record it writes so it's retrievable afterwards — the record lands in the job's own working
-directory and isn't committed or pushed (see
+That's the PR/dev gate. For the release gate, run `jci-audit/release_prep` before your actual
+release job and store the record it writes so it's retrievable afterwards — the record lands in
+the job's own working directory and isn't committed or pushed (see
 [Advanced Configuration](@/projects/jci-audit/advanced-configuration.md)):
 
 ```yaml
   release:
     jobs:
-      - jci-audit/release:
+      - jci-audit/release_prep:
           name: record-release
-          release_version: "1.2.0"
+          version: "1.2.0"
           post-steps:
             - store_artifacts:
                 path: .security
@@ -99,6 +103,12 @@ directory and isn't committed or pushed (see
       - your-release-job:
           requires: [record-release]
 ```
+
+`store_artifacts` above keeps the unsigned record attached to the CI job run itself — enough to
+inspect it, but not enough for `jci-audit verify`'s no-checkout path, which needs a **signed**
+copy published as a GitHub release asset. `jci-audit/publish_record` does that signing and upload;
+see the full three-job chain (`release_prep` → your release job → `publish_record`) in the
+[Advanced Configuration Guide](@/projects/jci-audit/advanced-configuration.md).
 
 ---
 
@@ -109,10 +119,15 @@ jci-audit check
 ```
 
 This is what `jci-audit/check` runs in CI. Runs `cargo deny check advisories bans licenses
-sources` (policy), a **live** `cargo audit` scan (fresh RustSec advisories), and a check that
-`about.toml` still matches `deny.toml`'s license policy — all three independently blocking,
-aggregated so a failure in one never hides another. Run it locally to reproduce a CI failure or
-validate a `deny.toml` change before pushing.
+sources` (policy), a **live** `cargo audit` scan (fresh RustSec advisories), a check that
+`about.toml` still matches `deny.toml`'s license policy, and a check that `cargo-about` can
+resolve every dependency's license — all four independently blocking, aggregated so a failure in
+one never hides another. A fifth, opt-in check (`--deny-stale-notices`) compares a fresh
+`cargo-about` render's license names against the committed `THIRD-PARTY-LICENSES.md`: it only
+fails if the set grew (a license substituted or added), and warns instead on a version bump or a
+new dependency under an already-accepted license — see the
+[CLI Reference](@/projects/jci-audit/cli-reference.md) for the full flag list. Run `jci-audit
+check` locally to reproduce a CI failure or validate a `deny.toml` change before pushing.
 
 ---
 
@@ -158,10 +173,10 @@ PR job, or a scheduled one for early warning on already-shipped lockfiles):
 ## Run the release gate
 
 ```bash
-jci-audit release --release-version 1.2.0
+jci-audit release-prep 1.2.0
 ```
 
-This is what `jci-audit/release` runs in CI (see [Wire the container and CI scripting](#wire-the-container-and-ci-scripting-circleci)
+This is what `jci-audit/release_prep` runs in CI (see [Wire the container and CI scripting](#wire-the-container-and-ci-scripting-circleci)
 above). Locks `cargo-deny` to a **pinned advisory-db commit** and runs it offline for
 reproducibility, then runs a **live** `cargo audit` as a non-blocking currency check, and writes
 `.security/release-1.2.0.json` — a record of exactly what was checked, in the job's own working
@@ -170,7 +185,7 @@ directory.
 To confirm a past release still checks out against what's on disk today:
 
 ```bash
-jci-audit verify --release-version 1.2.0
+jci-audit verify 1.2.0
 ```
 
 Run this from a checkout of the released tag.

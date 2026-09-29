@@ -14,50 +14,73 @@ location, and troubleshooting a `verify` mismatch. See the
 
 ---
 
-## The release record is not retrievable today — a known, open gap
+## How the release record is stored and retrieved
 
-`jci-audit release` writes `.security/release-<VERSION>.json` to the working directory and does
-nothing else with it — no git commit, no push, no signing. "Local" means **the CI job's own
-ephemeral working directory** — not your repo clone, and not the GitHub release. Storing it as a
-CI build artifact (as the
-[`jci-audit/release` orb job's example usage](@/projects/jci-audit/getting-started.md#wire-the-container-and-ci-scripting-circleci)
-does with `post-steps: store_artifacts`) only buys the record a short reprieve: build-artifact
-retention is time-limited, and once it expires the record is gone for good, with nothing left in
-the repo or on the release to recover it from.
+`jci-audit release-prep` writes `.security/release-<VERSION>.json` to the working directory and
+does nothing else with it there — no git commit, no push, no signing. "Local" means **the CI
+job's own ephemeral working directory** — not your repo clone, and not the GitHub release. A
+subsequent job needs the record handed to it explicitly.
 
-This isn't a hypothetical: `jci-audit-v0.1.0`'s own release record is genuinely gone — hit by all
-three gaps at once, independently: never committed (that path was removed before `0.1.0` shipped,
-see below), never uploaded to the GitHub release (the CI-side upload doesn't exist yet, see below),
-and the CI build-artifact copy has already expired. `jci-audit verify --release-version 0.1.0` has
-nothing to check against, locally or remotely, and never will — the record can't be reconstructed
-after the fact with the same meaning, since it certifies the advisory-db commit and tool versions
-*at release time*, and the advisory-db has moved on since. **`0.1.0` has been yanked from
-crates.io as a result** — not a verifiable release. As of this writing every published version
-(`0.0.1`–`0.1.0`) is yanked, so `cargo install`/`cargo binstall jci-audit` currently has no
-version to resolve; that's expected to change once the next release ships (see #75 below) and
-isn't itself a documentation gap to track here.
+`jci-audit publish-record` is that handoff: it generates a one-use minisign keypair, signs the
+record, and uploads the record/`.sig`/`.pub` as named assets on the release — a fully
+self-contained path ([jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75)
+phase 2) needing nothing beyond this orb and a GitHub token with permission to upload (and,
+with `--publish`, publish) the release. `verify`'s remote-fetch path then fetches and
+signature-checks that record with no local checkout at all. The full three-job chain:
 
-Earlier versions (`0.0.1`–`0.0.7`) committed and GPG-signed the record via
-[`pcu`](https://crates.io/crates/pcu); their records are still in the repo and checkable from a
-real checkout. That commit path is gone as of
-[jerus-org/jci-audit#75](https://github.com/jerus-org/jci-audit/issues/75) phase 1 — every release
-since no longer commits the record, so `verify` needs an alternative source. Distributing the
-record as a signed GitHub release asset (verified via `rsign` in `verify`'s remote-fetch path) is
-fully built and wired into `verify` already — but the CI-side upload that would actually put a
-record and its signature on the release is `#75`'s remaining, not-yet-shipped phase. Until it
-ships, no release cut after phase 1 has a record that survives past the CI job's own retention
-window.
+```yaml
+workflows:
+  release:
+    jobs:
+      - jci-audit/release_prep:
+          name: record-release
+          version: "1.2.0"
+          post-steps:
+            - persist_to_workspace:
+                root: .
+                paths: [.security]
+
+      - your-draft-release-job:
+          requires: [record-release]
+
+      - jci-audit/publish_record:
+          name: publish-security-record
+          requires: [your-draft-release-job]
+          context: [github-release-write]
+          attach_workspace: true
+          version: "1.2.0"
+          tag: "myapp-v1.2.0"
+          owner: "your-org"
+          repo: "your-repo"
+          record_path: "/tmp/workspace/.security/release-1.2.0.json"
+          publish: true
+```
+
+`release_prep` persists the record to the workspace rather than committing it; `publish_record`
+attaches that workspace, signs the persisted record, and uploads it once your own job has created
+the (draft) release to attach assets to. The private signing key is generated, used, and discarded
+entirely inside the `publish_record` job — it never appears in the record's own job or in any
+other step. Set the GitHub token via a context on the `publish_record` job, never as a parameter,
+so it never appears on a command line or in a CI log.
+
+Every jci-audit release since `jci-audit-v0.1.1` uses this path — see
+[jerus-org/jci-audit's own `.circleci/release.yml`](https://github.com/jerus-org/jci-audit/blob/main/.circleci/release.yml)
+for the real, currently-running wiring. The crate's currently published version
+(`cargo info jci-audit` or [crates.io](https://crates.io/crates/jci-audit)) is not yanked, and its
+record is retrievable through this path — the historical retention gap described in earlier
+drafts of this guide (`jci-audit-v0.1.0`'s record was genuinely lost, before `publish-record`
+existed) no longer applies to any release cut since.
 
 ---
 
 ## Overriding the advisory-db location
 
-`release` and `verify` both accept `--advisory-db <PATH>`, treated the same way: it's the
+`release-prep` and `verify` both accept `--advisory-db <PATH>`, treated the same way: it's the
 advisory-db **root** (not a specific checkout), passed straight through to `deny.toml`'s
 `[advisories].db-path` — the directory beneath which `cargo-deny` nests its own managed checkout
 as `advisory-db-<hash>`. Default `~/.cargo/advisory-db`.
 
-- **`release`** discovers/refreshes that checkout and pins the release to its resulting commit.
+- **`release-prep`** discovers/refreshes that checkout and pins the release to its resulting commit.
 - **`verify`** discovers the existing checkout beneath the given root and moves it to the commit
   recorded in `.security/release-<VERSION>.json`.
 
@@ -69,7 +92,7 @@ one level down for the `advisory-db-<hash>` subdirectory.
 
 ## `--deny-warnings`
 
-Present on `check`, `release`, and `verify`. `cargo-deny` reports some conditions (e.g.
+Present on `check`, `release-prep`, and `verify`. `cargo-deny` reports some conditions (e.g.
 `unmaintained = "all"`) as warnings rather than hard errors by default. Pass `--deny-warnings` to
 escalate every warning to a failure. Without it, warnings are still surfaced (counted and printed)
 but don't affect the exit code.
@@ -78,7 +101,7 @@ but don't affect the exit code.
 
 ## Troubleshooting a `verify` mismatch
 
-`jci-audit verify --release-version <V>` prints one line per input it couldn't verify or that
+`jci-audit verify <VERSION>` prints one line per input it couldn't verify or that
 didn't match, then a final verdict:
 
 ```
@@ -111,7 +134,7 @@ Two other failure modes print no `MISMATCH` line at all:
 
 - **The advisory-db commit is unreachable** (garbage-collected, or the checkout was never made) —
   `verify` fails outright before any comparison output prints. Re-fetch the advisory-db
-  (`cargo deny fetch`, or re-run `jci-audit check`/`release` once to let cargo-deny refresh it) and
+  (`cargo deny fetch`, or re-run `jci-audit check`/`release-prep` once to let cargo-deny refresh it) and
   retry.
 - **Every recorded input still matches, but the gate's pass/fail verdict doesn't** — e.g. a newer
   `cargo-deny` evaluates the same pinned inputs differently than the one that produced the record.
@@ -124,15 +147,18 @@ Two other failure modes print no `MISMATCH` line at all:
 
 ## Multi-crate workspaces
 
-`sync`'s `about.toml` derivation already scopes each crate's `accepted` list to its own dependency
-graph. Two related limitations are tracked, not yet implemented:
+`sync`'s `about.toml` derivation scopes each crate's `accepted` list to its own dependency graph,
+and honours that crate's own `about.toml` `ignore-build-dependencies`/`ignore-transitive-dependencies`
+settings ([#63](https://github.com/jerus-org/jci-audit/issues/63)) — it does not copy the
+workspace-wide policy into every crate verbatim.
 
-- **License scope always includes build dependencies**, regardless of `about.toml`'s own
-  `ignore-build-dependencies`/`ignore-transitive-dependencies` settings
-  ([#63](https://github.com/jerus-org/jci-audit/issues/63)).
-- **`release`/`verify` don't yet support per-crate ordering** for a workspace with multiple
-  publishable crates and dependencies between them
-  ([#62](https://github.com/jerus-org/jci-audit/issues/62)).
+`release-prep`/`verify` take a `-p`/`--package <NAME>` flag to scope the dependency digest and the
+record's own path (`.security/<package>-release-<VERSION>.json`) to just one crate's reachable
+graph, so a workspace can release its crates individually, in dependency order, without different
+crates' records colliding in the same pipeline run
+([#62](https://github.com/jerus-org/jci-audit/issues/62)). `publish-record` and `verify`'s
+remote-fetch path don't take a per-package record path yet — this org's own workspaces are still
+single-crate, so that extension is deferred until a real multi-crate consumer needs it.
 
 ---
 
