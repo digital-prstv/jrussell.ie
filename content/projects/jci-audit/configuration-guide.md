@@ -67,7 +67,9 @@ unknown-git = "warn"
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
 ```
 
-This is the exact template `jci-audit init` writes — the `allow` list is a deliberate permissive
+This is the exact template `jci-audit init` writes to a new file. Run on an existing `deny.toml`,
+`init` adds only the keys from it that are missing and changes nothing you already set. The
+`allow` list is a deliberate permissive
 baseline, not an arbitrary or expanded one; the same "consciously reviewed" friction the comment
 describes for copyleft exceptions is the design intent for the whole file, not just that one list.
 

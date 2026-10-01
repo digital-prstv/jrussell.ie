@@ -14,7 +14,7 @@ tags = ["Rust", "CircleCI", "Security", "CLI", "Orb", "documentation"]
 | `sync` | `about.toml` half runs inside `check`; full sync is its own CI/local step | Derive `.cargo/audit.toml`/`about.toml` from `deny.toml` |
 | `prune` | Orb job (any workflow), or local | Detect advisory ignores that no longer fire |
 | `verify` | Local, from a released tag, or remote with no checkout | Re-check a past release against a real checkout, or a published release's signed record |
-| `init` | Local, one-time scaffold | Write the standard `deny.toml` template |
+| `init` | Local, one-time scaffold | Write the standard `deny.toml` template, or add its missing keys to yours |
 | `wire-ci` | Local, one-time or on drift | Wire the generated orb's job(s) into a consumer's CircleCI config |
 | `check-ci-wiring` | PR gate (CI), local to validate | Detect drift between the CI config and what `wire-ci` would generate |
 | `publish-record` | Release gate (CI) | Sign and upload a release-prep record as release assets |
@@ -125,14 +125,25 @@ Output:
 
 ## `init` — Scaffold a standard `deny.toml`
 
-Non-interactive — every value in the template is fixed; edit the written files afterwards for
-anything project-specific.
+Writes a standard `deny.toml` and the `.cargo/audit.toml` derived from it. Non-interactive — edit
+`deny.toml` afterwards for anything project-specific.
+
+With a `deny.toml` already in place, `init` adds the standard keys it lacks and lists each one;
+nothing already in the file is changed or removed, so your ignores, license exceptions and
+comments stay as written. Each added key is a default you can edit or delete — jci-audit runs
+without any of them except `[licenses] allow`, which cargo-deny itself needs to admit any
+license. A file that already has every key is left untouched.
+
+`.cargo/audit.toml` is derived from the resulting `deny.toml`, so your existing advisory ignores
+carry into it. If an `audit.toml` already exists and differs, `init` overwrites it and warns that
+it did: it is kept in sync with `deny.toml` from then on, so make changes in `deny.toml`, not in
+`audit.toml`.
 
 ```
 jci-audit init [OPTIONS]
 
 Options:
-  --force   Overwrite existing files without confirmation
+  --force   Replace an existing deny.toml with the standard template instead of adding to it
 ```
 
 ## `wire-ci` — Wire the orb into your CircleCI config
@@ -147,7 +158,24 @@ jci-audit wire-ci [OPTIONS]
 Input:
   --config <CONFIG>   Path to the jci-audit.toml-shaped wiring spec to read (and, if it has no
                        [[ci.jobs]] entries yet, scaffold an example into)
+
+Scaffold (first run only):
+  --workflow <WORKFLOW>                  Which workflow the example check job joins
+  --deny-unused-licenses <true|false>    Whether the example enables --deny-unused-licenses
+  --deny-stale-exceptions <true|false>   Whether the example enables --deny-stale-exceptions
+  --deny-stale-notices <true|false>      Whether the example enables --deny-stale-notices
 ```
+
+The four scaffold flags only shape the first-run `jci-audit.toml`, never one that already exists.
+With a terminal attached and nothing set, scaffolding prompts for the workflow (offering any
+workflow names already in your CircleCI config, alongside `validation`) and each check flag. With
+no terminal (a script, a redirected stderr) it uses the defaults instead of prompting:
+`validation`, `deny_unused_licenses` and `deny_stale_exceptions` on, `deny_stale_notices` off. Set
+the flags to choose something else.
+
+`wire-ci` writes files and is for local use. It refuses to run when `$CI` is set (anything but
+empty, `false` or `0`) and exits non-zero, because a CI job running it would only change its own
+throwaway checkout. In CI, use `check-ci-wiring`.
 
 ## `check-ci-wiring` — Detect CI-wiring drift
 

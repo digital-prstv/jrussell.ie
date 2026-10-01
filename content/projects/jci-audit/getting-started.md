@@ -48,8 +48,10 @@ jci-audit init
 Writes a standard `deny.toml` (advisories, licenses, bans, sources) plus the `.cargo/audit.toml`
 derived from it, into the current directory — that's all `init` does. It doesn't sync any crate's
 `about.toml` (see [Keep derived files in sync](#keep-derived-files-in-sync) below), and it doesn't
-touch your CI config. It refuses to overwrite an existing `deny.toml` unless you pass `--force`.
-The template denies all licenses except an explicit allow-list, and leaves `[advisories].ignore`
+touch your CI config. If you already have a `deny.toml`, `init` adds the standard keys it lacks
+and lists each one; your existing settings, comments and exceptions are left as they are
+(`--force` replaces the file with the template instead). An existing `.cargo/audit.toml` is
+overwritten with the version derived from `deny.toml`, with a warning. The template denies all licenses except an explicit allow-list, and leaves `[advisories].ignore`
 empty — see the [Configuration Guide](@/projects/jci-audit/configuration-guide.md) for what each
 section means.
 
@@ -61,6 +63,12 @@ does for its own consumers:
 jci-audit wire-ci
 jci-audit check-ci-wiring   # CI: fail if the wiring has drifted from what wire-ci would generate
 ```
+
+On a first run with no `jci-audit.toml`, `wire-ci` asks which workflow the check job should join
+and which optional checks to enable, then writes the file for you to review. From a script it
+uses defaults, or take `--workflow` and the `--deny-*` flags (see the
+[CLI Reference](@/projects/jci-audit/cli-reference.md)). `wire-ci` is for local use and refuses to
+run when `$CI` is set; run `check-ci-wiring` in CI.
 
 The next section shows the underlying YAML shape it produces, for when you want to see what's
 actually being wired or extend it by hand.
