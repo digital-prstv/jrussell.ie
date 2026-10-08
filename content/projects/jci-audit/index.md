@@ -1,6 +1,6 @@
 +++
 title = "jci-audit"
-description = "A context-aware Rust security gate orchestrating cargo-audit and cargo-deny, with reproducible release-time validation against a pinned advisory-db commit."
+description = "A context-aware Rust security and license gate orchestrating cargo-audit, cargo-deny and cargo-about, with reproducible release-time validation against a pinned advisory-db commit."
 weight = 17
 
 [taxonomies]
@@ -12,13 +12,17 @@ quick_navigation_buttons = true
 local_image = "projects/jci-audit/jci-audit-logo.webp"
 +++
 
-**jci-audit** orchestrates [`cargo-audit`](https://crates.io/crates/cargo-audit) and
-[`cargo-deny`](https://crates.io/crates/cargo-deny) — two tools with complementary strengths that
-rarely run together in the same gate. `cargo audit` checks live, fresh RustSec advisories;
-`cargo deny` enforces policy (advisories, bans, licenses, sources) through file-based ignores that
-carry a written justification. jci-audit runs both, and treats `deny.toml` as the single source of
-truth: `.cargo/audit.toml` and every crate's `about.toml` are derived from it, never maintained by
-hand in parallel.
+**jci-audit** orchestrates [`cargo-audit`](https://crates.io/crates/cargo-audit),
+[`cargo-deny`](https://crates.io/crates/cargo-deny) and
+[`cargo-about`](https://crates.io/crates/cargo-about) — three tools that rarely run together in the
+same gate. `cargo audit` checks live, fresh RustSec advisories; `cargo deny` enforces policy
+(advisories, bans, licenses, sources) through file-based ignores that carry a written
+justification; `cargo about` attributes every dependency's license for your third-party notices.
+jci-audit runs all three, and treats `deny.toml` as the single source of truth:
+`.cargo/audit.toml` and every crate's `about.toml` are derived from it, never maintained by hand
+in parallel — so the license policy `cargo deny` enforces and the one `cargo about` attributes
+against cannot drift apart. `check` also confirms `cargo about` can still attribute every
+dependency, and `--deny-stale-notices` flags a licensing change against your committed notices.
 
 Release validation is where this differs most from a plain CI check: `cargo deny` locks to a
 **pinned advisory-db commit** and runs offline, so a release's security gate can be independently

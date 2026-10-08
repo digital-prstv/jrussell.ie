@@ -8,8 +8,8 @@ tags = ["Rust", "CircleCI", "Security", "CLI", "Orb", "documentation"]
 +++
 
 jci-audit is a CLI and a CircleCI orb: the CLI (see [Architecture](@/projects/jci-audit/index.md#architecture))
-does the actual work — `cargo audit`/`cargo deny` orchestration, policy derivation, reproducible
-release validation — and the orb wires it into your pipeline so it runs on every PR and release.
+does the actual work — `cargo audit`/`cargo deny`/`cargo about` orchestration, policy and license-policy
+derivation, reproducible release validation — and the orb wires it into your pipeline so it runs on every PR and release.
 Running the CLI locally is for validating a policy change before you push it, or troubleshooting
 something CI reported — not the primary way it's meant to run.
 
@@ -84,7 +84,7 @@ definitions together (see [Architecture](@/projects/jci-audit/index.md#architect
 version: 2.1
 
 orbs:
-  jci-audit: jerus-org/jci-audit@0.1.23
+  jci-audit: jerus-org/jci-audit@0.1.25
 
 workflows:
   validation:
